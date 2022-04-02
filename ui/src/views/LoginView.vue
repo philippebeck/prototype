@@ -1,0 +1,63 @@
+<template>
+  <form 
+    class="form" 
+    action="" 
+    method="post">
+    <fieldset>
+      <ul>
+        <li>
+          <label 
+            class="anima-slideR-this" 
+            for="email">
+            Identifiant
+          </label>
+          <input 
+            id="email" 
+            class="anima-slideL-this" 
+            name="email" 
+            type="email" 
+            placeholder="Insérer votre Identifiant"
+            required>
+        </li>
+        <li>
+          <label 
+            class="anima-slideR-this" 
+            for="pass">
+            Mot de Passe
+          </label>
+          <input 
+            id="pass" 
+            class="anima-slideL-this" 
+            name="pass" 
+            type="password"
+            placeholder="Insérer votre mot de passe" 
+            autocomplete="off" 
+            required>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <div 
+            id="recaptcha" 
+            class="g-recaptcha" data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
+          </div>
+        </li>
+        <li>
+          <input 
+            class="anima-slideR-this" 
+            type="reset" 
+            value="Réinitialiser">
+          <input 
+            class="anima-slideL-this" 
+            type="submit" 
+            value="Connexion">
+        </li>
+      </ul>
+    </fieldset>
+    <a 
+      class="btn-black btn-lg" 
+      href="">
+      Quitter
+    </a>
+  </form>
+</template>
