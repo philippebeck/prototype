@@ -20,12 +20,13 @@
           <input 
             id="name" 
             name="name" 
+            v-model="name" 
             type="text" 
             maxlength="50" 
             placeholder="Insérer le Nom" 
             required>
         </li>
-        <li>
+        <!--<li>
           <label for="file">
             Photo (max 5Mo)
           </label>
@@ -34,7 +35,7 @@
             type="file" 
             accept=".jpg, .jpeg, .png, .svg, .gif" 
             required>
-        </li>
+        </li>-->
         <li>
           <label for="email">
             Courriel
@@ -42,6 +43,7 @@
           <input 
             id="email" 
             name="email" 
+            v-model="email" 
             type="email" 
             maxlength="100" 
             minlength="5" 
@@ -56,13 +58,14 @@
           <input 
             id="pass" 
             name="pass" 
+            v-model="pass" 
             type="password" 
             placeholder="Insérer le Mot de Passe" 
             maxlength="100"
             minlength="8" 
             required>
         </li>
-        <li>
+        <!--<li>
           <label for="conf-pass">
             Confirmer
           </label>
@@ -74,7 +77,7 @@
             maxlength="100"
             minlength="8" 
             required>
-        </li>
+        </li>-->
       </ul>
       <ul>
         <li>
@@ -84,15 +87,9 @@
             class="btn-green">
             Créer
           </button>
-          <a 
-            class="btn-red" 
-            href="/admin">
-            Quitter
-          </a>
         </li>
       </ul>
     </fieldset>
-
   </form>
 </template>
 
@@ -102,7 +99,7 @@
     data() {
       return {
         name: '',
-        file: '',
+        //file: '',
         email: '',
         pass: ''
       }
@@ -112,7 +109,7 @@
         console.log("createUser()", this.name)
         const payload = {
           name: this.name,
-          file: this.file,
+          //file: this.file,
           email: this.email,
           pass: this.pass
         }
@@ -121,7 +118,7 @@
       },
       clearForm() {
         this.name = "";
-        this.file = "";
+        //this.file = "";
         this.email = "";
         this.pass = "";
       }

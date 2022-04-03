@@ -14,6 +14,7 @@
           <input 
             id="name" 
             name="name" 
+            v-model="name" 
             type="text" 
             maxlength="30" 
             placeholder="Insérer le Nom"
@@ -99,11 +100,6 @@
             class="btn-green">
             Créer
           </button>
-          <a 
-            class="btn-red" 
-            href="/admin">
-            Quitter
-          </a>
         </li>
       </ul>
     </fieldset>
