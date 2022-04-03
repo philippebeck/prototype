@@ -93,23 +93,21 @@
       </ul>
       <ul>
         <li>
-          <input 
-            type="reset" 
-            value="Réinitialiser">
           <button 
             type="button" 
             @click='createResource()' 
             class="btn-green">
-            Create
+            Créer
           </button>
+          <a 
+            class="btn-red" 
+            href="#">
+            Quitter
+          </a>
         </li>
       </ul>
     </fieldset>
-    <a 
-      class="btn-black btn-lg" 
-      href="#">
-      Quitter
-    </a>
+
   </form>
 </template>
 
