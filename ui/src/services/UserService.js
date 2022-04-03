@@ -3,7 +3,7 @@
 const axios = require('axios');
 
 export async function getAllUsers() {
-    const response = await axios.get('/api/users');
+    const response = await axios.get('/api/user');
 
     return response.data;
 }

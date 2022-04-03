@@ -3,7 +3,7 @@
 const axios = require('axios');
 
 export async function getAllResources() {
-    const response = await axios.get('/api/resources');
+    const response = await axios.get('/api/resource');
 
     return response.data;
 }
