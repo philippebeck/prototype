@@ -26,8 +26,27 @@
 </template>
 
 <script>
+import { getAllResources } from '../services/ResourceService'
+
 export default {
   name: 'MainView',
-  props: ['resources']
+  data() {
+    return {
+      resources: [],
+      numberOfResources: 0
+    }
+  },
+  methods: {
+    getAllResources() {
+      getAllResources().then(response => {
+        console.log("getAllResources()", response)
+        this.resources = response
+        this.numberOfResources = this.resources.length
+      })
+    }
+  },
+  mounted () {
+    this.getAllResources();
+  }
 }
 </script>
