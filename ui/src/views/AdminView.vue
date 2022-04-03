@@ -96,8 +96,8 @@ export default {
     }
   },
   mounted () {
-    this.getAllUsers();
     this.getAllResources();
+    this.getAllUsers();
   }
 }
 </script>
