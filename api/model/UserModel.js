@@ -4,12 +4,12 @@ const mongoose        = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 
 const UserModel = mongoose.Schema({
-  /*name: { 
+  name: { 
     type: String, 
     required: true,
     unique: true
   },
-  image: { 
+  /*image: { 
     type: String, 
     required: true 
   },*/
