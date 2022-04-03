@@ -34,19 +34,39 @@
     <section class="menu-relay">
       <h2>Datas</h2>
 
-      <ListResources 
-        v-if="resources.length > 0" 
-        :resources="resources"/>
+      <section class="menu-target1">
+        <h3>
+          <i class="fas fa-box-open"></i>
+          Ressources
+        </h3>
 
-      <ListUsers 
-        v-if="users.length > 0" 
-        :users="users"/>
+        <CreateResource />
+
+        <ListResources 
+          v-if="resources.length > 0" 
+          :resources="resources"/>
+      </section>
+
+      <section class="menu-target2">
+        <h3>
+          <i class="fas fa-user-ninja"></i>
+          Utilisateurs
+        </h3>
+
+        <CreateUser />
+
+        <ListUsers 
+          v-if="users.length > 0" 
+          :users="users"/>
+        </section>
     </section>
   </main>
 </template>
 
 <script>
+import CreateResource from '@/components/CreateResourceView.vue'
 import ListResources from '@/components/ListResources.vue'
+import CreateUser from '@/components/CreateUserView.vue'
 import ListUsers from '@/components/ListUsers.vue'
 import { getAllUsers, createUser } from '../services/UserService'
 import { getAllResources, createResource } from '../services/ResourceService'
@@ -54,7 +74,9 @@ import { getAllResources, createResource } from '../services/ResourceService'
 export default {
   name: 'AdminView',
   components: {
+    CreateResource,
     ListResources,
+    CreateUser,
     ListUsers
   },
   data() {
