@@ -1,5 +1,6 @@
 <template>
-  <form class="form" 
+  <form 
+    class="form" 
     method="post" 
     action="#">
     <fieldset>
