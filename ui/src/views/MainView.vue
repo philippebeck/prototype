@@ -1,29 +1,33 @@
 <template>
-  <div class="main">
-    <h1>This is the main page</h1>
-    <DashBoard v-if="settings == true"/>
-  </div>
+  <main>
+    <table class="table">
+      <tr 
+        v-for="resource in resources" 
+        :key="resource.id">
+        <td class="font-monospace">
+          {{ resource.category }}
+        </td>
+        <td>
+          <a 
+            class="button-primary" 
+            href="https://{{ resource.link }}" 
+            title="https://{{ resource.link }}">
+            <strong>
+              {{ resource.name }}
+            </strong>
+          </a>
+        </td>
+        <td class="font-monospace">
+          {{ resource.description }}
+        </td>
+      </tr>
+    </table>
+  </main>
 </template>
 
 <script>
-import DashBoard from '@/components/DashBoard.vue'
-
 export default {
   name: 'MainView',
-  components: {
-    DashBoard
-  },
-  data() {
-      return {
-          settings: false
-      }
-  },
-  mounted() {
-    console.log("I am in mounted!!!")
-    this.settings = true
-  },
-  setup () {
-    console.log("I am in setup!!!")
-  }
+  props: ['resources']
 }
 </script>
