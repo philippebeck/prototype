@@ -7,7 +7,7 @@
 
     <a 
       class="btn-green btn-lg" 
-      href="#" 
+      href="/create-resource" 
       title="Cliquer pour créer une nouvelle ressource">
       Nouvelle Ressource
     </a>

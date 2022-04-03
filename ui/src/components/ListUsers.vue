@@ -2,20 +2,20 @@
   <section class="menu-target2">
     <h2>
       <i class="fas fa-user-ninja"></i>
-      Administrateurs
+      Utilisateurs
     </h2>
 
     <a 
       class="btn-green btn-lg" 
-      href="#" 
+      href="/create-user" 
       title="Cliquer pour créer un nouvel utilisateur">
-      Nouvel Administrateur
+      Nouvel Utilisateur
     </a>
 
     <table class="table">
       <thead>
         <tr>
-          <th>Administrateur</th>
+          <th>Utilisateurs</th>
         </tr>
       </thead>
       <tbody>

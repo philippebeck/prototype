@@ -101,7 +101,7 @@
           </button>
           <a 
             class="btn-red" 
-            href="#">
+            href="/admin">
             Quitter
           </a>
         </li>
