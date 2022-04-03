@@ -4,8 +4,6 @@ import MainView from '../views/MainView.vue'
 import ContactView from '../views/ContactView.vue'
 import LoginView from '../views/LoginView.vue'
 import AdminView from '../views/AdminView.vue'
-import CreateResourceView from '../views/CreateResourceView.vue'
-import CreateUserView from '../views/CreateUserView.vue'
 import TestView from '../views/TestView.vue'
 
 const routes = [
@@ -33,16 +31,6 @@ const routes = [
     path: '/admin',
     name: 'admin',
     component: AdminView
-  },
-  {
-    path: '/create-resource',
-    name: 'create-resource',
-    component: CreateResourceView
-  },
-  {
-    path: '/create-user',
-    name: 'create-user',
-    component: CreateUserView
   },
   {
     path: '/test',
