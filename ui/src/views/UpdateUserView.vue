@@ -10,7 +10,10 @@
       value="5000000">
     <fieldset>
       <legend>
-        <i class="fas fa-users fa-2x"></i>
+        <img 
+          class="bord-violet" 
+          src="img/user/{{ user.image }}" 
+          alt="Photo de {{ user.name }}">
       </legend>
       <ul>
         <li>
@@ -22,7 +25,7 @@
             name="name" 
             type="text" 
             maxlength="50" 
-            placeholder="Insérer le Nom" 
+            value="{{ user.name }}"
             required>
         </li>
         <li>
@@ -32,8 +35,7 @@
           <input 
             name="file" 
             type="file" 
-            accept=".jpg, .jpeg, .png, .svg, .gif" 
-            required>
+            accept=".jpg, .jpeg, .png, .gif">
         </li>
         <li>
           <label for="email">
@@ -45,22 +47,33 @@
             type="email" 
             maxlength="100" 
             minlength="5" 
-            placeholder="Insérer le Courriel"
+            value="{{ user.email }}"
             required>
         </li>
         <hr>
         <li>
-          <label for="pass">
-            Mot de Passe
+          <label for="old-pass">
+            Ancien Mot de Passe
           </label>
           <input 
-            id="pass" 
-            name="pass" 
+            id="old-pass" 
+            name="old-pass" 
             type="password" 
-            placeholder="Insérer le Mot de Passe" 
-            maxlength="100"
-            minlength="8" 
-            required>
+            placeholder="Insérer votre Ancien Mot de Passe" 
+            maxlength="100" 
+            minlength="8">
+        </li>
+        <li>
+          <label for="new-pass">
+            Nouveau Mot de Passe
+          </label>
+          <input 
+            id="new-pass" 
+            name="new-pass" 
+            type="password" 
+            placeholder="Insérer votre Nouveau Mot de Passe" 
+            maxlength="100" 
+            minlength="8">
         </li>
         <li>
           <label for="conf-pass">
@@ -70,35 +83,33 @@
             id="conf-pass" 
             name="conf-pass" 
             type="password" 
-            placeholder="Confirmer le Mot de Passe" 
-            maxlength="100"
-            minlength="8" 
-            required>
+            placeholder="Confirmer votre Nouveau Mot de Passe" 
+            maxlength="100" 
+            minlength="8">
         </li>
       </ul>
       <ul>
         <li>
-          <button 
-            type="button" 
-            @click='createUser()' 
-            class="btn-green">
-            Créer
-          </button>
-          <a 
-            class="btn-red" 
-            href="/admin">
-            Quitter
-          </a>
+          <input 
+            type="reset" 
+            value="Réinitialiser">
+          <input 
+            type="submit" 
+            value="Mettre à Jour">
         </li>
       </ul>
     </fieldset>
-
+    <a 
+      class="btn-black btn-lg" 
+      href="{{ url('admin') }}">
+      Quitter
+    </a>
   </form>
 </template>
 
 <script>
   export default {
-    name: 'CreateUser',
+    name: 'UpdateUser',
     data() {
       return {
         name: '',
@@ -108,15 +119,15 @@
       }
     },
     methods: {
-      createUser() {
-        console.log("createUser()", this.name)
+      updateUser() {
+        console.log("updateUser()", this.name)
         const payload = {
           name: this.name,
           file: this.file,
           email: this.email,
           pass: this.pass
         }
-        this.$emit('createUser', payload)
+        this.$emit('updateUser', payload)
         this.clearForm();
       },
       clearForm() {

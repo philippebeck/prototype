@@ -10,7 +10,7 @@ const UserCtrl = require("../controller/UserCtrl");
 
 router.post("/signup", UserCtrl.signup);
 router.post("/login", UserCtrl.login);
-router.get("/list", auth, UserCtrl.list);
+router.get("/", UserCtrl.list);
 router.post("/create", auth, multer, UserCtrl.create);
 router.get("/read:id", auth, UserCtrl.read);
 router.put("/update:id", auth, multer, UserCtrl.update);

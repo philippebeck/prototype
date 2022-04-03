@@ -10,7 +10,7 @@ const ResourceCtrl = require("../controller/ResourceCtrl");
 
 router.get("/", ResourceCtrl.listResources);
 router.post("/", auth, multer, ResourceCtrl.createResource);
-router.get("/:id", auth, ResourceCtrl.readResource);
+router.get("/:id", ResourceCtrl.readResource);
 router.put("/:id", auth, multer, ResourceCtrl.updateResource);
 router.delete("/:id", auth, ResourceCtrl.deleteResource);
 

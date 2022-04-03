@@ -1,0 +1,144 @@
+<template>
+  <form 
+    class="form" 
+    method="post" 
+    action="#">
+    <fieldset>
+      <legend>
+        <i class="fas fa-box-open fa-2x"></i>
+      </legend>
+      <ul>
+        <li>
+          <label for="name">
+            Nom
+          </label>
+          <input
+            id="name" 
+            name="name" 
+            type="text" 
+            maxlength="30" 
+            value="{{ resource.name }}"
+            required>
+        </li>
+        <li>
+          <label for="link">
+            Lien
+          </label>
+          <input 
+            id="link" 
+            name="link" 
+            type="text" 
+            maxlength="100" 
+            value="https://{{ resource.link }}"
+            required>
+        </li>
+        <li>
+          <label for="category">
+            Catégorie
+          </label>
+          <input 
+            id="category" 
+            name="category" 
+            type="text" 
+            maxlength="30" value="{{ resource.category }}"
+            required>
+        </li>
+        <li>
+          <label for="technology">
+            Technologie
+          </label>
+          <select 
+            id="technology" 
+            name="technology"
+            required>
+            <option value="{{ resource.technology }}">
+              {{ resource.technology }} (enregistré)
+            </option>
+            <option value="HTML">
+              HTML
+            </option>
+            <option value="CSS">
+              CSS
+            </option>
+            <option value="JS">
+              JavaScript
+            </option>
+            <option value="PHP">
+              PHP
+            </option>
+            <option value="SQL">
+              SQL
+            </option>
+            <option value="Git">
+              Git
+            </option>
+            <option value="Media">
+              Media
+            </option>
+          </select>
+        </li>
+        <li>
+          <label for="description">
+            Description
+          </label>
+          <textarea 
+            id="description" 
+            name="description" 
+            rows="5" 
+            required>{{ resource.description }}</textarea>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input 
+            type="reset" 
+            value="Réinitialiser">
+          <input 
+            type="submit" 
+            value="Mettre à Jour">
+        </li>
+      </ul>
+    </fieldset>
+    <a 
+      class="btn-black btn-lg" 
+      href="#">
+      Quitter
+    </a>
+  </form>
+</template>
+
+<script>
+  export default {
+    name: 'UpdateResource',
+    data() {
+      return {
+        name: '',
+        link: '',
+        technology: '',
+        category: '',
+        description: ''
+      }
+    },
+    methods: {
+      updateResource() {
+        console.log("updateResource()", this.name)
+        const payload = {
+          name: this.name,
+          link: this.link,
+          technology: this.technology,
+          category: this.category,
+          description: this.description
+        }
+        this.$emit('updateResource', payload)
+        this.clearForm();
+      },
+      clearForm() {
+        this.name = "";
+        this.link = "";
+        this.technology = "";
+        this.category = "";
+        this.description = "";
+      }
+    }
+  }
+</script>

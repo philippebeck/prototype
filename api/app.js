@@ -44,8 +44,8 @@ app.use((req, res, next) => {
 
 app.use(`/${process.env.IMG}`, express.static(path.join(__dirname, process.env.IMG)));
 
-app.use(process.env.ROUTE_STUFF, thingRoute);
+app.use(process.env.ROUTE_THING, thingRoute);
 app.use(process.env.ROUTE_RESOURCE, resourceRoute);
-app.use(process.env.ROUTE_AUTH, userRoute);
+app.use(process.env.ROUTE_USER, userRoute);
 
 module.exports = app;

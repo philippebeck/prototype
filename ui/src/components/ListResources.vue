@@ -7,7 +7,7 @@
 
     <a 
       class="btn-green btn-lg" 
-      href="#" 
+      href="/create-resource" 
       title="Cliquer pour créer une nouvelle ressource">
       Nouvelle Ressource
     </a>
@@ -33,7 +33,7 @@
               class="button-primary" 
               href="https://{{ resource.link }}" 
               title="https://{{ resource.link }}">
-              {{ resource.name }} ({{ resource.id }})
+              {{ resource.name }}
             </a>
             <br>
             {{ resource.category }}
