@@ -29,7 +29,7 @@
                 src="" 
                 alt="Photo">
               <figcaption>
-                {{ user.name }} ({{ user.id }})
+                {{ user.name }}
               </figcaption>
             </figure>
             <a 

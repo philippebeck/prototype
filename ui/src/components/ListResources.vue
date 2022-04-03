@@ -33,7 +33,7 @@
               class="button-primary" 
               href="https://{{ resource.link }}" 
               title="https://{{ resource.link }}">
-              {{ resource.name }} ({{ resource.id }})
+              {{ resource.name }}
             </a>
             <br>
             {{ resource.category }}
