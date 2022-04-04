@@ -8,11 +8,9 @@ const multer  = require("../middleware/multer");
 
 const UserCtrl = require("../controller/UserCtrl");
 
-router.post("/signup", UserCtrl.signup);
-router.post("/login", UserCtrl.login);
 router.get("/", UserCtrl.list);
 router.post("/", UserCtrl.create);
-router.get("/:id", UserCtrl.read);
+router.post("/login", UserCtrl.login);
 router.put("/:id", auth, multer, UserCtrl.update);
 router.delete("/:id", auth, UserCtrl.delete);
 
