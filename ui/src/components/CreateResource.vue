@@ -1,7 +1,5 @@
 <template>
-  <form class="form" 
-    method="post" 
-    action="#">
+  <form class="form">
     <fieldset>
       <legend>
         <i class="fas fa-box-open fa-2x"></i>
@@ -9,7 +7,7 @@
       <ul>
         <li>
           <label for="name">
-            Nom
+            Name
           </label>
           <input 
             id="name" 
@@ -17,32 +15,32 @@
             v-model="name" 
             type="text" 
             maxlength="30" 
-            placeholder="Insérer le Nom"
+            placeholder="Fill in the name"
             required>
         </li>
         <li>
           <label for="link">
-            Lien
+            Link
           </label>
           <input 
             id="link" 
             name="link" 
             type="text" 
             maxlength="100" 
-            placeholder="https://"
+            placeholder="Fill in the link"
             required>
         </li>
         <li>
-          <label for="technology">
-            Technologie
+          <label for="category">
+            Category
           </label>
           <select 
-            id="technology" 
-            name="technology" 
-            title="Choisissez la Technologie"
+            id="category" 
+            name="category" 
+            title="Choose the category"
             required>
             <option value="">
-              Choisissez une Technologie
+              Choose the category
             </option>
             <option value="HTML">
               HTML
@@ -67,38 +65,14 @@
             </option>
           </select>
         </li>
-        <li>
-          <label for="category">
-            Catégorie
-          </label>
-          <input 
-            id="category" 
-            name="category" 
-            type="text" 
-            maxlength="30" 
-            placeholder="Insérer la Catégorie"
-            required>
-        </li>
-        <li>
-          <label for="description">
-            Description
-          </label>
-          <textarea 
-            id="description" 
-            name="description" 
-            rows="5" 
-            cols="30" 
-            placeholder="Insérer la Description"
-            required></textarea>
-        </li>
       </ul>
       <ul>
         <li>
           <button 
             type="button" 
-            @click='createResource()' 
+            @click="createResource()" 
             class="btn-green">
-            Créer
+            Create
           </button>
         </li>
       </ul>
@@ -109,35 +83,28 @@
 
 <script>
   export default {
-    name: 'CreateResource',
+    name: "CreateResource",
     data() {
       return {
-        name: '',
-        link: '',
-        technology: '',
-        category: '',
-        description: ''
+        name: "",
+        link: "",
+        category: ""
       }
     },
     methods: {
       createResource() {
-        console.log("createResource()", this.name)
         const payload = {
           name: this.name,
           link: this.link,
-          technology: this.technology,
-          category: this.category,
-          description: this.description
+          category: this.category
         }
-        this.$emit('createResource', payload)
+        this.$emit("createResource", payload)
         this.clearForm();
       },
       clearForm() {
         this.name = "";
         this.link = "";
-        this.technology = "";
         this.category = "";
-        this.description = "";
       }
     }
   }

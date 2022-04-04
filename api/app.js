@@ -6,7 +6,7 @@ const helmet    = require("helmet");
 const sanitize  = require("express-mongo-sanitize");
 const path      = require("path");
 
-const thingRoute    = require("./route/ThingRoute");
+const mainRoute     = require("./route/MainRoute");
 const resourceRoute = require("./route/ResourceRoute");
 const userRoute     = require("./route/UserRoute")
 
@@ -23,7 +23,7 @@ mongoose
 const app = express();
 app.use(express.json());
 
-app.use(helmet({ crossOriginResourcePolicy: process.env.HELMET }));
+app.use(helmet({ crossOriginResourcePolicy: false }));
 app.use(sanitize());
 
 app.use((req, res, next) => {
@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 
 app.use(`/${process.env.IMG}`, express.static(path.join(__dirname, process.env.IMG)));
 
-app.use(process.env.ROUTE_THING, thingRoute);
+app.use(process.env.ROUTE_MAIN, mainRoute);
 app.use(process.env.ROUTE_RESOURCE, resourceRoute);
 app.use(process.env.ROUTE_USER, userRoute);
 

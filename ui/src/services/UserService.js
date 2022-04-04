@@ -9,7 +9,7 @@ export async function getAllUsers() {
 }
 
 export async function createUser(data) {
-  const response = await axios.post('/api/user', { user: data });
+  const response = await axios.post('/api/users', { user: data });
 
   return response.data;
 }

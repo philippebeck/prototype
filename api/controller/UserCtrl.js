@@ -21,33 +21,46 @@ schema
   .has().not().spaces();
 
 /**
- * SIGNUP USER
+ * LIST USERS
  * @param {object} req 
  * @param {object} res 
  */
-exports.signup = (req, res) => {
+ exports.list = (req, res) => {
+  UserModel
+    .find()
+    .then(users => res.status(200).json(users))
+    .catch(error => res.status(400).json({ error }));
+};
+
+/**
+ * CREATE USER
+ * @param {object} req 
+ * @param {object} res 
+ */
+exports.create = (req, res) => {
 
   if (!emailValidator.validate(req.body.email)) {
     return res.status(401).json({ message: "Please enter a valid email address" });
   }
 
-  if (!schema.validate(req.body.password)) {
+  if (!schema.validate(req.body.pass)) {
     return res.status(401).json({ message: "Invalid password !" });
   };
 
   bcrypt
-    .hash(req.body.password, 10)
+    .hash(req.body.pass, 10)
     .then(hash => {
       const user = new UserModel({
+        name: req.body.name,
         email: req.body.email,
-        password: hash
+        pass: hash
       });
 
       user.save()
         .then(() => res.status(201).json({ message: "User Created !" }))
         .catch(error => res.status(400).json({ error }));
     })
-    .catch(error => res.status(500).json({ user }));
+    .catch(error => res.status(500).json({ error }));
 };
 
 /**
@@ -65,7 +78,7 @@ exports.login = (req, res) => {
       }
 
       bcrypt
-        .compare(req.body.password, user.password)
+        .compare(req.body.pass, user.pass)
         .then(valid => {
 
           if (!valid) {
@@ -84,48 +97,6 @@ exports.login = (req, res) => {
         .catch(error => res.status(500).json({ error }));
     })
     .catch(error => res.status(500).json({ error }));
-};
-
-/**
- * LIST USERS
- * @param {object} req 
- * @param {object} res 
- */
- exports.list = (req, res) => {
-  UserModel
-    .find()
-    .then(users => res.status(200).json(users))
-    .catch(error => res.status(400).json({ error }));
-};
-
-/**
- * CREATE USER
- * @param {object} req 
- * @param {object} res 
- */
-exports.create = (req, res) => {
-  const userObject = JSON.parse(req.body.user);
-  delete userObject._id;
-
-  const imgUrl = `${req.protocol}://${req.get("host")}/${process.env.IMG}/${req.file.filename}`;
-  const user = new UserModel({ ...userObject, image: imgUrl });
-
-  user
-    .save()
-    .then(() => res.status(201).json({ message: "Successful Creation !" }))
-    .catch(error => res.status(400).json({ error }));
-};
-
-/**
- * READ USER
- * @param {object} req 
- * @param {object} res 
- */
-exports.read = (req, res) => {
-  UserModel
-    .findOne({_id: req.params.id })
-    .then(user => res.status(200).json(user))
-    .catch(error => res.status(404).json({ error }));
 };
 
 /**

@@ -8,12 +8,10 @@ const multer  = require("../middleware/multer");
 
 const UserCtrl = require("../controller/UserCtrl");
 
-router.post("/signup", UserCtrl.signup);
-router.post("/login", UserCtrl.login);
 router.get("/", UserCtrl.list);
-router.post("/create", UserCtrl.create);
-router.get("/read:id", auth, UserCtrl.read);
-router.put("/update:id", auth, multer, UserCtrl.update);
-router.delete("/delete:id", auth, UserCtrl.delete);
+router.post("/", UserCtrl.create);
+router.post("/login", UserCtrl.login);
+router.put("/:id", auth, multer, UserCtrl.update);
+router.delete("/:id", auth, UserCtrl.delete);
 
 module.exports = router;
