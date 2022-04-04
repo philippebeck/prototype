@@ -12,18 +12,9 @@ const ResourceModel = mongoose.Schema({
     required: true,
     unique: true
   },
-  technology: { 
-    type: String, 
-    required: true 
-  },
   category: { 
     type: String, 
     required: true 
-  },
-  description: { 
-    type: String, 
-    required: true,
-    unique: true
   }
 });
 
