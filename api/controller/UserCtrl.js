@@ -21,11 +21,23 @@ schema
   .has().not().spaces();
 
 /**
- * SIGNUP USER
+ * LIST USERS
  * @param {object} req 
  * @param {object} res 
  */
-exports.signup = (req, res) => {
+ exports.list = (req, res) => {
+  UserModel
+    .find()
+    .then(users => res.status(200).json(users))
+    .catch(error => res.status(400).json({ error }));
+};
+
+/**
+ * CREATE USER
+ * @param {object} req 
+ * @param {object} res 
+ */
+exports.create = (req, res) => {
 
   if (!emailValidator.validate(req.body.email)) {
     return res.status(401).json({ message: "Please enter a valid email address" });
@@ -66,7 +78,7 @@ exports.login = (req, res) => {
       }
 
       bcrypt
-        .compare(req.body.password, user.password)
+        .compare(req.body.pass, user.pass)
         .then(valid => {
 
           if (!valid) {
@@ -85,48 +97,6 @@ exports.login = (req, res) => {
         .catch(error => res.status(500).json({ error }));
     })
     .catch(error => res.status(500).json({ error }));
-};
-
-/**
- * LIST USERS
- * @param {object} req 
- * @param {object} res 
- */
- exports.list = (req, res) => {
-  UserModel
-    .find()
-    .then(users => res.status(200).json(users))
-    .catch(error => res.status(400).json({ error }));
-};
-
-/**
- * CREATE USER
- * @param {object} req 
- * @param {object} res 
- */
-exports.create = (req, res) => {
-  const userObject = JSON.parse(req.body.user);
-  delete userObject._id;
-
-  const imgUrl = `${req.protocol}://${req.get("host")}/${process.env.IMG}/${req.file.filename}`;
-  const user = new UserModel({ ...userObject, image: imgUrl });
-
-  user
-    .save()
-    .then(() => res.status(201).json({ message: "Successful Creation !" }))
-    .catch(error => res.status(400).json({ error }));
-};
-
-/**
- * READ USER
- * @param {object} req 
- * @param {object} res 
- */
-exports.read = (req, res) => {
-  UserModel
-    .findOne({_id: req.params.id })
-    .then(user => res.status(200).json(user))
-    .catch(error => res.status(404).json({ error }));
 };
 
 /**
