@@ -7,7 +7,7 @@
       <ul>
         <li>
           <label for="name">
-            Nom
+            Name
           </label>
           <input 
             id="name" 
@@ -36,7 +36,7 @@
         <hr>
         <li>
           <label for="pass">
-            Mot de Passe
+            Password
           </label>
           <input 
             id="pass" 
@@ -55,7 +55,7 @@
             type="button" 
             @click="createUser()"
             class="btn-green">
-            Créer
+            Create
           </button>
         </li>
       </ul>
@@ -65,12 +65,12 @@
 
 <script>
 export default {
-  name: 'CreateUserView',
+  name: "CreateUserView",
   data() {
     return {
-      name: '',
-      email: '',
-      pass: '',
+      name: "",
+      email: "",
+      pass: "",
     }
   },
   methods: {
@@ -104,11 +104,11 @@ export default {
         alert("8 to 50 characters with a capital letter, a lower case letter and a number");
 
       } else if ((regexName.test(this.name) === true) && regexEmail.test(this.email) === true && regexPass.test(this.pass) === true ) {
-        fetch("http://localhost:3000/api/auth", {
+        fetch("http://localhost:3000/api/users", {
           method: "POST",
           headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          "Accept": "application/json",
+          "Content-Type": "application/json"
           },
           body: JSON.stringify(data)
         })
@@ -126,7 +126,7 @@ export default {
         })  
         .then(() => {
           alert("User created successfully");
-          this.$router.push("/admin");
+          this.$router.push("/home");
         })
         .catch(alert)
       }
