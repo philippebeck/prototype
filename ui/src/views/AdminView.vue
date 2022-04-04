@@ -65,8 +65,8 @@
 
 <script>
 import CreateResource from '@/components/CreateResourceView.vue'
-import ListResources from '@/components/ListResources.vue'
 import CreateUser from '@/components/CreateUserView.vue'
+import ListResources from '@/components/ListResources.vue'
 import ListUsers from '@/components/ListUsers.vue'
 import { getAllUsers, createUser } from '../services/UserService'
 import { getAllResources, createResource } from '../services/ResourceService'
@@ -75,16 +75,16 @@ export default {
   name: 'AdminView',
   components: {
     CreateResource,
-    ListResources,
     CreateUser,
+    ListResources,
     ListUsers
   },
   data() {
     return {
-      users: [],
-      numberOfUsers: 0,
       resources: [],
-      numberOfResources: 0
+      users: [],
+      numberOfResources: 0,
+      numberOfUsers: 0
     }
   },
   methods: {
@@ -95,19 +95,19 @@ export default {
         this.numberOfResources = this.resources.length
       })
     },
-    resourceCreate(data) {
-      console.log("resourceCreate(data)", data)
-      createResource(data).then(response => {
-        console.log(response);
-        this.getAllResources();
-      });
-    },
     getAllUsers() {
       getAllUsers().then(response => {
         console.log("getAllUsers()", response)
         this.users = response
         this.numberOfUsers = this.users.length
       })
+    },
+    resourceCreate(data) {
+      console.log("resourceCreate(data)", data)
+      createResource(data).then(response => {
+        console.log(response);
+        this.getAllResources();
+      });
     },
     userCreate(data) {
       console.log("userCreate(data)", data)
