@@ -1,7 +1,5 @@
 <template>
-  <form class="form" 
-    method="post" 
-    action="#">
+  <form class="form">
     <fieldset>
       <legend>
         <i class="fas fa-box-open fa-2x"></i>

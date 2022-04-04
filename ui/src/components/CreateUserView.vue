@@ -1,9 +1,5 @@
 <template>
-  <form 
-    class="form" 
-    method="post" 
-    action="#" 
-    enctype="multipart/form-data">
+  <form class="form">
     <input 
       name="MAX_FILE_SIZE" 
       type="hidden" 
