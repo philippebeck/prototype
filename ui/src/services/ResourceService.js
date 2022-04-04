@@ -9,7 +9,7 @@ export async function getAllResources() {
 }
 
 export async function createResource(data) {
-  const response = await axios.post('/api/resource', { resource: data });
+  const response = await axios.post('/api/resources', { resource: data });
 
   return response.data;
 }
