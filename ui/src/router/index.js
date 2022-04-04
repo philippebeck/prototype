@@ -4,7 +4,6 @@ import MainView from '../views/MainView.vue'
 import ContactView from '../views/ContactView.vue'
 import LoginView from '../views/LoginView.vue'
 import AdminView from '../views/AdminView.vue'
-import TestView from '../views/TestView.vue'
 
 const routes = [
   {
@@ -31,11 +30,6 @@ const routes = [
     path: '/admin',
     name: 'admin',
     component: AdminView
-  },
-  {
-    path: '/test',
-    name: 'test',
-    component: TestView
   }
 ]
 
