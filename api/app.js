@@ -23,7 +23,7 @@ mongoose
 const app = express();
 app.use(express.json());
 
-app.use(helmet({ crossOriginResourcePolicy: process.env.HELMET }));
+app.use(helmet({ crossOriginResourcePolicy: false }));
 app.use(sanitize());
 
 app.use((req, res, next) => {
