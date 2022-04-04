@@ -33,7 +33,6 @@
             placeholder="Fill in the email"
             required>
         </li>
-        <hr>
         <li>
           <label for="pass">
             Password
