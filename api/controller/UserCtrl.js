@@ -31,23 +31,24 @@ exports.signup = (req, res) => {
     return res.status(401).json({ message: "Please enter a valid email address" });
   }
 
-  if (!schema.validate(req.body.password)) {
+  if (!schema.validate(req.body.pass)) {
     return res.status(401).json({ message: "Invalid password !" });
   };
 
   bcrypt
-    .hash(req.body.password, 10)
+    .hash(req.body.pass, 10)
     .then(hash => {
       const user = new UserModel({
+        name: req.body.name,
         email: req.body.email,
-        password: hash
+        pass: hash
       });
 
       user.save()
         .then(() => res.status(201).json({ message: "User Created !" }))
         .catch(error => res.status(400).json({ error }));
     })
-    .catch(error => res.status(500).json({ user }));
+    .catch(error => res.status(500).json({ error }));
 };
 
 /**
