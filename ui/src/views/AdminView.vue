@@ -64,8 +64,8 @@
 </template>
 
 <script>
-import CreateResource from '@/components/CreateResourceView.vue'
-import CreateUser from '@/components/CreateUserView.vue'
+import CreateResource from '@/components/CreateResource.vue'
+import CreateUser from '@/components/CreateUser.vue'
 import ListResources from '@/components/ListResources.vue'
 import ListUsers from '@/components/ListUsers.vue'
 import { getAllUsers, createUser } from '../services/UserService'
