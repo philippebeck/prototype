@@ -2,20 +2,20 @@
 
 const mongoose = require("mongoose");
 
-const ResourceModel = mongoose.Schema({
+const LinkModel = mongoose.Schema({
   name: { 
     type: String, 
     required: true 
   },
-  link: { 
+  url: { 
     type: String, 
     required: true,
     unique: true
   },
-  category: { 
+  cat: { 
     type: String, 
     required: true 
   }
 });
 
-module.exports = mongoose.model("Resource", ResourceModel);
+module.exports = mongoose.model("Link", LinkModel);
