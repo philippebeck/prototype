@@ -17,7 +17,7 @@
       href="/" 
       title="Accueil">
       <img 
-        src="img/logo.svg" 
+        src="logo.svg" 
         alt="Logo Phi" 
         width="30" 
         height="30">
