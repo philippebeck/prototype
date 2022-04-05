@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ResourceView from '../views/ResourceView.vue'
+import LinkView from '../views/LinkView.vue'
 import ContactView from '../views/ContactView.vue'
 import LoginView from '../views/LoginView.vue'
 import AdminView from '../views/AdminView.vue'
@@ -12,9 +12,9 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/resource',
-    name: 'resource',
-    component: ResourceView
+    path: '/link',
+    name: 'link',
+    component: LinkView
   },
   {
     path: '/contact',

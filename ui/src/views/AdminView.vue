@@ -42,11 +42,11 @@
           Ressources
         </h3>
 
-        <CreateResource />
+        <CreateLink />
 
-        <ListResources 
-          v-if="resources.length > 0" 
-          :resources="resources"/>
+        <ListLinks 
+          v-if="links.length > 0" 
+          :links="links"/>
 
       </section>
 
@@ -73,38 +73,38 @@
 import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
 
-import CreateResource from '@/components/CreateResource.vue'
+import CreateLink from '@/components/CreateLink.vue'
 import CreateUser from '@/components/CreateUser.vue'
-import ListResources from '@/components/ListResources.vue'
+import ListLinks from '@/components/ListLinks.vue'
 import ListUsers from '@/components/ListUsers.vue'
 
 import { getAllUsers, createUser } from '@/services/UserService'
-import { getAllResources, createResource } from '@/services/ResourceService'
+import { getAllLinks, createLink } from '@/services/LinkService'
 
 export default {
   name: 'AdminView',
   components: {
     NavElt,
     FootElt,
-    CreateResource,
+    CreateLink,
     CreateUser,
-    ListResources,
+    ListLinks,
     ListUsers
   },
   data() {
     return {
-      resources: [],
+      links: [],
       users: [],
-      numberOfResources: 0,
+      numberOfLinks: 0,
       numberOfUsers: 0
     }
   },
   methods: {
-    getAllResources() {
-      getAllResources().then(response => {
-        console.log("getAllResources()", response)
-        this.resources = response
-        this.numberOfResources = this.resources.length
+    getAllLinks() {
+      getAllLinks().then(response => {
+        console.log("getAllLinks()", response)
+        this.links = response
+        this.numberOfLinks = this.links.length
       })
     },
     getAllUsers() {
@@ -114,11 +114,11 @@ export default {
         this.numberOfUsers = this.users.length
       })
     },
-    resourceCreate(data) {
-      console.log("resourceCreate(data)", data)
-      createResource(data).then(response => {
+    linkCreate(data) {
+      console.log("linkCreate(data)", data)
+      createLink(data).then(response => {
         console.log(response);
-        this.getAllResources();
+        this.getAllLinks();
       });
     },
     userCreate(data) {
@@ -130,7 +130,7 @@ export default {
     }
   },
   mounted () {
-    this.getAllResources();
+    this.getAllLinks();
     this.getAllUsers();
   }
 }

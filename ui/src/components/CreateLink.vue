@@ -70,7 +70,7 @@
         <li>
           <button 
             type="button" 
-            @click="createResource()" 
+            @click="createLink()" 
             class="btn-green">
             Create
           </button>
@@ -83,7 +83,7 @@
 
 <script>
   export default {
-    name: "CreateResource",
+    name: "CreateLink",
     data() {
       return {
         name: "",
@@ -92,13 +92,13 @@
       }
     },
     methods: {
-      createResource() {
+      createLink() {
         const payload = {
           name: this.name,
           link: this.link,
           category: this.category
         }
-        this.$emit("createResource", payload)
+        this.$emit("createLink", payload)
         this.clearForm();
       },
       clearForm() {
