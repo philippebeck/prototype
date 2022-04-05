@@ -5,39 +5,36 @@
         <th>
           Nom
           <hr>
-          Categorie
+          Catégorie
         </th>
-        <th>Description</th>
       </tr>
     </thead>
 
     <tbody>
       <tr 
-        v-for="resource in resources" 
-        :key="resource.id">
+        v-for="link in links" 
+        :key="link.id">
         <td>
           <a 
             class="button-primary" 
-            href="https://{{ resource.link }}" 
-            title="https://{{ resource.link }}">
-            {{ resource.name }}
+            :href="link.url" 
+            :title="link.url">
+            {{ link.name }}
           </a>
           <br>
-          {{ resource.category }}
+          {{ link.cat }}
         </td>
         <td>
-          {{ resource.description }}
-          <br>
           <a 
             class="btn-blue" 
             href="#" 
-            title="Cliquer pour éditer cette ressource">
+            title="Modifier">
             <i class="fas fa-pen-square fa-fw fa-lg"></i>
           </a>
           <a 
             class="btn-red" 
             href="#" 
-            title="Cliquer pour supprimer cette ressource">
+            title="Supprimer">
             <i class="fas fa-times-circle fa-fw fa-lg"></i>
           </a>
         </td>
@@ -48,7 +45,7 @@
 
 <script>
 export default {
-  name: 'ListResources',
-  props: ['resources']
+  name: 'ListLinks',
+  props: ['links']
 }
 </script>

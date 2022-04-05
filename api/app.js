@@ -6,9 +6,9 @@ const helmet    = require("helmet");
 const sanitize  = require("express-mongo-sanitize");
 const path      = require("path");
 
-const mainRoute     = require("./route/MainRoute");
-const resourceRoute = require("./route/ResourceRoute");
-const userRoute     = require("./route/UserRoute")
+const mainRoute = require("./route/MainRoute");
+const linkRoute = require("./route/LinkRoute");
+const userRoute = require("./route/UserRoute")
 
 require("dotenv").config();
 
@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 app.use(`/${process.env.IMG}`, express.static(path.join(__dirname, process.env.IMG)));
 
 app.use(process.env.ROUTE_MAIN, mainRoute);
-app.use(process.env.ROUTE_RESOURCE, resourceRoute);
+app.use(process.env.ROUTE_LINK, linkRoute);
 app.use(process.env.ROUTE_USER, userRoute);
 
 module.exports = app;

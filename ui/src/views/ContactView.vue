@@ -1,93 +1,112 @@
 <template>
-  <form 
-    class="form anima-growX" 
-    method="post" 
-    action="">
-    <fieldset>
-      <ul>
-        <li>
-          <label 
-            class="anima-slideR-this" 
-            for="name">
-            Nom
-          </label>
-          <input 
-            class="anima-slideL-this" 
-            id="name" 
-            name="name" 
-            type="text" 
-            placeholder="Insérer votre Nom"
-            maxlength="20" 
-            required>
-        </li>
-        <li>
-          <label 
-            class="anima-slideR-this" 
-            for="email">
-            Courriel
-          </label>
-          <input 
-            class="anima-slideL-this" 
-            id="email" 
-            name="email" 
-            type="email" 
-            placeholder="Insérer votre Courriel"
-            maxlength="50" 
-            required>
-        </li>
-        <li>
-          <label 
-            class="anima-slideR-this" 
-            for="subject">
-            Sujet
-          </label>
-          <input 
-            class="anima-slideL-this" 
-            id="subject" 
-            name="subject" 
-            type="text" 
-            placeholder="Insérer votre Sujet"
-            maxlength="50" 
-            required>
-        </li>
-        <li>
-          <label 
-            class="anima-slideR-this" 
-            for="message">
-            Message
-          </label>
-          <textarea 
-            class="anima-slideL-this" 
-            id="message" 
-            name="message" 
-            placeholder="Insérer votre Message" 
-            rows="5"
-            cols="20"></textarea>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <div 
-            id="recaptcha" 
-            class="g-recaptcha" data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
-          </div>
-        </li>
-        <li>
-          <input 
-            class="anima-slideR-this" 
-            type="reset" 
-            value="Réinitialiser">
-          <input 
-            class="anima-slideL-this" 
-            type="submit" 
-            value="Envoyer">
-        </li>
-      </ul>
-    </fieldset>
-    <a 
-      class="btn-black btn-lg" 
-      href="">
-      Quitter
-    </a>
-  </form>
+  <main>
+    <NavElt/>
+    
+    <form 
+      class="form anima-growX" 
+      method="post" 
+      action="">
+      <fieldset>
+        <ul>
+          <li>
+            <label 
+              class="anima-slideR-this" 
+              for="name">
+              Nom
+            </label>
+            <input 
+              class="anima-slideL-this" 
+              id="name" 
+              name="name" 
+              type="text" 
+              placeholder="Insérer votre Nom"
+              maxlength="20" 
+              required>
+          </li>
+          <li>
+            <label 
+              class="anima-slideR-this" 
+              for="email">
+              Courriel
+            </label>
+            <input 
+              class="anima-slideL-this" 
+              id="email" 
+              name="email" 
+              type="email" 
+              placeholder="Insérer votre Courriel"
+              maxlength="50" 
+              required>
+          </li>
+          <li>
+            <label 
+              class="anima-slideR-this" 
+              for="subject">
+              Sujet
+            </label>
+            <input 
+              class="anima-slideL-this" 
+              id="subject" 
+              name="subject" 
+              type="text" 
+              placeholder="Insérer votre Sujet"
+              maxlength="50" 
+              required>
+          </li>
+          <li>
+            <label 
+              class="anima-slideR-this" 
+              for="message">
+              Message
+            </label>
+            <textarea 
+              class="anima-slideL-this" 
+              id="message" 
+              name="message" 
+              placeholder="Insérer votre Message" 
+              rows="5"
+              cols="20"></textarea>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <div 
+              id="recaptcha" 
+              class="g-recaptcha" data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
+            </div>
+          </li>
+          <li>
+            <input 
+              class="anima-slideR-this" 
+              type="reset" 
+              value="Réinitialiser">
+            <input 
+              class="anima-slideL-this" 
+              type="submit" 
+              value="Envoyer">
+          </li>
+        </ul>
+      </fieldset>
+      <a 
+        class="btn-black btn-lg" 
+        href="/">
+        Quitter
+      </a>
+    </form>
+
+    <FootElt/>
+  </main>
 </template>
+
+<script>
+import NavElt from '@/components/NavElt.vue';
+import FootElt from '@/components/FootElt.vue';
+
+export default {
+  name: "ContactView",
+  components: {
+    NavElt,
+    FootElt
+  }
+}
+</script>
