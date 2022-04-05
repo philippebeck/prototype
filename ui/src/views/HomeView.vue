@@ -15,7 +15,7 @@
         <li>
           <a 
             class="btn-red btn-lg" 
-            href="#" 
+            href="/resource#html" 
             title="Voir les Ressources HTML">
             <i class="fab fa-html5 fa-4x fa-fw"></i>
             <strong>HTML</strong>
@@ -24,7 +24,7 @@
         <li>
           <a 
             class="btn-blue btn-lg" 
-            href="#" 
+            href="/resource#css" 
             title="Voir les Ressources CSS">
             <i class="fab fa-css3-alt fa-4x fa-fw"></i>
             <strong>CSS</strong>
@@ -33,7 +33,7 @@
         <li>
           <a 
             class="btn-secondary btn-lg" 
-            href="#" 
+            href="/resource#js" 
             title="Voir les Ressources JavaScript">
             <i class="fab fa-js-square fa-4x fa-fw"></i>
             <strong>JS</strong>
@@ -42,7 +42,7 @@
         <li>
           <a 
             class="btn-primary btn-lg" 
-            href="#" 
+            href="/resource#php" 
             title="Voir les Ressources PHP">
             <i class="fab fa-php fa-4x fa-fw"></i>
             <strong>PHP</strong>
@@ -51,7 +51,7 @@
         <li>
           <a 
             class="btn-cyan btn-lg" 
-            href="#" 
+            href="/resource#sql" 
             title="Voir les Ressources SQL">
             <i class="fas fa-database fa-4x fa-fw"></i>
             <strong>SQL</strong>
@@ -60,7 +60,7 @@
         <li>
           <a 
             class="btn-gh btn-lg" 
-            href="#" 
+            href="/resource#git" 
             title="Voir les Ressources Git">
             <i class="fab fa-git-alt fa-4x fa-fw"></i>
             <strong>Git</strong>
@@ -69,7 +69,7 @@
         <li>
           <a 
             class="btn-violet btn-lg" 
-            href="#" 
+            href="/resource#media" 
             title="Voir les Ressources Media">
             <i class="fas fa-file-image fa-4x fa-fw"></i>
             <strong>Media</strong>
