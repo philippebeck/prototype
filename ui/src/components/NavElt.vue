@@ -26,75 +26,32 @@
     <ul>
       <li>
         <a 
-          href="/resource#html" 
-          title="Voir les Ressources HTML">
-          <i class="fab fa-html5 fa-fw"></i>
-          <strong>HTML</strong>
+          href="/">
+          <i class="fas fa-home fa-fw"></i>
+          <strong>Accueil</strong>
         </a>
       </li>
       <li>
         <a 
-          href="/resource#css" 
-          title="Voir les Ressources CSS">
-          <i class="fab fa-css3-alt fa-fw"></i>
-          <strong>CSS</strong>
+          href="/link">
+          <i class="fas fa-link fa-fw"></i>
+          <strong>Liens</strong>
         </a>
       </li>
       <li>
         <a 
-          href="/resource#js" 
-          title="Voir les Ressources JavaScript">
-          <i class="fab fa-js-square fa-fw"></i>
-          <strong>JS</strong>
-        </a>
-      </li>
-      <li>
-        <a 
-          href="/resource#php" 
-          title="Voir les Ressources PHP">
-          <i class="fab fa-php fa-fw"></i>
-          <strong>PHP</strong>
-        </a>
-      </li>
-      <li>
-        <a 
-          href="/resource#sql" 
-          title="Voir les Ressources SQL">
-          <i class="fas fa-database fa-fw"></i>
-          <strong>SQL</strong>
-        </a>
-      </li>
-      <li>
-        <a 
-          href="/resource#git" 
-          title="Voir les Ressources Git">
-          <i class="fab fa-git-alt fa-fw"></i>
-          <strong>Git</strong>
-        </a>
-      </li>
-      <li>
-        <a 
-          href="/resource#media" 
-          title="Voir les Ressources Media">
-          <i class="fas fa-file-image fa-fw"></i>
-          <strong>Media</strong>
+          href="/contact">
+          <i class="fab fa-at fa-fw"></i>
+          <strong>Contact</strong>
         </a>
       </li>
     </ul>
     <ul>
       <li>
         <a 
-          class="onto-color-blue" 
-          href="/contact" 
-          title="Contact">
-          <i class="fas fa-at fa-lg fa-fw"></i>
-        </a>
-      </li>
-      <li>
-        <a 
           class="onto-color-cyan" 
           href="https://paypal.me/philippebeck" 
-          title="Go to the Donation Page">
+          title="Donation">
           <i class="fab fa-paypal fa-lg fa-fw"></i>
         </a>
       </li>
@@ -102,7 +59,7 @@
         <a 
           class="onto-color-pink" 
           href="https://github.com/sponsors/philippebeck" 
-          title="Go to the Sponsor Page">
+          title="Sponsor">
           <i class="far fa-heart fa-lg fa-fw"></i>
         </a>
       </li>
@@ -110,7 +67,7 @@
         <a 
           class="onto-color-red" 
           href="/login" 
-          title="Go to the Login Page">
+          title="Login">
           <i class="fas fa-sign-in-alt fa-lg fa-fw"></i>
         </a>
       </li>
