@@ -72,6 +72,7 @@ export default {
       pass: "",
     }
   },
+  
   methods: {
     createUser() {
       let data = {
@@ -103,6 +104,7 @@ export default {
         alert("8 to 50 characters with a capital letter, a lower case letter and a number");
 
       } else if ((regexName.test(this.name) === true) && regexEmail.test(this.email) === true && regexPass.test(this.pass) === true ) {
+
         fetch("http://localhost:3000/api/users", {
           method: "POST",
           headers: {
@@ -111,6 +113,7 @@ export default {
           },
           body: JSON.stringify(data)
         })
+
         .then(response => {
 
           if(response.ok) {
@@ -122,7 +125,7 @@ export default {
               throw new Error(text)}
             )
           }
-        })  
+        })
         .then(() => {
           alert("User created successfully");
           this.$router.push("/login");
