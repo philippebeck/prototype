@@ -1,5 +1,7 @@
 <template>
   <main>
+    <NavElt/>
+
     <header class="head font-monospace">
       <p>
         Tools2Code propose des
@@ -145,16 +147,17 @@
     </section>
 
     <FootElt/>
-
   </main>
 </template>
 
 <script>
+import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
 
 export default {
   name: "HomeView",
   components: {
+    NavElt,
     FootElt
   }
 }

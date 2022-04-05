@@ -1,5 +1,7 @@
 <template>
   <main>
+    <NavElt/>
+
     <form class="form">
       <fieldset>
         <ul>
@@ -61,16 +63,17 @@
     </form>
 
     <FootElt/>
-
   </main>
 </template>
 
 <script>
+import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
 
 export default {
   name: "LoginView",
   components: {
+    NavElt,
     FootElt
   }
 }

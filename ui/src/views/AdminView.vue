@@ -1,5 +1,7 @@
 <template>
   <main class="admin">
+    <NavElt/>
+
     <input 
       id="menu-radio1" 
       class="menu-radio1" 
@@ -64,11 +66,11 @@
     </section>
 
     <FootElt/>
-
   </main>
 </template>
 
 <script>
+import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
 
 import CreateResource from '@/components/CreateResource.vue'
@@ -82,6 +84,7 @@ import { getAllResources, createResource } from '@/services/ResourceService'
 export default {
   name: 'AdminView',
   components: {
+    NavElt,
     FootElt,
     CreateResource,
     CreateUser,

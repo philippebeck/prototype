@@ -1,5 +1,7 @@
 <template>
   <main>
+    <NavElt/>
+
     <table class="table">
       <tr 
         v-for="resource in resources" 
@@ -24,17 +26,19 @@
     </table>
 
     <FootElt/>
-
   </main>
 </template>
 
 <script>
+import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
+
 import { getAllResources } from '@/services/ResourceService'
 
 export default {
   name: 'ResourceView',
   components: {
+    NavElt,
     FootElt
   },
   data() {

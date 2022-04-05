@@ -1,5 +1,7 @@
 <template>
   <main>
+    <NavElt/>
+    
     <form 
       class="form anima-growX" 
       method="post" 
@@ -93,16 +95,17 @@
     </form>
 
     <FootElt/>
-
   </main>
 </template>
 
 <script>
+import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
 
 export default {
   name: "ContactView",
   components: {
+    NavElt,
     FootElt
   }
 }
