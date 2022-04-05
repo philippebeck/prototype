@@ -125,7 +125,7 @@ export default {
         })  
         .then(() => {
           alert("User created successfully");
-          this.$router.push("/home");
+          this.$router.push("/login");
         })
         .catch(alert)
       }
