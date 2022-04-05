@@ -21,4 +21,4 @@ const MainModel = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("Main", MainModel);
+module.exports = mongoose.model("Thing", MainModel);
