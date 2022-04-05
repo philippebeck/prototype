@@ -45,6 +45,7 @@
         <ListResources 
           v-if="resources.length > 0" 
           :resources="resources"/>
+
       </section>
 
       <section class="menu-target2">
@@ -58,22 +59,30 @@
         <ListUsers 
           v-if="users.length > 0" 
           :users="users"/>
+
         </section>
     </section>
+
+    <FootElt/>
+
   </main>
 </template>
 
 <script>
+import FootElt from '@/components/FootElt.vue';
+
 import CreateResource from '@/components/CreateResource.vue'
 import CreateUser from '@/components/CreateUser.vue'
 import ListResources from '@/components/ListResources.vue'
 import ListUsers from '@/components/ListUsers.vue'
-import { getAllUsers, createUser } from '../services/UserService'
-import { getAllResources, createResource } from '../services/ResourceService'
+
+import { getAllUsers, createUser } from '@/services/UserService'
+import { getAllResources, createResource } from '@/services/ResourceService'
 
 export default {
   name: 'AdminView',
   components: {
+    FootElt,
     CreateResource,
     CreateUser,
     ListResources,

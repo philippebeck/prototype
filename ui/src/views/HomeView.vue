@@ -143,5 +143,19 @@
         </ul>
       </section>
     </section>
+
+    <FootElt/>
+
   </main>
 </template>
+
+<script>
+import FootElt from '@/components/FootElt.vue';
+
+export default {
+  name: "HomeView",
+  components: {
+    FootElt
+  }
+}
+</script>

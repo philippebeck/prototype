@@ -22,14 +22,21 @@
         </td>
       </tr>
     </table>
+
+    <FootElt/>
+
   </main>
 </template>
 
 <script>
-import { getAllResources } from '../services/ResourceService'
+import FootElt from '@/components/FootElt.vue';
+import { getAllResources } from '@/services/ResourceService'
 
 export default {
-  name: 'MainView',
+  name: 'ResourceView',
+  components: {
+    FootElt
+  },
   data() {
     return {
       resources: [],
