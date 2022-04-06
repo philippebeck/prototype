@@ -65,10 +65,18 @@
       </li>
       <li>
         <a 
+          v-if="!userId"
           class="onto-color-red" 
           href="/login" 
           title="Login">
           <i class="fas fa-sign-in-alt fa-lg fa-fw"></i>
+        </a>
+        <a 
+          v-else
+          class="onto-color-red" 
+          href="/admin" 
+          title="Admin">
+          <i class="fas fa-user-ninja fa-lg fa-fw"></i>
         </a>
       </li>
     </ul>
@@ -88,7 +96,19 @@
 
 <script>
 export default {
-  name: "NavElt"
+  name: "NavElt",
+
+  data() {
+    return {
+      userId: null
+    }
+  },
+  
+  mounted() {
+    if (localStorage.userId) {
+      this.userId = JSON.parse(localStorage.userId);
+    }
+  }
 }
 </script>
 
