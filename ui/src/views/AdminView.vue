@@ -102,27 +102,23 @@ export default {
   methods: {
     getAllLinks() {
       getAllLinks().then(response => {
-        console.log("getAllLinks()", response)
         this.links = response
         this.numberOfLinks = this.links.length
       })
     },
     getAllUsers() {
       getAllUsers().then(response => {
-        console.log("getAllUsers()", response)
         this.users = response
         this.numberOfUsers = this.users.length
       })
     },
     linkCreate(data) {
-      console.log("linkCreate(data)", data)
       createLink(data).then(response => {
         console.log(response);
         this.getAllLinks();
       });
     },
     userCreate(data) {
-      console.log("userCreate(data)", data)
       createUser(data).then(response => {
         console.log(response);
         this.getAllUsers();
