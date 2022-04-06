@@ -2,7 +2,8 @@
   <form class="form">
     <fieldset>
       <legend>
-        <i class="fas fa-box-open fa-2x"></i>
+        <i class="fas fa-link fa-lg"></i>
+        Create Link
       </legend>
       <ul>
         <li>
@@ -78,7 +79,6 @@
         </li>
       </ul>
     </fieldset>
-
   </form>
 </template>
 

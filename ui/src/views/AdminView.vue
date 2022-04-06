@@ -38,8 +38,8 @@
 
       <section class="menu-target1">
         <h3>
-          <i class="fas fa-box-open"></i>
-          Ressources
+          <i class="fas fa-link fa-2x"></i>
+          Liens
         </h3>
 
         <CreateLink />
