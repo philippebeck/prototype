@@ -114,8 +114,13 @@ export default {
         }
       })  
         
-      .then(() => {
-        alert("Vous êtes connecté !");
+      .then((value) => {
+        const token   = JSON.stringify(value.token);
+        const userId  = JSON.stringify(value.userId);
+
+        localStorage.setItem("userToken", token);
+        localStorage.setItem("userId", userId);
+
         this.$router.push("/admin");
       })
       .catch(alert)

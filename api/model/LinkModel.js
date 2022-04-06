@@ -9,8 +9,7 @@ const LinkModel = mongoose.Schema({
   },
   url: { 
     type: String, 
-    required: true,
-    unique: true
+    required: true
   },
   cat: { 
     type: String, 

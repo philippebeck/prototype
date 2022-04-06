@@ -2,7 +2,8 @@
   <form class="form">
     <fieldset>
       <legend>
-        <i class="fas fa-box-open fa-2x"></i>
+        <i class="fas fa-link fa-lg"></i>
+        Create Link
       </legend>
       <ul>
         <li>
@@ -19,15 +20,16 @@
             required>
         </li>
         <li>
-          <label for="link">
-            Link
+          <label for="url">
+            URL
           </label>
           <input 
-            id="link" 
-            name="link" 
+            id="url" 
+            name="url" 
+            v-model="url"
             type="text" 
             maxlength="100" 
-            placeholder="Fill in the link"
+            placeholder="Fill in the URL"
             required>
         </li>
         <li>
@@ -35,9 +37,9 @@
             Category
           </label>
           <select 
-            id="category" 
-            name="category" 
-            title="Choose the category"
+            id="cat" 
+            name="cat" 
+            v-model="cat" 
             required>
             <option value="">
               Choose the category
@@ -77,35 +79,56 @@
         </li>
       </ul>
     </fieldset>
-
   </form>
 </template>
 
 <script>
-  export default {
-    name: "CreateLink",
-    data() {
-      return {
-        name: "",
-        link: "",
-        category: ""
-      }
-    },
-    methods: {
-      createLink() {
-        const payload = {
-          name: this.name,
-          link: this.link,
-          category: this.category
-        }
-        this.$emit("createLink", payload)
-        this.clearForm();
-      },
-      clearForm() {
-        this.name = "";
-        this.link = "";
-        this.category = "";
-      }
+export default {
+  name: "CreateLink",
+  
+  data() {
+    return {
+      name: "",
+      url: "",
+      cat: ""
     }
+  },
+
+  methods: {
+    createLink() {
+      let link = {
+        name: this.name,
+        url: this.url,
+        cat: this.cat
+      };
+
+      fetch("http://localhost:3000/api/links", {
+          method: "POST",
+          headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+          },
+          body: JSON.stringify(link)
+        })
+
+        .then(response => {
+
+          if(response.ok) {
+            return response.json()
+
+          } else {
+            return response.text()
+
+            .then((text) => {
+              throw new Error(text)}
+            )
+          }
+        })
+        .then(() => {
+          alert("Link created successfully");
+        })
+        .catch(alert)
+    },
   }
+}
 </script>

@@ -46,7 +46,7 @@
         </a>
       </li>
     </ul>
-    <ul>
+    <ul v-if="!userId">
       <li>
         <a 
           class="onto-color-cyan" 
@@ -71,8 +71,26 @@
           <i class="fas fa-sign-in-alt fa-lg fa-fw"></i>
         </a>
       </li>
+      </ul>
+      <ul v-else>
+        <li>
+          <a 
+            class="onto-color-red" 
+            href="/admin" 
+            title="Admin">
+            <i class="fas fa-user-ninja fa-lg fa-fw"></i>
+          </a>
+      </li>
+      <li>
+        <button 
+          class="onto-color-red" 
+          type="button"
+          @click="logout()"
+          title="Logout">
+          <i class="fas fa-sign-out-alt fa-lg fa-fw"></i>
+        </button>
+      </li>
     </ul>
-
     <label 
       for="navbar-close" 
       title="Close the Navigation Menu">
@@ -88,7 +106,26 @@
 
 <script>
 export default {
-  name: "NavElt"
+  name: "NavElt",
+
+  data() {
+    return {
+      userId: null
+    }
+  },
+
+  methods: {
+    logout() {
+      localStorage.removeItem("userId");
+      this.$router.go("/");
+    }
+  },
+  
+  mounted() {
+    if (localStorage.userId) {
+      this.userId = JSON.parse(localStorage.userId);
+    }
+  }
 }
 </script>
 
@@ -154,6 +191,7 @@ export default {
   }
 
   a,
+  button,
   label {
     padding: var(--navbar-link-padding);
     color: var(--navbar-link-color);
@@ -175,6 +213,7 @@ export default {
     list-style: var(--navbar-list-list-style);
 
     a,
+    button,
     label {
       flex-direction: var(--navbar-list-link-flex-direction);
     }
@@ -182,6 +221,8 @@ export default {
     &:first-of-type {
       a:hover,
       a:focus,
+      button:hover,
+      button:focus,
       label:hover,
       label:focus {
         color: var(--navbar-link-hover-color);
@@ -198,6 +239,8 @@ export default {
 
       a:hover,
       a:focus,
+      button:hover,
+      button:focus,
       label:hover,
       label:focus {
         transform: scale(var(--navbar-last-list-link-hover-scale));
