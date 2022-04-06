@@ -65,6 +65,7 @@
 <script>
 export default {
   name: "CreateUserView",
+
   data() {
     return {
       name: "",
@@ -72,10 +73,10 @@ export default {
       pass: "",
     }
   },
-  
+
   methods: {
     createUser() {
-      let data = {
+      let user = {
         name: this.name,
         email: this.email,
         pass: this.pass
@@ -111,7 +112,7 @@ export default {
           "Accept": "application/json",
           "Content-Type": "application/json"
           },
-          body: JSON.stringify(data)
+          body: JSON.stringify(user)
         })
 
         .then(response => {
@@ -121,6 +122,7 @@ export default {
 
           } else {
             return response.text()
+
             .then((text) => {
               throw new Error(text)}
             )
