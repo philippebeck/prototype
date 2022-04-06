@@ -20,14 +20,9 @@ exports.listLinks = (req, res, next) => {
  * CREATE LINK
  * @param {*} req 
  * @param {*} res 
- * @param {*} next 
  */
-exports.createLink = (req, res, next) => {
-  const linkObject = JSON.parse(req.body.link);
-  delete linkObject._id;
-
-  const link = new LinkModel({ ...linkObject });
-
+exports.createLink = (req, res) => {
+  let link = new LinkModel(req.body);
   link
     .save()
     .then(() => res.status(201).json({ message: "Link created !" }))
