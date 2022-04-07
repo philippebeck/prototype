@@ -3,10 +3,10 @@
     <fieldset>
       <legend>
         <i class="fas fa-users fa-lg"></i>
-        Édition d'un Utilisateur
+        Gérer les Utilisateurs
       </legend>
-      <ul v-for="user in users" 
-        :key="user.id">
+      <ul v-for="(user, index) in users" 
+        :key="index">
         <li>
           <label for="name">
             Nom
@@ -51,9 +51,15 @@
         <li>
           <button 
             type="button" 
-            @click="updateUser()"
-            class="btn-green">
-            Update {{ user.name }}
+            @click="updateUser(index)"
+            class="btn-blue">
+            Modifier {{ user.name }}
+          </button>
+          <button 
+            type="button" 
+            @click="deleteUser(index)"
+            class="btn-red">
+            Supprimer {{ user.name }}
           </button>
         </li>
       </ul>
@@ -64,19 +70,18 @@
 <script>
 export default {
   name: 'ListUsers',
-
+/* eslint-disable */
   props: ['users'],
-
     methods: {
-    updateUser() {
+    updateUser(index) {
       let user = {
-        id: this._id,
-        name: this.name,
-        email: this.email,
-        pass: this.pass
+        id: this.users[index]._id,
+        name: this.users[index].name,
+        email: this.users[index].email,
+        pass: this.users[index].pass
       }
 
-      fetch(`http://localhost:3000/api/users/${user.id}`, {
+      fetch(`http://localhost:3000/api/users/${this.users[index]._id}`, {
           method: "PUT",
           headers: {
           "Accept": "application/json",
@@ -84,15 +89,11 @@ export default {
           },
           body: JSON.stringify(user)
         })
-
         .then(response => {
-
           if(response.ok) {
             return response.json()
-
           } else {
             return response.text()
-
             .then((text) => {
               throw new Error(text)}
             )
@@ -101,7 +102,29 @@ export default {
         .then(() => {
           alert("Utilisateur mis à jour avec succès");
         })
+        .then(() => {
+            this.$router.go()
+        })
         .catch(alert)
+    },
+    deleteUser(index) {
+      const token = JSON.parse(localStorage.getItem("userToken"))
+
+      if (confirm("Confirmez la suppression de l'utilisateur") === true) {
+        fetch(`http://localhost:3000/api/users/${this.users[index]._id}`, {
+            method: "DELETE",
+            headers: {
+                'authorization': `Bearer ${token}`
+            },
+            body : JSON.stringify(this.users[index])
+        })
+        .then(response => response.json())
+        .then(data => (this.users[index] = data))
+        .then(() => {
+            this.$router.go()
+        })
+        .catch(alert)
+      }
     }
   }
 }
