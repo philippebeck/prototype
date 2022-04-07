@@ -3,7 +3,7 @@
     <fieldset>
       <legend>
         <i class="fas fa-link fa-lg"></i>
-        Update Link
+        Gérer les Liens
       </legend>
       <ul v-for="(link, index) in links" 
         :key="index">
@@ -17,7 +17,6 @@
             v-model="link.name"
             type="text" 
             maxlength="30" 
-            placeholder="Fill in the name"
             required>
         </li>
         <li>
@@ -30,12 +29,11 @@
             v-model="link.url"
             type="text" 
             maxlength="100" 
-            placeholder="Fill in the URL"
             required>
         </li>
         <li>
-          <label for="category">
-            Category
+          <label for="cat">
+            Catégorie
           </label>
           <select 
             id="cat" 
@@ -52,13 +50,19 @@
               CSS
             </option>
             <option value="JS">
-              JavaScript
+              JS
             </option>
             <option value="PHP">
               PHP
             </option>
+            <option value="Python">
+              Python
+            </option>
             <option value="SQL">
               SQL
+            </option>
+            <option value="NoSQL">
+              NoSQL
             </option>
             <option value="Git">
               Git
@@ -71,15 +75,15 @@
         <li>
           <button 
             type="button" 
-            @click="updateLink()" 
+            @click="updateLink(index)" 
             class="btn-blue">
-            Update {{ link.name }}
+            Modifier {{ link.name }}
           </button>
           <button 
             type="button" 
-            @click="removeLink(index)" 
+            @click="deleteLink(index)" 
             class="btn-red">
-            Remove {{ link.name }}
+            Supprimer {{ link.name }}
           </button>
         </li>
       </ul>
@@ -91,21 +95,16 @@
 export default {
   name: 'ListLinks',
   /* eslint-disable */
-
   props: ['links'],
-
   methods: {
-    updateLink() {
+    updateLink(index) {
       let link = {
-        id: this._id,
-        name: this.name,
-        url: this.url,
-        cat: this.cat
+        id: this.links[index]._id,
+        name: this.links[index].name,
+        url: this.links[index].url,
+        cat: this.links[index].cat
       }
-
-      console.log(link);
-
-      fetch(`http://localhost:3000/api/links/${link.id}`, {
+      fetch(`http://localhost:3000/api/links/${this.links[index]._id}`, {
           method: "PUT",
           headers: {
           "Accept": "application/json",
@@ -113,15 +112,11 @@ export default {
           },
           body: JSON.stringify(link)
         })
-
         .then(response => {
-
           if(response.ok) {
             return response.json()
-
           } else {
             return response.text()
-
             .then((text) => {
               throw new Error(text)}
             )
@@ -130,33 +125,30 @@ export default {
         .then(() => {
           alert("Lien mis à jour avec succès");
         })
+        .then(() => {
+            this.$router.go()
+        })
         .catch(alert)
     },
-    deleteLink() {
+    deleteLink(index) {
       const token = JSON.parse(localStorage.getItem("userToken"))
 
       if (confirm("Confirmez la suppression du lien") === true) {
-
-          fetch(`http://localhost:3000/api/links/${this.links[index].id}`, {
-              method: "DELETE",
-              headers: {
-                  'authorization': `Bearer ${token}`
-              },
-              body : JSON.stringify(this.links[index])
-          })
-          .then(response => response.json())
-          .then(data => (this.links[index] = data))
-          .then(() => {
-              this.$router.go()
-          })
-          .catch(alert)
+        fetch(`http://localhost:3000/api/links/${this.links[index]._id}`, {
+            method: "DELETE",
+            headers: {
+                'authorization': `Bearer ${token}`
+            },
+            body : JSON.stringify(this.links[index])
+        })
+        .then(response => response.json())
+        .then(data => (this.links[index] = data))
+        .then(() => {
+            this.$router.go()
+        })
+        .catch(alert)
       }
     }
-  },
-
-  computed: {
-    console: () => console,
-    window: () => window
   }
 }
 </script>
