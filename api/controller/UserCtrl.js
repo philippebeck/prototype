@@ -120,7 +120,6 @@ exports.update = (req, res) => {
  */
 exports.delete = (req, res) => {
   UserModel
-    .findOne({ _id: req.params.id })
     .deleteOne({ _id: req.params.id })
     .then(() => res.status(200).json({ message: "Utilisateur supprimé !" }))
     .catch(error => res.status(400).json({ error }));
