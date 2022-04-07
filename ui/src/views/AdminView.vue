@@ -94,22 +94,18 @@ export default {
   data() {
     return {
       links: [],
-      users: [],
-      numberOfLinks: 0,
-      numberOfUsers: 0
+      users: []
     }
   },
   methods: {
     getAllLinks() {
       getAllLinks().then(response => {
         this.links = response
-        this.numberOfLinks = this.links.length
       })
     },
     getAllUsers() {
       getAllUsers().then(response => {
         this.users = response
-        this.numberOfUsers = this.users.length
       })
     },
     linkCreate(data) {
