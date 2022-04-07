@@ -23,7 +23,7 @@ exports.createLink = (req, res) => {
   let link = new LinkModel(req.body);
   link
     .save()
-    .then(() => res.status(201).json({ message: "Link created !" }))
+    .then(() => res.status(201).json({ message: "Lien créé !" }))
     .catch(error => res.status(400).json({ error }));
 };
 
@@ -36,7 +36,7 @@ exports.updateLink = (req, res) => {
   let link = req.body;
   LinkModel
     .updateOne({ _id: req.params.id }, { ...link, _id: req.params.id })
-    .then(() => res.status(200).json({ message: "Link updated !" }))
+    .then(() => res.status(200).json({ message: "Lien modifié !" }))
     .catch(error => res.status(400).json({ error }));
 };
 
@@ -48,6 +48,6 @@ exports.updateLink = (req, res) => {
 exports.deleteLink = (req, res) => {
   LinkModel
     .deleteOne({ _id: req.params.id })
-    .then(() => res.status(200).json({ message: "Link deleted !" }))
+    .then(() => res.status(200).json({ message: "Lien supprimé !" }))
     .catch(error => res.status(400).json({ error }))
 };
