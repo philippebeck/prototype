@@ -64,7 +64,7 @@
 
 <script>
 export default {
-  name: "CreateUserView",
+  name: "CreateUser",
 
   data() {
     return {
