@@ -38,13 +38,12 @@ schema
  * @param {object} res 
  */
 exports.create = (req, res) => {
-
   if (!emailValidator.validate(req.body.email)) {
-    return res.status(401).json({ message: "Please enter a valid email address" });
+    return res.status(401).json({ message: "Email invalide !" });
   }
 
   if (!schema.validate(req.body.pass)) {
-    return res.status(401).json({ message: "Invalid password !" });
+    return res.status(401).json({ message: "Mot de passe invalide !" });
   };
 
   bcrypt
@@ -57,7 +56,7 @@ exports.create = (req, res) => {
       });
 
       user.save()
-        .then(() => res.status(201).json({ message: "User Created !" }))
+        .then(() => res.status(201).json({ message: "Utilisateur créé !" }))
         .catch(error => res.status(400).json({ error }));
     })
     .catch(error => res.status(500).json({ error }));
@@ -74,7 +73,7 @@ exports.login = (req, res) => {
     .then(user => {
 
       if (!user) {
-        return res.status(401).json({ error: "User Not Found !" });
+        return res.status(401).json({ error: "Utilisateur non trouvé !" });
       }
 
       bcrypt
@@ -82,7 +81,7 @@ exports.login = (req, res) => {
         .then(valid => {
 
           if (!valid) {
-            return res.status(401).json({ error: "Incorrect Password !" });
+            return res.status(401).json({ error: "Mot de passe incorrect !" });
           }
 
           res.status(200).json({
@@ -105,16 +104,11 @@ exports.login = (req, res) => {
  * @param {object} res 
  */
 exports.update = (req, res) => {
-  const userObject = req.file ?
-    {
-      ...JSON.parse(req.body.user),
-      image: `${req.protocol}://${req.get("host")}/${process.env.IMG}/${req.file.filename}`
-    }
-    : { ...req.body };
-    
+  let user = req.body;
+
   UserModel
-    .updateOne({ _id: req.params.id }, { ...userObject, _id: req.params.id })
-    .then(() => res.status(200).json({ message: "Successful Update !" }))
+    .updateOne({ _id: req.params.id }, { ...user, _id: req.params.id })
+    .then(() => res.status(200).json({ message: "Utilisateur modifié !" }))
     .catch(error => res.status(400).json({ error }));
 };
 
@@ -125,16 +119,7 @@ exports.update = (req, res) => {
  */
 exports.delete = (req, res) => {
   UserModel
-    .findOne({ _id: req.params.id })
-    .then(user => {
-      const filename = user.image.split(`/${process.env.IMG}/`)[1];
-
-      fs.unlink(`${process.env.IMG}/${filename}`, () => {
-        UserModel
-          .deleteOne({ _id: req.params.id })
-          .then(() => res.status(200).json({ message: "Successful Delete !" }))
-          .catch(error => res.status(400).json({ error }));
-      });
-    })
-    .catch(error => res.status(500).json({ error }));
+    .deleteOne({ _id: req.params.id })
+    .then(() => res.status(200).json({ message: "Utilisateur supprimé !" }))
+    .catch(error => res.status(400).json({ error }));
 };

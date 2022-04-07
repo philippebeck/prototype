@@ -27,14 +27,14 @@
             <label 
               class="anima-slideR-this" 
               for="email">
-              Courriel
+              Email
             </label>
             <input 
               class="anima-slideL-this" 
               id="email" 
               name="email" 
               type="email" 
-              placeholder="Insérer votre Courriel"
+              placeholder="Insérer votre Email"
               maxlength="50" 
               required>
           </li>
@@ -72,7 +72,8 @@
           <li>
             <div 
               id="recaptcha" 
-              class="g-recaptcha" data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
+              class="g-recaptcha" 
+              data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
             </div>
           </li>
           <li>
@@ -87,11 +88,6 @@
           </li>
         </ul>
       </fieldset>
-      <a 
-        class="btn-black btn-lg" 
-        href="/">
-        Quitter
-      </a>
     </form>
 
     <FootElt/>

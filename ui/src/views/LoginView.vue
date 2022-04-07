@@ -55,11 +55,6 @@
           </li>
         </ul>
       </fieldset>
-      <a 
-        class="btn-black btn-lg" 
-        href="/">
-        Quitter
-      </a>
     </form>
 
     <FootElt/>

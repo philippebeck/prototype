@@ -3,12 +3,12 @@
     <fieldset>
       <legend>
         <i class="fas fa-link fa-lg"></i>
-        Create Link
+        Créer un Lien
       </legend>
       <ul>
         <li>
           <label for="name">
-            Name
+            Nom
           </label>
           <input 
             id="name" 
@@ -16,7 +16,7 @@
             v-model="name" 
             type="text" 
             maxlength="30" 
-            placeholder="Fill in the name"
+            placeholder="Remplissez le nom"
             required>
         </li>
         <li>
@@ -29,12 +29,12 @@
             v-model="url"
             type="text" 
             maxlength="100" 
-            placeholder="Fill in the URL"
+            placeholder="Remplissez l'URL"
             required>
         </li>
         <li>
           <label for="category">
-            Category
+            Catégorie
           </label>
           <select 
             id="cat" 
@@ -42,7 +42,7 @@
             v-model="cat" 
             required>
             <option value="">
-              Choose the category
+              Choisissez la Catégorie
             </option>
             <option value="HTML">
               HTML
@@ -51,13 +51,19 @@
               CSS
             </option>
             <option value="JS">
-              JavaScript
+              JS
             </option>
             <option value="PHP">
               PHP
             </option>
+            <option value="Python">
+              Python
+            </option>
             <option value="SQL">
               SQL
+            </option>
+            <option value="NoSQL">
+              NoSQL
             </option>
             <option value="Git">
               Git
@@ -74,7 +80,7 @@
             type="button" 
             @click="createLink()" 
             class="btn-green">
-            Create
+            Créer
           </button>
         </li>
       </ul>
@@ -85,7 +91,6 @@
 <script>
 export default {
   name: "CreateLink",
-  
   data() {
     return {
       name: "",
@@ -93,7 +98,6 @@ export default {
       cat: ""
     }
   },
-
   methods: {
     createLink() {
       let link = {
@@ -101,7 +105,6 @@ export default {
         url: this.url,
         cat: this.cat
       };
-
       fetch("http://localhost:3000/api/links", {
           method: "POST",
           headers: {
@@ -110,25 +113,24 @@ export default {
           },
           body: JSON.stringify(link)
         })
-
         .then(response => {
-
           if(response.ok) {
             return response.json()
-
           } else {
             return response.text()
-
             .then((text) => {
               throw new Error(text)}
             )
           }
         })
         .then(() => {
-          alert("Link created successfully");
+          alert("Lien créé avec succès !");
         })
+        .then(() => {
+              this.$router.go()
+          })
         .catch(alert)
-    },
+    }
   }
 }
 </script>

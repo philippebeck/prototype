@@ -13,14 +13,13 @@
       class="menu-radio2" 
       type="radio" 
       name="menu">
-
     <nav class="menu">
       <label 
         for="menu-radio1" 
         title="Voir les Ressources">
-        <i class="fas fa-box-open"></i>
+        <i class="fas fa-link"></i>
         <span>
-          Ressources
+          Liens
         </span>
       </label>
       <label 
@@ -28,14 +27,13 @@
         title="Voir les Administrateurs">
         <i class="fas fa-user-ninja"></i>
         <span>
-          Administrateurs
+          Utilisateurs
         </span>
       </label>
     </nav>
 
     <section class="menu-relay">
-      <h2>Datas</h2>
-
+      <h2>Admin</h2>
       <section class="menu-target1">
         <h3>
           <i class="fas fa-link fa-2x"></i>
@@ -49,10 +47,9 @@
           :links="links"/>
 
       </section>
-
       <section class="menu-target2">
         <h3>
-          <i class="fas fa-user-ninja"></i>
+          <i class="fas fa-user-ninja fa-2x"></i>
           Utilisateurs
         </h3>
 
@@ -72,12 +69,10 @@
 <script>
 import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
-
 import CreateLink from '@/components/CreateLink.vue'
 import CreateUser from '@/components/CreateUser.vue'
 import ListLinks from '@/components/ListLinks.vue'
 import ListUsers from '@/components/ListUsers.vue'
-
 import { getAllUsers, createUser } from '@/services/UserService'
 import { getAllLinks, createLink } from '@/services/LinkService'
 
@@ -94,22 +89,18 @@ export default {
   data() {
     return {
       links: [],
-      users: [],
-      numberOfLinks: 0,
-      numberOfUsers: 0
+      users: []
     }
   },
   methods: {
     getAllLinks() {
       getAllLinks().then(response => {
         this.links = response
-        this.numberOfLinks = this.links.length
       })
     },
     getAllUsers() {
       getAllUsers().then(response => {
         this.users = response
-        this.numberOfUsers = this.users.length
       })
     },
     linkCreate(data) {
