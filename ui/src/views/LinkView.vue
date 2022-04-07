@@ -2,25 +2,23 @@
   <main>
     <NavElt/>
 
-    <table class="table">
-      <tr 
-        v-for="link in links" 
-        :key="link.id">
-        <td class="font-monospace">
+      <ul class="flex">
+        <li 
+          v-for="link in links" 
+          :key="link.cat">
           {{ link.cat }}
-        </td>
-        <td>
-          <a 
-            class="button-primary" 
-            :href="link.url" 
-            :title="link.url">
-            <strong>
-              {{ link.name }}
-            </strong>
-          </a>
-        </td>
-      </tr>
-    </table>
+          <ul>
+            <li>
+              <a 
+                class="button-primary" 
+                :href="link.url" 
+                :title="link.url">
+                {{ link.name }}
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
 
     <FootElt/>
   </main>
@@ -40,20 +38,15 @@ export default {
   },
   data() {
     return {
-      links: [],
-      numberOfLinks: 0
-    }
-  },
-  methods: {
-    getAllLinks() {
-      getAllLinks().then(response => {
-        this.links = response
-        this.numberOfLinks = this.links.length
-      })
+      links: []
     }
   },
   mounted () {
-    this.getAllLinks();
+    getAllLinks().then(
+      response => {
+        this.links = response;
+      }
+    )
   }
 }
 </script>
