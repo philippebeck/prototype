@@ -21,6 +21,7 @@ exports.listLinks = (req, res) => {
  */
 exports.createLink = (req, res) => {
   let link = new LinkModel(req.body);
+
   link
     .save()
     .then(() => res.status(201).json({ message: "Lien créé !" }))
@@ -34,6 +35,7 @@ exports.createLink = (req, res) => {
  */
 exports.updateLink = (req, res) => {
   let link = req.body;
+
   LinkModel
     .updateOne({ _id: req.params.id }, { ...link, _id: req.params.id })
     .then(() => res.status(200).json({ message: "Lien modifié !" }))

@@ -38,7 +38,6 @@ schema
  * @param {object} res 
  */
 exports.create = (req, res) => {
-
   if (!emailValidator.validate(req.body.email)) {
     return res.status(401).json({ message: "Email invalide !" });
   }
@@ -106,7 +105,7 @@ exports.login = (req, res) => {
  */
 exports.update = (req, res) => {
   let user = req.body;
-    
+
   UserModel
     .updateOne({ _id: req.params.id }, { ...user, _id: req.params.id })
     .then(() => res.status(200).json({ message: "Utilisateur modifié !" }))
