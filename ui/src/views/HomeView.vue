@@ -4,7 +4,7 @@
 
     <header>
       <a
-        class="button-green"
+        class="button-violet"
         href="/link">
         <h1>Links4Code</h1>
         <p>Des Liens pour Coder !</p>
@@ -12,7 +12,7 @@
     </header>
 
       <section>
-        <h2>FR</h2>
+        <h2>Fr</h2>
 
         <ul class="flex">
           <li>
@@ -43,7 +43,7 @@
       </section>
 
       <section>
-        <h2>EN</h2>
+        <h2>En</h2>
 
         <ul class="flex">
           <li>
