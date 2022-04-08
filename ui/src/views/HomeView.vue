@@ -2,91 +2,19 @@
   <main>
     <NavElt/>
 
-    <header class="head font-monospace">
-      <p>
-        Tools2Code propose des
-        <strong>Liens</strong>
-        pour le code & l'apprentissage du code !
-      </p>
+    <header>
+      <a
+        class="button-green"
+        href="/link">
+        <h1>Links4Code</h1>
+        <p>Des Liens pour Coder !</p>
+      </a>
     </header>
 
-    <section class="container-90tn">
-      <h2>Liens</h2>
-
-      <ul class="flex anima-slideT-global">
-        <li>
-          <a 
-            class="btn-red btn-lg" 
-            href="/link#html" 
-            title="Voir les Liens HTML">
-            <i class="fab fa-html5 fa-4x fa-fw"></i>
-            <strong>HTML</strong>
-          </a>
-        </li>
-        <li>
-          <a 
-            class="btn-blue btn-lg" 
-            href="/link#css" 
-            title="Voir les Liens CSS">
-            <i class="fab fa-css3-alt fa-4x fa-fw"></i>
-            <strong>CSS</strong>
-          </a>
-        </li>
-        <li>
-          <a 
-            class="btn-secondary btn-lg" 
-            href="/link#js" 
-            title="Voir les Liens JavaScript">
-            <i class="fab fa-js-square fa-4x fa-fw"></i>
-            <strong>JS</strong>
-          </a>
-        </li>
-        <li>
-          <a 
-            class="btn-primary btn-lg" 
-            href="/link#php" 
-            title="Voir les Liens PHP">
-            <i class="fab fa-php fa-4x fa-fw"></i>
-            <strong>PHP</strong>
-          </a>
-        </li>
-        <li>
-          <a 
-            class="btn-cyan btn-lg" 
-            href="/link#sql" 
-            title="Voir les Liens SQL">
-            <i class="fas fa-database fa-4x fa-fw"></i>
-            <strong>SQL</strong>
-          </a>
-        </li>
-        <li>
-          <a 
-            class="btn-gh btn-lg" 
-            href="/link#git" 
-            title="Voir les Liens Git">
-            <i class="fab fa-git-alt fa-4x fa-fw"></i>
-            <strong>Git</strong>
-          </a>
-        </li>
-        <li>
-          <a 
-            class="btn-violet btn-lg" 
-            href="/link#media" 
-            title="Voir les Liens Media">
-            <i class="fas fa-file-image fa-4x fa-fw"></i>
-            <strong>Media</strong>
-          </a>
-        </li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Apprentissage</h2>
-
       <section>
-        <h3>Francophone</h3>
+        <h2>FR</h2>
 
-        <ul>
+        <ul class="flex">
           <li>
             <a 
               class="button-blue button-lg" 
@@ -115,9 +43,9 @@
       </section>
 
       <section>
-        <h3>Anglophone</h3>
+        <h2>EN</h2>
 
-        <ul>
+        <ul class="flex">
           <li>
             <a 
               class="button-red button-lg" 
@@ -144,7 +72,6 @@
           </li>
         </ul>
       </section>
-    </section>
 
     <FootElt/>
   </main>
