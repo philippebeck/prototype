@@ -2,27 +2,28 @@
   <main>
     <NavElt/>
 
-    <section 
-      v-for="(cat, index) in cats" 
-      :key="index"
-      :id="cat"
-      class="container-70tn">
-      <h2 class="color-blue">
-        <i :class="`fa-brands fa-${cat} fa-3x`"></i>
-      </h2>
-      <ul class="flex">
-        <li 
-          v-for="(link, i) in linksCat(cat).sort((a, b) => (a.name > b.name) ? 1 : -1)"
-          :key="i">
-          <a 
-            class="button-primary" 
-            :href="`https://${link.url}`"
-            :title="link.url">
-            {{ link.name }}
-          </a>
-        </li>
-      </ul>
-    </section>
+    <h1>Liens</h1>
+    <ul>
+      <li 
+        v-for="(cat, index) in cats" 
+        :key="index"
+        :id="cat"
+        class="container-70tn mar-bot-lg">
+        <i :class="`fa-brands fa-${cat} fa-6x color-blue`"></i>
+        <ul class="flex">
+          <li 
+            v-for="(link, i) in linksCat(cat).sort((a, b) => (a.name > b.name) ? 1 : -1)"
+            :key="i">
+            <a 
+              class="button-primary" 
+              :href="`https://${link.url}`"
+              :title="link.url">
+              {{ link.name }}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
 
     <FootElt/>
   </main>
