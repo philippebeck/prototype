@@ -1,8 +1,39 @@
 <template>
-  <main>
+  <main id="links">
     <NavElt/>
 
-    <h1>Liens</h1>
+    <h1>Liens pour coder</h1>
+
+    <nav class="sidebar">
+      <input 
+        id="sidebar-class"
+        class="sidebar-check" 
+        type="checkbox">
+      <label 
+        for="sidebar-class"
+        class="sidebar-open" 
+        title="Afficher">
+        <i class="far fa-eye fa-fw"></i>
+      </label>
+      <label 
+        for="sidebar-class"
+        title="Cacher">
+        <i class="far fa-eye-slash fa-fw color-violet"></i>
+      </label>
+      <a 
+        v-for="(cat, index) in cats" 
+        :key="index"
+        :href="`#${cat}`" 
+        :title="cat">
+        <i :class="`fa-brands fa-${cat} fa-fw color-violet`"></i>
+      </a>
+      <a 
+        href="#links" 
+        title="Haut de page">
+        <i class="fas fa-chevron-circle-up fa-fw color-violet"></i>
+      </a>
+    </nav>
+
     <ul>
       <li 
         v-for="(cat, index) in cats" 
