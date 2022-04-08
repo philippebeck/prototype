@@ -1,85 +1,96 @@
 <template>
-  <form class="form">
-    <fieldset>
+  <section>
+    <h3>
+      <i class="fa-solid fa-link fa-lg"></i>
+      Gérer les Liens
+    </h3>
+
+    <form
+      v-for="(cat, index) in cats" 
+      :key="index"
+      :id="cat"
+      class="form">
       <legend>
-        <i class="fa-solid fa-link fa-lg"></i>
-        Gérer les Liens
+        <i :class="`fa-brands fa-${cat} fa-6x color-blue`"></i>
       </legend>
-      <ul v-for="(link, index) in links" 
-        :key="index">
-        <li>
-          <label for="name">
-            Nom
-          </label>
-          <input 
-            id="name" 
-            name="name" 
-            v-model="link.name"
-            type="text" 
-            maxlength="30" 
-            required>
-        </li>
-        <li>
-          <label for="url">
-            URL
-          </label>
-          <input 
-            id="url" 
-            name="url" 
-            v-model="link.url"
-            type="text" 
-            maxlength="100" 
-            required>
-        </li>
-        <li>
-          <label for="cat">
-            Catégorie
-          </label>
-          <select 
-            id="cat" 
-            name="cat" 
-            v-model="link.cat"
-            required>
-            <option :value="link.cat">
-              {{ link.cat }}
-            </option>
-            <option value="html5">
-              HTML
-            </option>
-            <option value="css3">
-              CSS
-            </option>
-            <option value="js">
-              JS
-            </option>
-            <option value="php">
-              PHP
-            </option>
-            <option value="python">
-              Python
-            </option>
-            <option value="git">
-              Git
-            </option>
-          </select>
-        </li>
-        <li>
-          <button 
-            type="button" 
-            @click="updateLink(index)" 
-            class="btn-blue">
-            Modifier {{ link.name }}
-          </button>
-          <button 
-            type="button" 
-            @click="deleteLink(index)" 
-            class="btn-red">
-            Supprimer {{ link.name }}
-          </button>
-        </li>
-      </ul>
-    </fieldset>
-  </form>
+      <fieldset
+        v-for="(link, i) in linksCat(cat).sort((a, b) => (a.name > b.name) ? 1 : -1)"
+        :key="i">
+        <ul>
+          <li>
+            <label for="name">
+              Nom
+            </label>
+            <input 
+              id="name" 
+              name="name" 
+              v-model="link.name"
+              type="text" 
+              maxlength="30" 
+              required>
+          </li>
+          <li>
+            <label for="url">
+              URL
+            </label>
+            <input 
+              id="url" 
+              name="url" 
+              v-model="link.url"
+              type="text" 
+              maxlength="100" 
+              required>
+          </li>
+          <li>
+            <label for="cat">
+              Catégorie
+            </label>
+            <select 
+              id="cat" 
+              name="cat" 
+              v-model="link.cat"
+              required>
+              <option :value="link.cat">
+                {{ link.cat }}
+              </option>
+              <option value="html5">
+                HTML
+              </option>
+              <option value="css3">
+                CSS
+              </option>
+              <option value="js">
+                JS
+              </option>
+              <option value="php">
+                PHP
+              </option>
+              <option value="python">
+                Python
+              </option>
+              <option value="git">
+                Git
+              </option>
+            </select>
+          </li>
+          <li>
+            <button 
+              type="button" 
+              @click="updateLink(index)" 
+              class="btn-blue">
+              Modifier {{ link.name }}
+            </button>
+            <button 
+              type="button" 
+              @click="deleteLink(index)" 
+              class="btn-red">
+              Supprimer {{ link.name }}
+            </button>
+          </li>
+        </ul>
+      </fieldset>
+    </form>
+  </section>
 </template>
 
 <script>
@@ -87,7 +98,18 @@ export default {
   name: 'ListLinks',
   /* eslint-disable */
   props: ['links'],
+  computed: {
+    cats() {
+      const cats = new Set();
+      this.links.forEach(link => cats.add(link.cat));
+      return Array.from(cats); 
+    }
+  },
   methods: {
+    linksCat(cat) {
+      return this.links
+        .filter(link => link.cat === cat);
+    },
     updateLink(index) {
       let link = {
         id: this.links[index]._id,
