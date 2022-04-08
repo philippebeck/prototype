@@ -2,7 +2,7 @@
   <form class="form">
     <fieldset>
       <legend>
-        <i class="fas fa-link fa-lg"></i>
+        <i class="fa-solid fa-link fa-lg"></i>
         Créer un Lien
       </legend>
       <ul>
@@ -16,7 +16,7 @@
             v-model="name" 
             type="text" 
             maxlength="30" 
-            placeholder="Remplissez le nom"
+            placeholder="Indiquer le nom"
             required>
         </li>
         <li>
@@ -29,7 +29,7 @@
             v-model="url"
             type="text" 
             maxlength="100" 
-            placeholder="Remplissez l'URL"
+            placeholder="Indiquer l'URL"
             required>
         </li>
         <li>
@@ -44,32 +44,23 @@
             <option value="">
               Choisissez la Catégorie
             </option>
-            <option value="HTML">
+            <option value="html5">
               HTML
             </option>
-            <option value="CSS">
+            <option value="css3">
               CSS
             </option>
-            <option value="JS">
+            <option value="js">
               JS
             </option>
-            <option value="PHP">
+            <option value="php">
               PHP
             </option>
-            <option value="Python">
+            <option value="python">
               Python
             </option>
-            <option value="SQL">
-              SQL
-            </option>
-            <option value="NoSQL">
-              NoSQL
-            </option>
-            <option value="Git">
+            <option value="git">
               Git
-            </option>
-            <option value="Media">
-              Media
             </option>
           </select>
         </li>

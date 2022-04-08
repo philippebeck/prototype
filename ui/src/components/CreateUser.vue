@@ -2,13 +2,13 @@
   <form class="form">
     <fieldset>
       <legend>
-        <i class="fas fa-user fa-lg"></i>
+        <i class="fa-solid fa-user fa-lg"></i>
         Créer un Utilisateur
       </legend>
       <ul>
         <li>
           <label for="name">
-            Name
+            Nom
           </label>
           <input 
             id="name" 
@@ -17,7 +17,7 @@
             type="text" 
             minlength="2" 
             maxlength="50" 
-            placeholder="Fill in the name" 
+            placeholder="Indiquer le nom" 
             required>
         </li>
         <li>
@@ -31,19 +31,19 @@
             type="email" 
             maxlength="50" 
             minlength="5" 
-            placeholder="Fill in the email"
+            placeholder="Indiquer l'email"
             required>
         </li>
         <li>
           <label for="pass">
-            Password
+            Mot de Passe
           </label>
           <input 
             id="pass" 
             name="pass" 
             v-model="pass" 
             type="password" 
-            placeholder="Fill in the password" 
+            placeholder="Indiquer le mot de passe" 
             maxlength="50"
             minlength="8" 
             required>
@@ -55,7 +55,7 @@
             type="button" 
             @click="createUser()"
             class="btn-green">
-            Create
+            Créer
           </button>
         </li>
       </ul>
@@ -88,22 +88,22 @@ export default {
       const regexPass   = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,50}$/;
 
       if (this.name === "") {
-        alert("Please fill in the name");
+        alert("Indiquer le nom");
 
       } else if (regexName.test(this.name) === false) {
-        alert("2 to 50 characters with letters only and no special characters");}
+        alert("2 à 50 caractères avec seulement des lettres sans caractères spéciaux");}
       
       if (this.email === "") {
-        alert("Please fill in the email address");
+        alert("Indiquer l'email");
 
       } else if (regexEmail.test(this.email) === false) {
-        alert("Please enter a valid email address");}
+        alert("Indiquer un email valide");}
 
       if (this.pass === "") {
-        alert("Please fill in the password");
+        alert("Indiquer le mot de passe");
 
       } else if (regexPass.test(this.pass) === false) {
-        alert("8 to 50 characters with a capital letter, a lower case letter and a number");
+        alert("8 à 50 caractères dont une majuscule, une minuscule et un chiffre");
 
       } else if ((regexName.test(this.name) === true) && regexEmail.test(this.email) === true && regexPass.test(this.pass) === true ) {
 
@@ -130,8 +130,8 @@ export default {
           }
         })
         .then(() => {
-          alert("User created successfully");
-          this.$router.push("/login");
+          alert("Utilisateur créé avec succès !");
+          this.$router.go();
         })
         .catch(alert)
       }

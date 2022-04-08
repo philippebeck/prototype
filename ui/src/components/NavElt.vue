@@ -27,21 +27,21 @@
       <li>
         <a 
           href="/">
-          <i class="fas fa-home fa-fw"></i>
+          <i class="fa-solid fa-house-laptop fa-fw"></i>
           <strong>Accueil</strong>
         </a>
       </li>
       <li>
         <a 
           href="/link">
-          <i class="fas fa-link fa-fw"></i>
+          <i class="fa-solid fa-link fa-fw"></i>
           <strong>Liens</strong>
         </a>
       </li>
       <li>
         <a 
           href="/contact">
-          <i class="fab fa-at fa-fw"></i>
+          <i class="fa-brands fa-at fa-fw"></i>
           <strong>Contact</strong>
         </a>
       </li>
@@ -52,7 +52,7 @@
           class="onto-color-cyan" 
           href="https://paypal.me/philippebeck" 
           title="Donation">
-          <i class="fab fa-paypal fa-lg fa-fw"></i>
+          <i class="fa-brands fa-paypal fa-lg fa-fw"></i>
         </a>
       </li>
       <li>
@@ -68,7 +68,7 @@
           class="onto-color-red" 
           href="/login" 
           title="Login">
-          <i class="fas fa-sign-in-alt fa-lg fa-fw"></i>
+          <i class="fa-solid fa-sign-in-alt fa-lg fa-fw"></i>
         </a>
       </li>
       </ul>
@@ -78,7 +78,7 @@
             class="onto-color-red" 
             href="/admin" 
             title="Admin">
-            <i class="fas fa-user-ninja fa-lg fa-fw"></i>
+            <i class="fa-solid fa-user-ninja fa-lg fa-fw"></i>
           </a>
       </li>
       <li>
@@ -87,19 +87,19 @@
           type="button"
           @click="logout()"
           title="Logout">
-          <i class="fas fa-sign-out-alt fa-lg fa-fw"></i>
+          <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i>
         </button>
       </li>
     </ul>
     <label 
       for="navbar-close" 
       title="Close the Navigation Menu">
-      <i class="fas fa-angle-double-up fa-lg"></i>
+      <i class="fa-solid fa-angle-double-up fa-lg"></i>
     </label>
     <label 
       for="navbar-open" 
       title="Open the Navigation Menu">
-      <i class="fas fa-angle-double-down fa-lg"></i>
+      <i class="fa-solid fa-angle-double-down fa-lg"></i>
     </label>
   </nav>
 </template>
@@ -280,6 +280,12 @@ export default {
   &-close:checked ~ [for="navbar-close"],
   &-open:checked ~ [for="navbar-open"] {
     display: none;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
   }
 }
 

@@ -1,8 +1,8 @@
 <template>
-  <form class="form">
+  <form class="form" id="users">
     <fieldset>
       <legend>
-        <i class="fas fa-users fa-lg"></i>
+        <i class="fa-solid fa-users fa-lg"></i>
         Gérer les Utilisateurs
       </legend>
       <ul v-for="(user, index) in users" 
@@ -18,7 +18,6 @@
             type="text" 
             minlength="2" 
             maxlength="50" 
-            placeholder="Fill in the name" 
             required>
         </li>
         <li>
@@ -32,18 +31,17 @@
             type="email" 
             maxlength="50" 
             minlength="5" 
-            placeholder="Fill in the email"
             required>
         </li>
         <li>
           <label for="pass">
-            Password
+            Mot de Passe
           </label>
           <input 
             id="pass" 
             name="pass" 
             type="password" 
-            placeholder="Fill in the password" 
+            placeholder="Indiquer le mot de passe" 
             maxlength="50"
             minlength="8" 
             required>
@@ -84,8 +82,8 @@ export default {
       fetch(`http://localhost:3000/api/users/${this.users[index]._id}`, {
           method: "PUT",
           headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
+            "Accept": "application/json",
+            "Content-Type": "application/json"
           },
           body: JSON.stringify(user)
         })
@@ -114,7 +112,7 @@ export default {
         fetch(`http://localhost:3000/api/users/${this.users[index]._id}`, {
             method: "DELETE",
             headers: {
-                'authorization': `Bearer ${token}`
+              'authorization': `Bearer ${token}`
             },
             body : JSON.stringify(this.users[index])
         })

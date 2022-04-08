@@ -2,6 +2,7 @@
   <main>
     <NavElt/>
     
+    <h1>Contact</h1>
     <form 
       class="form anima-growX" 
       method="post" 
