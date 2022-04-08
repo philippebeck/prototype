@@ -281,6 +281,12 @@ export default {
   &-open:checked ~ [for="navbar-open"] {
     display: none;
   }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
 }
 
 @media (min-width: 576px) {
