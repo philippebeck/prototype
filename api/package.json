@@ -1,6 +1,6 @@
 {
   "name": "prototype-api",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Node - Express - Mongo",
   "keywords": [
     "node",
