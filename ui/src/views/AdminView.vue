@@ -32,13 +32,14 @@
       </label>
     </nav>
 
-    <section class="menu-relay">
-      <h2>Admin</h2>
+    <h1>Admin</h1>
+
+    <div class="menu-relay">
       <section class="menu-target1">
-        <h3>
-          <i class="fa-solid fa-link fa-2x"></i>
+        <h2>
+          <i class="fa-solid fa-link fa-lg"></i>
           Liens
-        </h3>
+        </h2>
 
         <CreateLink />
 
@@ -48,10 +49,10 @@
 
       </section>
       <section class="menu-target2">
-        <h3>
-          <i class="fa-solid fa-users fa-2x"></i>
+        <h2>
+          <i class="fa-solid fa-users fa-lg"></i>
           Utilisateurs
-        </h3>
+        </h2>
 
         <CreateUser />
 
@@ -60,7 +61,7 @@
           :users="users"/>
 
         </section>
-    </section>
+    </div>
 
     <FootElt/>
   </main>
