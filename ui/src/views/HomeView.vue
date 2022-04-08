@@ -6,7 +6,7 @@
       <a
         class="button-violet"
         href="/link">
-        <h1>Links4Code</h1>
+        <h1>Links2Code</h1>
         <p>Des Liens pour Coder !</p>
       </a>
     </header>
