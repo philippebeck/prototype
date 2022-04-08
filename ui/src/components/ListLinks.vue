@@ -43,32 +43,23 @@
             <option :value="link.cat">
               {{ link.cat }}
             </option>
-            <option value="HTML">
+            <option value="html5">
               HTML
             </option>
-            <option value="CSS">
+            <option value="css3">
               CSS
             </option>
-            <option value="JS">
+            <option value="js">
               JS
             </option>
-            <option value="PHP">
+            <option value="php">
               PHP
             </option>
-            <option value="Python">
+            <option value="python">
               Python
             </option>
-            <option value="SQL">
-              SQL
-            </option>
-            <option value="NoSQL">
-              NoSQL
-            </option>
-            <option value="Git">
+            <option value="git">
               Git
-            </option>
-            <option value="Media">
-              Media
             </option>
           </select>
         </li>
