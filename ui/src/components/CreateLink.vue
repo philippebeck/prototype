@@ -16,7 +16,7 @@
             v-model="name" 
             type="text" 
             maxlength="30" 
-            placeholder="Remplissez le nom"
+            placeholder="Indiquer le nom"
             required>
         </li>
         <li>
@@ -29,7 +29,7 @@
             v-model="url"
             type="text" 
             maxlength="100" 
-            placeholder="Remplissez l'URL"
+            placeholder="Indiquer l'URL"
             required>
         </li>
         <li>

@@ -17,7 +17,7 @@
             type="text" 
             minlength="2" 
             maxlength="50" 
-            placeholder="Fill in the name" 
+            placeholder="Indiquer le nom" 
             required>
         </li>
         <li>
@@ -31,7 +31,7 @@
             type="email" 
             maxlength="50" 
             minlength="5" 
-            placeholder="Fill in the email"
+            placeholder="Indiquer l'email"
             required>
         </li>
         <li>
@@ -43,7 +43,7 @@
             name="pass" 
             v-model="pass" 
             type="password" 
-            placeholder="Fill in the password" 
+            placeholder="Indiquer le mot de passe" 
             maxlength="50"
             minlength="8" 
             required>
