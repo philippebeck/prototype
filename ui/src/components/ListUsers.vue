@@ -37,7 +37,7 @@
         </li>
         <li>
           <label for="pass">
-            Password
+            Mot de Passe
           </label>
           <input 
             id="pass" 

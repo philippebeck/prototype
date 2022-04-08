@@ -8,7 +8,7 @@
       <ul>
         <li>
           <label for="name">
-            Name
+            Nom
           </label>
           <input 
             id="name" 
@@ -36,7 +36,7 @@
         </li>
         <li>
           <label for="pass">
-            Password
+            Mot de Passe
           </label>
           <input 
             id="pass" 
@@ -55,7 +55,7 @@
             type="button" 
             @click="createUser()"
             class="btn-green">
-            Create
+            Créer
           </button>
         </li>
       </ul>
