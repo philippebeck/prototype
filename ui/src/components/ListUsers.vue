@@ -1,5 +1,5 @@
 <template>
-  <form class="form">
+  <form class="form" id="users">
     <fieldset>
       <legend>
         <i class="fa-solid fa-users fa-lg"></i>
