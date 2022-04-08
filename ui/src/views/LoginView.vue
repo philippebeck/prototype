@@ -2,6 +2,7 @@
   <main>
     <NavElt/>
 
+    <h1>Login</h1>
     <form class="form">
       <fieldset>
         <ul>
