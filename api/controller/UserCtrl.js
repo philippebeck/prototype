@@ -25,7 +25,7 @@ schema
  * @param {object} req 
  * @param {object} res 
  */
- exports.list = (req, res) => {
+exports.list = (req, res) => {
   UserModel
     .find()
     .then(users => res.status(200).json(users))
