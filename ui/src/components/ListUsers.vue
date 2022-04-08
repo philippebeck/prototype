@@ -2,7 +2,7 @@
   <form class="form">
     <fieldset>
       <legend>
-        <i class="fas fa-users fa-lg"></i>
+        <i class="fa-solid fa-users fa-lg"></i>
         Gérer les Utilisateurs
       </legend>
       <ul v-for="(user, index) in users" 

@@ -2,7 +2,7 @@
   <form class="form">
     <fieldset>
       <legend>
-        <i class="fas fa-link fa-lg"></i>
+        <i class="fa-solid fa-link fa-lg"></i>
         Créer un Lien
       </legend>
       <ul>

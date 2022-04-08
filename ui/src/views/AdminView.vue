@@ -17,7 +17,7 @@
       <label 
         for="menu-radio1" 
         title="Voir les Ressources">
-        <i class="fas fa-link"></i>
+        <i class="fa-solid fa-link"></i>
         <span>
           Liens
         </span>
@@ -25,7 +25,7 @@
       <label 
         for="menu-radio2" 
         title="Voir les Administrateurs">
-        <i class="fas fa-user-ninja"></i>
+        <i class="fa-solid fa-users"></i>
         <span>
           Utilisateurs
         </span>
@@ -36,7 +36,7 @@
       <h2>Admin</h2>
       <section class="menu-target1">
         <h3>
-          <i class="fas fa-link fa-2x"></i>
+          <i class="fa-solid fa-link fa-2x"></i>
           Liens
         </h3>
 
@@ -49,7 +49,7 @@
       </section>
       <section class="menu-target2">
         <h3>
-          <i class="fas fa-user-ninja fa-2x"></i>
+          <i class="fa-solid fa-users fa-2x"></i>
           Utilisateurs
         </h3>
 

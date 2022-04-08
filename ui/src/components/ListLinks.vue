@@ -2,7 +2,7 @@
   <form class="form">
     <fieldset>
       <legend>
-        <i class="fas fa-link fa-lg"></i>
+        <i class="fa-solid fa-link fa-lg"></i>
         Gérer les Liens
       </legend>
       <ul v-for="(link, index) in links" 

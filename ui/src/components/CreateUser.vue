@@ -2,7 +2,7 @@
   <form class="form">
     <fieldset>
       <legend>
-        <i class="fas fa-user fa-lg"></i>
+        <i class="fa-solid fa-user fa-lg"></i>
         Créer un Utilisateur
       </legend>
       <ul>
