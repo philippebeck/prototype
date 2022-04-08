@@ -7,7 +7,7 @@ const LinkModel = require("../model/LinkModel");
  * @param {*} req 
  * @param {*} res 
  */
-exports.listLinks = (req, res) => {
+exports.list = (req, res) => {
   LinkModel
     .find()
     .then(links => res.status(200).json(links))
@@ -19,7 +19,7 @@ exports.listLinks = (req, res) => {
  * @param {*} req 
  * @param {*} res 
  */
-exports.createLink = (req, res) => {
+exports.create = (req, res) => {
   let link = new LinkModel(req.body);
 
   link
@@ -33,7 +33,7 @@ exports.createLink = (req, res) => {
  * @param {*} req 
  * @param {*} res 
  */
-exports.updateLink = (req, res) => {
+exports.update = (req, res) => {
   let link = req.body;
 
   LinkModel
@@ -47,7 +47,7 @@ exports.updateLink = (req, res) => {
  * @param {*} req 
  * @param {*} res 
  */
-exports.deleteLink = (req, res) => {
+exports.delete = (req, res) => {
   LinkModel
     .deleteOne({ _id: req.params.id })
     .then(() => res.status(200).json({ message: "Lien supprimé !" }))
