@@ -88,22 +88,22 @@ export default {
       const regexPass   = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,50}$/;
 
       if (this.name === "") {
-        alert("Please fill in the name");
+        alert("Indiquer le nom");
 
       } else if (regexName.test(this.name) === false) {
-        alert("2 to 50 characters with letters only and no special characters");}
+        alert("2 à 50 caractères avec seulement des lettres sans caractères spéciaux");}
       
       if (this.email === "") {
-        alert("Please fill in the email address");
+        alert("Indiquer l'email");
 
       } else if (regexEmail.test(this.email) === false) {
-        alert("Please enter a valid email address");}
+        alert("Indiquer un email valide");}
 
       if (this.pass === "") {
-        alert("Please fill in the password");
+        alert("Indiquer le mot de passe");
 
       } else if (regexPass.test(this.pass) === false) {
-        alert("8 to 50 characters with a capital letter, a lower case letter and a number");
+        alert("8 à 50 caractères dont une majuscule, une minuscule et un chiffre");
 
       } else if ((regexName.test(this.name) === true) && regexEmail.test(this.email) === true && regexPass.test(this.pass) === true ) {
 
@@ -130,8 +130,8 @@ export default {
           }
         })
         .then(() => {
-          alert("User created successfully");
-          this.$router.push("/login");
+          alert("Utilisateur créé avec succès !");
+          this.$router.go();
         })
         .catch(alert)
       }
