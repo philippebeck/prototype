@@ -3,10 +3,7 @@
     <NavElt/>
     
     <h1>Contact</h1>
-    <form 
-      class="form anima-growX" 
-      method="post" 
-      action="">
+    <form class="form anima-growX">
       <fieldset>
         <ul>
           <li>
@@ -19,6 +16,7 @@
               class="anima-slideL-this" 
               id="name" 
               name="name" 
+              v-model="name" 
               type="text" 
               placeholder="Insérer votre Nom"
               maxlength="20" 
@@ -34,6 +32,7 @@
               class="anima-slideL-this" 
               id="email" 
               name="email" 
+              v-model="email" 
               type="email" 
               placeholder="Insérer votre Email"
               maxlength="50" 
@@ -49,6 +48,7 @@
               class="anima-slideL-this" 
               id="subject" 
               name="subject" 
+              v-model="subject" 
               type="text" 
               placeholder="Insérer votre Sujet"
               maxlength="50" 
@@ -64,6 +64,7 @@
               class="anima-slideL-this" 
               id="message" 
               name="message" 
+              v-model="message" 
               placeholder="Insérer votre Message" 
               rows="5"
               cols="20"></textarea>
@@ -78,14 +79,12 @@
             </div>
           </li>
           <li>
-            <input 
-              class="anima-slideR-this" 
-              type="reset" 
-              value="Réinitialiser">
-            <input 
-              class="anima-slideL-this" 
-              type="submit" 
-              value="Envoyer">
+            <button 
+              @click="send()" 
+              type="button"
+              class="btn-green">
+              Envoyer
+            </button>
           </li>
         </ul>
       </fieldset>
@@ -104,6 +103,49 @@ export default {
   components: {
     NavElt,
     FootElt
+  },
+  data() {
+    return {
+      name: "",
+      email: "",
+      subject: "",
+      message: ""
+    }
+  },
+
+  methods: {
+    send() {
+      let message = {
+        name: this.name,
+        email: this.email,
+        subject: this.subject,
+        message: this.message
+      };
+
+      fetch("http://localhost:3000/api/users/send", {
+        method: "post",
+        headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+        },
+        body: JSON.stringify(message)
+      })
+      
+      .then(response => {
+        if(response.ok) {
+          return response.json()
+        } else {
+          return response.text()
+          .then((text) => {
+            throw new Error(text)}
+          )
+        }
+      })  
+      .then(() => {
+        alert("Votre message a été envoyé !")
+      })
+      .catch(alert)
+    }
   }
 }
 </script>
