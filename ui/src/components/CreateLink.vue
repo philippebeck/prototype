@@ -85,6 +85,7 @@
 <script>
 export default {
   name: "CreateLink",
+  /* eslint-disable */
   data() {
     return {
       name: "",
@@ -99,31 +100,55 @@ export default {
         url: this.url,
         cat: this.cat
       };
-      fetch("http://localhost:3000/api/links", {
-          method: "POST",
-          headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-          },
-          body: JSON.stringify(link)
-        })
-        .then(response => {
-          if(response.ok) {
-            return response.json()
-          } else {
-            return response.text()
-            .then((text) => {
-              throw new Error(text)}
-            )
-          }
-        })
-        .then(() => {
-          alert("Lien créé avec succès !");
-        })
-        .then(() => {
-              this.$router.go()
+      const regexName = /^[a-zA-Z0-9.-_\s]+$/;
+      const regexUrl  = /(https?|ftp|ssh|mailto):\/\/[a-z0-9\/:%_+.,#?!@&=-]+$/;
+
+      if (this.name === "") {
+        alert("Indiquer le nom");
+      } else if (regexName.test(this.name) === false) {
+        alert("2 à 50 caractères avec seulement des lettres sans caractères spéciaux")
+      }
+      
+      if (this.url === "") {
+        alert("Indiquer l'url");
+      } else if (regexUrl.test(this.url) === false) {
+        alert("Indiquer une url valide");
+      } else {
+        link.url = this.url.replace(/(^\w+:|^)\/\//, "");
+      }
+
+      if (this.cat === "") {
+        alert("Choisissez la catégorie");
+      } 
+      
+      if ((regexName.test(this.name) === true) && (regexUrl.test(this.url) === true)) {
+
+        fetch("http://localhost:3000/api/links", {
+            method: "POST",
+            headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(link)
           })
-        .catch(alert)
+          .then(response => {
+            if(response.ok) {
+              return response.json()
+            } else {
+              return response.text()
+              .then((text) => {
+                throw new Error(text)}
+              )
+            }
+          })
+          .then(() => {
+            alert("Lien créé avec succès !");
+          })
+          .then(() => {
+                this.$router.go()
+            })
+          .catch(alert)
+      }
     }
   }
 }
