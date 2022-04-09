@@ -86,6 +86,7 @@
 export default {
   name: "CreateLink",
   /* eslint-disable */
+
   data() {
     return {
       name: "",
@@ -100,28 +101,27 @@ export default {
         url: this.url,
         cat: this.cat
       };
+
       const regexName = /^[a-zA-Z0-9.-_\s]+$/;
       const regexUrl  = /(https?|ftp|ssh|mailto):\/\/[a-z0-9\/:%_+.,#?!@&=-]+$/;
 
       if (this.name === "") {
         alert("Indiquer le nom");
-      } else if (regexName.test(this.name) === false) {
-        alert("2 à 50 caractères avec seulement des lettres sans caractères spéciaux")
-      }
-      
-      if (this.url === "") {
+
+      } else if (regexName.test(this.name) !== true) {
+        alert("2 à 50 caractères avec seulement des lettres sans caractères spéciaux");
+
+      } else if (this.url === "") {
         alert("Indiquer l'url");
-      } else if (regexUrl.test(this.url) === false) {
+
+      } else if (regexUrl.test(this.url) !== true) {
         alert("Indiquer une url valide");
+
+      } else if (this.cat === "") {
+        alert("Choisissez la catégorie");
+
       } else {
         link.url = this.url.replace(/(^\w+:|^)\/\//, "");
-      }
-
-      if (this.cat === "") {
-        alert("Choisissez la catégorie");
-      } 
-      
-      if ((regexName.test(this.name) === true) && (regexUrl.test(this.url) === true)) {
 
         fetch("http://localhost:3000/api/links", {
             method: "POST",
