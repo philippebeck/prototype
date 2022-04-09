@@ -2,8 +2,8 @@
 
 const bcrypt          = require("bcrypt");
 const emailValidator  = require("email-validator"); 
-const fs              = require("fs");
 const jwt             = require("jsonwebtoken");
+const nodemailer      = require('nodemailer');
 const passValidator   = require("password-validator");
 
 const UserModel = require("../model/UserModel");
@@ -122,4 +122,38 @@ exports.delete = (req, res) => {
     .deleteOne({ _id: req.params.id })
     .then(() => res.status(200).json({ message: "Utilisateur supprimé !" }))
     .catch(error => res.status(400).json({ error }));
+};
+
+/**
+ * SEND
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
+exports.send = (req, res, next) => {
+  const transporter = nodemailer.createTransport({
+    "host": process.env.MAIL_HOST,
+    "port": process.env.MAIL_PORT,
+    "secure": process.env.MAIL_SECURE,
+    "auth": {
+      "user": process.env.MAIL_USER,
+      "pass": process.env.MAIL_PASS
+    }
+  });
+
+  (async function(){
+    try {
+      const emailData = { 
+        to: req.body.email, 
+        from: process.env.MAIL_USER, 
+        subject: req.body.subject, 
+        html: req.body.message 
+      };
+
+      await transporter.sendMail(emailData);
+
+    } catch(e){
+      console.error(e);
+    }
+  })()
 };
