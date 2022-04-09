@@ -22,7 +22,7 @@
         <i class="far fa-eye-slash fa-fw color-violet"></i>
       </label>
       <a 
-        href="#links" 
+        href="#link" 
         title="Créer un lien">
         <i class="fas fa-link fa-fw color-violet"></i>
       </a>
@@ -51,7 +51,7 @@
     </nav>
 
     <section>
-      <h2 id="links">
+      <h2 id="link">
         <i class="fa-solid fa-link fa-lg"></i>
         Liens
       </h2>
