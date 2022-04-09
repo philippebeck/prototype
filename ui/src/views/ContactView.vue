@@ -2,7 +2,9 @@
   <main>
     <NavElt/>
     
-    <h1>Contact</h1>
+    <h1 class="color-violet anima-slideB-this">
+      Contact
+    </h1>
     <form class="form anima-growX">
       <fieldset>
         <ul>

@@ -2,7 +2,9 @@
   <main id="admin">
     <NavElt/>
 
-    <h1>Admin</h1>
+    <h1 class="color-violet anima-openX-this">
+      Admin
+    </h1>
     <nav class="sidebar">
       <input 
         id="sidebar-class"

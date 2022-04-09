@@ -3,8 +3,12 @@
     <NavElt/>
 
     <header>
-      <h1>Links2Code</h1>
-      <p>Des Liens pour Coder !</p>
+      <h1 class="color-violet shatex-blur-sm anima-shrink-this">
+        Links2Code
+      </h1>
+      <p class="color-gray">
+        Des Liens pour Coder !
+      </p>
     </header>
 
     <nav class="sidebar">
@@ -43,7 +47,7 @@
         :key="index"
         :id="cat"
         class="container-70tn mar-bot-lg">
-        <i :class="`fa-brands fa-${cat} fa-6x color-blue`"></i>
+        <i :class="`fa-brands fa-${cat} fa-6x color-blue shatex-blur-md anima-grow-this`"></i>
         <ul class="flex">
           <li 
             v-for="(link, i) in linksCat(cat).sort((a, b) => (a.name > b.name) ? 1 : -1)"
