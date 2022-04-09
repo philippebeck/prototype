@@ -8,6 +8,17 @@
         href="/link">
         <h1>Links2Code</h1>
         <p>Des Liens pour Coder !</p>
+
+        <figure class="flex mar-top-md">
+          <i class="fa-brands fa-html5 fa-fw fa-2x"></i>
+          <i class="fa-brands fa-css3 fa-fw fa-2x"></i>
+          <i class="fa-brands fa-js fa-fw fa-2x"></i>
+          <i class="fa-brands fa-php fa-fw fa-2x"></i>
+          <i class="fa-brands fa-python fa-fw fa-2x"></i>
+          <i class="fa-brands fa-git fa-fw fa-2x"></i>
+          <i class="fa-brands fa-usb fa-fw fa-2x"></i>
+        </figure>
+
       </a>
     </header>
 
