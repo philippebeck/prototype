@@ -103,8 +103,9 @@ export default {
         alert("Indiquer le mot de passe");
       } else if (regexPass.test(this.pass) === false) {
         alert("8 à 50 caractères dont une majuscule, une minuscule et un chiffre");
-
-      } else if ((regexName.test(this.name) === true) && (regexEmail.test(this.email) === true) && (regexPass.test(this.pass) === true)) {
+      } 
+      
+      if ((regexName.test(this.name) === true) && (regexEmail.test(this.email) === true) && (regexPass.test(this.pass) === true)) {
 
         fetch("http://localhost:3000/api/users", {
           method: "POST",
