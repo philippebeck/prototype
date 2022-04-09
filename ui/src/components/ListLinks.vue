@@ -71,8 +71,8 @@
               <option value="git">
                 Git
               </option>
-              <option value="usb">
-                All
+              <option value="dev">
+                Dev
               </option>
             </select>
           </li>
