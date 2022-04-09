@@ -14,8 +14,8 @@
         <i :class="`fa-brands fa-${cat} fa-6x color-blue`"></i>
       </legend>
       <fieldset
-        v-for="(link, i) in linksCat(cat).sort((a, b) => (a.name > b.name) ? 1 : -1)"
-        :key="i">
+        v-for="link in linksCat(cat).sort((a, b) => (a.name > b.name) ? 1 : -1)"
+        :key="link._id">
         <ul>
           <li>
             <label for="name">
@@ -71,18 +71,21 @@
               <option value="git">
                 Git
               </option>
+              <option value="dev">
+                Dev
+              </option>
             </select>
           </li>
           <li>
             <button 
               type="button" 
-              @click="updateLink(index)" 
+              @click="updateLink(link._id)" 
               class="btn-blue">
               Modifier {{ link.name }}
             </button>
             <button 
               type="button" 
-              @click="deleteLink(index)" 
+              @click="deleteLink(link._id)" 
               class="btn-red">
               Supprimer {{ link.name }}
             </button>
@@ -98,6 +101,7 @@ export default {
   name: 'ListLinks',
   /* eslint-disable */
   props: ['links'],
+
   computed: {
     cats() {
       const cats = new Set();
@@ -105,19 +109,28 @@ export default {
       return Array.from(cats); 
     }
   },
+
   methods: {
     linksCat(cat) {
       return this.links
         .filter(link => link.cat === cat);
     },
-    updateLink(index) {
-      let link = {
-        id: this.links[index]._id,
-        name: this.links[index].name,
-        url: this.links[index].url,
-        cat: this.links[index].cat
+
+    updateLink(id) {
+      let link = {};
+
+      for (let i = 0; i < this.links.length; i++ ) {
+        if (this.links[i]._id === id) {
+          link = {
+            id: this.links[i]._id,
+            name: this.links[i].name,
+            url: this.links[i].url,
+            cat: this.links[i].cat
+          }
+        }
       }
-      fetch(`http://localhost:3000/api/links/${this.links[index]._id}`, {
+
+      fetch(`http://localhost:3000/api/links/${id}`, {
           method: "PUT",
           headers: {
           "Accept": "application/json",
@@ -143,21 +156,23 @@ export default {
         })
         .catch(alert)
     },
-    deleteLink(index) {
+
+    deleteLink(id) {
       const token = JSON.parse(localStorage.getItem("userToken"))
 
       if (confirm("Confirmez la suppression du lien") === true) {
-        fetch(`http://localhost:3000/api/links/${this.links[index]._id}`, {
-            method: "DELETE",
-            headers: {
-                'authorization': `Bearer ${token}`
-            },
-            body : JSON.stringify(this.links[index])
+        fetch(`http://localhost:3000/api/links/${id}`, {
+          method: "DELETE",
+          headers: {
+              'authorization': `Bearer ${token}`
+          }
         })
         .then(response => response.json())
-        .then(data => (this.links[index] = data))
         .then(() => {
-            this.$router.go()
+          alert("Lien supprimé avec succès");
+        })
+        .then(() => {
+          this.$router.go()
         })
         .catch(alert)
       }

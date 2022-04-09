@@ -2,7 +2,9 @@
   <main>
     <NavElt/>
 
-    <h1>Login</h1>
+    <h1 class="color-violet anima-grow-this">
+      Login
+    </h1>
     <form class="form">
       <fieldset>
         <ul>

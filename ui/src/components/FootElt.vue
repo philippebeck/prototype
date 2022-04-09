@@ -27,9 +27,16 @@
           </li>
           <li>
             <a 
-              href="https://tools2code.philippebeck.net"
-              title="Tools for Coding">
-              Tools2Code
+              href="https://links2dev.philippebeck.net"
+              title="Des Liens pour Coder">
+              Links2Dev
+            </a>
+          </li>
+          <li>
+            <a 
+              href="https://pam.philippebeck.net"
+              title="PHP Adaptive Microframework">
+              Pam
             </a>
           </li>
         </ul>
@@ -46,7 +53,7 @@
           <li>
             <a 
               href="https://asperger.philippebeck.net"
-              title="Tests for Asperger Syndrome">
+              title="Tests pour le Syndrome d'Asperger">
               Asperger
             </a>
           </li>

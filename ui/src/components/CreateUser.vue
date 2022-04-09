@@ -90,23 +90,22 @@ export default {
       if (this.name === "") {
         alert("Indiquer le nom");
 
-      } else if (regexName.test(this.name) === false) {
-        alert("2 à 50 caractères avec seulement des lettres sans caractères spéciaux");}
-      
-      if (this.email === "") {
+      } else if (regexName.test(this.name) !== true) {
+        alert("2 à 50 caractères avec seulement des lettres sans caractères spéciaux");
+
+      } else if (this.email === "") {
         alert("Indiquer l'email");
 
-      } else if (regexEmail.test(this.email) === false) {
-        alert("Indiquer un email valide");}
+      } else if (regexEmail.test(this.email) !== true) {
+        alert("Indiquer un email valide");
 
-      if (this.pass === "") {
+      } else if (this.pass === "") {
         alert("Indiquer le mot de passe");
 
-      } else if (regexPass.test(this.pass) === false) {
+      } else if (regexPass.test(this.pass) !== true) {
         alert("8 à 50 caractères dont une majuscule, une minuscule et un chiffre");
 
-      } else if ((regexName.test(this.name) === true) && regexEmail.test(this.email) === true && regexPass.test(this.pass) === true ) {
-
+      } else {
         fetch("http://localhost:3000/api/users", {
           method: "POST",
           headers: {
@@ -115,15 +114,11 @@ export default {
           },
           body: JSON.stringify(user)
         })
-
         .then(response => {
-
           if(response.ok) {
             return response.json()
-
           } else {
             return response.text()
-
             .then((text) => {
               throw new Error(text)}
             )
