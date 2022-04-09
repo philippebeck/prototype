@@ -27,13 +27,6 @@
       <li>
         <a 
           href="/">
-          <i class="fa-solid fa-house-laptop fa-fw"></i>
-          <strong>Accueil</strong>
-        </a>
-      </li>
-      <li>
-        <a 
-          href="/link">
           <i class="fa-solid fa-link fa-fw"></i>
           <strong>Liens</strong>
         </a>

@@ -1,88 +1,63 @@
 <template>
-  <main>
+  <main id="links">
     <NavElt/>
 
     <header>
-      <a
-        class="button-violet"
-        href="/link">
-        <h1>Links2Code</h1>
-        <p>Des Liens pour Coder !</p>
-
-        <figure class="flex mar-top-md">
-          <i class="fa-brands fa-html5 fa-fw fa-2x"></i>
-          <i class="fa-brands fa-css3 fa-fw fa-2x"></i>
-          <i class="fa-brands fa-js fa-fw fa-2x"></i>
-          <i class="fa-brands fa-php fa-fw fa-2x"></i>
-          <i class="fa-brands fa-python fa-fw fa-2x"></i>
-          <i class="fa-brands fa-git fa-fw fa-2x"></i>
-          <i class="fa-brands fa-usb fa-fw fa-2x"></i>
-        </figure>
-
-      </a>
+      <h1>Links2Code</h1>
+      <p>Des Liens pour Coder !</p>
     </header>
 
-      <section>
-        <h2>Fr</h2>
+    <nav class="sidebar">
+      <input 
+        id="sidebar-class"
+        class="sidebar-check" 
+        type="checkbox">
+      <label 
+        for="sidebar-class"
+        class="sidebar-open" 
+        title="Afficher">
+        <i class="far fa-eye fa-fw"></i>
+      </label>
+      <label 
+        for="sidebar-class"
+        title="Cacher">
+        <i class="far fa-eye-slash fa-fw color-violet"></i>
+      </label>
+      <a 
+        v-for="(cat, index) in cats" 
+        :key="index"
+        :href="`#${cat}`" 
+        :title="cat">
+        <i :class="`fa-brands fa-${cat} fa-fw color-violet`"></i>
+      </a>
+      <a 
+        href="#links" 
+        title="Haut de page">
+        <i class="fas fa-chevron-circle-up fa-fw color-violet"></i>
+      </a>
+    </nav>
 
+    <ul>
+      <li 
+        v-for="(cat, index) in cats" 
+        :key="index"
+        :id="cat"
+        class="container-70tn mar-bot-lg">
+        <i :class="`fa-brands fa-${cat} fa-6x color-blue`"></i>
         <ul class="flex">
-          <li>
+          <li 
+            v-for="(link, i) in linksCat(cat).sort((a, b) => (a.name > b.name) ? 1 : -1)"
+            :key="i">
             <a 
-              class="button-blue button-lg" 
-              href="https://openclassrooms.com/fr"
-              title="Formations Diplômantes & Cours">
-              OpenClassrooms
-            </a>
-          </li>
-          <li>
-            <a 
-              class="button-blue button-lg" 
-              href="https://developer.mozilla.org/fr/docs/Web/Tutorials"
-              title="Tutoriels & Documentations">
-              MDN
-            </a>
-          </li>
-          <li>
-            <a 
-              class="button-blue button-lg" 
-              href="https://grafikart.fr" 
-              title="Formations & Tutoriels">
-              Grafikart
+              class="button-primary" 
+              :href="`https://${link.url}`"
+              :title="link.url">
+              {{ link.name }}
             </a>
           </li>
         </ul>
-      </section>
-
-      <section>
-        <h2>En</h2>
-
-        <ul class="flex">
-          <li>
-            <a 
-              class="button-red button-lg" 
-              href="https://web.dev" 
-              title="Parcours & Articles">
-              Web.dev
-            </a>
-          </li>
-          <li>
-            <a 
-              class="button-red button-lg" 
-              href="https://www.freecodecamp.org" 
-              title="Exercices & Projets">
-              Free Code Camp
-            </a>
-          </li>
-          <li>
-            <a 
-              class="button-red button-lg" 
-              href="https://www.sololearn.com" 
-              title="Cours & Défis">
-              SoloLearn
-            </a>
-          </li>
-        </ul>
-      </section>
+      </li>
+    </ul>
 
     <FootElt/>
   </main>
@@ -92,11 +67,38 @@
 import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
 
+import { getAllLinks } from '@/services/LinkService'
+
 export default {
-  name: "HomeView",
+  name: 'HomeView',
   components: {
     NavElt,
     FootElt
+  },
+  data() {
+    return {
+      links: []
+    }
+  },
+  computed: {
+    cats() {
+      const cats = new Set();
+      this.links.forEach(link => cats.add(link.cat));
+      return Array.from(cats); 
+    }
+  },
+  methods: {
+    linksCat(cat) {
+      return this.links
+        .filter(link => link.cat === cat);
+    }
+  },
+  mounted () {
+    getAllLinks().then(
+      response => {
+        this.links = response;
+      }
+    )
   }
 }
 </script>
