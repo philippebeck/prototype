@@ -6,9 +6,9 @@
       <h1 class="color-violet shatex-blur-sm anima-shrink-this">
         Links2Code
       </h1>
-      <p class="color-gray">
+      <strong class="color-gray">
         Des Liens pour Coder !
-      </p>
+      </strong>
     </header>
 
     <nav class="sidebar">
