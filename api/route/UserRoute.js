@@ -10,7 +10,7 @@ router.get("/", UserCtrl.list);
 router.post("/", UserCtrl.create);
 router.post("/login", UserCtrl.login);
 router.put("/:id", UserCtrl.update);
-router.delete("/:id", auth, UserCtrl.delete);
+router.delete("/:id", UserCtrl.delete);
 router.post("/send", UserCtrl.send);
 
 module.exports = router;

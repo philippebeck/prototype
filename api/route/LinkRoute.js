@@ -10,6 +10,6 @@ const LinkCtrl = require("../controller/LinkCtrl");
 router.get("/", LinkCtrl.list);
 router.post("/", LinkCtrl.create);
 router.put("/:id", LinkCtrl.update);
-router.delete("/:id", auth, LinkCtrl.delete);
+router.delete("/:id", LinkCtrl.delete);
 
 module.exports = router;
