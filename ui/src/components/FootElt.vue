@@ -64,6 +64,13 @@
               Astronomy
             </a>
           </li>
+          <li>
+            <a 
+              href="https://philippebeck.net"
+              title="Portail">
+              Philippe Beck
+            </a>
+          </li>
         </ul>
       </li>
     </ul>
