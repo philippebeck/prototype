@@ -84,12 +84,13 @@
 <script>
 import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
+
 import CreateLink from '@/components/CreateLink.vue'
 import CreateUser from '@/components/CreateUser.vue'
 import ListLinks from '@/components/ListLinks.vue'
 import ListUsers from '@/components/ListUsers.vue'
-import { getAllUsers, createUser } from '@/services/UserService'
-import { getAllLinks, createLink } from '@/services/LinkService'
+
+import { listData, createData } from '@/services/AxiosService'
 
 export default {
   name: 'AdminView',
@@ -115,32 +116,28 @@ export default {
     }
   },
   methods: {
-    getAllLinks() {
-      getAllLinks().then(response => {
-        this.links = response
-      })
-    },
-    getAllUsers() {
-      getAllUsers().then(response => {
-        this.users = response
-      })
-    },
     linkCreate(data) {
-      createLink(data).then(response => {
-        console.log(response);
-        this.getAllLinks();
-      });
+      createData("/api/links", data)
+        .then(response => {
+          console.log(response);
+          this.$router.go();
+        });
     },
     userCreate(data) {
-      createUser(data).then(response => {
-        console.log(response);
-        this.getAllUsers();
-      });
+      createData("/api/users", data)
+        .then(response => {
+          console.log(response);
+          this.$router.go();
+        });
     }
   },
   mounted () {
-    this.getAllLinks();
-    this.getAllUsers();
+    listData("/api/links").then(response => {
+      this.links = response
+    }),
+    listData("/api/users").then(response => {
+      this.users = response
+    })
   }
 }
 </script>

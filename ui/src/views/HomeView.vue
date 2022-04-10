@@ -71,7 +71,7 @@
 import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
 
-import { getAllLinks } from '@/services/LinkService'
+import { listData } from '@/services/AxiosService'
 
 export default {
   name: 'HomeView',
@@ -98,7 +98,7 @@ export default {
     }
   },
   mounted () {
-    getAllLinks().then(
+    listData("/api/links").then(
       response => {
         this.links = response;
       }
