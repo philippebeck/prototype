@@ -117,11 +117,13 @@ export default {
         .then(response => {
           if(response.ok) {
             return response.json()
+            
           } else {
-            return response.text()
-            .then((text) => {
-              throw new Error(text)}
-            )
+            return response
+              .text()
+              .then((text) => {
+                throw new Error(text)}
+              )
           }
         })
         .then(() => {

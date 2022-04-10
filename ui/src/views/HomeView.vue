@@ -6,9 +6,9 @@
       <h1 class="color-violet shatex-blur-sm anima-shrink-this">
         Links2Code
       </h1>
-      <p class="color-gray">
+      <strong class="color-gray">
         Des Liens pour Coder !
-      </p>
+      </strong>
     </header>
 
     <nav class="sidebar">
@@ -71,7 +71,7 @@
 import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
 
-import { getAllLinks } from '@/services/LinkService'
+import { listData } from '@/services/AxiosService'
 
 export default {
   name: 'HomeView',
@@ -98,7 +98,7 @@ export default {
     }
   },
   mounted () {
-    getAllLinks().then(
+    listData("/api/links").then(
       response => {
         this.links = response;
       }

@@ -64,6 +64,13 @@
               Astronomy
             </a>
           </li>
+          <li>
+            <a 
+              href="https://philippebeck.net"
+              title="Portail">
+              Philippe Beck
+            </a>
+          </li>
         </ul>
       </li>
     </ul>
@@ -73,7 +80,7 @@
           class="btn-gh"
           href="https://github.com/philippebeck"
           title="Philippe Beck @GitHub">
-          <i class="fa-brands fa-github fa-2x fa-fw"></i>
+          <i class="fa-brands fa-github fa-fw"></i>
         </a>
       </li>
       <li>
@@ -81,7 +88,7 @@
           class="btn-tw"
           href="https://twitter.com/ph_beck"
           title="Philippe Beck @Twitter">
-          <i class="fa-brands fa-twitter fa-2x fa-fw"></i>
+          <i class="fa-brands fa-twitter fa-fw"></i>
         </a>
       </li>
       <li>
@@ -89,7 +96,7 @@
           class="btn-in"
           href="https://www.linkedin.com/in/philippebeck"
           title="Philippe Beck @LinkedIn">
-          <i class="fa-brands fa-linkedin-in fa-2x fa-fw"></i>
+          <i class="fa-brands fa-linkedin-in fa-fw"></i>
         </a>
       </li>
       <li>
@@ -97,7 +104,7 @@
           class="btn"
           href="https://codepen.io/philippebeck"
           title="Philippe Beck @CodePen">
-          <i class="fa-brands fa-codepen fa-2x fa-fw"></i>
+          <i class="fa-brands fa-codepen fa-fw"></i>
         </a>
       </li>
     </ul>
