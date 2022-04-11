@@ -133,32 +133,21 @@ export default {
       fetch(`http://localhost:3000/api/links/${id}`, {
           method: "PUT",
           headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
+            "Accept": "application/json",
+            "Content-Type": "application/json"
           },
           body: JSON.stringify(link)
         })
-        .then(response => {
-          if(response.ok) {
-            return response.json()
-          } else {
-            return response.text()
-            .then((text) => {
-              throw new Error(text)}
-            )
-          }
-        })
+        .then(response => response.json())
         .then(() => {
-          alert("Lien mis à jour avec succès");
+          alert("Lien mis à jour avec succès !");
+          this.$router.go();
         })
-        .then(() => {
-            this.$router.go()
-        })
-        .catch(alert)
+        .catch(error => console.error(error));
     },
 
     deleteLink(id) {
-      const token = JSON.parse(localStorage.getItem("userToken"))
+      const token = JSON.parse(localStorage.getItem("userToken"));
 
       if (confirm("Confirmez la suppression du lien") === true) {
         fetch(`http://localhost:3000/api/links/${id}`, {
@@ -169,12 +158,10 @@ export default {
         })
         .then(response => response.json())
         .then(() => {
-          alert("Lien supprimé avec succès");
+          alert("Lien supprimé avec succès !");
+          this.$router.go();
         })
-        .then(() => {
-          this.$router.go()
-        })
-        .catch(alert)
+        .catch(error => console.error(error));
       }
     }
   }
