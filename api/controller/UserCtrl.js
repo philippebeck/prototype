@@ -128,10 +128,9 @@ exports.delete = (req, res) => {
  * SEND
  * @param {*} req 
  * @param {*} res 
- * @param {*} next 
  */
-exports.send = (req, res, next) => {
-  const transporter = nodemailer.createTransport({
+exports.send = (req, res) => {
+  let transport = {
     "host": process.env.MAIL_HOST,
     "port": process.env.MAIL_PORT,
     "secure": process.env.MAIL_SECURE,
@@ -139,21 +138,24 @@ exports.send = (req, res, next) => {
       "user": process.env.MAIL_USER,
       "pass": process.env.MAIL_PASS
     }
-  });
+  };
+
+  let transporter = nodemailer.createTransport(transport);
 
   (async function(){
     try {
-      const emailData = { 
-        to: req.body.email, 
+      let message = { 
         from: process.env.MAIL_USER, 
+        to: req.body.email, 
+        bcc: process.env.MAIL_USER,
         subject: req.body.subject, 
-        html: req.body.message 
+        text: req.body.message
       };
 
-      await transporter.sendMail(emailData);
+      await transporter.sendMail(message);
 
     } catch(e){
       console.error(e);
     }
-  })()
+  })();
 };
