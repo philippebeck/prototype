@@ -114,23 +114,12 @@ export default {
           },
           body: JSON.stringify(user)
         })
-        .then(response => {
-          if(response.ok) {
-            return response.json()
-            
-          } else {
-            return response
-              .text()
-              .then((text) => {
-                throw new Error(text)}
-              )
-          }
-        })
+        .then(response => response.json())
         .then(() => {
           alert("Utilisateur créé avec succès !");
           this.$router.go();
         })
-        .catch(alert)
+        .catch(error => console.error(error));
       }
     }
   }

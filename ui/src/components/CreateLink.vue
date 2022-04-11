@@ -124,32 +124,19 @@ export default {
         link.url = this.url.replace(/(^\w+:|^)\/\//, "");
 
         fetch("http://localhost:3000/api/links", {
-            method: "POST",
-            headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-            },
-            body: JSON.stringify(link)
-          })
-          .then(response => {
-            if(response.ok) {
-              return response.json()
-              
-            } else {
-              return response
-                .text()
-                .then((text) => {
-                  throw new Error(text)}
-                )
-            }
-          })
-          .then(() => {
-            alert("Lien créé avec succès !");
-          })
-          .then(() => {
-                this.$router.go();
-            })
-          .catch(alert)
+          method: "POST",
+          headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+          },
+          body: JSON.stringify(link)
+        })
+        .then(response => response.json())
+        .then(() => {
+          alert("Lien créé avec succès !");
+          this.$router.go();
+        })
+        .catch(error => console.error(error));
       }
     }
   }
