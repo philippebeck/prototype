@@ -3,7 +3,7 @@
 const bcrypt          = require("bcrypt");
 const emailValidator  = require("email-validator"); 
 const jwt             = require("jsonwebtoken");
-const nodemailer      = require('nodemailer');
+const nodemailer      = require("nodemailer");
 const passValidator   = require("password-validator");
 
 const UserModel = require("../model/UserModel");
@@ -141,6 +141,7 @@ exports.send = (req, res) => {
   };
 
   let transporter = nodemailer.createTransport(transport);
+  let host        = req.get("host");
 
   (async function(){
     try {
@@ -148,11 +149,13 @@ exports.send = (req, res) => {
         from: process.env.MAIL_USER, 
         to: req.body.email, 
         bcc: process.env.MAIL_USER,
-        subject: req.body.subject, 
+        subject: `Message (${host}) : ${req.body.subject}`, 
         text: req.body.message
       };
 
-      await transporter.sendMail(message);
+      await transporter.sendMail(message, function() {
+        res.status(200).json({ message: "Message envoyé !" });
+      });
 
     } catch(e){
       console.error(e);
