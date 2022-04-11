@@ -124,10 +124,10 @@ export default {
       };
 
       fetch("http://localhost:3000/api/users/send", {
-        method: "post",
+        method: "POST",
         headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
+          "Accept": "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(message)
       })
