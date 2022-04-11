@@ -94,26 +94,16 @@ export default {
           },
           body: JSON.stringify(user)
         })
-        .then(response => {
-          if(response.ok) {
-            return response.json()
-          } else {
-            return response.text()
-            .then((text) => {
-              throw new Error(text)}
-            )
-          }
-        })
+        .then(response => response.json())
         .then(() => {
-          alert("Utilisateur mis à jour avec succès");
+          alert("Utilisateur mis à jour avec succès !");
+          this.$router.go();
         })
-        .then(() => {
-            this.$router.go()
-        })
-        .catch(alert)
+        .catch(error => console.error(error));
     },
+
     deleteUser(id) {
-      const token = JSON.parse(localStorage.getItem("userToken"))
+      const token = JSON.parse(localStorage.getItem("userToken"));
 
       if (confirm("Confirmez la suppression de l'utilisateur") === true) {
         fetch(`http://localhost:3000/api/users/${id}`, {
@@ -124,12 +114,10 @@ export default {
         })
         .then(response => response.json())
         .then(() => {
-          alert("Utilisateur supprimé avec succès");
+          alert("Utilisateur supprimé avec succès !");
+          this.$router.go();
         })
-        .then(() => {
-          this.$router.go()
-        })
-        .catch(alert)
+        .catch(error => console.error(error));
       }
     }
   }

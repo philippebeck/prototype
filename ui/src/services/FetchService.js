@@ -5,7 +5,18 @@
  * @param {string} url
  * @returns
  */
-export async function listData(url) {}
+export async function listData(url) {
+  fetch(`http://localhost:3000${url}`, {
+    method: "GET",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    }
+  })
+  .then(response => response.json())
+  .then((data) => { return data })
+  .catch(error => console.error(error));
+}
 
 /**
  * CREATE DATA
@@ -13,7 +24,25 @@ export async function listData(url) {}
  * @param {array} data 
  * @returns 
  */
-export async function createData(url, data) {}
+export async function createData(url, data) {
+  const token = JSON.parse(localStorage.getItem("userToken"));
+
+  fetch(`http://localhost:3000${url}`, {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(() => {
+    alert(data.name + " created !");
+    this.$router.go();
+  })
+  .catch(error => console.error(error));
+}
 
 /**
  * READ DATA
@@ -21,7 +50,18 @@ export async function createData(url, data) {}
  * @param {string} id 
  * @returns 
  */
-export async function readData(url, id) {}
+export async function readData(url, id) {
+  fetch(`http://localhost:3000${url}/${id}`, {
+    method: "GET",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    }
+  })
+  .then(response => response.json())
+  .then((data) => { return data })
+  .catch(error => console.error(error));
+}
 
 /**
  * UPDATE DATA
@@ -30,7 +70,25 @@ export async function readData(url, id) {}
  * @param {string} id 
  * @returns 
  */
-export async function updateData(url, data, id) {}
+export async function updateData(url, data, id) {
+  const token = JSON.parse(localStorage.getItem("userToken"));
+
+  fetch(`http://localhost:3000${url}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(() => {
+    alert(data.name + " updated !");
+    this.$router.go();
+  })
+  .catch(error => console.error(error));
+}
 
 /**
  * DELETE DATA
@@ -38,4 +96,44 @@ export async function updateData(url, data, id) {}
  * @param {string} id 
  * @returns 
  */
-export async function deleteData(url, id) {}
+export async function deleteData(url, id) {
+  const token = JSON.parse(localStorage.getItem("userToken"));
+
+  fetch(`http://localhost:3000${url}/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "authorization": `Bearer ${token}`
+    }
+  })
+  .then(response => response.json())
+  .then(() => {
+    alert(data.name + " deleted !");
+    this.$router.go();
+  })
+  .catch(error => console.error(error));
+}
+
+/**
+ * SEND DATA
+ * @param {string} url 
+ * @param {array} data 
+ * @returns 
+ */
+export async function sendData(url, data) {
+  fetch(`http://localhost:3000${url}`, {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(() => {
+    alert(data.title + " sended !");
+    this.$router.push("/");
+  })
+  .catch(error => console.error(error));
+}

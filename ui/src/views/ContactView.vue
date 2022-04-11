@@ -114,7 +114,6 @@ export default {
       message: ""
     }
   },
-
   methods: {
     send() {
       let message = {
@@ -125,28 +124,19 @@ export default {
       };
 
       fetch("http://localhost:3000/api/users/send", {
-        method: "post",
+        method: "POST",
         headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
+          "Accept": "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(message)
       })
-      
-      .then(response => {
-        if(response.ok) {
-          return response.json()
-        } else {
-          return response.text()
-          .then((text) => {
-            throw new Error(text)}
-          )
-        }
-      })  
+      .then(response => response.json())
       .then(() => {
-        alert("Votre message a été envoyé !")
+        alert("Message envoyé avec succès !");
+        this.$router.push("/");
       })
-      .catch(alert)
+      .catch(error => console.error(error));
     }
   }
 }
