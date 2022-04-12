@@ -1,7 +1,6 @@
 "use strict";
 /* eslint-disable */
 
-export const HOST   = "http://localhost:3000";
 export const TOKEN  = JSON.parse(localStorage.getItem("userToken"));
 
 export const REGEX_NAME   = /^[a-zA-Z0-9.-_\s]+$/;

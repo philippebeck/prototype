@@ -66,8 +66,8 @@
 </template>
 
 <script>
+import { updateData, deleteData } from '@/services/AxiosService';
 import { checkName, checkEmail } from '@/services/CheckService';
-import { updateData, deleteData } from '@/services/FetchService';
 import { rewriteName, rewriteEmail } from '@/services/RewriteService';
 
 export default {
@@ -97,7 +97,7 @@ export default {
         user.name = rewriteName(user.name);
         user.email = rewriteEmail(user.email);
 
-          updateData("/api/users", user, id)
+          updateData(`/api/users/${id}`, user)
             .then(() => {
               alert(user.name + " mis à jour !");
               this.$router.go();
@@ -107,7 +107,7 @@ export default {
 
     deleteUser(id) {
       if (confirm("Confirmez la suppression de l'utilisateur") === true) {
-        deleteData("/api/users", id)
+        deleteData(`/api/users/${id}`)
           .then(() => {
             alert(id + " supprimé !");
             this.$router.go();

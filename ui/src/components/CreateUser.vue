@@ -64,8 +64,8 @@
 </template>
 
 <script>
+import { createData } from '@/services/AxiosService'
 import { checkName, checkEmail, checkPass } from '@/services/CheckService';
-import { createData } from '@/services/FetchService'
 import { rewriteName, rewriteEmail } from '@/services/RewriteService';
 
 export default {
