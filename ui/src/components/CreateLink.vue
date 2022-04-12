@@ -83,6 +83,10 @@
 </template>
 
 <script>
+import { checkName, checkUrl } from '@/services/CheckService';
+import { createData } from '@/services/FetchService';
+import { rewriteName, rewriteUrl } from '@/services/RewriteService';
+
 export default {
   name: "CreateLink",
   /* eslint-disable */
@@ -102,41 +106,23 @@ export default {
         cat: this.cat
       };
 
-      const regexName = /^[a-zA-Z0-9.-_\s]+$/;
-      const regexUrl  = /(https?|ftp|ssh|mailto):\/\/[a-z0-9\/:%_+.,#?!@&=-]+$/;
+      if (
+        checkName(link.name) === true && 
+        checkUrl(link.url) === true
+        ) {
+        if (link.cat === "") {
+        alert("Choose the category");
 
-      if (this.name === "") {
-        alert("Indiquer le nom");
+        } else {
+          link.name = rewriteName(link.name);
+          link.url = rewriteUrl(link.url);
 
-      } else if (regexName.test(this.name) !== true) {
-        alert("2 à 50 caractères avec seulement des lettres sans caractères spéciaux");
-
-      } else if (this.url === "") {
-        alert("Indiquer l'url");
-
-      } else if (regexUrl.test(this.url) !== true) {
-        alert("Indiquer une url valide");
-
-      } else if (this.cat === "") {
-        alert("Choisissez la catégorie");
-
-      } else {
-        link.url = this.url.replace(/(^\w+:|^)\/\//, "");
-
-        fetch("http://localhost:3000/api/links", {
-          method: "POST",
-          headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-          },
-          body: JSON.stringify(link)
-        })
-        .then(response => response.json())
-        .then(() => {
-          alert("Lien créé avec succès !");
-          this.$router.go();
-        })
-        .catch(error => console.error(error));
+          createData("/api/links", link)
+            .then(() => {
+              alert(link.name + " créé !");
+              this.$router.go();
+            });
+        }
       }
     }
   }

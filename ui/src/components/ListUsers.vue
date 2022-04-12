@@ -66,9 +66,13 @@
 </template>
 
 <script>
+import { checkName, checkEmail } from '@/services/CheckService';
+import { updateData, deleteData } from '@/services/FetchService';
+import { rewriteName, rewriteEmail } from '@/services/RewriteService';
+
 export default {
   name: 'ListUsers',
-/* eslint-disable */
+
   props: ['users'],
 
   methods: {
@@ -86,38 +90,28 @@ export default {
         }
       }
 
-      fetch(`http://localhost:3000/api/users/${id}`, {
-          method: "PUT",
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(user)
-        })
-        .then(response => response.json())
-        .then(() => {
-          alert("Utilisateur mis à jour avec succès !");
-          this.$router.go();
-        })
-        .catch(error => console.error(error));
+      if (
+        checkName(user.name) === true && 
+        checkEmail(user.email) === true
+        ) {
+        user.name = rewriteName(user.name);
+        user.email = rewriteEmail(user.email);
+
+          updateData("/api/users", user, id)
+            .then(() => {
+              alert(user.name + " mis à jour !");
+              this.$router.go();
+            });
+      }
     },
 
     deleteUser(id) {
-      const token = JSON.parse(localStorage.getItem("userToken"));
-
       if (confirm("Confirmez la suppression de l'utilisateur") === true) {
-        fetch(`http://localhost:3000/api/users/${id}`, {
-          method: "DELETE",
-          headers: {
-            'authorization': `Bearer ${token}`
-          }
-        })
-        .then(response => response.json())
-        .then(() => {
-          alert("Utilisateur supprimé avec succès !");
-          this.$router.go();
-        })
-        .catch(error => console.error(error));
+        deleteData("/api/users", id)
+          .then(() => {
+            alert(id + " supprimé !");
+            this.$router.go();
+          });
       }
     }
   }

@@ -97,9 +97,13 @@
 </template>
 
 <script>
+import { checkName, checkUrl } from '@/services/CheckService';
+import { updateData, deleteData } from '@/services/FetchService'
+import { rewriteName, rewriteUrl } from '@/services/RewriteService';
+
 export default {
   name: 'ListLinks',
-  /* eslint-disable */
+
   props: ['links'],
 
   computed: {
@@ -130,38 +134,33 @@ export default {
         }
       }
 
-      fetch(`http://localhost:3000/api/links/${id}`, {
-          method: "PUT",
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(link)
-        })
-        .then(response => response.json())
-        .then(() => {
-          alert("Lien mis à jour avec succès !");
-          this.$router.go();
-        })
-        .catch(error => console.error(error));
+      if (
+        checkName(link.name) === true && 
+        checkUrl(link.url) === true
+        ) {
+        if (link.cat === "") {
+        alert("Choose the category");
+
+        } else {
+          link.name = rewriteName(link.name);
+          link.url = rewriteUrl(link.url);
+
+          updateData("/api/links", link, id)
+            .then(() => {
+              alert(link.name + " mis à jour !");
+              this.$router.go();
+            });
+        }
+      }
     },
 
     deleteLink(id) {
-      const token = JSON.parse(localStorage.getItem("userToken"));
-
       if (confirm("Confirmez la suppression du lien") === true) {
-        fetch(`http://localhost:3000/api/links/${id}`, {
-          method: "DELETE",
-          headers: {
-              'authorization': `Bearer ${token}`
-          }
-        })
-        .then(response => response.json())
-        .then(() => {
-          alert("Lien supprimé avec succès !");
-          this.$router.go();
-        })
-        .catch(error => console.error(error));
+        deleteData("/api/links", id)
+          .then(() => {
+            alert(id + " supprimé !");
+            this.$router.go();
+          });
       }
     }
   }
