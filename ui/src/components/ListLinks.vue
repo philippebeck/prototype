@@ -97,8 +97,8 @@
 </template>
 
 <script>
+import { updateData, deleteData } from '@/services/AxiosService'
 import { checkName, checkUrl } from '@/services/CheckService';
-import { updateData, deleteData } from '@/services/FetchService'
 import { rewriteName, rewriteUrl } from '@/services/RewriteService';
 
 export default {
@@ -145,7 +145,7 @@ export default {
           link.name = rewriteName(link.name);
           link.url = rewriteUrl(link.url);
 
-          updateData("/api/links", link, id)
+          updateData(`/api/links/${id}`, link)
             .then(() => {
               alert(link.name + " mis à jour !");
               this.$router.go();
@@ -156,7 +156,7 @@ export default {
 
     deleteLink(id) {
       if (confirm("Confirmez la suppression du lien") === true) {
-        deleteData("/api/links", id)
+        deleteData(`/api/links/${id}`)
           .then(() => {
             alert(id + " supprimé !");
             this.$router.go();
