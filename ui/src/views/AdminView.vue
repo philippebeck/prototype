@@ -90,7 +90,7 @@ import CreateUser from '@/components/CreateUser.vue'
 import ListLinks from '@/components/ListLinks.vue'
 import ListUsers from '@/components/ListUsers.vue'
 
-import { listData, createData } from '@/services/AxiosService'
+import { readData } from '@/services/AxiosService'
 
 export default {
   name: 'AdminView',
@@ -115,29 +115,15 @@ export default {
       return Array.from(cats); 
     }
   },
-  methods: {
-    linkCreate(data) {
-      createData("/api/links", data)
-        .then(response => {
-          console.log(response);
-          this.$router.go();
-        });
-    },
-    userCreate(data) {
-      createData("/api/users", data)
-        .then(response => {
-          console.log(response);
-          this.$router.go();
-        });
-    }
-  },
   mounted () {
-    listData("/api/links").then(response => {
-      this.links = response
-    }),
-    listData("/api/users").then(response => {
-      this.users = response
-    })
+    readData("/api/links")
+      .then(response => {
+        this.links = response
+      }),
+    readData("/api/users")
+      .then(response => {
+        this.users = response
+      })
   }
 }
 </script>
