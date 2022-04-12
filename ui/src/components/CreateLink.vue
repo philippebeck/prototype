@@ -85,6 +85,7 @@
 <script>
 import { checkName, checkUrl } from '@/services/CheckService';
 import { createData } from '@/services/FetchService';
+import { rewriteName, rewriteUrl } from '@/services/RewriteService';
 
 export default {
   name: "CreateLink",
@@ -113,7 +114,8 @@ export default {
         alert("Choose the category");
 
         } else {
-          link.url = this.url.replace(/(^\w+:|^)\/\//, "");
+          link.name = rewriteName(link.name);
+          link.url = rewriteUrl(link.url);
 
           createData("/api/links", link)
             .then(() => {
