@@ -66,6 +66,7 @@
 <script>
 import { checkName, checkEmail, checkPass } from '@/services/CheckService';
 import { createData } from '@/services/FetchService'
+import { rewriteName, rewriteEmail } from '@/services/RewriteService';
 
 export default {
   name: "CreateUser",
@@ -91,6 +92,9 @@ export default {
         checkEmail(user.email) === true && 
         checkPass(user.pass) === true
         ) {
+        user.name = rewriteName(user.name);
+        user.email = rewriteEmail(user.email);
+
         createData("/api/users", user)
           .then(() => {
             alert(user.name + " créé !");
