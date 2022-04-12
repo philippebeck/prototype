@@ -8,7 +8,7 @@ import { HOST, TOKEN } from "../config/constants";
  * @returns
  */
 export async function listData(url) {
-  fetch(`${HOST}${url}`, {
+  await fetch(HOST + url, {
     method: "GET",
     headers: {
       "Accept": "application/json",
@@ -27,7 +27,7 @@ export async function listData(url) {
  */
 export async function createData(url, data) {
 
-  fetch(`${HOST}${url}`, {
+  fetch(HOST + url, {
     method: "POST",
     headers: {
       "Accept": "application/json",
@@ -105,7 +105,7 @@ export async function deleteData(url, id) {
  * @returns 
  */
 export async function sendData(url, data) {
-  fetch(`${HOST}${url}`, {
+  fetch(HOST + url, {
     method: "POST",
     headers: {
       "Accept": "application/json",
