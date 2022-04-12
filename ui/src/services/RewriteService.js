@@ -7,9 +7,8 @@
  * @returns 
  */
 export function rewriteName(name) {
-  let rewriteName = name.trim();
 
-  return rewriteName;
+  return name.trim().charAt(0).toUpperCase() + name.trim().slice(1).toLowerCase();
 }
 
 /**
@@ -18,7 +17,16 @@ export function rewriteName(name) {
  * @returns
  */
 export function rewriteUrl(url) {
-  let rewriteUrl = url.trim().replace(/(^\w+:|^)\/\//, "");
 
-  return rewriteUrl;
+  return url.trim().replace(/(^\w+:|^)\/\//, "");
+}
+
+/**
+ * REWRITE EMAIL
+ * @param {string} email
+ * @returns
+ */
+export function rewriteEmail(email) {
+
+  return email.trim().toLowerCase();
 }
