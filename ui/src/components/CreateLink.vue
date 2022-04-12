@@ -83,8 +83,8 @@
 </template>
 
 <script>
+import { createData } from '@/services/AxiosService';
 import { checkName, checkUrl } from '@/services/CheckService';
-import { createData } from '@/services/FetchService';
 import { rewriteName, rewriteUrl } from '@/services/RewriteService';
 
 export default {
