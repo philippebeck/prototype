@@ -97,7 +97,9 @@
 </template>
 
 <script>
+import { checkName, checkUrl } from '@/services/CheckService';
 import { updateData, deleteData } from '@/services/FetchService'
+import { rewriteName, rewriteUrl } from '@/services/RewriteService';
 
 export default {
   name: 'ListLinks',
@@ -132,11 +134,24 @@ export default {
         }
       }
 
-      updateData("/api/links", link, id)
-        .then(() => {
-          alert(link.name + " mis à jour !");
-          this.$router.go();
-        });
+      if (
+        checkName(link.name) === true && 
+        checkUrl(link.url) === true
+        ) {
+        if (link.cat === "") {
+        alert("Choose the category");
+
+        } else {
+          link.name = rewriteName(link.name);
+          link.url = rewriteUrl(link.url);
+
+          updateData("/api/links", link, id)
+            .then(() => {
+              alert(link.name + " mis à jour !");
+              this.$router.go();
+            });
+        }
+      }
     },
 
     deleteLink(id) {

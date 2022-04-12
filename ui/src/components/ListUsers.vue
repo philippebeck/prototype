@@ -66,7 +66,9 @@
 </template>
 
 <script>
-import { updateData, deleteData } from '@/services/FetchService'
+import { checkName, checkEmail, checkPass } from '@/services/CheckService';
+import { updateData, deleteData } from '@/services/FetchService';
+import { rewriteName, rewriteEmail } from '@/services/RewriteService';
 
 export default {
   name: 'ListUsers',
@@ -88,11 +90,20 @@ export default {
         }
       }
 
-      updateData("/api/users", user, id)
-        .then(() => {
-          alert(user.name + " mis à jour !");
-          this.$router.go();
-        });
+      if (
+        checkName(user.name) === true && 
+        checkEmail(user.email) === true && 
+        checkPass(user.pass) === true
+        ) {
+        user.name = rewriteName(user.name);
+        user.email = rewriteEmail(user.email);
+
+          updateData("/api/users", user, id)
+            .then(() => {
+              alert(user.name + " mis à jour !");
+              this.$router.go();
+            });
+      }
     },
 
     deleteUser(id) {
