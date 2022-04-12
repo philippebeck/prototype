@@ -1,11 +1,12 @@
 "use strict";
+/* eslint-disable */
 
 /**
  * CHECK NAME
  * @param {string} name
  * @returns
  */
-export async function checkName(name) {
+export function checkName(name) {
   const regexName = /^[a-zA-Z0-9.-_\s]+$/;
 
   if (name === "") {
@@ -24,7 +25,7 @@ export async function checkName(name) {
  * @param {string} url
  * @returns
  */
-export async function checkUrl(url) {
+export function checkUrl(url) {
   const regexUrl  = /(https?|ftp|ssh|mailto):\/\/[a-z0-9\/:%_+.,#?!@&=-]+$/;
 
   if (url === "") {
@@ -43,7 +44,7 @@ export async function checkUrl(url) {
  * @param {string} email
  * @returns
  */
-export async function checkEmail(email) {
+export function checkEmail(email) {
   const regexEmail  = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
 
   if (email === "") {
@@ -62,7 +63,7 @@ export async function checkEmail(email) {
  * @param {string} pass
  * @returns
  */
-export async function checkPass(pass) {
+export function checkPass(pass) {
   const regexPass   = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,50}$/;
 
   if (pass === "") {
