@@ -99,6 +99,8 @@
 <script>
 import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
+import { createData } from '@/services/AxiosService';
+
 
 export default {
   name: "ContactView",
@@ -123,20 +125,11 @@ export default {
         message: this.message
       };
 
-      fetch("http://localhost:3000/api/users/send", {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(message)
-      })
-      .then(response => response.json())
-      .then(() => {
-        alert("Message envoyé avec succès !");
-        this.$router.push("/");
-      })
-      .catch(error => console.error(error));
+      createData("/api/users/send", message)
+        .then(() => {
+          alert(message.subject + " envoyé !");
+          this.$router.push("/");
+        });
     }
   }
 }
