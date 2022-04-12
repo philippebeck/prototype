@@ -13,7 +13,6 @@ export async function listData(url) {
       "Content-Type": "application/json"
     }
   })
-  .then(response => response.json())
   .then((data) => { return data })
   .catch(error => console.error(error));
 }
@@ -36,11 +35,7 @@ export async function createData(url, data) {
     },
     body: JSON.stringify(data)
   })
-  .then(response => response.json())
-  .then(() => {
-    alert(data.name + " created !");
-    this.$router.go();
-  })
+  .then((data) => { return data })
   .catch(error => console.error(error));
 }
 
@@ -58,7 +53,6 @@ export async function readData(url, id) {
       "Content-Type": "application/json"
     }
   })
-  .then(response => response.json())
   .then((data) => { return data })
   .catch(error => console.error(error));
 }
@@ -82,11 +76,7 @@ export async function updateData(url, data, id) {
     },
     body: JSON.stringify(data)
   })
-  .then(response => response.json())
-  .then(() => {
-    alert(data.name + " updated !");
-    this.$router.go();
-  })
+  .then((data) => { return data })
   .catch(error => console.error(error));
 }
 
@@ -107,11 +97,7 @@ export async function deleteData(url, id) {
       "authorization": `Bearer ${token}`
     }
   })
-  .then(response => response.json())
-  .then(() => {
-    alert(data.name + " deleted !");
-    this.$router.go();
-  })
+  .then((data) => { return data })
   .catch(error => console.error(error));
 }
 
@@ -130,10 +116,6 @@ export async function sendData(url, data) {
     },
     body: JSON.stringify(data)
   })
-  .then(response => response.json())
-  .then(() => {
-    alert(data.title + " sended !");
-    this.$router.push("/");
-  })
+  .then((data) => { return data })
   .catch(error => console.error(error));
 }
