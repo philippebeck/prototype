@@ -110,7 +110,7 @@ export default {
       } else {
         createData("/api/users", user)
           .then(() => {
-            alert(user.name + " created !");
+            alert(user.name + " créé !");
             this.$router.go();
           });
       }

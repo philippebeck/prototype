@@ -134,7 +134,7 @@ export default {
 
       updateData("/api/links", link, id)
         .then(() => {
-          alert(link.name + " updated !");
+          alert(link.name + " mis à jour !");
           this.$router.go();
         });
     },
@@ -143,7 +143,7 @@ export default {
       if (confirm("Confirmez la suppression du lien") === true) {
         deleteData("/api/links", id)
           .then(() => {
-            alert(id + " deleted !");
+            alert(id + " supprimé !");
             this.$router.go();
           });
       }

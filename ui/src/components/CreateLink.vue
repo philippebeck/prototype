@@ -127,7 +127,7 @@ export default {
 
         createData("/api/links", link)
           .then(() => {
-            alert(link.name + " created !");
+            alert(link.name + " créé !");
             this.$router.go();
           });
       }

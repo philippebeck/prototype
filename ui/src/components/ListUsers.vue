@@ -90,7 +90,7 @@ export default {
 
       updateData("/api/users", user, id)
         .then(() => {
-          alert(user.name + " updated !");
+          alert(user.name + " mis à jour !");
           this.$router.go();
         });
     },
@@ -99,7 +99,7 @@ export default {
       if (confirm("Confirmez la suppression de l'utilisateur") === true) {
         deleteData("/api/users", id)
           .then(() => {
-            alert(id + " deleted !");
+            alert(id + " supprimé !");
             this.$router.go();
           });
       }
