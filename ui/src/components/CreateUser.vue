@@ -64,6 +64,8 @@
 </template>
 
 <script>
+import { createData } from '@/services/FetchService'
+
 export default {
   name: "CreateUser",
 
@@ -106,20 +108,11 @@ export default {
         alert("8 à 50 caractères dont une majuscule, une minuscule et un chiffre");
 
       } else {
-        fetch("http://localhost:3000/api/users", {
-          method: "POST",
-          headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-          },
-          body: JSON.stringify(user)
-        })
-        .then(response => response.json())
-        .then(() => {
-          alert("Utilisateur créé avec succès !");
-          this.$router.go();
-        })
-        .catch(error => console.error(error));
+        createData("/api/users", user)
+          .then(() => {
+            alert(user.name + " created !");
+            this.$router.go();
+          });
       }
     }
   }

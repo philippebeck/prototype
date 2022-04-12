@@ -83,6 +83,8 @@
 </template>
 
 <script>
+import { createData } from '@/services/FetchService'
+
 export default {
   name: "CreateLink",
   /* eslint-disable */
@@ -123,20 +125,11 @@ export default {
       } else {
         link.url = this.url.replace(/(^\w+:|^)\/\//, "");
 
-        fetch("http://localhost:3000/api/links", {
-          method: "POST",
-          headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-          },
-          body: JSON.stringify(link)
-        })
-        .then(response => response.json())
-        .then(() => {
-          alert("Lien créé avec succès !");
-          this.$router.go();
-        })
-        .catch(error => console.error(error));
+        createData("/api/links", link)
+          .then(() => {
+            alert(link.name + " created !");
+            this.$router.go();
+          });
       }
     }
   }
