@@ -1,5 +1,6 @@
 "use strict";
-/* eslint-disable */
+
+import { REWRITE_URL } from "../config/constants";
 
 /**
  * REWRITE NAME
@@ -18,7 +19,7 @@ export function rewriteName(name) {
  */
 export function rewriteUrl(url) {
 
-  return url.trim().replace(/(^\w+:|^)\/\//, "");
+  return url.trim().replace(REWRITE_URL, "");
 }
 
 /**

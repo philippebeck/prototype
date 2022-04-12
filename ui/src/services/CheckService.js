@@ -1,5 +1,6 @@
 "use strict";
-/* eslint-disable */
+
+import { REGEX_NAME, REGEX_URL, REGEX_EMAIL, REGEX_PASS } from "../config/constants";
 
 /**
  * CHECK NAME
@@ -7,12 +8,10 @@
  * @returns
  */
 export function checkName(name) {
-  const regexName = /^[a-zA-Z0-9.-_\s]+$/;
-
   if (name === "") {
     alert("Indicate the name");
 
-  } else if (regexName.test(name) !== true) {
+  } else if (REGEX_NAME.test(name) !== true) {
     alert("2 to 50 characters with only letters without special characters");
 
   } else {
@@ -26,12 +25,10 @@ export function checkName(name) {
  * @returns
  */
 export function checkUrl(url) {
-  const regexUrl  = /(https?|ftp|ssh|mailto):\/\/[a-z0-9\/:%_+.,#?!@&=-]+$/;
-
   if (url === "") {
     alert("Indicate the url");
 
-  } else if (regexUrl.test(url) !== true) {
+  } else if (REGEX_URL.test(url) !== true) {
     alert("Indicate a valid url");
 
   } else {
@@ -45,12 +42,10 @@ export function checkUrl(url) {
  * @returns
  */
 export function checkEmail(email) {
-  const regexEmail  = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
-
   if (email === "") {
     alert("Indicate the email");
 
-  } else if (regexEmail.test(email) !== true) {
+  } else if (REGEX_EMAIL.test(email) !== true) {
     alert("Indicate a valid email");
 
   } else {
@@ -64,12 +59,10 @@ export function checkEmail(email) {
  * @returns
  */
 export function checkPass(pass) {
-  const regexPass   = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,50}$/;
-
   if (pass === "") {
     alert("Indicate the password");
 
-  } else if (regexPass.test(pass) !== true) {
+  } else if (REGEX_PASS.test(pass) !== true) {
     alert("8 to 50 characters including an uppercase letter, a lowercase letter and a number");
 
   } else {

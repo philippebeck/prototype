@@ -1,12 +1,14 @@
 "mode strict";
 
+import { HOST, TOKEN } from "../config/constants";
+
 /**
  * LIST DATA
  * @param {string} url
  * @returns
  */
 export async function listData(url) {
-  fetch(`http://localhost:3000${url}`, {
+  fetch(`${HOST}${url}`, {
     method: "GET",
     headers: {
       "Accept": "application/json",
@@ -24,14 +26,13 @@ export async function listData(url) {
  * @returns 
  */
 export async function createData(url, data) {
-  const token = JSON.parse(localStorage.getItem("userToken"));
 
-  fetch(`http://localhost:3000${url}`, {
+  fetch(`${HOST}${url}`, {
     method: "POST",
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      "authorization": `Bearer ${token}`
+      "authorization": `Bearer ${TOKEN}`
     },
     body: JSON.stringify(data)
   })
@@ -46,7 +47,7 @@ export async function createData(url, data) {
  * @returns 
  */
 export async function readData(url, id) {
-  fetch(`http://localhost:3000${url}/${id}`, {
+  fetch(`${HOST}${url}/${id}`, {
     method: "GET",
     headers: {
       "Accept": "application/json",
@@ -65,14 +66,12 @@ export async function readData(url, id) {
  * @returns 
  */
 export async function updateData(url, data, id) {
-  const token = JSON.parse(localStorage.getItem("userToken"));
-
-  fetch(`http://localhost:3000${url}/${id}`, {
+  fetch(`${HOST}${url}/${id}`, {
     method: "PUT",
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      "authorization": `Bearer ${token}`
+      "authorization": `Bearer ${TOKEN}`
     },
     body: JSON.stringify(data)
   })
@@ -87,14 +86,12 @@ export async function updateData(url, data, id) {
  * @returns 
  */
 export async function deleteData(url, id) {
-  const token = JSON.parse(localStorage.getItem("userToken"));
-
-  fetch(`http://localhost:3000${url}/${id}`, {
+  fetch(`${HOST}${url}/${id}`, {
     method: "DELETE",
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      "authorization": `Bearer ${token}`
+      "authorization": `Bearer ${TOKEN}`
     }
   })
   .then((data) => { return data })
@@ -108,7 +105,7 @@ export async function deleteData(url, id) {
  * @returns 
  */
 export async function sendData(url, data) {
-  fetch(`http://localhost:3000${url}`, {
+  fetch(`${HOST}${url}`, {
     method: "POST",
     headers: {
       "Accept": "application/json",
