@@ -83,7 +83,8 @@
 </template>
 
 <script>
-import { createData } from '@/services/FetchService'
+import { checkName, checkUrl } from '@/services/CheckService';
+import { createData } from '@/services/FetchService';
 
 export default {
   name: "CreateLink",
@@ -104,32 +105,22 @@ export default {
         cat: this.cat
       };
 
-      const regexName = /^[a-zA-Z0-9.-_\s]+$/;
-      const regexUrl  = /(https?|ftp|ssh|mailto):\/\/[a-z0-9\/:%_+.,#?!@&=-]+$/;
+      if (
+        checkName(link.name) === true && 
+        checkUrl(link.url) === true
+        ) {
+        if (link.cat === "") {
+        alert("Choose the category");
 
-      if (this.name === "") {
-        alert("Indiquer le nom");
+        } else {
+          link.url = this.url.replace(/(^\w+:|^)\/\//, "");
 
-      } else if (regexName.test(this.name) !== true) {
-        alert("2 à 50 caractères avec seulement des lettres sans caractères spéciaux");
-
-      } else if (this.url === "") {
-        alert("Indiquer l'url");
-
-      } else if (regexUrl.test(this.url) !== true) {
-        alert("Indiquer une url valide");
-
-      } else if (this.cat === "") {
-        alert("Choisissez la catégorie");
-
-      } else {
-        link.url = this.url.replace(/(^\w+:|^)\/\//, "");
-
-        createData("/api/links", link)
-          .then(() => {
-            alert(link.name + " créé !");
-            this.$router.go();
-          });
+          createData("/api/links", link)
+            .then(() => {
+              alert(link.name + " créé !");
+              this.$router.go();
+            });
+        }
       }
     }
   }
