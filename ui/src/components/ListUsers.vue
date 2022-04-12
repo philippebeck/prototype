@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { checkName, checkEmail, checkPass } from '@/services/CheckService';
+import { checkName, checkEmail } from '@/services/CheckService';
 import { updateData, deleteData } from '@/services/FetchService';
 import { rewriteName, rewriteEmail } from '@/services/RewriteService';
 
@@ -92,8 +92,7 @@ export default {
 
       if (
         checkName(user.name) === true && 
-        checkEmail(user.email) === true && 
-        checkPass(user.pass) === true
+        checkEmail(user.email) === true
         ) {
         user.name = rewriteName(user.name);
         user.email = rewriteEmail(user.email);
