@@ -8,7 +8,7 @@
  */
 export function rewriteName(name) {
 
-  return name.trim().charAt(0).toUpperCase() + name.trim().slice(1).toLowerCase();
+  return name.trim().charAt(0).toUpperCase() + name.trim().slice(1);
 }
 
 /**
