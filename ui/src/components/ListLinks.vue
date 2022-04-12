@@ -97,9 +97,11 @@
 </template>
 
 <script>
+import { updateData, deleteData } from '@/services/FetchService'
+
 export default {
   name: 'ListLinks',
-  /* eslint-disable */
+
   props: ['links'],
 
   computed: {
@@ -130,38 +132,20 @@ export default {
         }
       }
 
-      fetch(`http://localhost:3000/api/links/${id}`, {
-          method: "PUT",
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(link)
-        })
-        .then(response => response.json())
+      updateData("/api/links", link, id)
         .then(() => {
-          alert("Lien mis à jour avec succès !");
+          alert(link.name + " updated !");
           this.$router.go();
-        })
-        .catch(error => console.error(error));
+        });
     },
 
     deleteLink(id) {
-      const token = JSON.parse(localStorage.getItem("userToken"));
-
       if (confirm("Confirmez la suppression du lien") === true) {
-        fetch(`http://localhost:3000/api/links/${id}`, {
-          method: "DELETE",
-          headers: {
-              'authorization': `Bearer ${token}`
-          }
-        })
-        .then(response => response.json())
-        .then(() => {
-          alert("Lien supprimé avec succès !");
-          this.$router.go();
-        })
-        .catch(error => console.error(error));
+        deleteData("/api/links", id)
+          .then(() => {
+            alert(id + " deleted !");
+            this.$router.go();
+          });
       }
     }
   }

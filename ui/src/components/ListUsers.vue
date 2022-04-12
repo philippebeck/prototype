@@ -66,9 +66,11 @@
 </template>
 
 <script>
+import { updateData, deleteData } from '@/services/FetchService'
+
 export default {
   name: 'ListUsers',
-/* eslint-disable */
+
   props: ['users'],
 
   methods: {
@@ -86,38 +88,20 @@ export default {
         }
       }
 
-      fetch(`http://localhost:3000/api/users/${id}`, {
-          method: "PUT",
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(user)
-        })
-        .then(response => response.json())
+      updateData("/api/users", user, id)
         .then(() => {
-          alert("Utilisateur mis à jour avec succès !");
+          alert(user.name + " updated !");
           this.$router.go();
-        })
-        .catch(error => console.error(error));
+        });
     },
 
     deleteUser(id) {
-      const token = JSON.parse(localStorage.getItem("userToken"));
-
       if (confirm("Confirmez la suppression de l'utilisateur") === true) {
-        fetch(`http://localhost:3000/api/users/${id}`, {
-          method: "DELETE",
-          headers: {
-            'authorization': `Bearer ${token}`
-          }
-        })
-        .then(response => response.json())
-        .then(() => {
-          alert("Utilisateur supprimé avec succès !");
-          this.$router.go();
-        })
-        .catch(error => console.error(error));
+        deleteData("/api/users", id)
+          .then(() => {
+            alert(id + " deleted !");
+            this.$router.go();
+          });
       }
     }
   }
