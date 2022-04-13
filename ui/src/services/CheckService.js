@@ -1,6 +1,19 @@
 "use strict";
 
-import { REGEX_NAME, REGEX_URL, REGEX_EMAIL, REGEX_PASS } from "../config/constants";
+import { 
+  ALERT_NAME, 
+  ALERT_URL, 
+  ALERT_EMAIL, 
+  ALERT_PASS ,
+  ALERT_REGEX_NAME, 
+  ALERT_REGEX_URL, 
+  ALERT_REGEX_EMAIL, 
+  ALERT_REGEX_PASS ,
+  REGEX_NAME, 
+  REGEX_URL, 
+  REGEX_EMAIL, 
+  REGEX_PASS
+} from "../config/constants";
 
 /**
  * CHECK NAME
@@ -9,10 +22,10 @@ import { REGEX_NAME, REGEX_URL, REGEX_EMAIL, REGEX_PASS } from "../config/consta
  */
 export function checkName(name) {
   if (name === "") {
-    alert("Indicate the name");
+    alert(ALERT_NAME);
 
   } else if (REGEX_NAME.test(name) !== true) {
-    alert("2 to 50 characters with only letters without special characters");
+    alert(ALERT_REGEX_NAME);
 
   } else {
     return true;
@@ -26,10 +39,10 @@ export function checkName(name) {
  */
 export function checkUrl(url) {
   if (url === "") {
-    alert("Indicate the url");
+    alert(ALERT_URL);
 
   } else if (REGEX_URL.test(url) !== true) {
-    alert("Indicate a valid url");
+    alert(ALERT_REGEX_URL);
 
   } else {
     return true;
@@ -43,10 +56,10 @@ export function checkUrl(url) {
  */
 export function checkEmail(email) {
   if (email === "") {
-    alert("Indicate the email");
+    alert(ALERT_EMAIL);
 
   } else if (REGEX_EMAIL.test(email) !== true) {
-    alert("Indicate a valid email");
+    alert(ALERT_REGEX_EMAIL);
 
   } else {
     return true;
@@ -60,10 +73,10 @@ export function checkEmail(email) {
  */
 export function checkPass(pass) {
   if (pass === "") {
-    alert("Indicate the password");
+    alert(ALERT_PASS);
 
   } else if (REGEX_PASS.test(pass) !== true) {
-    alert("8 to 50 characters including an uppercase letter, a lowercase letter and a number");
+    alert(ALERT_REGEX_PASS);
 
   } else {
     return true;
