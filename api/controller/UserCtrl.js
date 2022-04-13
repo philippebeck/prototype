@@ -104,11 +104,27 @@ exports.login = (req, res) => {
  * @param {object} res 
  */
 exports.update = (req, res) => {
-  let user = req.body;
+  if (!emailValidator.validate(req.body.email)) {
+    return res.status(401).json({ message: "Email invalide !" });
+  }
 
-  UserModel
-    .updateOne({ _id: req.params.id }, { ...user, _id: req.params.id })
-    .then(() => res.status(200).json({ message: "Utilisateur modifié !" }))
+  if (!schema.validate(req.body.pass)) {
+    return res.status(401).json({ message: "Mot de passe invalide !" });
+  };
+
+  bcrypt
+    .hash(req.body.pass, 10)
+    .then(hash => {
+      let user = {
+        name: req.body.name,
+        email: req.body.email,
+        pass: hash
+      };
+
+      UserModel
+        .updateOne({ _id: req.params.id }, { ...user, _id: req.params.id })
+        .then(() => res.status(200).json({ message: "Utilisateur modifié !" }))
+    })
     .catch(error => res.status(400).json({ error }));
 };
 
