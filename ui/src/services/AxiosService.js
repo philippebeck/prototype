@@ -1,6 +1,11 @@
 "mode strict";
 
-const axios = require('axios');
+import { API_URL, TOKEN } from "../config/constants";
+
+const axios = require("axios");
+
+axios.defaults.baseURL = API_URL;
+axios.defaults.headers.common["Authorization"] = TOKEN;
 
 /**
  * CREATE DATA
