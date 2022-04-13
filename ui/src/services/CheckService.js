@@ -20,6 +20,23 @@ export function checkName(name) {
 }
 
 /**
+ * CHECK TITLE
+ * @param {string} title
+ * @returns
+ */
+export function checkTitle(title) {
+  if (title === "") {
+    alert(constants.ALERT_TITLE);
+
+  } else if (constants.REGEX_TITLE.test(title) !== true) {
+    alert(constants.ALERT_REGEX_TITLE);
+
+  } else {
+    return true;
+  }
+}
+
+/**
  * CHECK URL
  * @param {string} url
  * @returns
@@ -64,23 +81,6 @@ export function checkPass(pass) {
 
   } else if (constants.REGEX_PASS.test(pass) !== true) {
     alert(constants.ALERT_REGEX_PASS);
-
-  } else {
-    return true;
-  }
-}
-
-/**
- * CHECK TITLE
- * @param {string} title
- * @returns
- */
- export function checkTitle(title) {
-  if (title === "") {
-    alert(constants.ALERT_TITLE);
-
-  } else if (constants.REGEX_TITLE.test(title) !== true) {
-    alert(constants.ALERT_REGEX_TITLE);
 
   } else {
     return true;
