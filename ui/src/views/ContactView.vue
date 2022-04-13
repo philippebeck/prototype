@@ -20,7 +20,7 @@
               name="name" 
               v-model="name" 
               type="text" 
-              placeholder="Insérer votre Nom"
+              placeholder="Indiquer votre Nom"
               maxlength="20" 
               required>
           </li>
@@ -36,7 +36,7 @@
               name="email" 
               v-model="email" 
               type="email" 
-              placeholder="Insérer votre Email"
+              placeholder="Indiquer votre Email"
               maxlength="50" 
               required>
           </li>
@@ -52,7 +52,7 @@
               name="subject" 
               v-model="subject" 
               type="text" 
-              placeholder="Insérer votre Sujet"
+              placeholder="Indiquer votre Sujet"
               maxlength="50" 
               required>
           </li>
@@ -67,7 +67,7 @@
               id="message" 
               name="message" 
               v-model="message" 
-              placeholder="Insérer votre Message" 
+              placeholder="Indiquer votre Message" 
               rows="5"
               cols="20"></textarea>
           </li>
