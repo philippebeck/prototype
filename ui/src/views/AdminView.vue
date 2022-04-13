@@ -112,14 +112,21 @@ export default {
     cats() {
       const cats = new Set();
       this.links.forEach(link => cats.add(link.cat));
+
       return Array.from(cats); 
     }
   },
   mounted () {
+    if (!localStorage.userId) {
+      alert("Go back Home !");
+      this.$router.push("/");
+    }
+
     readData("/api/links")
       .then(response => {
         this.links = response
-      }),
+      })
+
     readData("/api/users")
       .then(response => {
         this.users = response
