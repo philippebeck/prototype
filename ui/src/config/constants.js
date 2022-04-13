@@ -13,9 +13,10 @@ export const ALERT_REGEX_URL    = "Indicate a valid url";
 export const ALERT_REGEX_EMAIL  = "Indicate a valid email";
 export const ALERT_REGEX_PASS   = "8 to 50 characters including an uppercase, a lowercase & a number";
 
-export const API_URL  = "http://localhost:3000";
-export const TOKEN    = JSON.parse(localStorage.getItem("userToken"));
-export const USER_ID  = JSON.parse(localStorage.getItem("userId"));
+export const API_URL      = "http://localhost:3000";
+export const CONTENT_TYPE = "application/json"; 
+export const TOKEN        = JSON.parse(localStorage.getItem("userToken"));
+export const USER_ID      = JSON.parse(localStorage.getItem("userId"));
 
 export const REGEX_NAME   = /^[A-zÀ-ÿ].{1,30}$/;
 export const REGEX_TITLE  = /^[A-zÀ-ÿ].{1,30}$/;

@@ -1,11 +1,12 @@
 "mode strict";
 
-import { API_URL, TOKEN } from "../config/constants";
+import { API_URL, CONTENT_TYPE, TOKEN } from "../config/constants";
 
 const axios = require("axios");
 
 axios.defaults.baseURL = API_URL;
 axios.defaults.headers.common["Authorization"] = TOKEN;
+axios.defaults.headers.post["Content-Type"] = CONTENT_TYPE;
 
 /**
  * CREATE DATA
