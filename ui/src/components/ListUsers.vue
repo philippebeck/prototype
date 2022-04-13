@@ -98,12 +98,12 @@ export default {
       }
 
       if (
-        checkName(user.name) === true && 
-        checkEmail(user.email) === true &&
-        checkPass(user.pass) === true
+        checkName(user.name)    === true && 
+        checkEmail(user.email)  === true &&
+        checkPass(user.pass)    === true
         ) {
-        user.name = rewriteName(user.name);
-        user.email = rewriteEmail(user.email);
+        user.name   = rewriteName(user.name);
+        user.email  = rewriteEmail(user.email);
 
           updateData(`/api/users/${id}`, user)
             .then(() => {
