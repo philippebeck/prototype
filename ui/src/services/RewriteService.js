@@ -19,7 +19,7 @@ export function rewriteName(name) {
  */
 export function rewriteUrl(url) {
 
-  return url.trim().replace(REWRITE_URL, "");
+  return url.trim().toLowerCase().replace(REWRITE_URL, "");
 }
 
 /**
