@@ -67,6 +67,7 @@
 <script>
 import NavElt from "@/components/NavElt.vue";
 import FootElt from "@/components/FootElt.vue";
+import { createData } from '@/services/AxiosService';
 
 export default {
   name: "LoginView",
@@ -84,44 +85,21 @@ export default {
 
   methods: {
     login() {
-        
-      let data = {
+      let auth = {
           email: this.email,
           pass: this.pass
       };
 
-      fetch("http://localhost:3000/api/users/login", {
-          method: "POST",
-          headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
-      })
-      
-      .then( response => {
+      createData("/api/users/login", auth)
+        .then((res) => {
+          let token   = JSON.stringify(res.token);
+          let userId  = JSON.stringify(res.userId);
 
-        if(response.ok) {
-          return response.json()
+          localStorage.setItem("userToken", token);
+          localStorage.setItem("userId", userId);
 
-        } else {
-          return response.text()
-          .then((text) => {
-            throw new Error(text)}
-          )
-        }
-      })  
-        
-      .then((value) => {
-        const token   = JSON.stringify(value.token);
-        const userId  = JSON.stringify(value.userId);
-
-        localStorage.setItem("userToken", token);
-        localStorage.setItem("userId", userId);
-
-        this.$router.push("/admin");
-      })
-      .catch(alert)
+          this.$router.push("/admin");
+        });
     }
   }
 }

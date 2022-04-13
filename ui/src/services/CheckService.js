@@ -1,6 +1,6 @@
 "use strict";
 
-import { REGEX_NAME, REGEX_URL, REGEX_EMAIL, REGEX_PASS } from "../config/constants";
+import * as constants from "../config/constants";
 
 /**
  * CHECK NAME
@@ -9,10 +9,27 @@ import { REGEX_NAME, REGEX_URL, REGEX_EMAIL, REGEX_PASS } from "../config/consta
  */
 export function checkName(name) {
   if (name === "") {
-    alert("Indicate the name");
+    alert(constants.ALERT_NAME);
 
-  } else if (REGEX_NAME.test(name) !== true) {
-    alert("2 to 50 characters with only letters without special characters");
+  } else if (constants.REGEX_NAME.test(name) !== true) {
+    alert(constants.ALERT_REGEX_NAME);
+
+  } else {
+    return true;
+  }
+}
+
+/**
+ * CHECK TITLE
+ * @param {string} title
+ * @returns
+ */
+export function checkTitle(title) {
+  if (title === "") {
+    alert(constants.ALERT_TITLE);
+
+  } else if (constants.REGEX_TITLE.test(title) !== true) {
+    alert(constants.ALERT_REGEX_TITLE);
 
   } else {
     return true;
@@ -26,10 +43,10 @@ export function checkName(name) {
  */
 export function checkUrl(url) {
   if (url === "") {
-    alert("Indicate the url");
+    alert(constants.ALERT_URL);
 
-  } else if (REGEX_URL.test(url) !== true) {
-    alert("Indicate a valid url");
+  } else if (constants.REGEX_URL.test(url) !== true) {
+    alert(constants.ALERT_REGEX_URL);
 
   } else {
     return true;
@@ -43,10 +60,10 @@ export function checkUrl(url) {
  */
 export function checkEmail(email) {
   if (email === "") {
-    alert("Indicate the email");
+    alert(constants.ALERT_EMAIL);
 
-  } else if (REGEX_EMAIL.test(email) !== true) {
-    alert("Indicate a valid email");
+  } else if (constants.REGEX_EMAIL.test(email) !== true) {
+    alert(constants.ALERT_REGEX_EMAIL);
 
   } else {
     return true;
@@ -60,10 +77,10 @@ export function checkEmail(email) {
  */
 export function checkPass(pass) {
   if (pass === "") {
-    alert("Indicate the password");
+    alert(constants.ALERT_PASS);
 
-  } else if (REGEX_PASS.test(pass) !== true) {
-    alert("8 to 50 characters including an uppercase letter, a lowercase letter and a number");
+  } else if (constants.REGEX_PASS.test(pass) !== true) {
+    alert(constants.ALERT_REGEX_PASS);
 
   } else {
     return true;

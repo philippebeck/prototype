@@ -40,8 +40,9 @@
           <input 
             id="pass" 
             name="pass" 
+            v-model="pass" 
             type="password" 
-            placeholder="Indiquer le mot de passe" 
+            placeholder="********" 
             maxlength="50"
             minlength="8" 
             required>
@@ -67,13 +68,19 @@
 
 <script>
 import { updateData, deleteData } from '@/services/AxiosService';
-import { checkName, checkEmail } from '@/services/CheckService';
+import { checkName, checkEmail, checkPass } from '@/services/CheckService';
 import { rewriteName, rewriteEmail } from '@/services/RewriteService';
 
 export default {
   name: 'ListUsers',
 
   props: ['users'],
+
+  data() {
+    return {
+      pass: ""
+    }
+  },
 
   methods: {
     updateUser(id) {
@@ -82,20 +89,21 @@ export default {
       for (let i = 0; i < this.users.length; i++ ) {
         if (this.users[i]._id === id) {
           user = {
-            id: this.users[i]._id,
+            id: id,
             name: this.users[i].name,
             email: this.users[i].email,
-            pass: this.users[i].pass
+            pass: this.pass
           }
         }
       }
 
       if (
-        checkName(user.name) === true && 
-        checkEmail(user.email) === true
+        checkName(user.name)    === true && 
+        checkEmail(user.email)  === true &&
+        checkPass(user.pass)    === true
         ) {
-        user.name = rewriteName(user.name);
-        user.email = rewriteEmail(user.email);
+        user.name   = rewriteName(user.name);
+        user.email  = rewriteEmail(user.email);
 
           updateData(`/api/users/${id}`, user)
             .then(() => {

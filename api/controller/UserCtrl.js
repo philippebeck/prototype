@@ -39,11 +39,15 @@ exports.list = (req, res) => {
  */
 exports.create = (req, res) => {
   if (!emailValidator.validate(req.body.email)) {
-    return res.status(401).json({ message: "Email invalide !" });
+    return res.status(401).json(
+      { message: "Email invalide !" }
+    );
   }
 
   if (!schema.validate(req.body.pass)) {
-    return res.status(401).json({ message: "Mot de passe invalide !" });
+    return res.status(401).json(
+      { message: "Mot de passe invalide !" }
+    );
   };
 
   bcrypt
@@ -56,7 +60,9 @@ exports.create = (req, res) => {
       });
 
       user.save()
-        .then(() => res.status(201).json({ message: "Utilisateur créé !" }))
+        .then(() => res.status(201).json(
+          { message: "Utilisateur créé !" }
+        ))
         .catch(error => res.status(400).json({ error }));
     })
     .catch(error => res.status(500).json({ error }));
@@ -73,7 +79,9 @@ exports.login = (req, res) => {
     .then(user => {
 
       if (!user) {
-        return res.status(401).json({ error: "Utilisateur non trouvé !" });
+        return res.status(401).json(
+          { error: "Utilisateur non trouvé !" }
+        );
       }
 
       bcrypt
@@ -81,7 +89,9 @@ exports.login = (req, res) => {
         .then(valid => {
 
           if (!valid) {
-            return res.status(401).json({ error: "Mot de passe incorrect !" });
+            return res.status(401).json(
+              { error: "Mot de passe incorrect !" }
+            );
           }
 
           res.status(200).json({
@@ -104,11 +114,36 @@ exports.login = (req, res) => {
  * @param {object} res 
  */
 exports.update = (req, res) => {
-  let user = req.body;
+  if (!emailValidator.validate(req.body.email)) {
+    return res.status(401).json(
+      { message: "Email invalide !" }
+    );
+  }
 
-  UserModel
-    .updateOne({ _id: req.params.id }, { ...user, _id: req.params.id })
-    .then(() => res.status(200).json({ message: "Utilisateur modifié !" }))
+  if (!schema.validate(req.body.pass)) {
+    return res.status(401).json(
+      { message: "Mot de passe invalide !" }
+    );
+  };
+
+  bcrypt
+    .hash(req.body.pass, 10)
+    .then(hash => {
+      let user = {
+        name: req.body.name,
+        email: req.body.email,
+        pass: hash
+      };
+
+      UserModel
+        .updateOne(
+          { _id: req.params.id },
+          { ...user, _id: req.params.id }
+        )
+        .then(() => res.status(200).json(
+          { message: "Utilisateur modifié !" }
+        ))
+    })
     .catch(error => res.status(400).json({ error }));
 };
 
@@ -120,7 +155,9 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   UserModel
     .deleteOne({ _id: req.params.id })
-    .then(() => res.status(200).json({ message: "Utilisateur supprimé !" }))
+    .then(() => res.status(200).json(
+      { message: "Utilisateur supprimé !" }
+    ))
     .catch(error => res.status(400).json({ error }));
 };
 
@@ -154,7 +191,9 @@ exports.send = (req, res) => {
       };
 
       await transporter.sendMail(message, function() {
-        res.status(200).json({ message: "Message envoyé !" });
+        res.status(200).json(
+          { message: "Message envoyé !" }
+        );
       });
 
     } catch(e){

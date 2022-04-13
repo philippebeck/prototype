@@ -20,7 +20,7 @@
               name="name" 
               v-model="name" 
               type="text" 
-              placeholder="Insérer votre Nom"
+              placeholder="Indiquer votre Nom"
               maxlength="20" 
               required>
           </li>
@@ -36,23 +36,23 @@
               name="email" 
               v-model="email" 
               type="email" 
-              placeholder="Insérer votre Email"
+              placeholder="Indiquer votre Email"
               maxlength="50" 
               required>
           </li>
           <li>
             <label 
               class="anima-slideR-this" 
-              for="subject">
-              Sujet
+              for="title">
+              Titre
             </label>
             <input 
               class="anima-slideL-this" 
-              id="subject" 
-              name="subject" 
-              v-model="subject" 
+              id="title" 
+              name="title" 
+              v-model="title" 
               type="text" 
-              placeholder="Insérer votre Sujet"
+              placeholder="Indiquer votre Titre"
               maxlength="50" 
               required>
           </li>
@@ -67,7 +67,7 @@
               id="message" 
               name="message" 
               v-model="message" 
-              placeholder="Insérer votre Message" 
+              placeholder="Indiquer votre Message" 
               rows="5"
               cols="20"></textarea>
           </li>
@@ -100,7 +100,8 @@
 import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
 import { createData } from '@/services/AxiosService';
-
+import { checkName, checkEmail, checkTitle } from '@/services/CheckService';
+import { rewriteName, rewriteEmail } from '@/services/RewriteService';
 
 export default {
   name: "ContactView",
@@ -112,7 +113,7 @@ export default {
     return {
       name: "",
       email: "",
-      subject: "",
+      title: "",
       message: ""
     }
   },
@@ -121,15 +122,23 @@ export default {
       let message = {
         name: this.name,
         email: this.email,
-        subject: this.subject,
+        title: this.title,
         message: this.message
       };
 
-      createData("/api/users/send", message)
-        .then(() => {
-          alert(message.subject + " envoyé !");
-          this.$router.push("/");
-        });
+      if (
+        checkName(message.name) === true && 
+        checkEmail(message.email) === true &&
+        checkTitle(message.title) === true) {
+        message.name  = rewriteName(message.name);
+        message.email = rewriteEmail(message.email);
+
+        createData("/api/users/send", message)
+          .then(() => {
+            alert(message.title + " envoyé !");
+            this.$router.push("/");
+          });
+        }
     }
   }
 }

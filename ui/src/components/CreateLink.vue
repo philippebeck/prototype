@@ -106,16 +106,13 @@ export default {
         cat: this.cat
       };
 
-      if (
-        checkName(link.name) === true && 
-        checkUrl(link.url) === true
-        ) {
+      if (checkName(link.name) === true && checkUrl(link.url) === true) {
         if (link.cat === "") {
-        alert("Choose the category");
+          alert("Choose the category");
 
         } else {
           link.name = rewriteName(link.name);
-          link.url = rewriteUrl(link.url);
+          link.url  = rewriteUrl(link.url);
 
           createData("/api/links", link)
             .then(() => {

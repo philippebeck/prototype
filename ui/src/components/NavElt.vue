@@ -109,7 +109,7 @@ export default {
 
   methods: {
     logout() {
-      localStorage.removeItem("userId");
+      localStorage.clear();
       this.$router.go("/");
     }
   },
