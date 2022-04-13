@@ -100,7 +100,8 @@
 import NavElt from '@/components/NavElt.vue';
 import FootElt from '@/components/FootElt.vue';
 import { createData } from '@/services/AxiosService';
-
+import { checkName, checkEmail } from '@/services/CheckService';
+import { rewriteName, rewriteEmail } from '@/services/RewriteService';
 
 export default {
   name: "ContactView",
@@ -125,11 +126,16 @@ export default {
         message: this.message
       };
 
-      createData("/api/users/send", message)
-        .then(() => {
-          alert(message.subject + " envoyé !");
-          this.$router.push("/");
-        });
+      if (checkName(message.name) === true && checkEmail(message.email) === true) {
+        message.name  = rewriteName(message.name);
+        message.email = rewriteEmail(message.email);
+
+        createData("/api/users/send", message)
+          .then(() => {
+            alert(message.subject + " envoyé !");
+            this.$router.push("/");
+          });
+        }
     }
   }
 }
