@@ -42,7 +42,7 @@
             name="pass" 
             v-model="pass" 
             type="password" 
-            placeholder="Indiquer le mot de passe" 
+            placeholder="********" 
             maxlength="50"
             minlength="8" 
             required>
