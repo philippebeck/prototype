@@ -69,3 +69,20 @@ export function checkPass(pass) {
     return true;
   }
 }
+
+/**
+ * CHECK TITLE
+ * @param {string} title
+ * @returns
+ */
+ export function checkTitle(title) {
+  if (title === "") {
+    alert(constants.ALERT_TITLE);
+
+  } else if (constants.REGEX_TITLE.test(title) !== true) {
+    alert(constants.ALERT_REGEX_TITLE);
+
+  } else {
+    return true;
+  }
+}
