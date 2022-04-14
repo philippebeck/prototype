@@ -1,6 +1,7 @@
 <template>
   <ul :class="display">
-    <li v-for="item in list"
+    <li 
+      v-for="item in list"
       :key="item">
       <slot :name="item"></slot>
       {{ item }}

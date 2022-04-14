@@ -1,5 +1,6 @@
 <template>
-  <button :type="type"
+  <button 
+    :type="type"
     :name="name"
     @click="action">
     <slot></slot>
@@ -9,7 +10,8 @@
 
 <script>
   export default {
-    name: "Button",
+    name: "BtnElt",
+
     props: {
       type: {
         type: String,
@@ -22,6 +24,7 @@
         type: String
       }
     },
+
     methods: {
       action() {
         alert("test !")
@@ -35,6 +38,7 @@
     background-color: var(--primary);
     color: var(--secondary);
   }
+
   button:hover,
   button:focus {
     background-color: var(--secondary);
