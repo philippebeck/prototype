@@ -97,8 +97,8 @@
 </template>
 
 <script>
-import NavElt from '@/components/NavElt.vue';
-import FootElt from '@/components/FootElt.vue';
+import NavElt from '@/components/main/NavElt.vue';
+import FootElt from '@/components/main/FootElt.vue';
 import { createData } from '@/services/AxiosService';
 import { checkName, checkEmail, checkTitle } from '@/services/CheckService';
 import { rewriteName, rewriteEmail } from '@/services/RewriteService';

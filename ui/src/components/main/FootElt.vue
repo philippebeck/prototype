@@ -27,9 +27,9 @@
           </li>
           <li>
             <a 
-              href="https://links2dev.philippebeck.net"
+              href="https://links2code.philippebeck.net"
               title="Des Liens pour Coder">
-              Links2Dev
+              Links2Code
             </a>
           </li>
           <li>
