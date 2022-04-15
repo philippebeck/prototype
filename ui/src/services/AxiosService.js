@@ -5,8 +5,11 @@ import { API_URL, CONTENT_TYPE, TOKEN } from "../config/constants";
 const axios = require("axios");
 
 axios.defaults.baseURL = API_URL;
-axios.defaults.headers.common["Authorization"] = "Bearer " + TOKEN;
 axios.defaults.headers.post["Content-Type"] = CONTENT_TYPE;
+
+if (TOKEN) {
+  axios.defaults.headers.common["Authorization"] = "Bearer " + TOKEN;
+}
 
 /**
  * CREATE DATA
