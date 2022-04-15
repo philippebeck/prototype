@@ -116,12 +116,13 @@ export default {
       return Array.from(cats); 
     }
   },
-  mounted () {
+  beforeMount () {
     if (!localStorage.userId) {
       alert("Go back Home !");
       this.$router.push("/");
     }
-
+  },
+  mounted () {
     readData("/api/links")
       .then(response => {
         this.links = response
