@@ -23,7 +23,8 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
-    component: AdminView
+    component: AdminView,
+    meta: { requiresAuth: true }
   }
 ]
 
