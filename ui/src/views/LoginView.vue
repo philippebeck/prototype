@@ -83,6 +83,12 @@ export default {
     }
   },
 
+    mounted() {
+    if (localStorage.userId) {
+      this.$router.push("/admin");
+    }
+  },
+
   methods: {
     login() {
       let auth = {
@@ -98,7 +104,7 @@ export default {
           localStorage.setItem("userToken", token);
           localStorage.setItem("userId", userId);
 
-          this.$router.push("/admin");
+          this.$router.go("/");
         });
     }
   }
