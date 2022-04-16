@@ -117,21 +117,18 @@ export default {
     }
   },
   beforeMount () {
-    if (!localStorage.userId) {
+    if (localStorage.userId) {
+      readData('/api/links')
+        .then(res => { this.links = res;})
+        .catch(err => { console.log(err); });
+
+      readData('/api/users')
+        .then(res => { this.users = res; })
+        .catch(err => { console.log(err); });
+    } else {
       alert("Go back Home !");
       this.$router.push("/");
     }
-  },
-  mounted () {
-    readData("/api/links")
-      .then(response => {
-        this.links = response
-      })
-
-    readData("/api/users")
-      .then(response => {
-        this.users = response
-      })
   }
 }
 </script>
