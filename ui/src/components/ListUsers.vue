@@ -115,9 +115,17 @@ export default {
 
     deleteUser(id) {
       if (confirm("Confirmez la suppression de l'utilisateur") === true) {
+        let userName = "";
+
+        for (let i = 0; i < this.users.length; i++ ) {
+          if (this.users[i]._id === id) {
+            userName = this.users[i].name;
+          }
+        }
+
         deleteData(`/api/users/${id}`)
           .then(() => {
-            alert(id + " supprimé !");
+            alert(userName + " supprimé !");
             this.$router.go();
           });
       }

@@ -153,9 +153,17 @@ export default {
 
     deleteLink(id) {
       if (confirm("Confirmez la suppression du lien") === true) {
+        let linkName = "";
+
+        for (let i = 0; i < this.links.length; i++ ) {
+          if (this.links[i]._id === id) {
+            linkName = this.links[i].name;
+          }
+        }
+
         deleteData(`/api/links/${id}`)
           .then(() => {
-            alert(id + " supprimé !");
+            alert(linkName + " supprimé !");
             this.$router.go();
           });
       }
