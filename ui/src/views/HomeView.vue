@@ -47,7 +47,7 @@
         :key="index"
         :id="cat"
         class="container-70tn mar-bot-lg">
-        <i :class="`fa-brands fa-${cat} fa-6x color-blue shatex-blur-md anima-grow-this`"></i>
+        <i :class="`fa-brands fa-${cat} fa-6x color-primary shatex-blur-md anima-grow-this`"></i>
         <ul class="flex">
           <li 
             v-for="(link, i) in linksCat(cat).sort((a, b) => (a.name > b.name) ? 1 : -1)"
@@ -68,10 +68,10 @@
 </template>
 
 <script>
-import NavElt from '@/components/main/NavElt.vue';
-import FootElt from '@/components/main/FootElt.vue';
+import NavElt from '@/components/NavElt.vue';
+import FootElt from '@/components/FootElt.vue';
 
-import { readData } from '@/services/AxiosService'
+import { readData } from '@/services/AxiosService';
 
 export default {
   name: 'HomeView',

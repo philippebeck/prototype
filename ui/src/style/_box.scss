@@ -1,0 +1,296 @@
+// Box
+$box-nones: (
+  'none':         '',
+  'top-none':     '-top',
+  'right-none':   '-right',
+  'bottom-none':  '-bottom',
+  'left-none':    '-left',
+) !default;
+
+$box-sizes: (
+  'sm':       '',
+  'md':       '',
+  'lg':       '',
+  'top-sm':   '-top',
+  'top-md':   '-top',
+  'top-lg':   '-top',
+  'right-sm': '-right',
+  'right-md': '-right',
+  'right-lg': '-right',
+  'bot-sm':   '-bottom',
+  'bot-md':   '-bottom',
+  'bot-lg':   '-bottom',
+  'left-sm':  '-left',
+  'left-md':  '-left',
+  'left-lg':  '-left'
+) !default;
+
+// Margin
+$margin-sm: 10px  !default;
+$margin-md: 20px  !default;
+$margin-lg: 50px  !default;
+
+$margins: (
+  'none':     0,
+  'sm':       $margin-sm,
+  'md':       $margin-md,
+  'lg':       $margin-lg,
+  'top-sm':   $margin-sm,
+  'top-md':   $margin-md,
+  'top-lg':   $margin-lg,
+  'right-sm': $margin-sm,
+  'right-md': $margin-md,
+  'right-lg': $margin-lg,
+  'bot-sm':   $margin-sm,
+  'bot-md':   $margin-md,
+  'bot-lg':   $margin-lg,
+  'left-sm':  $margin-sm,
+  'left-md':  $margin-md,
+  'left-lg':  $margin-lg
+) !default;
+
+[class*="mar-"] {
+  @each $key, $value in $margins {
+    --margin-#{$key}: #{$value};
+  }
+}
+
+// Padding
+$padding-sm:  10px  !default;
+$padding-md:  20px  !default;
+$padding-lg:  50px  !default;
+
+$paddings: (
+  'none':     0,
+  'sm':       $padding-sm,
+  'md':       $padding-md,
+  'lg':       $padding-lg,
+  'top-sm':   $padding-sm,
+  'top-md':   $padding-md,
+  'top-lg':   $padding-lg,
+  'right-sm': $padding-sm,
+  'right-md': $padding-md,
+  'right-lg': $padding-lg,
+  'bot-sm':   $padding-sm,
+  'bot-md':   $padding-md,
+  'bot-lg':   $padding-lg,
+  'left-sm':  $padding-sm,
+  'left-md':  $padding-md,
+  'left-lg':  $padding-lg
+) !default;
+
+[class*="pad-"] {
+  @each $key, $value in $paddings {
+    --padding-#{$key}: #{$value};
+  }
+}
+
+// Border Style
+$border-style: solid !default;
+
+$border-styles: (
+  'dash':   dashed,
+  'dot':    dotted,
+  'solid':  solid,
+  'double': double,
+  'groove': groove,
+  'ridge':  ridge,
+  'in':     inset,
+  'out':    outset
+) !default;
+
+// Border Width
+$border-width-tn: 1px !default;
+$border-width-sm: 2px !default;
+$border-width-md: 3px !default;
+$border-width-lg: 4px !default;
+$border-width-xl: 5px !default;
+$border-width-wd: 6px !default;
+
+$border-widths: (
+  'tn': $border-width-tn,
+  'sm': $border-width-sm,
+  'md': $border-width-md,
+  'lg': $border-width-lg,
+  'xl': $border-width-xl,
+  'wd': $border-width-wd
+) !default;
+
+// Border Radius
+$border-radius-square:  unset !default;
+$border-radius-curve:   5px   !default;
+$border-radius-round:   10px  !default;
+$border-radius-circle:  50%   !default;
+
+$border-radiuses: (
+  'square': $border-radius-square,
+  'curve':  $border-radius-curve,
+  'round':  $border-radius-round,
+  'circle': $border-radius-circle
+) !default;
+
+// Borders
+$borders : (
+  "width":  $border-widths,
+  "radius": $border-radiuses
+) !default;
+
+// Border CSS Variables
+[class*="bord"] {
+  --border-style: #{$border-style};
+
+  @each $type, $border in $borders {
+    @each $key, $value in $border {
+      --border-#{$type}-#{$key}: #{$value};
+    }
+  }
+}
+
+// Height
+$height-sm: 25vh  !default;
+$height-md: 50vh  !default;
+$height-lg: 75vh  !default;
+
+$heights: (
+  'sm': $height-sm,
+  'md': $height-md,
+  'lg': $height-lg
+) !default;
+
+[class*="height-"] {
+  @each $key, $value in $heights {
+    --height-#{$key}: #{$value};
+  }
+}
+
+// Max-Height
+$max-heights: (
+  'sm': $height-sm,
+  'md': $height-md,
+  'lg': $height-lg
+) !default;
+
+[class*="max-h-"] {
+  @each $key, $value in $max-heights {
+    --max-height-#{$key}: #{$value};
+  }
+}
+
+// Min-Height
+$min-heights: (
+  'sm': $height-sm,
+  'md': $height-md,
+  'lg': $height-lg
+) !default;
+
+[class*="min-h-"] {
+  @each $key, $value in $min-heights {
+    --min-height-#{$key}: #{$value};
+  }
+}
+
+// Width
+$width-sm:  25vw  !default;
+$width-md:  50vw  !default;
+$width-lg:  75vw  !default;
+
+$widths: (
+  'sm': $width-sm,
+  'md': $width-md,
+  'lg': $width-lg
+) !default;
+
+[class*="width-"] {
+  @each $key, $value in $widths {
+    --width-#{$key}: #{$value};
+  }
+}
+
+// Max-Width
+$max-widths: (
+  'sm': $width-sm,
+  'md': $width-md,
+  'lg': $width-lg
+) !default;
+
+[class*="max-w-"] {
+  @each $key, $value in $max-widths {
+    --max-width-#{$key}: #{$value};
+  }
+}
+
+// Min-Width
+$min-widths: (
+  'sm': $width-sm,
+  'md': $width-md,
+  'lg': $width-lg
+) !default;
+
+[class*="min-w-"] {
+  @each $key, $value in $min-widths {
+    --min-width-#{$key}: #{$value};
+  }
+}
+
+// Margin
+@each $key, $value in $box-nones {
+  @include helpers('mar-#{$key}', 'margin#{$value}', 'var(--margin-none)');
+}
+
+@each $key, $value in $box-sizes {
+  @include helpers('mar-#{$key}', 'margin#{$value}', 'var(--margin-#{$key})');
+}
+
+// Border
+@include helpers-concat('bord', 'border-style', 'var(--border-style)');
+
+@each $key, $value in $border-styles {
+  @include helpers('bord-#{$key}', 'border-style', $value);
+}
+
+@each $type, $border in $borders {
+  @each $key, $value in $border {
+    @include helpers('bord-#{$key}', 'border-#{$type}', 'var(--border-#{$type}-#{$key})');
+  }
+}
+
+@each $color in $base-colors {
+  @each $key, $value in $color {
+    @include helpers('bord-#{$key}', 'border-color', 'var(--#{$key})');
+  }
+}
+
+// Padding
+@each $key, $value in $box-nones {
+  @include helpers('pad-#{$key}', 'padding#{$value}', 'var(--padding-none)');
+}
+
+@each $key, $value in $box-sizes {
+  @include helpers('pad-#{$key}', 'padding#{$value}', 'var(--padding-#{$key})');
+}
+
+// Height
+@each $key, $value in $heights {
+  @include helpers('height-#{$key}', 'height', 'var(--height-#{$key})');
+}
+
+@each $key, $value in $max-heights {
+  @include helpers('max-h-#{$key}', 'max-height', 'var(--max-height-#{$key})');
+}
+
+@each $key, $value in $min-heights {
+  @include helpers('min-h-#{$key}', 'min-height', 'var(--min-height-#{$key})');
+}
+
+// Width
+@each $key, $value in $widths {
+  @include helpers('width-#{$key}', 'width', 'var(--width-#{$key})');
+}
+
+@each $key, $value in $max-widths {
+  @include helpers('max-w-#{$key}', 'max-width', 'var(--max-width-#{$key})');
+}
+
+@each $key, $value in $min-widths {
+  @include helpers('min-w-#{$key}', 'min-width', 'var(--min-width-#{$key})');
+}

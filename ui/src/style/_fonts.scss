@@ -1,0 +1,89 @@
+// Font
+$font: (
+  'bold':     'weight',
+  'italic':   'style',
+  'oblique':  'style'
+) !default;
+
+$font-family: 'sans-serif', 'serif', 'monospace', 'cursive', 'fantasy';
+
+// Text Align
+$text-align: (
+  'center':   center,
+  'justify':  justify,
+  'right':    right,
+  'left':     left
+) !default;
+
+// Text Transform
+$trans: (
+  'cap':  'capitalize',
+  'up':   'uppercase',
+  'low':  'lowercase'
+) !default;
+
+// Text Decoration Line
+$text-decoration-lines: (
+  'none':     none,
+  'under':    underline,
+  'over':     overline,
+  'through':  line-through
+) !default;
+
+// Text Decoration Style
+$text-decoration-styles: (
+  'dash':   dashed,
+  'dot':    dotted,
+  'double': double,
+  'solid':  solid,
+  'wavy':   wavy
+) !default;
+
+// Text Decoration
+$text-decorations : (
+  "line":   $text-decoration-lines,
+  "style":  $text-decoration-styles
+) !default;
+
+:root {
+  @each $key in $font-family {
+    --#{$key}: #{$key};
+    }
+
+  --decoration-line: underline;
+}
+
+// Font Style & Weight
+@each $key, $value in $font {
+  @include helpers('font-#{$key}', 'font-#{$value}', $key);
+}
+
+// Font Family
+@each $key in $font-family {
+  .font-#{$key} {
+    font-family: var(--#{$key}-font-family);
+  }
+}
+
+// Text Transform
+@each $key, $value in $trans {
+  @include helpers('trans-#{$key}', 'text-transform', $value);
+}
+
+// Text Align
+@each $key, $value in $text-align {
+  @include helpers('align-#{$key}', 'text-align', $value);
+}
+
+// Text Decoration
+@include helpers-concat('deco', 'text-decoration-line', 'var(--decoration-line)');
+
+@each $deco-key, $deco-value in $text-decorations {
+  @each $key, $value in $deco-value {
+    @include helpers('deco-#{$key}', 'text-decoration-#{$deco-key}', $value);
+  }
+}
+
+@each $key, $value in $primary-colors {
+  @include helpers('deco-#{$key}', 'text-decoration-color', 'var(--#{$key})');
+}

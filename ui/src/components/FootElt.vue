@@ -203,27 +203,27 @@
 
 [class*="foot-goal"],
 .foot [class*="up"],
-.foot-check1:checked ~ .foot .foot-target1 [class*="down"],
-.foot-check2:checked ~ .foot .foot-target2 [class*="down"],
-.foot-check3:checked ~ .foot .foot-target3 [class*="down"],
-.foot-check4:checked ~ .foot .foot-target4 [class*="down"],
-.foot-check5:checked ~ .foot .foot-target5 [class*="down"] {
+.foot-check1:checked ~ .foot-list .foot-target1 [class*="down"],
+.foot-check2:checked ~ .foot-list .foot-target2 [class*="down"],
+.foot-check3:checked ~ .foot-list .foot-target3 [class*="down"],
+.foot-check4:checked ~ .foot-list .foot-target4 [class*="down"],
+.foot-check5:checked ~ .foot-list .foot-target5 [class*="down"] {
   display: none;
 }
 
-.foot-check1:checked ~ .foot .foot-target1 [class*="up"],
-.foot-check2:checked ~ .foot .foot-target2 [class*="up"],
-.foot-check3:checked ~ .foot .foot-target3 [class*="up"],
-.foot-check4:checked ~ .foot .foot-target4 [class*="up"],
-.foot-check5:checked ~ .foot .foot-target5 [class*="up"] {
+.foot-check1:checked ~ .foot-list .foot-target1 [class*="up"],
+.foot-check2:checked ~ .foot-list .foot-target2 [class*="up"],
+.foot-check3:checked ~ .foot-list .foot-target3 [class*="up"],
+.foot-check4:checked ~ .foot-list .foot-target4 [class*="up"],
+.foot-check5:checked ~ .foot-list .foot-target5 [class*="up"] {
   display: inline-block;
 }
 
-.foot-check1:checked ~ .foot .foot-goal1,
-.foot-check2:checked ~ .foot .foot-goal2,
-.foot-check3:checked ~ .foot .foot-goal3,
-.foot-check4:checked ~ .foot .foot-goal4,
-.foot-check5:checked ~ .foot .foot-goal5 {
+.foot-check1:checked ~ .foot-list .foot-goal1,
+.foot-check2:checked ~ .foot-list .foot-goal2,
+.foot-check3:checked ~ .foot-list .foot-goal3,
+.foot-check4:checked ~ .foot-list .foot-goal4,
+.foot-check5:checked ~ .foot-list .foot-goal5 {
   display: block;
 }
 
