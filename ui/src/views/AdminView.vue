@@ -94,10 +94,10 @@ import CreateUser from "@/views/admin/CreateUser.vue";
 import ListLinks from "@/views/admin/ListLinks.vue";
 import ListUsers from "@/views/admin/ListUsers.vue";
 
-import { readData } from '@/services/AxiosService';
+import { readData } from "@/services/AxiosService";
 
 export default {
-  name: 'AdminView',
+  name: "AdminView",
   components: {
     NavElt,
     HeadElt,
@@ -123,11 +123,11 @@ export default {
   },
   beforeMount () {
     if (localStorage.userId) {
-      readData('/api/links')
+      readData("/api/links")
         .then(res => { this.links = res;})
         .catch(err => { console.log(err); });
 
-      readData('/api/users')
+      readData("/api/users")
         .then(res => { this.users = res; })
         .catch(err => { console.log(err); });
     } else {
