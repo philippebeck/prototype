@@ -108,7 +108,7 @@ export default {
 
       if (checkName(link.name) === true && checkUrl(link.url) === true) {
         if (link.cat === "") {
-          alert("Choose the category");
+          alert("Choisissez la catégorie");
 
         } else {
           link.name = rewriteName(link.name);
