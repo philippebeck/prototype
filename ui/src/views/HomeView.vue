@@ -71,7 +71,7 @@
 import NavElt from '@/components/main/NavElt.vue';
 import FootElt from '@/components/main/FootElt.vue';
 
-import { readData } from '@/services/AxiosService'
+import { readData } from '@/services/AxiosService';
 
 export default {
   name: 'HomeView',
