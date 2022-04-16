@@ -85,14 +85,14 @@
 </template>
 
 <script>
-import NavElt from '@/components/main/NavElt.vue';
-import HeadElt from '@/components/main/HeadElt.vue';
-import FootElt from '@/components/main/FootElt.vue';
+import NavElt from "@/components/NavElt.vue";
+import HeadElt from "@/components/HeadElt.vue";
+import FootElt from "@/components/FootElt.vue";
 
-import CreateLink from '@/components/CreateLink.vue';
-import CreateUser from '@/components/CreateUser.vue';
-import ListLinks from '@/components/ListLinks.vue';
-import ListUsers from '@/components/ListUsers.vue';
+import CreateLink from "@/views/admin/CreateLink.vue";
+import CreateUser from "@/views/admin/CreateUser.vue";
+import ListLinks from "@/views/admin/ListLinks.vue";
+import ListUsers from "@/views/admin/ListUsers.vue";
 
 import { readData } from '@/services/AxiosService';
 
