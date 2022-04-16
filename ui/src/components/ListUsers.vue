@@ -1,68 +1,62 @@
 <template>
-  <form class="form" id="users">
-    <fieldset>
-      <legend>
-        <i class="fa-solid fa-users fa-lg"></i>
-        Gérer les Utilisateurs
-      </legend>
-      <ul v-for="user in users" 
-        :key="user._id">
-        <li>
-          <label for="name">
-            Nom
-          </label>
-          <input 
-            id="name" 
-            name="name" 
-            v-model="user.name" 
-            type="text" 
-            minlength="2" 
-            maxlength="50" 
-            required>
-        </li>
-        <li>
-          <label for="email">
-            Email
-          </label>
-          <input 
-            id="email" 
-            name="email" 
-            v-model="user.email"
-            type="email" 
-            maxlength="50" 
-            minlength="5" 
-            required>
-        </li>
-        <li>
-          <label for="pass">
-            Mot de Passe
-          </label>
-          <input 
-            id="pass" 
-            name="pass" 
-            v-model="pass" 
-            type="password" 
-            placeholder="********" 
-            maxlength="50"
-            minlength="8" 
-            required>
-        </li>
-        <li>
-          <button 
-            type="button" 
-            @click="updateUser(user._id)"
-            class="btn-blue">
-            Modifier {{ user.name }}
-          </button>
-          <button 
-            type="button" 
-            @click="deleteUser(user._id)"
-            class="btn-red">
-            Supprimer {{ user.name }}
-          </button>
-        </li>
-      </ul>
-    </fieldset>
+  <form id="users">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nom - Email - Mot de Passe</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="user in users" 
+          :key="user._id">
+          <td>
+            <input 
+              id="name" 
+              name="name" 
+              v-model="user.name" 
+              type="text" 
+              minlength="2" 
+              maxlength="50" 
+              required>
+            <input 
+              id="email" 
+              name="email" 
+              v-model="user.email"
+              type="email" 
+              maxlength="50" 
+              minlength="5" 
+              required>
+            <input 
+              id="pass" 
+              name="pass" 
+              v-model="pass" 
+              type="password" 
+              placeholder="********" 
+              maxlength="50"
+              minlength="8" 
+              required>
+          </td>
+          <td>
+            <button 
+              type="button" 
+              @click="updateUser(user._id)"
+              class="btn-blue"
+              title="Modifier">
+              <i class="fa-solid fa-edit"></i>
+            </button>
+            <button 
+              type="button" 
+              @click="deleteUser(user._id)"
+              class="btn-red"
+              title="Supprimer">
+              <i class="fa-solid fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </form>
 </template>
 

@@ -1,26 +1,24 @@
 <template>
-  <section>
-    <h3>
-      <i class="fa-solid fa-link fa-lg"></i>
-      Gérer les Liens
-    </h3>
-
-    <form
+  <form>
+    <table
       v-for="(cat, index) in cats" 
       :key="index"
       :id="cat"
-      class="form">
-      <legend>
+      class="table">
+      <caption>
         <i :class="`fa-brands fa-${cat} fa-6x color-blue`"></i>
-      </legend>
-      <fieldset
-        v-for="link in linksCat(cat).sort((a, b) => (a.name > b.name) ? 1 : -1)"
-        :key="link._id">
-        <ul>
-          <li>
-            <label for="name">
-              Nom
-            </label>
+      </caption>
+      <thead>
+        <tr>
+          <th>Nom - URL - Catégorie</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="link in linksCat(cat).sort((a, b) => (a.name > b.name) ? 1 : -1)"
+          :key="link._id">
+          <td>
             <input 
               id="name" 
               name="name" 
@@ -28,11 +26,6 @@
               type="text" 
               maxlength="30" 
               required>
-          </li>
-          <li>
-            <label for="url">
-              URL
-            </label>
             <input 
               id="url" 
               name="url" 
@@ -40,11 +33,6 @@
               type="text" 
               maxlength="100" 
               required>
-          </li>
-          <li>
-            <label for="cat">
-              Catégorie
-            </label>
             <select 
               id="cat" 
               name="cat" 
@@ -75,25 +63,27 @@
                 Dev
               </option>
             </select>
-          </li>
-          <li>
+          </td>
+          <td>
             <button 
               type="button" 
               @click="updateLink(link._id)" 
-              class="btn-blue">
-              Modifier {{ link.name }}
+              class="btn-blue"
+              title="Modifier">
+              <i class="fa-solid fa-edit"></i>
             </button>
             <button 
               type="button" 
               @click="deleteLink(link._id)" 
-              class="btn-red">
-              Supprimer {{ link.name }}
+              class="btn-red"
+              title="Supprimer">
+              <i class="fa-solid fa-trash-alt"></i>
             </button>
-          </li>
-        </ul>
-      </fieldset>
-    </form>
-  </section>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
 </template>
 
 <script>
@@ -144,7 +134,7 @@ export default {
 
           updateData(`/api/links/${id}`, link)
             .then(() => {
-              alert(link.name + " mis à jour !");
+              alert(link.name + " modifié !");
               this.$router.go();
             });
         }
@@ -152,15 +142,15 @@ export default {
     },
 
     deleteLink(id) {
-      if (confirm("Confirmez la suppression du lien") === true) {
-        let linkName = "";
+      let linkName = "";
 
-        for (let i = 0; i < this.links.length; i++ ) {
-          if (this.links[i]._id === id) {
-            linkName = this.links[i].name;
-          }
+      for (let i = 0; i < this.links.length; i++ ) {
+        if (this.links[i]._id === id) {
+          linkName = this.links[i].name;
         }
+      }
 
+      if (confirm(`Supprimer ${linkName} ?`) === true) {
         deleteData(`/api/links/${id}`)
           .then(() => {
             alert(linkName + " supprimé !");
@@ -171,3 +161,9 @@ export default {
   }
 }
 </script>
+<style>
+  input,
+  select {
+    margin: 10px;
+  }
+</style>
