@@ -2,9 +2,13 @@
   <main id="admin">
     <NavElt/>
 
-    <h1 class="color-violet anima-openX-this">
-      Admin
-    </h1>
+    <HeadElt
+      isMain
+      title="Admin"
+      class="color-violet anima-openX-this">
+      <i class="fa-solid fa-cogs fa-2x"></i>
+    </HeadElt>
+
     <nav class="sidebar">
       <input 
         id="sidebar-class"
@@ -52,7 +56,7 @@
 
     <section>
       <h2 id="link">
-        <i class="fa-solid fa-link fa-lg"></i>
+        <i class="fa-solid fa-link fa-2x"></i>
         Liens
       </h2>
 
@@ -61,11 +65,11 @@
       <ListLinks 
         v-if="links.length > 0" 
         :links="links"/>
-
     </section>
+
     <section>
       <h2 id="user">
-        <i class="fa-solid fa-users fa-lg"></i>
+        <i class="fa-solid fa-users fa-2x"></i>
         Utilisateurs
       </h2>
 
@@ -74,7 +78,6 @@
       <ListUsers 
         v-if="users.length > 0" 
         :users="users"/>
-
       </section>
 
     <FootElt/>
@@ -83,19 +86,21 @@
 
 <script>
 import NavElt from '@/components/main/NavElt.vue';
+import HeadElt from '@/components/main/HeadElt.vue';
 import FootElt from '@/components/main/FootElt.vue';
 
-import CreateLink from '@/components/CreateLink.vue'
-import CreateUser from '@/components/CreateUser.vue'
-import ListLinks from '@/components/ListLinks.vue'
-import ListUsers from '@/components/ListUsers.vue'
+import CreateLink from '@/components/CreateLink.vue';
+import CreateUser from '@/components/CreateUser.vue';
+import ListLinks from '@/components/ListLinks.vue';
+import ListUsers from '@/components/ListUsers.vue';
 
-import { readData } from '@/services/AxiosService'
+import { readData } from '@/services/AxiosService';
 
 export default {
   name: 'AdminView',
   components: {
     NavElt,
+    HeadElt,
     FootElt,
     CreateLink,
     CreateUser,
