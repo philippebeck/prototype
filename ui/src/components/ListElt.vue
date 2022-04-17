@@ -1,7 +1,7 @@
 <template>
   <ul :class="display">
     <li 
-      v-for="item in list"
+      v-for="item in items"
       :key="item">
       <slot :name="item"></slot>
       {{ item }}
@@ -13,7 +13,7 @@
   export default {
     name: "ListElt",
     props: {
-      list: {
+      items: {
         type: Array,
         required: true
       },
