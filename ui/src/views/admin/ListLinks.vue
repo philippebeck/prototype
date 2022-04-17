@@ -2,7 +2,6 @@
   <form>
     <TableElt 
       :title="table[0].cat"
-      :names="Object.keys(links[0])"
       :items="table"
       v-for="table in itemsByCat(links)"
       :key="table"
@@ -13,11 +12,11 @@
       </template>
 
       <template #thead>
-        manage
+        actions
       </template>
 
       <template #td-_id="slotProps">
-        {{ table[slotProps.index]._id }}
+        {{ slotProps.index + 1 }}
       </template>
 
       <template #td-name="slotProps">
