@@ -1,74 +1,83 @@
 <template>
-  <form id="users">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Nom - Email - Mot de Passe</th>
-          <th>Gestion</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="user in users" 
-          :key="user._id">
-          <td>
-            <input 
-              id="name" 
-              name="name" 
-              v-model="user.name" 
-              type="text" 
-              minlength="2" 
-              maxlength="50" 
-              required>
-            <input 
-              id="email" 
-              name="email" 
-              v-model="user.email"
-              type="email" 
-              maxlength="50" 
-              minlength="5" 
-              required>
-            <input 
-              id="pass" 
-              name="pass" 
-              v-model="pass" 
-              type="password" 
-              placeholder="********" 
-              maxlength="50"
-              minlength="8" 
-              required>
-          </td>
-          <td>
-            <button 
-              type="button" 
-              @click="updateUser(user._id)"
-              class="btn-blue"
-              title="Modifier">
-              <i class="fa-solid fa-edit"></i>
-            </button>
-            <button 
-              type="button" 
-              @click="deleteUser(user._id)"
-              class="btn-red"
-              title="Supprimer">
-              <i class="fa-solid fa-trash-alt"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <form>
+    <TableElt 
+      :items="getUsers()"
+      id="users">
+
+      <template #thead>
+        actions
+      </template>
+
+      <template #td-_id="slotProps">
+        {{ slotProps.index + 1 }}
+      </template>
+
+      <template #td-name="slotProps">
+        <input 
+          id="name" 
+          name="name" 
+          v-model="getUsers()[slotProps.index].name" 
+          type="text" 
+          minlength="2" 
+          maxlength="50" 
+          required>
+      </template>
+
+      <template #td-email="slotProps">
+        <input 
+          id="email" 
+          name="email" 
+          v-model="getUsers()[slotProps.index].email"
+          type="email" 
+          maxlength="50" 
+          minlength="5" 
+          required>
+      </template>
+
+      <template #td-pass>
+        <input 
+          id="pass" 
+          name="pass" 
+          v-model="pass" 
+          type="password" 
+          placeholder="********" 
+          maxlength="50"
+          minlength="8" 
+          required>
+      </template>
+
+      <template #tbody="slotProps">
+        <button 
+          type="button" 
+          @click="updateUser(users[slotProps.index]._id)" 
+          class="btn-blue"
+          title="Modifier">
+          <i class="fa-solid fa-edit"></i>
+        </button>
+        <button 
+          type="button" 
+          @click="deleteUser(users[slotProps.index]._id)" 
+          class="btn-red"
+          title="Supprimer">
+          <i class="fa-solid fa-trash-alt"></i>
+        </button>
+      </template>
+    </TableElt>
   </form>
 </template>
 
 <script>
+import TableElt from "@/components/TableElt.vue";
 import { updateData, deleteData } from '@/services/AxiosService';
 import { checkName, checkEmail, checkPass } from '@/services/CheckService';
 import { rewriteName, rewriteEmail } from '@/services/RewriteService';
 
 export default {
   name: 'ListUsers',
-
   props: ['users'],
+  components: {
+    TableElt
+  },
 
   data() {
     return {
@@ -77,9 +86,12 @@ export default {
   },
 
   methods: {
+    getUsers() {
+      return this.users;
+    },
+
     updateUser(id) {
       let user = {};
-
       for (let i = 0; i < this.users.length; i++ ) {
         if (this.users[i]._id === id) {
           user = {
@@ -90,7 +102,6 @@ export default {
           }
         }
       }
-
       if (
         checkName(user.name)    === true && 
         checkEmail(user.email)  === true &&
@@ -98,7 +109,6 @@ export default {
         ) {
         user.name   = rewriteName(user.name);
         user.email  = rewriteEmail(user.email);
-
           updateData(`/api/users/${id}`, user)
             .then(() => {
               alert(user.name + " mis à jour !");
@@ -108,15 +118,13 @@ export default {
     },
 
     deleteUser(id) {
-      if (confirm("Confirmez la suppression de l'utilisateur") === true) {
-        let userName = "";
-
-        for (let i = 0; i < this.users.length; i++ ) {
-          if (this.users[i]._id === id) {
-            userName = this.users[i].name;
-          }
+      let userName = "";
+      for (let i = 0; i < this.users.length; i++ ) {
+        if (this.users[i]._id === id) {
+          userName = this.users[i].name;
         }
-
+      }
+      if (confirm(`Supprimer ${userName} ?`) === true) {
         deleteData(`/api/users/${id}`)
           .then(() => {
             alert(userName + " supprimé !");
