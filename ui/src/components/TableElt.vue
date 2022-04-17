@@ -1,20 +1,38 @@
 <template>
   <table class="table">
-    <caption>Table Example</caption>
+    <caption>
+      <slot name="title"></slot>
+    </caption>
     <thead>
       <tr>
-        <th>Sign</th>
-        <th>Element</th>
-        <th>Vibration</th>
-        <th>Polarity</th>
+        <th
+          v-for="(value, key) in items[0]"
+          :key="key">
+          {{ key === "_id" ? key = "#" : key }}
+        </th>
+        <th v-if="hasTheadSlot()">
+          <slot name="thead"></slot>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th>Aries</th>
-        <td>Fire</td>
-        <td>Cardinal</td>
-        <td>Male</td>
+      <tr 
+        v-for="(item, index) in items"
+        :key="index">
+        <td
+          v-for="(value, key) in item"
+          :key="key">
+          <slot 
+            :name="`td-${key}`" 
+            :index="index">
+          </slot>
+        </td>
+        <td v-if="hasTbodySlot()">
+          <slot 
+            name="tbody" 
+            :index="index">
+          </slot>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -22,7 +40,18 @@
 
 <script>
 export default {
-  name: "TableElt"
+  name: "TableElt",
+  props: ['title', 'items'],
+
+  methods: {
+    hasTheadSlot() {
+      return this.$slots.thead
+    },
+
+    hasTbodySlot() {
+      return this.$slots.tbody
+    }
+  }
 }
 </script>
 
@@ -34,19 +63,16 @@ export default {
   --table-max-width: 100%;
   --table-font-size: calc(var(--body-font-size) * 110 / 100);
   --table-box-shadow: 5px 5px 10px 5px var(--grey);
-
   --table-caption-side: top;
   --table-caption-margin: 10px;
   --table-caption-font-size: 3rem;
   --table-caption-font-weight: bold;
   --table-caption-color: var(--black);
   --table-caption-text-shadow: 1px 1px 2px;
-
   --table-title-font-size: calc(var(--body-font-size) * 120 / 100);
   --table-title-font-style: italic;
   --table-title-background-color: var(--primary);
   --table-title-color: var(--white);
-
   --table-cell-border-style: solid;
   --table-cell-border-width: thin;
   --table-cell-border-radius: 0;
@@ -56,52 +82,13 @@ export default {
   --table-cell-vertical-align: middle;
   --table-cell-word-break: normal;
   --table-cell-cursor: cell;
-
   --table-odd-background-color: var(--white);
   --table-odd-color: var(--gray);
-
   --table-even-background-color: var(--grey);
   --table-even-color: var(--black);
+  --table-row-hover-background-color: var(--primary);
+  --table-row-hover-color: var(--secondary);
 
-  --table-row-hover-background-color: var(--secondary);
-  --table-row-hover-color: var(--black);
-}
-
-@media (min-width: $breakpoint-sm) {
-  .table {
-    --table-cell-padding: 6px;
-  }
-}
-
-@media (min-width: $breakpoint-md) {
-  .table {
-    --table-max-width: 95%;
-    --table-cell-padding: 7px;
-  }
-}
-
-@media (min-width: $breakpoint-lg) {
-  .table {
-    --table-max-width: 90%;
-    --table-cell-padding: 8px;
-  }
-}
-
-@media (min-width: $breakpoint-xl) {
-  .table {
-    --table-max-width: 85%;
-    --table-cell-padding: 9px;
-  }
-}
-
-@media (min-width: $breakpoint-wd) {
-  .table {
-    --table-max-width: 70%;
-    --table-cell-padding: 10px;
-  }
-}
-
-.table {
   display: table;
   border-collapse: var(--table-border-collapse);
   border-spacing: var(--table-border-spacing);
@@ -187,6 +174,40 @@ export default {
       background-color: var(--table-row-hover-background-color);
       color: var(--table-row-hover-color);
     }
+  }
+}
+
+@media (min-width: 576px) {
+  .table {
+    --table-cell-padding: 6px;
+  }
+}
+
+@media (min-width: 768px) {
+  .table {
+    --table-max-width: 95%;
+    --table-cell-padding: 7px;
+  }
+}
+
+@media (min-width: 992px) {
+  .table {
+    --table-max-width: 90%;
+    --table-cell-padding: 8px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .table {
+    --table-max-width: 85%;
+    --table-cell-padding: 9px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .table {
+    --table-max-width: 70%;
+    --table-cell-padding: 10px;
   }
 }
 </style>
