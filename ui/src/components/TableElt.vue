@@ -1,20 +1,24 @@
 <template>
   <table class="table">
-    <caption>Table Example</caption>
+    <caption>{{ title }}</caption>
     <thead>
       <tr>
-        <th>Sign</th>
-        <th>Element</th>
-        <th>Vibration</th>
-        <th>Polarity</th>
+        <th
+          v-for="(value, key) in items[0]"
+          :key="key">
+          {{ key }}
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th>Aries</th>
-        <td>Fire</td>
-        <td>Cardinal</td>
-        <td>Male</td>
+      <tr 
+        v-for="item in items.sort((a, b) => (a.name > b.name) ? 1 : -1)"
+        :key="item">
+        <td
+          v-for="value in item"
+          :key="value">
+          {{ value }}
+        </td>
       </tr>
     </tbody>
   </table>
@@ -22,7 +26,14 @@
 
 <script>
 export default {
-  name: "TableElt"
+  name: "TableElt",
+
+  data() {
+    return {
+      items: [],
+      title: ""
+    }
+  }
 }
 </script>
 
