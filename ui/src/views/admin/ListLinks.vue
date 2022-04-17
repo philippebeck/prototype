@@ -11,7 +11,7 @@
       <thead>
         <tr>
           <th>Nom - URL - Catégorie</th>
-          <th>Actions</th>
+          <th>Gestion</th>
         </tr>
       </thead>
       <tbody>

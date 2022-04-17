@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th>Nom - Email - Mot de Passe</th>
-          <th>Actions</th>
+          <th>Gestion</th>
         </tr>
       </thead>
       <tbody>
