@@ -8,30 +8,31 @@
         <th
           v-for="(value, key) in names"
           :key="key">
-          <slot 
-            name="header" 
-            :value="value" 
-            :key="key">
-          </slot>
           {{ value }}
+        </th>
+        <th v-if="hasTheadSlot()">
+          <slot name="thead"></slot>
         </th>
       </tr>
     </thead>
     <tbody>
       <tr 
-        v-for="item in items"
-        :key="item">
+        v-for="(item, index) in items"
+        :key="index">
         <td
-          v-for="value in item"
-          :key="value">
+          v-for="(value, key) in item"
+          :key="key">
           <slot 
-            name="cell" 
-            :value="value" 
-            :key="value">
+            :name="`td-${key}`" 
+            :index="index">
           </slot>
-          {{ value }}
         </td>
-        <slot name="row"></slot>
+        <td v-if="hasTbodySlot()">
+          <slot 
+            name="tbody" 
+            :index="index">
+          </slot>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -40,7 +41,17 @@
 <script>
 export default {
   name: "TableElt",
-  props: ['title', 'names', 'items']
+  props: ['title', 'names', 'items'],
+
+  methods: {
+    hasTheadSlot() {
+      return this.$slots.thead
+    },
+    
+    hasTbodySlot() {
+      return this.$slots.tbody
+    }
+  }
 }
 </script>
 
@@ -81,8 +92,8 @@ export default {
   --table-even-background-color: var(--grey);
   --table-even-color: var(--black);
 
-  --table-row-hover-background-color: var(--secondary);
-  --table-row-hover-color: var(--black);
+  --table-row-hover-background-color: var(--primary);
+  --table-row-hover-color: var(--secondary);
 }
 
 @media (min-width: 576px) {
