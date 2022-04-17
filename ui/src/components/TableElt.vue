@@ -6,9 +6,9 @@
     <thead>
       <tr>
         <th
-          v-for="(value, key) in names"
+          v-for="(value, key) in items[0]"
           :key="key">
-          {{ value }}
+          {{ key === "_id" ? key = "#" : key }}
         </th>
         <th v-if="hasTheadSlot()">
           <slot name="thead"></slot>
@@ -41,13 +41,13 @@
 <script>
 export default {
   name: "TableElt",
-  props: ['title', 'names', 'items'],
+  props: ['title', 'items'],
 
   methods: {
     hasTheadSlot() {
       return this.$slots.thead
     },
-    
+
     hasTbodySlot() {
       return this.$slots.tbody
     }
