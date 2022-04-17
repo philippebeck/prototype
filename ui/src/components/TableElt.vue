@@ -1,24 +1,37 @@
 <template>
   <table class="table">
-    <caption>{{ title }}</caption>
+    <caption>
+      <slot name="title"></slot>
+    </caption>
     <thead>
       <tr>
         <th
-          v-for="(value, key) in items[0]"
+          v-for="(value, key) in names"
           :key="key">
-          {{ key }}
+          <slot 
+            name="header" 
+            :value="value" 
+            :key="key">
+          </slot>
+          {{ value }}
         </th>
       </tr>
     </thead>
     <tbody>
       <tr 
-        v-for="item in items.sort((a, b) => (a.name > b.name) ? 1 : -1)"
+        v-for="item in items"
         :key="item">
         <td
           v-for="value in item"
           :key="value">
+          <slot 
+            name="cell" 
+            :value="value" 
+            :key="value">
+          </slot>
           {{ value }}
         </td>
+        <slot name="row"></slot>
       </tr>
     </tbody>
   </table>
@@ -27,13 +40,7 @@
 <script>
 export default {
   name: "TableElt",
-
-  data() {
-    return {
-      items: [],
-      title: ""
-    }
-  }
+  props: ['title', 'names', 'items']
 }
 </script>
 
