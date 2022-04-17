@@ -78,34 +78,34 @@ export default {
   --table-row-hover-color: var(--black);
 }
 
-@media (min-width: $breakpoint-sm) {
+@media (min-width: 576px) {
   .table {
     --table-cell-padding: 6px;
   }
 }
 
-@media (min-width: $breakpoint-md) {
+@media (min-width: 768px) {
   .table {
     --table-max-width: 95%;
     --table-cell-padding: 7px;
   }
 }
 
-@media (min-width: $breakpoint-lg) {
+@media (min-width: 992px) {
   .table {
     --table-max-width: 90%;
     --table-cell-padding: 8px;
   }
 }
 
-@media (min-width: $breakpoint-xl) {
+@media (min-width: 1200px) {
   .table {
     --table-max-width: 85%;
     --table-cell-padding: 9px;
   }
 }
 
-@media (min-width: $breakpoint-wd) {
+@media (min-width: 1600px) {
   .table {
     --table-max-width: 70%;
     --table-cell-padding: 10px;
