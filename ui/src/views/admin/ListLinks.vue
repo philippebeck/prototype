@@ -11,15 +11,15 @@
         <i :class="`fa-brands fa-${table[0].cat} fa-5x color-blue`"></i>
       </template>
 
-      <template #thead>
+      <template #head>
         actions
       </template>
 
-      <template #td-_id="slotProps">
+      <template #cell-_id="slotProps">
         {{ slotProps.index + 1 }}
       </template>
 
-      <template #td-name="slotProps">
+      <template #cell-name="slotProps">
         <input 
           id="name" 
           name="name" 
@@ -29,7 +29,7 @@
           required>
       </template>
 
-      <template #td-url="slotProps">
+      <template #cell-url="slotProps">
         <input 
           id="url" 
           name="url" 
@@ -39,7 +39,7 @@
           required>
       </template>
 
-      <template #td-cat="slotProps">
+      <template #cell-cat="slotProps">
         <select 
           id="cat" 
           name="cat" 
@@ -72,7 +72,7 @@
         </select>
       </template>
 
-      <template #tbody="slotProps">
+      <template #body="slotProps">
         <button 
           type="button" 
           @click="updateLink(table[slotProps.index]._id)" 

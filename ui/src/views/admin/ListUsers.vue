@@ -4,15 +4,15 @@
       :items="getUsers()"
       id="users">
 
-      <template #thead>
+      <template #head>
         actions
       </template>
 
-      <template #td-_id="slotProps">
+      <template #cell-_id="slotProps">
         {{ slotProps.index + 1 }}
       </template>
 
-      <template #td-name="slotProps">
+      <template #cell-name="slotProps">
         <input 
           id="name" 
           name="name" 
@@ -23,7 +23,7 @@
           required>
       </template>
 
-      <template #td-email="slotProps">
+      <template #cell-email="slotProps">
         <input 
           id="email" 
           name="email" 
@@ -34,7 +34,7 @@
           required>
       </template>
 
-      <template #td-pass>
+      <template #cell-pass>
         <input 
           id="pass" 
           name="pass" 
@@ -46,7 +46,7 @@
           required>
       </template>
 
-      <template #tbody="slotProps">
+      <template #body="slotProps">
         <button 
           type="button" 
           @click="updateUser(users[slotProps.index]._id)" 
