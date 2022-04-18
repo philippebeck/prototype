@@ -4,15 +4,15 @@
       :items="getUsers()"
       id="users">
 
-      <template #thead>
+      <template #head>
         actions
       </template>
 
-      <template #td-_id="slotProps">
+      <template #cell-_id="slotProps">
         {{ slotProps.index + 1 }}
       </template>
 
-      <template #td-name="slotProps">
+      <template #cell-name="slotProps">
         <input 
           id="name" 
           name="name" 
@@ -23,7 +23,7 @@
           required>
       </template>
 
-      <template #td-email="slotProps">
+      <template #cell-email="slotProps">
         <input 
           id="email" 
           name="email" 
@@ -34,7 +34,7 @@
           required>
       </template>
 
-      <template #td-pass>
+      <template #cell-pass>
         <input 
           id="pass" 
           name="pass" 
@@ -46,7 +46,7 @@
           required>
       </template>
 
-      <template #tbody="slotProps">
+      <template #body="slotProps">
         <button 
           type="button" 
           @click="updateUser(users[slotProps.index]._id)" 
@@ -68,13 +68,14 @@
 
 <script>
 import TableElt from "@/components/TableElt.vue";
-import { updateData, deleteData } from '@/services/AxiosService';
-import { checkName, checkEmail, checkPass } from '@/services/CheckService';
-import { rewriteName, rewriteEmail } from '@/services/RewriteService';
+
+import { putData, deleteData } from "@/services/ApiService";
+import { rewriteString } from "@/services/DisplayService";
+import { checkName, checkEmail, checkPass } from "@/services/RegexService";
 
 export default {
-  name: 'ListUsers',
-  props: ['users'],
+  name: "ListUsers",
+  props: ["users"],
   components: {
     TableElt
   },
@@ -107,9 +108,10 @@ export default {
         checkEmail(user.email)  === true &&
         checkPass(user.pass)    === true
         ) {
-        user.name   = rewriteName(user.name);
-        user.email  = rewriteEmail(user.email);
-          updateData(`/api/users/${id}`, user)
+        user.name   = rewriteString(user.name);
+        user.email  = rewriteString(user.email);
+
+          putData(`/api/users/${id}`, user)
             .then(() => {
               alert(user.name + " mis à jour !");
               this.$router.go();
@@ -119,11 +121,13 @@ export default {
 
     deleteUser(id) {
       let userName = "";
+
       for (let i = 0; i < this.users.length; i++ ) {
         if (this.users[i]._id === id) {
           userName = this.users[i].name;
         }
       }
+      
       if (confirm(`Supprimer ${userName} ?`) === true) {
         deleteData(`/api/users/${id}`)
           .then(() => {

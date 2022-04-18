@@ -1,9 +1,10 @@
 <template>
-  <main id="links">
-    <NavElt/>
+  <main 
+    id="links"
+    class="container-90sm-80lg-70xl">
 
     <header>
-      <h1 class="color-violet shatex-blur-sm anima-shrink-this">
+      <h1 class="color-violet shatex-blur-sm anima-grow-this">
         Links2Code
       </h1>
       <strong class="color-gray">
@@ -41,49 +42,42 @@
       </a>
     </nav>
 
-    <ul>
-      <li 
-        v-for="(cat, index) in cats" 
-        :key="index"
-        :id="cat"
-        class="container-70tn mar-bot-lg">
-        <i :class="`fa-brands fa-${cat} fa-6x color-primary shatex-blur-md anima-grow-this`"></i>
-        <ul class="flex">
-          <li 
-            v-for="(link, i) in linksCat(cat).sort((a, b) => (a.name > b.name) ? 1 : -1)"
-            :key="i">
-            <a 
-              class="button-primary" 
-              :href="`https://${link.url}`"
-              :title="link.url">
-              {{ link.name }}
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <ListElt :items="itemsByCat(links)">
+      <template #items="slotProps">
+        <i 
+          :class="`fa-brands fa-${slotProps.index} fa-6x color-primary shatex-blur-md anima-grow-this`"
+          :id="slotProps.index">
+          </i>
+      </template>
 
-    <FootElt/>
+      <template #nested="slotProps">
+        <a 
+          class="button-primary" 
+          :href="`https://${slotProps.value.url}`"
+          :title="slotProps.value.url">
+          {{ slotProps.value.name }}
+        </a>
+      </template>
+    </ListElt>
   </main>
 </template>
 
 <script>
-import NavElt from '@/components/NavElt.vue';
-import FootElt from '@/components/FootElt.vue';
-
-import { readData } from '@/services/AxiosService';
+import ListElt from "@/components/ListElt.vue";
+import { getData } from "@/services/ApiService";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    NavElt,
-    FootElt
+    ListElt
   },
+
   data() {
     return {
       links: []
     }
   },
+
   computed: {
     cats() {
       const cats = new Set();
@@ -91,14 +85,25 @@ export default {
       return Array.from(cats); 
     }
   },
+
   methods: {
-    linksCat(cat) {
-      return this.links
-        .filter(link => link.cat === cat);
-    }
+    itemsByCat(items) {
+      const itemsByCat = {};
+
+      items.forEach(item => {
+        if (!itemsByCat[item.cat]) {
+          itemsByCat[item.cat] = [];
+        }
+        itemsByCat[item.cat].push(item);
+        itemsByCat[item.cat].sort((a, b) => (a.name > b.name) ? 1 : -1);
+      });
+
+      return itemsByCat;
+    },
   },
+  
   mounted () {
-    readData("/api/links").then(
+    getData("/api/links").then(
       response => {
         this.links = response;
       }

@@ -8,6 +8,7 @@
       id="foot-websites" 
       class="foot-check2" 
       type="checkbox">
+
     <ul class="foot-list">
       <li class="foot-target1">
         <h3>
@@ -17,6 +18,7 @@
             <i class="fa-solid fa-caret-down"></i>
           </label>
         </h3>
+        
         <ul class="foot-goal1">
           <li>
             <a 
@@ -41,6 +43,7 @@
           </li>
         </ul>
       </li>
+
       <li class="foot-target2">
         <h3>
           <label for="foot-websites">
@@ -74,6 +77,7 @@
         </ul>
       </li>
     </ul>
+
     <ul class="row">
       <li>
         <a 

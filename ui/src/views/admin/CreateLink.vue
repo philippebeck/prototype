@@ -76,14 +76,12 @@
 </template>
 
 <script>
-import { createData } from '@/services/AxiosService';
-import { checkName, checkUrl } from '@/services/CheckService';
-import { rewriteName, rewriteUrl } from '@/services/RewriteService';
+import { postData } from "@/services/ApiService";
+import { rewriteString } from "@/services/DisplayService";
+import { checkName, checkUrl } from "@/services/RegexService";
 
 export default {
   name: "CreateLink",
-  /* eslint-disable */
-
   data() {
     return {
       name: "",
@@ -91,6 +89,7 @@ export default {
       cat: ""
     }
   },
+
   methods: {
     createLink() {
       let link = {
@@ -102,12 +101,12 @@ export default {
       if (checkName(link.name) === true && checkUrl(link.url) === true) {
         if (link.cat === "") {
           alert("Choisissez la catégorie");
-
+          
         } else {
-          link.name = rewriteName(link.name);
-          link.url  = rewriteUrl(link.url);
+          link.name = rewriteString(link.name);
+          link.url  = rewriteString(link.url);
 
-          createData("/api/links", link)
+          postData("/api/links", link)
             .then(() => {
               alert(link.name + " créé !");
               this.$router.go();

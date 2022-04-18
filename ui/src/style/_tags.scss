@@ -107,6 +107,17 @@ a {
   color: var(--link-color);
 }
 
+button {
+  --button-background-color: transparent;
+  --button-color: var(--white);
+  --button-border: none;
+  --button-cursor: pointer;
+  border: var(--button-border);
+  background-color: var(--button-background-color);
+  color: var(--button-color);
+  cursor: var(--button-cursor);
+}
+
 ul {
   --list-margin: 0 0 10px;
   --list-padding: 0;

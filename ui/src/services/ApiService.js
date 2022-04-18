@@ -12,35 +12,47 @@ if (TOKEN) {
 }
 
 /**
- * CREATE DATA
- * @param {string} url 
- * @param {array} data 
- * @returns 
- */
-export async function createData(url, data) {
-  const response = await axios.post(url, data);
-
-  return response.data;
-}
-
-/**
- * READ DATA
+ * GET DATA
  * @param {string} url 
  * @returns 
  */
-export async function readData(url) {
+export async function getData(url) {
   const response = await axios.get(url);
 
   return response.data;
 }
 
 /**
- * UPDATE DATA
+ * POST DATA
  * @param {string} url 
  * @param {array} data 
  * @returns 
  */
-export async function updateData(url, data) {
+export async function postData(url, data) {
+  const response = await axios.post(url, data);
+
+  return response.data;
+}
+
+/**
+ * PATCH DATA
+ * @param {string} url 
+ * @param {array} data 
+ * @returns 
+ */
+export async function patchData(url, data) {
+  const response = await axios.patch(url, data);
+
+  return response.data;
+}
+
+/**
+ * PUT DATA
+ * @param {string} url 
+ * @param {array} data 
+ * @returns 
+ */
+export async function putData(url, data) {
   const response = await axios.put(url, data);
 
   return response.data;

@@ -1,20 +1,22 @@
 <template>
-  <table class="table">
-    <caption>
+  <table>
+    <caption v-if="hasSlot('title')">
       <slot name="title"></slot>
     </caption>
+
     <thead>
       <tr>
         <th
           v-for="(value, key) in items[0]"
           :key="key">
-          {{ key === "_id" ? key = "#" : key }}
+          {{ key === "_id" ? key = "id" : key }}
         </th>
-        <th v-if="hasTheadSlot()">
-          <slot name="thead"></slot>
+        <th v-if="hasSlot('head')">
+          <slot name="head"></slot>
         </th>
       </tr>
     </thead>
+
     <tbody>
       <tr 
         v-for="(item, index) in items"
@@ -23,40 +25,53 @@
           v-for="(value, key) in item"
           :key="key">
           <slot 
-            :name="`td-${key}`" 
-            :index="index">
+            :name="`cell-${key}`" 
+            :index="index"
+            :item="item"
+            :key="key"
+            :value="value">
           </slot>
         </td>
-        <td v-if="hasTbodySlot()">
+        <td v-if="hasSlot('body')">
           <slot 
-            name="tbody" 
-            :index="index">
+            name="body" 
+            :index="index"
+            :item="item">
           </slot>
         </td>
       </tr>
     </tbody>
+
+    <tfoot v-if="hasSlot('foot')">
+      <slot name="foot"></slot>
+    </tfoot>
   </table>
 </template>
 
 <script>
+
 export default {
   name: "TableElt",
-  props: ['title', 'items'],
-
-  methods: {
-    hasTheadSlot() {
-      return this.$slots.thead
+  props: {
+    title: {
+      type: String
     },
-
-    hasTbodySlot() {
-      return this.$slots.tbody
+    items: {
+      type: Array,
+      required: true
+    }
+  },
+  
+  methods: {
+    hasSlot(name) {
+      return this.$slots[name] !== undefined;
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.table {
+table {
   --table-border-spacing: 10px;
   --table-margin: 50px auto;
   --table-width: auto;

@@ -11,15 +11,15 @@
         <i :class="`fa-brands fa-${table[0].cat} fa-5x color-blue`"></i>
       </template>
 
-      <template #thead>
+      <template #head>
         actions
       </template>
 
-      <template #td-_id="slotProps">
+      <template #cell-_id="slotProps">
         {{ slotProps.index + 1 }}
       </template>
 
-      <template #td-name="slotProps">
+      <template #cell-name="slotProps">
         <input 
           id="name" 
           name="name" 
@@ -29,7 +29,7 @@
           required>
       </template>
 
-      <template #td-url="slotProps">
+      <template #cell-url="slotProps">
         <input 
           id="url" 
           name="url" 
@@ -39,7 +39,7 @@
           required>
       </template>
 
-      <template #td-cat="slotProps">
+      <template #cell-cat="slotProps">
         <select 
           id="cat" 
           name="cat" 
@@ -72,7 +72,7 @@
         </select>
       </template>
 
-      <template #tbody="slotProps">
+      <template #body="slotProps">
         <button 
           type="button" 
           @click="updateLink(table[slotProps.index]._id)" 
@@ -95,13 +95,14 @@
 
 <script>
 import TableElt from "@/components/TableElt.vue";
-import { updateData, deleteData } from '@/services/AxiosService'
-import { checkName, checkUrl } from '@/services/CheckService';
-import { rewriteName, rewriteUrl } from '@/services/RewriteService';
+
+import { putData, deleteData } from "@/services/ApiService";
+import { rewriteString } from "@/services/DisplayService";
+import { checkName, checkUrl } from "@/services/RegexService";
 
 export default {
-  name: 'ListLinks',
-  props: ['links'],
+  name: "ListLinks",
+  props: ["links"],
   components: {
     TableElt
   },
@@ -134,10 +135,12 @@ export default {
       if (checkName(link.name) === true && checkUrl(link.url) === true) {
         if (link.cat === "") {
           alert("Choisissez la catégorie");
+
         } else {
-          link.name = rewriteName(link.name);
-          link.url  = rewriteUrl(link.url);
-          updateData(`/api/links/${id}`, link)
+          link.name = rewriteString(link.name);
+          link.url  = rewriteString(link.url);
+
+          putData(`/api/links/${id}`, link)
             .then(() => {
               alert(link.name + " modifié !");
               this.$router.go();
@@ -148,11 +151,13 @@ export default {
 
     deleteLink(id) {
       let linkName = "";
+      
       for (let i = 0; i < this.links.length; i++ ) {
         if (this.links[i]._id === id) {
           linkName = this.links[i].name;
         }
       }
+
       if (confirm(`Supprimer ${linkName} ?`) === true) {
         deleteData(`/api/links/${id}`)
           .then(() => {
@@ -164,9 +169,3 @@ export default {
   }
 }
 </script>
-<style>
-  input,
-  select {
-    margin: 10px;
-  }
-</style>
