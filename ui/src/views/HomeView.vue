@@ -43,7 +43,6 @@
     </nav>
 
     <ListElt :items="itemsByCat(links)">
-
       <template #items="slotProps">
         <i 
           :class="`fa-brands fa-${slotProps.index} fa-6x color-primary shatex-blur-md anima-grow-this`"
@@ -98,7 +97,7 @@ export default {
         itemsByCat[item.cat].push(item);
         itemsByCat[item.cat].sort((a, b) => (a.name > b.name) ? 1 : -1);
       });
-      
+
       return itemsByCat;
     },
   },
