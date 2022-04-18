@@ -39,6 +39,7 @@
         </a>
       </li>
     </ul>
+
     <ul v-if="!userId">
       <li>
         <a 
@@ -64,15 +65,16 @@
           <i class="fa-solid fa-sign-in-alt fa-lg fa-fw"></i>
         </a>
       </li>
-      </ul>
-      <ul v-else>
-        <li>
-          <a 
-            class="onto-color-red" 
-            href="/admin" 
-            title="Admin">
-            <i class="fa-solid fa-user-ninja fa-lg fa-fw"></i>
-          </a>
+    </ul>
+
+    <ul v-else>
+      <li>
+        <a 
+          class="onto-color-red" 
+          href="/admin" 
+          title="Admin">
+          <i class="fa-solid fa-user-ninja fa-lg fa-fw"></i>
+        </a>
       </li>
       <li>
         <button 
@@ -84,6 +86,7 @@
         </button>
       </li>
     </ul>
+    
     <label 
       for="navbar-close" 
       title="Close the Navigation Menu">

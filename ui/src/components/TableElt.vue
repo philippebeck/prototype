@@ -3,6 +3,7 @@
     <caption v-if="hasSlot('title')">
       <slot name="title"></slot>
     </caption>
+
     <thead>
       <tr>
         <th
@@ -15,6 +16,7 @@
         </th>
       </tr>
     </thead>
+
     <tbody>
       <tr 
         v-for="(item, index) in items"
@@ -39,6 +41,7 @@
         </td>
       </tr>
     </tbody>
+
     <tfoot v-if="hasSlot('foot')">
       <slot name="foot"></slot>
     </tfoot>
@@ -46,6 +49,7 @@
 </template>
 
 <script>
+
 export default {
   name: "TableElt",
   props: {
@@ -57,6 +61,7 @@ export default {
       required: true
     }
   },
+  
   methods: {
     hasSlot(name) {
       return this.$slots[name] !== undefined;
