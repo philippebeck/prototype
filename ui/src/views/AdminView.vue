@@ -30,6 +30,7 @@
         title="Créer un lien">
         <i class="fas fa-link fa-fw color-violet"></i>
       </a>
+
       <a 
         v-for="(cat, index) in cats" 
         :key="index"
@@ -37,6 +38,7 @@
         :title="`Gérer les liens ${cat}`">
         <i :class="`fa-brands fa-${cat} fa-fw color-violet`"></i>
       </a>
+      
       <a 
         href="#user" 
         title="Créer un utilisateur">
@@ -89,12 +91,12 @@ import NavElt from "@/components/NavElt.vue";
 import HeadElt from "@/components/HeadElt.vue";
 import FootElt from "@/components/FootElt.vue";
 
+import { readData } from "@/services/ApiService";
+
 import CreateLink from "@/views/admin/CreateLink.vue";
 import CreateUser from "@/views/admin/CreateUser.vue";
 import ListLinks from "@/views/admin/ListLinks.vue";
 import ListUsers from "@/views/admin/ListUsers.vue";
-
-import { readData } from "@/services/AxiosService";
 
 export default {
   name: "AdminView",
@@ -107,6 +109,7 @@ export default {
     ListLinks,
     ListUsers
   },
+
   data() {
     return {
       links: [],
@@ -123,6 +126,7 @@ export default {
   },
   beforeMount () {
     if (localStorage.userId) {
+
       readData("/api/links")
         .then(res => { this.links = res;})
         .catch(err => { console.log(err); });
@@ -130,6 +134,7 @@ export default {
       readData("/api/users")
         .then(res => { this.users = res; })
         .catch(err => { console.log(err); });
+
     } else {
       alert("Go back Home !");
       this.$router.push("/");

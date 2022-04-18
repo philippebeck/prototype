@@ -8,6 +8,7 @@
     <form class="form">
       <fieldset>
         <ul>
+
           <li>
             <label 
               class="anima-slideR-this" 
@@ -23,6 +24,7 @@
               placeholder="Insérer votre Identifiant"
               required>
           </li>
+
           <li>
             <label 
               class="anima-slideR-this" 
@@ -40,6 +42,7 @@
               required>
           </li>
         </ul>
+
         <ul>
           <li>
             <div 
@@ -48,6 +51,7 @@
               data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
             </div>
           </li>
+          
           <li>
             <button 
               @click="login()" 
@@ -68,7 +72,7 @@
 import NavElt from "@/components/NavElt.vue";
 import FootElt from "@/components/FootElt.vue";
 
-import { createData } from '@/services/AxiosService';
+import { createData } from "@/services/ApiService";
 
 export default {
   name: "LoginView",

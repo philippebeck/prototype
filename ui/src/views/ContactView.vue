@@ -8,6 +8,7 @@
     <form class="form anima-growX">
       <fieldset>
         <ul>
+
           <li>
             <label 
               class="anima-slideR-this" 
@@ -24,6 +25,7 @@
               maxlength="20" 
               required>
           </li>
+
           <li>
             <label 
               class="anima-slideR-this" 
@@ -40,6 +42,7 @@
               maxlength="50" 
               required>
           </li>
+
           <li>
             <label 
               class="anima-slideR-this" 
@@ -56,6 +59,7 @@
               maxlength="50" 
               required>
           </li>
+
           <li>
             <label 
               class="anima-slideR-this" 
@@ -72,6 +76,7 @@
               cols="20"></textarea>
           </li>
         </ul>
+
         <ul>
           <li>
             <div 
@@ -80,6 +85,7 @@
               data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
             </div>
           </li>
+
           <li>
             <button 
               @click="send()" 
@@ -97,12 +103,12 @@
 </template>
 
 <script>
-import NavElt from '@/components/NavElt.vue';
-import FootElt from '@/components/FootElt.vue';
+import NavElt from "@/components/NavElt.vue";
+import FootElt from "@/components/FootElt.vue";
 
-import { createData } from '@/services/AxiosService';
-import { checkName, checkEmail, checkTitle } from '@/services/CheckService';
-import { rewriteName, rewriteEmail } from '@/services/RewriteService';
+import { createData } from "@/services/ApiService";
+import { rewriteString } from "@/services/DisplayService";
+import { checkName, checkEmail, checkTitle } from "@/services/RegexService";
 
 export default {
   name: "ContactView",
@@ -110,6 +116,7 @@ export default {
     NavElt,
     FootElt
   },
+
   data() {
     return {
       name: "",
@@ -118,6 +125,7 @@ export default {
       message: ""
     }
   },
+
   methods: {
     send() {
       let message = {
@@ -131,8 +139,8 @@ export default {
         checkName(message.name) === true && 
         checkEmail(message.email) === true &&
         checkTitle(message.title) === true) {
-        message.name  = rewriteName(message.name);
-        message.email = rewriteEmail(message.email);
+        message.name  = rewriteString(message.name);
+        message.email = rewriteString(message.email);
 
         createData("/api/users/send", message)
           .then(() => {

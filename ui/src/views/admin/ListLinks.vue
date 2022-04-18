@@ -95,13 +95,14 @@
 
 <script>
 import TableElt from "@/components/TableElt.vue";
-import { updateData, deleteData } from '@/services/AxiosService'
-import { checkName, checkUrl } from '@/services/CheckService';
-import { rewriteName, rewriteUrl } from '@/services/RewriteService';
+
+import { updateData, deleteData } from "@/services/ApiService";
+import { rewriteString } from "@/services/DisplayService";
+import { checkName, checkUrl } from "@/services/RegexService";
 
 export default {
-  name: 'ListLinks',
-  props: ['links'],
+  name: "ListLinks",
+  props: ["links"],
   components: {
     TableElt
   },
@@ -134,9 +135,11 @@ export default {
       if (checkName(link.name) === true && checkUrl(link.url) === true) {
         if (link.cat === "") {
           alert("Choisissez la catégorie");
+
         } else {
-          link.name = rewriteName(link.name);
-          link.url  = rewriteUrl(link.url);
+          link.name = rewriteString(link.name);
+          link.url  = rewriteString(link.url);
+
           updateData(`/api/links/${id}`, link)
             .then(() => {
               alert(link.name + " modifié !");
@@ -148,11 +151,13 @@ export default {
 
     deleteLink(id) {
       let linkName = "";
+      
       for (let i = 0; i < this.links.length; i++ ) {
         if (this.links[i]._id === id) {
           linkName = this.links[i].name;
         }
       }
+
       if (confirm(`Supprimer ${linkName} ?`) === true) {
         deleteData(`/api/links/${id}`)
           .then(() => {
@@ -164,9 +169,3 @@ export default {
   }
 }
 </script>
-<style>
-  input,
-  select {
-    margin: 10px;
-  }
-</style>

@@ -68,22 +68,24 @@
 </template>
 
 <script>
-import NavElt from '@/components/NavElt.vue';
-import FootElt from '@/components/FootElt.vue';
+import NavElt from "@/components/NavElt.vue";
+import FootElt from "@/components/FootElt.vue";
 
-import { readData } from '@/services/AxiosService';
+import { readData } from "@/services/ApiService";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
     NavElt,
     FootElt
   },
+
   data() {
     return {
       links: []
     }
   },
+
   computed: {
     cats() {
       const cats = new Set();
@@ -91,12 +93,14 @@ export default {
       return Array.from(cats); 
     }
   },
+
   methods: {
     linksCat(cat) {
       return this.links
         .filter(link => link.cat === cat);
     }
   },
+  
   mounted () {
     readData("/api/links").then(
       response => {

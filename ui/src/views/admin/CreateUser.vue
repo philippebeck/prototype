@@ -57,9 +57,9 @@
 </template>
 
 <script>
-import { createData } from '@/services/AxiosService'
-import { checkName, checkEmail, checkPass } from '@/services/CheckService';
-import { rewriteName, rewriteEmail } from '@/services/RewriteService';
+import { createData } from "@/services/ApiService"
+import { rewriteString } from "@/services/DisplayService";
+import { checkName, checkEmail, checkPass } from "@/services/RegexService";
 
 export default {
   name: "CreateUser",
@@ -85,8 +85,8 @@ export default {
         checkEmail(user.email)  === true && 
         checkPass(user.pass)    === true
         ) {
-        user.name   = rewriteName(user.name);
-        user.email  = rewriteEmail(user.email);
+        user.name   = rewriteString(user.name);
+        user.email  = rewriteString(user.email);
 
         createData("/api/users", user)
           .then(() => {
