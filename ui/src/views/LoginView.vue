@@ -1,7 +1,5 @@
 <template>
   <main>
-    <NavElt/>
-
     <h1 class="color-violet anima-grow-this">
       Login
     </h1>
@@ -63,23 +61,14 @@
         </ul>
       </fieldset>
     </form>
-
-    <FootElt/>
   </main>
 </template>
 
 <script>
-import NavElt from "@/components/NavElt.vue";
-import FootElt from "@/components/FootElt.vue";
-
 import { createData } from "@/services/ApiService";
 
 export default {
   name: "LoginView",
-  components: {
-    NavElt,
-    FootElt
-  },
 
   data() {
     return {

@@ -1,6 +1,5 @@
 <template>
   <main id="admin">
-    <NavElt/>
 
     <HeadElt
       isMain
@@ -80,17 +79,13 @@
       <ListUsers 
         v-if="users.length > 0" 
         :users="users"/>
-      </section>
+    </section>
 
-    <FootElt/>
   </main>
 </template>
 
 <script>
-import NavElt from "@/components/NavElt.vue";
 import HeadElt from "@/components/HeadElt.vue";
-import FootElt from "@/components/FootElt.vue";
-
 import { readData } from "@/services/ApiService";
 
 import CreateLink from "@/views/admin/CreateLink.vue";
@@ -101,9 +96,7 @@ import ListUsers from "@/views/admin/ListUsers.vue";
 export default {
   name: "AdminView",
   components: {
-    NavElt,
     HeadElt,
-    FootElt,
     CreateLink,
     CreateUser,
     ListLinks,

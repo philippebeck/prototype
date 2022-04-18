@@ -1,7 +1,5 @@
 <template>
   <main>
-    <NavElt/>
-    
     <h1 class="color-violet anima-slideB-this">
       Contact
     </h1>
@@ -97,25 +95,16 @@
         </ul>
       </fieldset>
     </form>
-
-    <FootElt/>
   </main>
 </template>
 
 <script>
-import NavElt from "@/components/NavElt.vue";
-import FootElt from "@/components/FootElt.vue";
-
 import { createData } from "@/services/ApiService";
 import { rewriteString } from "@/services/DisplayService";
 import { checkName, checkEmail, checkTitle } from "@/services/RegexService";
 
 export default {
   name: "ContactView",
-  components: {
-    NavElt,
-    FootElt
-  },
 
   data() {
     return {

@@ -1,6 +1,6 @@
 <template>
-  <main id="links">
-    <NavElt/>
+  <main 
+    id="links"
 
     <header>
       <h1 class="color-violet shatex-blur-sm anima-shrink-this">
@@ -63,21 +63,18 @@
       </li>
     </ul>
 
-    <FootElt/>
   </main>
 </template>
 
 <script>
-import NavElt from "@/components/NavElt.vue";
-import FootElt from "@/components/FootElt.vue";
+import ListElt from "@/components/ListElt.vue";
 
 import { readData } from "@/services/ApiService";
 
 export default {
   name: "HomeView",
   components: {
-    NavElt,
-    FootElt
+    ListElt
   },
 
   data() {
