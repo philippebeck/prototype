@@ -42,29 +42,23 @@
 </script>
 
 <style lang="scss" scoped>
-  ul {
-    margin: 0 0 10px;
-    padding: 0;
-    list-style: none;
-  }
-  .flex,
-  .col,
-  .row {
-    display: flex;
-    place-content: center;
-  }
-  .flex {
-    flex-wrap: wrap;
-  }
-  .col {
-    flex-direction: column;
-    padding: 0 10px;
-  }
-  .row {
-    flex-direction: row;
-    padding: 10px 0;
-    & > * {
-      padding: 5px;
-    }
-  }
+ul {
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+}
+
+li ul {
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+}
 </style>
