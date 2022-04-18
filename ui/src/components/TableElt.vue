@@ -48,22 +48,25 @@
 <script>
 export default {
   name: "TableElt",
-  props: ['title', 'items'],
-
-  methods: {
-    hasTheadSlot() {
-      return this.$slots.thead
+  props: {
+    title: {
+      type: String
     },
-
-    hasTbodySlot() {
-      return this.$slots.tbody
+    items: {
+      type: Array,
+      required: true
+    }
+  },
+  methods: {
+    hasSlot(name) {
+      return this.$slots[name] !== undefined;
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.table {
+table {
   --table-border-spacing: 10px;
   --table-margin: 50px auto;
   --table-width: auto;
