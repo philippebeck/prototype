@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { createData } from "@/services/ApiService"
+import { postData } from "@/services/ApiService"
 import { rewriteString } from "@/services/DisplayService";
 import { checkName, checkEmail, checkPass } from "@/services/RegexService";
 
@@ -88,7 +88,7 @@ export default {
         user.name   = rewriteString(user.name);
         user.email  = rewriteString(user.email);
 
-        createData("/api/users", user)
+        postData("/api/users", user)
           .then(() => {
             alert(user.name + " créé !");
             this.$router.go();

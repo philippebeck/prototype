@@ -96,7 +96,7 @@
 <script>
 import TableElt from "@/components/TableElt.vue";
 
-import { updateData, deleteData } from "@/services/ApiService";
+import { putData, deleteData } from "@/services/ApiService";
 import { rewriteString } from "@/services/DisplayService";
 import { checkName, checkUrl } from "@/services/RegexService";
 
@@ -140,7 +140,7 @@ export default {
           link.name = rewriteString(link.name);
           link.url  = rewriteString(link.url);
 
-          updateData(`/api/links/${id}`, link)
+          putData(`/api/links/${id}`, link)
             .then(() => {
               alert(link.name + " modifié !");
               this.$router.go();

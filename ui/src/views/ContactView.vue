@@ -99,7 +99,7 @@
 </template>
 
 <script>
-import { createData } from "@/services/ApiService";
+import { postData } from "@/services/ApiService";
 import { rewriteString } from "@/services/DisplayService";
 import { checkName, checkEmail, checkTitle } from "@/services/RegexService";
 
@@ -131,7 +131,7 @@ export default {
         message.name  = rewriteString(message.name);
         message.email = rewriteString(message.email);
 
-        createData("/api/users/send", message)
+        postData("/api/users/send", message)
           .then(() => {
             alert(message.title + " envoyé !");
             this.$router.push("/");

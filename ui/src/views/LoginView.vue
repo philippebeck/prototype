@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { createData } from "@/services/ApiService";
+import { postData } from "@/services/ApiService";
 
 export default {
   name: "LoginView",
@@ -90,7 +90,7 @@ export default {
           pass: this.pass
       };
 
-      createData("/api/users/login", auth)
+      postData("/api/users/login", auth)
         .then((res) => {
           let token   = JSON.stringify(res.token);
           let userId  = JSON.stringify(res.userId);

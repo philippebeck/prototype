@@ -69,7 +69,7 @@
 <script>
 import TableElt from "@/components/TableElt.vue";
 
-import { updateData, deleteData } from "@/services/ApiService";
+import { putData, deleteData } from "@/services/ApiService";
 import { rewriteString } from "@/services/DisplayService";
 import { checkName, checkEmail, checkPass } from "@/services/RegexService";
 
@@ -111,7 +111,7 @@ export default {
         user.name   = rewriteString(user.name);
         user.email  = rewriteString(user.email);
 
-          updateData(`/api/users/${id}`, user)
+          putData(`/api/users/${id}`, user)
             .then(() => {
               alert(user.name + " mis à jour !");
               this.$router.go();

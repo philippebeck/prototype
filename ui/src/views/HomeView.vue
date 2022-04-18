@@ -64,7 +64,7 @@
 
 <script>
 import ListElt from "@/components/ListElt.vue";
-import { readData } from "@/services/ApiService";
+import { getData } from "@/services/ApiService";
 
 export default {
   name: "HomeView",
@@ -103,7 +103,7 @@ export default {
   },
   
   mounted () {
-    readData("/api/links").then(
+    getData("/api/links").then(
       response => {
         this.links = response;
       }

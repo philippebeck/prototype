@@ -86,7 +86,7 @@
 
 <script>
 import HeadElt from "@/components/HeadElt.vue";
-import { readData } from "@/services/ApiService";
+import { getData } from "@/services/ApiService";
 
 import CreateLink from "@/views/admin/CreateLink.vue";
 import CreateUser from "@/views/admin/CreateUser.vue";
@@ -120,11 +120,11 @@ export default {
   beforeMount () {
     if (localStorage.userId) {
 
-      readData("/api/links")
+      getData("/api/links")
         .then(res => { this.links = res;})
         .catch(err => { console.log(err); });
 
-      readData("/api/users")
+      getData("/api/users")
         .then(res => { this.users = res; })
         .catch(err => { console.log(err); });
 

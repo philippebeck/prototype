@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import { createData } from "@/services/ApiService";
+import { postData } from "@/services/ApiService";
 import { rewriteString } from "@/services/DisplayService";
 import { checkName, checkUrl } from "@/services/RegexService";
 
@@ -106,7 +106,7 @@ export default {
           link.name = rewriteString(link.name);
           link.url  = rewriteString(link.url);
 
-          createData("/api/links", link)
+          postData("/api/links", link)
             .then(() => {
               alert(link.name + " créé !");
               this.$router.go();
