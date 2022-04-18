@@ -37,7 +37,13 @@
         type: String,
         default: "col"
       }
+    },
+
+    methods: {
+    isNested() {
+      return this.$slots["nested"] !== undefined;
     }
+  }
   }
 </script>
 
