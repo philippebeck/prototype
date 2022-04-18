@@ -1,6 +1,6 @@
 <template>
-  <table class="table">
-    <caption>
+  <table>
+    <caption v-if="hasSlot('title')">
       <slot name="title"></slot>
     </caption>
     <thead>
@@ -8,10 +8,10 @@
         <th
           v-for="(value, key) in items[0]"
           :key="key">
-          {{ key === "_id" ? key = "#" : key }}
+          {{ key === "_id" ? key = "id" : key }}
         </th>
-        <th v-if="hasTheadSlot()">
-          <slot name="thead"></slot>
+        <th v-if="hasSlot('head')">
+          <slot name="head"></slot>
         </th>
       </tr>
     </thead>
@@ -23,18 +23,25 @@
           v-for="(value, key) in item"
           :key="key">
           <slot 
-            :name="`td-${key}`" 
-            :index="index">
+            :name="`cell-${key}`" 
+            :index="index"
+            :item="item"
+            :key="key"
+            :value="value">
           </slot>
         </td>
-        <td v-if="hasTbodySlot()">
+        <td v-if="hasSlot('body')">
           <slot 
-            name="tbody" 
-            :index="index">
+            name="body" 
+            :index="index"
+            :item="item">
           </slot>
         </td>
       </tr>
     </tbody>
+    <tfoot v-if="hasSlot('foot')">
+      <slot name="foot"></slot>
+    </tfoot>
   </table>
 </template>
 
