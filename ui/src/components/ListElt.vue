@@ -1,10 +1,26 @@
 <template>
   <ul :class="display">
     <li 
-      v-for="item in items"
-      :key="item">
-      <slot :name="item"></slot>
-      {{ item }}
+      v-for="(item, index) in items"
+      :key="index">
+      <slot 
+        name="items"
+        :index="index"
+        :item="item">
+      </slot>
+      <ul v-if="isNested()">
+        <li 
+          v-for="(value, key) in item"
+          :key="key">
+          <slot 
+            name="nested"
+            :index="index"
+            :item="item"
+            :key="key"
+            :value="value">
+          </slot>
+        </li>
+      </ul>
     </li>
   </ul>
 </template>
