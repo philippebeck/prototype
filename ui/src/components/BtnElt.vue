@@ -1,18 +1,21 @@
 <template>
   <button 
-    v-if="isBtn === true"
-    :type="type"
+    v-if="getBtnType() === 'button'"
+    :id="id"
     :name="name"
-    @click="action">
-    <slot></slot>
+    :title="title"
+    :type="type"
+    :value="value">
+    <slot name="button"></slot>
     {{ content }}
   </button>
 
   <a 
     v-else
     :href="href"
+    :id="id"
     :title="title">
-    <slot></slot>
+    <slot name="link"></slot>
     {{ content }}
   </a>
 </template>
