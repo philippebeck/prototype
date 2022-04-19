@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import HeadElt from "@/components/HeadElt.vue";
+import HeadElt from "@/components/main/HeadElt.vue";
 import { getData } from "@/services/ApiService";
 
 import CreateLink from "@/views/admin/CreateLink.vue";

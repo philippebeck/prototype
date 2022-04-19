@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import TableElt from "@/components/TableElt.vue";
+import TableElt from "@/components/data/TableElt.vue";
 
 import { putData, deleteData } from "@/services/ApiService";
 import { rewriteString } from "@/services/DisplayService";

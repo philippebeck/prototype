@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import ListElt from "@/components/ListElt.vue";
+import ListElt from "@/components/data/ListElt.vue";
 import { getData } from "@/services/ApiService";
 
 export default {

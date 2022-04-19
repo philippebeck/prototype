@@ -89,8 +89,8 @@
 </template>
 
 <script>
-import NavElt from "@/components/NavElt.vue";
-import FootElt from "@/components/FootElt.vue";
+import NavElt from "@/components/main/NavElt.vue";
+import FootElt from "@/components/main/FootElt.vue";
 
 export default {
   name: 'App',
