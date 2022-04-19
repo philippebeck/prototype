@@ -26,30 +26,46 @@
 
     props: {
       content: {
-        type: String
+        type: String,
+        default: "",
       },
       href: {
-        type: String
+        type: String,
+        default: null
       },
-      isBtn: {
-        type: Boolean,
-        default: false
+      id: {
+        type: String,
+        default: null
       },
       name: {
-        type: String
+        type: String,
+        default: null
       },
       title: {
-        type: String
+        type: String,
+        default: null
       },
       type: {
         type: String,
-        default: "button"
+        default: "link"
+      },
+      value: {
+        type: String,
+        default: null
       }
     },
 
     methods: {
-      action() {
-        alert("test !")
+      getBtnType() {
+        if (
+          this.type === "button" || 
+          this.type === "submit" || 
+          this.type === "reset") {
+          return "button";
+
+        } else {
+          return "link";
+        }
       }
     }
   }
