@@ -1,7 +1,5 @@
 <template>
-  <main 
-    id="links"
-    class="container-90sm-80lg-70xl">
+  <main id="links">
 
     <header>
       <h1 class="color-violet shatex-blur-sm anima-grow-this">
