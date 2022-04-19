@@ -11,16 +11,6 @@
     </label>
 
     <input 
-      v-if="getFieldType() === 'text'"
-      :id="id"
-      :maxlength="max"
-      :minlength="min"
-      :name="id"
-      :placeholder="info"
-      :type="type"
-      :value="value">
-
-    <input 
       v-if="getFieldType() === 'number'"
       :id="id"
       :max="max"
@@ -31,14 +21,14 @@
       :value="value">
 
     <input 
-      v-if="getFieldType() === 'special'"
+      v-else-if="getFieldType() === 'special'"
       :id="id"
       :name="name"
       :type="type"
       :value="value">
 
     <select
-      v-if="getFieldType() === 'list'"
+      v-else-if="getFieldType() === 'list'"
       :id="id"
       :name="id">
       <option
@@ -50,7 +40,7 @@
     </select>
 
     <textarea
-      v-if="getFieldType() === 'area'"
+      v-else-if="getFieldType() === 'area'"
       :id="id"
       :name="id"
       :cols="cols"
@@ -58,6 +48,16 @@
       :minlength="min"
       :placeholder="info"
       :rows="rows"></textarea>
+
+    <input 
+      v-else
+      :id="id"
+      :maxlength="max"
+      :minlength="min"
+      :name="id"
+      :placeholder="info"
+      :type="type"
+      :value="value">
   </fieldset>
 </template>
 
