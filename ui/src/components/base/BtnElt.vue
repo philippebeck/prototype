@@ -283,6 +283,12 @@ button:focus,
   transform: var(--btn-checked-transform);
 }
 
+@each $colors in $main-colors {
+  @each $key, $value in $colors {
+    @include btn-color($key, $value);
+  }
+}
+
 @each $size in $btn-size {
   .btn-#{$size},
   .button-#{$size} {
