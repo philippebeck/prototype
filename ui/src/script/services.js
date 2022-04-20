@@ -7,7 +7,7 @@ const axios = require("axios");
 /**
  * SET AXIOS DEFAULTS
  */
-export function setAxios() {
+function setAxios() {
   axios.defaults.baseURL = constants.API_URL;
   axios.defaults.headers.post["Content-Type"] = constants.CONTENT_TYPE;
   
