@@ -1,6 +1,7 @@
 <template>
   <main>
     <h1 class="color-violet anima-grow-this">
+      <i class="fa-solid fa-sign-in-alt fa-2x"></i>
       Login
     </h1>
     <form class="form">

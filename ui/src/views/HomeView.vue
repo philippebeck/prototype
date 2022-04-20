@@ -3,6 +3,7 @@
 
     <header>
       <h1 class="color-violet shatex-blur-sm anima-grow-this">
+      <i class="fa-solid fa-link fa-2x"></i>
         Links2Code
       </h1>
       <strong class="color-gray">
