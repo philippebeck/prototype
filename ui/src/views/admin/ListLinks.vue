@@ -95,9 +95,7 @@
 
 <script>
 import TableElt from "@/components/data/TableElt.vue";
-
-import { putData, deleteData } from "@/services/ApiService";
-import { checkString, rewriteString } from "@/services/StringService";
+import { checkString, rewriteString, putData, deleteData } from "@/script/services";
 
 export default {
   name: "ListLinks",

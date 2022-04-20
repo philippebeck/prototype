@@ -62,7 +62,7 @@
 
 <script>
 import ListElt from "@/components/data/ListElt.vue";
-import { getData } from "@/services/ApiService";
+import { getData } from "@/script/services";
 
 export default {
   name: "HomeView",

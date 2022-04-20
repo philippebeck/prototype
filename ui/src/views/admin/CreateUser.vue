@@ -57,8 +57,7 @@
 </template>
 
 <script>
-import { postData } from "@/services/ApiService"
-import { checkString, rewriteString } from "@/services/StringService";
+import { checkString, rewriteString, postData } from "@/script/services";
 
 export default {
   name: "CreateUser",

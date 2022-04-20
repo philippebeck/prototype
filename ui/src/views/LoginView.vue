@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { postData } from "@/services/ApiService";
+import { postData } from "@/script/services";
 
 export default {
   name: "LoginView",

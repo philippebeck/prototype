@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import { getData } from "@/services/ApiService";
+import { getData } from "@/script/services";
 
 import CreateLink from "@/views/admin/CreateLink.vue";
 import CreateUser from "@/views/admin/CreateUser.vue";
