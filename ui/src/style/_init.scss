@@ -29,6 +29,129 @@ $containers: (
   --opacity-light: 0.2;
 }
 
+// Keyframes
+@mixin keyframes($key) {
+  @keyframes #{$key} {
+    from {
+      transform: var(--#{$key});
+    }
+  }
+}
+
+// Container
+@mixin container($key, $type, $value) {
+  [class*="container-"][class*="-#{$key}#{$type}"] {
+    max-width: #{$value};
+  }
+}
+
+// Grid
+@mixin grid-template($column, $key) {
+  [class*="grid-"][class*="-#{$column}#{$key}"] {
+    grid-template: auto/repeat(#{$column}, auto);
+  }
+}
+
+// Grid Gap
+@mixin grid-gap($key) {
+  [class*="gap-"][class*="-#{$key}"] {
+    grid-gap: var(--gap-#{$key});
+  }
+}
+
+// Place Content
+@mixin place-content($key, $type: '', $value: var(--place-content-#{$key})) {
+  .placo-#{$key}#{$type} {
+    place-content: #{$value};
+  }
+}
+
+// Place Items
+@mixin place-items($key, $type: '', $value: var(--place-items-#{$key})) {
+  .plait-#{$key}#{$type} {
+    place-items: #{$value};
+  }
+}
+
+// Place Self
+@mixin place-self($key, $type: '', $value: var(--place-self-#{$key})) {
+  .plase-#{$key}#{$type} {
+    place-self: #{$value};
+  }
+}
+
+// Button
+@mixin btn-color($key, $value) {
+  .btn-#{$key},
+  .button-#{$key}:hover,
+  .button-#{$key}:focus,
+  .button-#{$key}-check:checked + .button-#{$key} {
+    border-color: var(--white);
+    background-color: var(--#{$key});
+    color: var(--white);
+  }
+
+  .button-#{$key},
+  .btn-#{$key}:hover,
+  .btn-#{$key}:focus,
+  .btn-#{$key}-check:checked + .btn-#{$key} {
+    border-color: var(--#{$key});
+    background-color: var(--white);
+    color: var(--#{$key});
+  }
+}
+
+// Gallery
+@mixin gallery ($margin, $width) {
+  .gallery {
+    --gallery-figure-margin: #{$margin};
+    --gallery-figure-width: #{$width};
+  }
+}
+
+// Helpers
+@mixin helpers($class, $property, $value) {
+  .#{$class},
+  .global-#{$class} > *,
+  .onto-#{$class}:hover,
+  .onto-#{$class}:focus,
+  .check-#{$class}:checked ~ .hub-#{$class} .goal-#{$class} {
+      #{$property}: #{$value};
+  }
+}
+
+@mixin helpers-concat($class, $property, $value) {
+  [class*="#{$class}"],
+  [class*="global-"][class*="#{$class}"] > *,
+  [class*="onto-"][class*="#{$class}"]:hover,
+  [class*="onto-"][class*="#{$class}"]:focus,
+  [class*="check-"][class*="#{$class}"]:checked ~ [class*="hub-"][class*="#{$class}"] [class*="goal-"][class*="#{$class}"] {
+      #{$property}: #{$value};
+  }
+}
+
+// Anima
+@mixin anima($class, $property, $value) {
+  [class*="anima-"][class*="-#{$class}-"][class*="-this"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-global"] > *,
+  [class*="anima-"][class*="-#{$class}-"][class*="-onto"]:hover,
+  [class*="anima-"][class*="-#{$class}-"][class*="-onto"]:focus,
+  *:hover > [class*="anima-"][class*="-#{$class}-"][class*="-into"],
+  *:focus > [class*="anima-"][class*="-#{$class}-"][class*="-into"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-toall"]:hover > *,
+  [class*="anima-"][class*="-#{$class}-"][class*="-toall"]:focus > *,
+  [class*="anima-"][class*="-#{$class}-"][class*="-toone"] > *:hover,
+  [class*="anima-"][class*="-#{$class}-"][class*="-toone"] > *:focus,
+  [class*="anima-"][class*="-#{$class}-"][class*="-radio1"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target1"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-radio2"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target2"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-radio3"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target3"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-radio4"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target4"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-radio5"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target5"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-check"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-hub"] [class*="anima-"][class*="-#{$class}-"][class*="-goal"] {
+    #{$property}: #{$value};
+  }
+}
+
 // Hide Radio & Check Classes
 [class*="check"],
 [class*="radio"] {
@@ -50,5 +173,108 @@ $containers: (
     @each $key, $value in $containers {
       @include container($key, $type, $value);
     }
+  }
+}
+
+// Primary Colors
+$primary:   65, 105, 225  !default; // RoyalBlue
+$secondary: 220, 220, 220 !default; // Gainsboro
+$pink:      255, 0, 255   !default; // Magenta
+$red:       250, 128, 114 !default; // Salmon
+$orange:    255, 140, 0   !default; // DarkOrange
+$yellow:    255, 215, 0   !default; // Gold
+$brown:     139, 69, 19   !default; // SaddleBrown
+$green:     50, 205, 50   !default; // LimeGreen
+$cyan:      0, 128, 128   !default; // Teal
+$blue:      30, 144, 255  !default; // DodgerBlue
+$violet:    106, 90, 205  !default; // SlateBlue
+
+$primary-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "pink":       $pink,
+  "red":        $red,
+  "orange":     $orange,
+  "yellow":     $yellow,
+  "brown":      $brown,
+  "green":      $green,
+  "cyan":       $cyan,
+  "blue":       $blue,
+  "violet":     $violet
+) !default;
+
+// Grayscale
+$black: 15, 15, 15    !default; // Black
+$gray:  105, 105, 105 !default; // DimGray
+$grey:  192, 192, 192 !default; // Silver
+$white: 255, 255, 240 !default; // Ivory
+
+$grayscale: (
+  "black":  $black,
+  "gray":   $gray,
+  "grey":   $grey
+) !default;
+
+$grayscales: (
+  "black":  $black,
+  "gray":   $gray,
+  "grey":   $grey,
+  "white":  $white
+) !default;
+
+// Brand Colors
+$facebook:  66, 103, 178  !default;
+$github:    36, 41, 46    !default;
+$linkedin:  0, 119, 181   !default;
+$paypal:    39, 52, 106   !default;
+$twitter:   29, 161, 242  !default;
+
+$brand-colors: (
+  "fb": $facebook,
+  "gh": $github,
+  "in": $linkedin,
+  "pp": $paypal,
+  "tw": $twitter
+) !default;
+
+// Composite Colors
+$base-colors: $primary-colors, $grayscales;
+$main-colors: $primary-colors, $brand-colors;
+$all-colors:  $primary-colors, $grayscales, $brand-colors;
+
+// CSS Colors
+:root {
+  --opacity-dark: 0.8;
+  --opacity-light: 0.2;
+  
+  // Opaque Colors
+  @each $colors in $all-colors {
+    @each $key, $value in $colors {
+      --#{$key}: rgb(#{$value});
+    }
+  }
+
+  // Transparent Colors
+  @each $colors in $base-colors {
+    @each $key, $value in $colors {
+      --#{$key}-dark: rgba(#{$value}, var(--opacity-dark));
+      --#{$key}-light: rgba(#{$value}, var(--opacity-light));
+    }
+  }
+}
+
+// Color
+@each $colors in $all-colors {
+  @each $key, $value in $colors {
+    @include helpers('color-#{$key}', 'color', 'var(--#{$key})');
+  }
+}
+
+// Background Color
+@each $colors in $base-colors {
+  @each $key, $value in $colors {
+    @include helpers('bg-#{$key}', 'background-color', 'var(--#{$key})');
+    @include helpers('bg-#{$key}-dark', 'background-color', 'var(--#{$key}-dark)');
+    @include helpers('bg-#{$key}-light', 'background-color', 'var(--#{$key}-light)');
   }
 }
