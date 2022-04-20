@@ -7,75 +7,53 @@
     <form class="form anima-growX">
       <fieldset>
         <ul>
-
           <li>
-            <label 
-              class="anima-slideR-this" 
-              for="name">
-              Nom
-            </label>
-            <input 
-              class="anima-slideL-this" 
-              id="name" 
-              name="name" 
-              v-model="name" 
-              type="text" 
-              placeholder="Indiquer votre Nom"
-              maxlength="20" 
+            <FieldElt
+              id="name"
+              v-model:value="name"
+              info="Indiquer votre nom"
               required>
+              <template #label>
+                Nom
+              </template>
+            </FieldElt>
           </li>
-
           <li>
-            <label 
-              class="anima-slideR-this" 
-              for="email">
-              Email
-            </label>
-            <input 
-              class="anima-slideL-this" 
-              id="email" 
-              name="email" 
-              v-model="email" 
-              type="email" 
-              placeholder="Indiquer votre Email"
-              maxlength="50" 
+            <FieldElt
+              id="email"
+              v-model:value="email"
+              info="Indiquer votre email"
+              type="email"
               required>
+              <template #label>
+                Email
+              </template>
+            </FieldElt>
           </li>
-
           <li>
-            <label 
-              class="anima-slideR-this" 
-              for="title">
-              Titre
-            </label>
-            <input 
-              class="anima-slideL-this" 
-              id="title" 
-              name="title" 
-              v-model="title" 
-              type="text" 
-              placeholder="Indiquer votre Titre"
-              maxlength="50" 
+            <FieldElt
+              id="title"
+              v-model:value="title"
+              info="Indiquer le titre"
               required>
+              <template #label>
+                Titre
+              </template>
+            </FieldElt>
           </li>
-
           <li>
-            <label 
-              class="anima-slideR-this" 
-              for="message">
-              Message
-            </label>
-            <textarea 
-              class="anima-slideL-this" 
-              id="message" 
-              name="message" 
-              v-model="message" 
-              placeholder="Indiquer votre Message" 
-              rows="5"
-              cols="20"></textarea>
+            <FieldElt
+              id="message"
+              v-model:value="message"
+              info="Indiquer votre message"
+              type="area"
+              required>
+              <template #label>
+                Message
+              </template>
+            </FieldElt>
           </li>
         </ul>
-
         <ul>
           <li>
             <div 
@@ -84,7 +62,6 @@
               data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
             </div>
           </li>
-
           <li>
             <BtnElt
               type="button"
@@ -100,12 +77,14 @@
 
 <script>
 import BtnElt from '@/components/base/BtnElt';
+import FieldElt from '@/components/base/FieldElt';
 import { checkString, rewriteString, postData } from "@/script/services";
 
 export default {
   name: "ContactView",
   components: {
-    BtnElt
+    BtnElt,
+    FieldElt
   },
   data() {
     return {
@@ -127,6 +106,7 @@ export default {
 
       if (checkString(message.name, "name") === true 
         && checkString(message.email, "email") === true) {
+
         message.name  = rewriteString(message.name, "name");
         message.email = rewriteString(message.email, "email");
 
