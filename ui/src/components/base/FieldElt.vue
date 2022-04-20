@@ -18,24 +18,26 @@
       :name="id"
       :step="step"
       :type="type"
-      :value="value">
+      :value="value"
+      @input="onInput">
 
     <input 
       v-else-if="getFieldType() === 'special'"
       :id="id"
       :name="name"
       :type="type"
-      :value="value">
+      :value="value"
+      @input="onInput">
 
     <select
       v-else-if="getFieldType() === 'list'"
       :id="id"
       :name="id">
       <option
-        v-for="(item, index) in list"
+        v-for="(value, index) in list"
         :key="index"
-        :value="item">
-        {{ item }}
+        :value="value">
+        {{ value }}
       </option>
     </select>
 
@@ -47,7 +49,9 @@
       :maxlength="max"
       :minlength="min"
       :placeholder="info"
-      :rows="rows"></textarea>
+      :rows="rows"
+      :value="value"
+      @input="onInput"></textarea>
 
     <input 
       v-else
@@ -57,7 +61,8 @@
       :name="id"
       :placeholder="info"
       :type="type"
-      :value="value">
+      :value="value"
+      @input="onInput">
   </fieldset>
 </template>
 
@@ -66,11 +71,14 @@ export default {
   name: "FieldElt",
 
   props: {
+    model: {
+      prop: "value",
+      event: "update"
+    },
     list: {
       type: Array,
       default: null
     },
-
     id: {
       type: String,
       required: true
@@ -83,15 +91,14 @@ export default {
       type: String,
       default: null
     },
-    type: {
-      type: String,
-      default: "text"
-    },
     value: {
       type: String,
       default: null
     },
-
+    type: {
+      type: String,
+      default: "text"
+    },
     cols: {
       type: Number,
       default: 20
@@ -115,6 +122,14 @@ export default {
   },
 
   methods: {
+    hasSlot(name) {
+      return this.$slots[name] !== undefined;
+    },
+    
+    onInput(event) {
+      this.$emit('update:value', event.target.value)
+    },
+
     getFieldType() {
       let fieldType = "";
 
@@ -125,15 +140,18 @@ export default {
         case "time":
           fieldType = "number";
           break;
+        case "check":
         case "checkbox":
         case "color":
         case "radio":
           fieldType = "special";
           break;
+        case "list":
         case "option":
         case "select":
           fieldType = "list";
           break;
+        case "area":
         case "textarea":
           fieldType = "area";
           break;
@@ -142,10 +160,6 @@ export default {
       }
 
       return fieldType;
-    },
-
-    hasSlot(name) {
-      return this.$slots[name] !== undefined;
     }
   }
 }
