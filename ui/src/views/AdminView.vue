@@ -1,12 +1,10 @@
 <template>
   <main id="admin">
 
-    <HeadElt
-      isMain
-      title="Admin"
-      class="color-violet anima-openX-this">
+    <h1 class="color-violet anima-openX-this">
       <i class="fa-solid fa-cogs fa-2x"></i>
-    </HeadElt>
+      Admin
+    </h1>
 
     <nav class="sidebar">
       <input 
@@ -85,7 +83,6 @@
 </template>
 
 <script>
-import HeadElt from "@/components/main/HeadElt.vue";
 import { getData } from "@/services/ApiService";
 
 import CreateLink from "@/views/admin/CreateLink.vue";
@@ -96,7 +93,6 @@ import ListUsers from "@/views/admin/ListUsers.vue";
 export default {
   name: "AdminView",
   components: {
-    HeadElt,
     CreateLink,
     CreateUser,
     ListLinks,
