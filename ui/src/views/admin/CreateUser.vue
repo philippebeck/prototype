@@ -79,9 +79,9 @@ export default {
         pass: this.pass
       };
 
-      if (checkString(user.name, "name")  === true && 
+      if (checkString(user.name, "name") === true && 
         checkString(user.email, "email") === true && 
-        checkString(user.pass, "pass")  === true) {
+        checkString(user.pass, "pass") === true) {
         user.name   = rewriteString(user.name, "name");
         user.email  = rewriteString(user.email, "email");
 
