@@ -201,7 +201,7 @@ legend {
 label {
   --label-display: block;
   --label-font-size: 1.2rem;
-  --label-width: 25vw;
+  --label-width: 25%;
 
   display: var(--label-display);
   width: var(--label-width);
@@ -211,7 +211,7 @@ label {
 input,
 select,
 textarea {
-  --field-width: 65vw;
+  --field-width: 65%;
 
   width: var(--field-width);
 }
@@ -221,7 +221,7 @@ textarea {
   select,
   textarea {
     --field-width: 60%;
-    --label-width: 26vw;
+    --label-width: 26%;
   }
 }
 
@@ -229,8 +229,8 @@ textarea {
   input,
   select,
   textarea {
-    --field-width: 55vw;
-    --label-width: 27vw;
+    --field-width: 55%;
+    --label-width: 27%;
   }
 }
 
@@ -238,8 +238,8 @@ textarea {
   input,
   select,
   textarea {
-    --field-width: 50vw;
-    --label-width: 28vw;
+    --field-width: 50%;
+    --label-width: 28%;
   }
 }
 
@@ -247,8 +247,8 @@ textarea {
   input,
   select,
   textarea {
-    --field-width: 45vw;
-    --label-width: 29vw;
+    --field-width: 45%;
+    --label-width: 29%;
   }
 }
 
@@ -256,8 +256,8 @@ textarea {
   input,
   select,
   textarea {
-    --field-width: 40vw;
-    --label-width: 30vw;
+    --field-width: 40%;
+    --label-width: 30%;
   }
 }
 </style>
