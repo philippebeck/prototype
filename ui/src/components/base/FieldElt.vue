@@ -166,25 +166,98 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+fieldset,
+legend,
+label,
+input,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+}
+
 fieldset {
+  --fieldset-display: flex;
+  --fieldset-align-items: center;
   --fieldset-border: none;
   --fieldset-text-align: center;
-  --label-font-size: 2rem;
-  --legend-font-size: calc(var(--label-font-size) * 1.5);
-  --legend-font-weight: bold;
-  --legend-margin: auto;
 
+  display: var(--fieldset-display);
+  align-items: var(--fieldset-align-items);
   border: var(--fieldset-border);
   text-align: var(--fieldset-text-align);
 }
 
 legend {
+  --legend-font-size: 0.8rem;
+  --legend-font-style: italic;
+  --legend-margin: 10px auto 0;
+
   margin: var(--legend-margin);
   font-size: var(--legend-font-size);
-  font-weight: var(--legend-font-weight);
+  font-style: var(--legend-font-style);
 }
 
 label {
+  --label-display: block;
+  --label-font-size: 1.2rem;
+  --label-width: 25vw;
+
+  display: var(--label-display);
+  width: var(--label-width);
   font-size: var(--label-font-size);
+}
+
+input,
+select,
+textarea {
+  --field-width: 65vw;
+
+  width: var(--field-width);
+}
+
+@media (min-width: 576px) {
+  input,
+  select,
+  textarea {
+    --field-width: 60%;
+    --label-width: 26vw;
+  }
+}
+
+@media (min-width: 768px) {
+  input,
+  select,
+  textarea {
+    --field-width: 55vw;
+    --label-width: 27vw;
+  }
+}
+
+@media (min-width: 992px) {
+  input,
+  select,
+  textarea {
+    --field-width: 50vw;
+    --label-width: 28vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  input,
+  select,
+  textarea {
+    --field-width: 45vw;
+    --label-width: 29vw;
+  }
+}
+
+@media (min-width: 1600px) {
+  input,
+  select,
+  textarea {
+    --field-width: 40vw;
+    --label-width: 30vw;
+  }
 }
 </style>
