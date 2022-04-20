@@ -7,7 +7,6 @@
     <form class="form">
       <fieldset>
         <ul>
-
           <li>
             <label 
               class="anima-slideR-this" 
@@ -23,7 +22,6 @@
               placeholder="Insérer votre Identifiant"
               required>
           </li>
-
           <li>
             <label 
               class="anima-slideR-this" 
@@ -41,7 +39,6 @@
               required>
           </li>
         </ul>
-
         <ul>
           <li>
             <div 
