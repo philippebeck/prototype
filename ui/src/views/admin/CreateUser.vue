@@ -58,8 +58,7 @@
 
 <script>
 import { postData } from "@/services/ApiService"
-import { rewriteString } from "@/services/DisplayService";
-import { checkName, checkEmail, checkPass } from "@/services/RegexService";
+import { checkString, rewriteString } from "@/services/StringService";
 
 export default {
   name: "CreateUser",
@@ -80,13 +79,11 @@ export default {
         pass: this.pass
       };
 
-      if (
-        checkName(user.name)    === true && 
-        checkEmail(user.email)  === true && 
-        checkPass(user.pass)    === true
-        ) {
-        user.name   = rewriteString(user.name);
-        user.email  = rewriteString(user.email);
+      if (checkString(user.name, "name")  === true && 
+        checkString(user.email, "email") === true && 
+        checkString(user.pass, "pass")  === true) {
+        user.name   = rewriteString(user.name, "name");
+        user.email  = rewriteString(user.email, "email");
 
         postData("/api/users", user)
           .then(() => {

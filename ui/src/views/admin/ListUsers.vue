@@ -70,8 +70,7 @@
 import TableElt from "@/components/data/TableElt.vue";
 
 import { putData, deleteData } from "@/services/ApiService";
-import { rewriteString } from "@/services/DisplayService";
-import { checkName, checkEmail, checkPass } from "@/services/RegexService";
+import { checkString, rewriteString } from "@/services/StringService";
 
 export default {
   name: "ListUsers",
@@ -103,13 +102,11 @@ export default {
           }
         }
       }
-      if (
-        checkName(user.name)    === true && 
-        checkEmail(user.email)  === true &&
-        checkPass(user.pass)    === true
-        ) {
-        user.name   = rewriteString(user.name);
-        user.email  = rewriteString(user.email);
+      if (checkString(user.name, "name")  === true && 
+        checkString(user.email, "email") === true &&
+        checkString(user.pass, "pass")  === true) {
+        user.name   = rewriteString(user.name, "name");
+        user.email  = rewriteString(user.email, "email");
 
           putData(`/api/users/${id}`, user)
             .then(() => {

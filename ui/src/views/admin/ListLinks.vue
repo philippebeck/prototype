@@ -97,8 +97,7 @@
 import TableElt from "@/components/data/TableElt.vue";
 
 import { putData, deleteData } from "@/services/ApiService";
-import { rewriteString } from "@/services/DisplayService";
-import { checkName, checkUrl } from "@/services/RegexService";
+import { checkString, rewriteString } from "@/services/StringService";
 
 export default {
   name: "ListLinks",
@@ -110,6 +109,7 @@ export default {
   methods: {
     itemsByCat(items) {
       const itemsByCat = {};
+
       items.forEach(item => {
         if (!itemsByCat[item.cat]) {
           itemsByCat[item.cat] = [];
@@ -117,11 +117,13 @@ export default {
         itemsByCat[item.cat].push(item);
         itemsByCat[item.cat].sort((a, b) => (a.name > b.name) ? 1 : -1);
       });
+
       return itemsByCat;
     },
 
     updateLink(id) {
       let link = {};
+
       for (let i = 0; i < this.links.length; i++ ) {
         if (this.links[i]._id === id) {
           link = {
@@ -132,13 +134,15 @@ export default {
           }
         }
       }
-      if (checkName(link.name) === true && checkUrl(link.url) === true) {
+
+      if (checkString(link.name, "name") === true 
+        && checkString(link.url, "url") === true) {
         if (link.cat === "") {
           alert("Choisissez la catégorie");
 
         } else {
-          link.name = rewriteString(link.name);
-          link.url  = rewriteString(link.url);
+          link.name = rewriteString(link.name, "name");
+          link.url  = rewriteString(link.url, "url");
 
           putData(`/api/links/${id}`, link)
             .then(() => {

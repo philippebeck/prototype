@@ -100,8 +100,7 @@
 
 <script>
 import { postData } from "@/services/ApiService";
-import { rewriteString } from "@/services/DisplayService";
-import { checkName, checkEmail, checkTitle } from "@/services/RegexService";
+import { checkString, rewriteString } from "@/services/StringService";
 
 export default {
   name: "ContactView",
@@ -124,12 +123,10 @@ export default {
         message: this.message
       };
 
-      if (
-        checkName(message.name) === true && 
-        checkEmail(message.email) === true &&
-        checkTitle(message.title) === true) {
-        message.name  = rewriteString(message.name);
-        message.email = rewriteString(message.email);
+      if (checkString(message.name, "name") === true 
+        && checkString(message.email, "email") === true) {
+        message.name  = rewriteString(message.name, "name");
+        message.email = rewriteString(message.email, "email");
 
         postData("/api/users/send", message)
           .then(() => {

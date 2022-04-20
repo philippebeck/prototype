@@ -77,8 +77,7 @@
 
 <script>
 import { postData } from "@/services/ApiService";
-import { rewriteString } from "@/services/DisplayService";
-import { checkName, checkUrl } from "@/services/RegexService";
+import { checkString, rewriteString } from "@/services/StringService";
 
 export default {
   name: "CreateLink",
@@ -98,13 +97,16 @@ export default {
         cat: this.cat
       };
 
-      if (checkName(link.name) === true && checkUrl(link.url) === true) {
+      if (checkString(link.name, "name") === true 
+        && checkString(link.url, "url") === true) {
         if (link.cat === "") {
           alert("Choisissez la catégorie");
           
         } else {
-          link.name = rewriteString(link.name);
-          link.url  = rewriteString(link.url);
+          link.name = rewriteString(link.name, "name");
+          link.url  = rewriteString(link.url, "url");
+
+          console.log(link);
 
           postData("/api/links", link)
             .then(() => {
