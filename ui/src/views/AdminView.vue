@@ -1,11 +1,6 @@
 <template>
   <main id="admin">
 
-    <h1 class="color-violet anima-openX-this">
-      <i class="fa-solid fa-cogs fa-2x"></i>
-      Admin
-    </h1>
-
     <nav class="sidebar">
       <input 
         id="sidebar-class"
@@ -52,6 +47,11 @@
         <i class="fas fa-chevron-circle-up fa-fw color-violet"></i>
       </a>
     </nav>
+
+    <h1 class="color-violet anima-openX-this">
+      <i class="fa-solid fa-cogs fa-2x"></i>
+      Admin
+    </h1>
 
     <section>
       <h2 id="link">

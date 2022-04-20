@@ -1,16 +1,6 @@
 <template>
   <main id="links">
 
-    <header>
-      <h1 class="color-violet shatex-blur-sm anima-grow-this">
-      <i class="fa-solid fa-link fa-2x"></i>
-        Links2Code
-      </h1>
-      <strong class="color-gray">
-        Des Liens pour Coder !
-      </strong>
-    </header>
-
     <nav class="sidebar">
       <input 
         id="sidebar-class"
@@ -40,6 +30,16 @@
         <i class="fas fa-chevron-circle-up fa-fw color-violet"></i>
       </a>
     </nav>
+
+    <header>
+      <h1 class="color-violet shatex-blur-sm anima-grow-this">
+      <i class="fa-solid fa-link fa-2x"></i>
+        Links2Code
+      </h1>
+      <strong class="color-gray">
+        Des Liens pour Coder !
+      </strong>
+    </header>
 
     <ListElt :items="itemsByCat(links)">
       <template #items="slotProps">
