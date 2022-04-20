@@ -66,22 +66,23 @@
       </li>
     </ul>
 
-    <button 
-      type="button" 
+    <BtnElt
+      type="button"
+      content="Créer"
       @click="createLink()" 
-      class="btn-green">
-      Créer
-    </button>
+      class="btn-green"/>
   </form>
 </template>
 
 <script>
-import { postData } from "@/services/ApiService";
-import { rewriteString } from "@/services/DisplayService";
-import { checkName, checkUrl } from "@/services/RegexService";
+import BtnElt from '@/components/base/BtnElt';
+import { checkString, rewriteString, postData } from "@/script/services";
 
 export default {
   name: "CreateLink",
+  components: {
+    BtnElt
+  },
   data() {
     return {
       name: "",
@@ -98,13 +99,16 @@ export default {
         cat: this.cat
       };
 
-      if (checkName(link.name) === true && checkUrl(link.url) === true) {
+      if (checkString(link.name, "name") === true 
+        && checkString(link.url, "url") === true) {
         if (link.cat === "") {
           alert("Choisissez la catégorie");
           
         } else {
-          link.name = rewriteString(link.name);
-          link.url  = rewriteString(link.url);
+          link.name = rewriteString(link.name, "name");
+          link.url  = rewriteString(link.url, "url");
+
+          console.log(link);
 
           postData("/api/links", link)
             .then(() => {

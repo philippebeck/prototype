@@ -1,12 +1,12 @@
 <template>
   <main>
     <h1 class="color-violet anima-grow-this">
+      <i class="fa-solid fa-sign-in-alt fa-2x"></i>
       Login
     </h1>
     <form class="form">
       <fieldset>
         <ul>
-
           <li>
             <label 
               class="anima-slideR-this" 
@@ -22,7 +22,6 @@
               placeholder="Insérer votre Identifiant"
               required>
           </li>
-
           <li>
             <label 
               class="anima-slideR-this" 
@@ -40,7 +39,6 @@
               required>
           </li>
         </ul>
-
         <ul>
           <li>
             <div 
@@ -49,14 +47,12 @@
               data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
             </div>
           </li>
-          
           <li>
-            <button 
-              @click="login()" 
+            <BtnElt
               type="button"
-              class="btn-green">
-              Connexion
-            </button>
+              content="Connexion"
+              @click="login()" 
+              class="btn-green"/>
           </li>
         </ul>
       </fieldset>
@@ -65,11 +61,14 @@
 </template>
 
 <script>
-import { postData } from "@/services/ApiService";
+import BtnElt from '@/components/base/BtnElt';
+import { postData } from "@/script/services";
 
 export default {
   name: "LoginView",
-
+  components: {
+    BtnElt
+  },
   data() {
     return {
       email: "",
@@ -77,7 +76,7 @@ export default {
     }
   },
 
-    mounted() {
+    beforeMount() {
     if (localStorage.userId) {
       this.$router.push("/admin");
     }

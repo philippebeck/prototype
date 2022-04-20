@@ -73,20 +73,25 @@
       </template>
 
       <template #body="slotProps">
-        <button 
-          type="button" 
+        <BtnElt
+          type="button"
           @click="updateLink(table[slotProps.index]._id)" 
           class="btn-blue"
           title="Modifier">
-          <i class="fa-solid fa-edit"></i>
-        </button>
-        <button 
-          type="button" 
+          <template #button>
+            <i class="fa-solid fa-edit"></i>
+          </template>
+        </BtnElt>
+
+        <BtnElt
+          type="button"
           @click="deleteLink(table[slotProps.index]._id)" 
           class="btn-red"
           title="Supprimer">
-          <i class="fa-solid fa-trash-alt"></i>
-        </button>
+          <template #button>
+            <i class="fa-solid fa-trash-alt"></i>
+          </template>
+        </BtnElt>
       </template>
     </TableElt>
   </form>
@@ -94,22 +99,22 @@
 </template>
 
 <script>
-import TableElt from "@/components/TableElt.vue";
-
-import { putData, deleteData } from "@/services/ApiService";
-import { rewriteString } from "@/services/DisplayService";
-import { checkName, checkUrl } from "@/services/RegexService";
+import BtnElt from '@/components/base/BtnElt';
+import TableElt from "@/components/data/TableElt.vue";
+import { checkString, rewriteString, putData, deleteData } from "@/script/services";
 
 export default {
   name: "ListLinks",
   props: ["links"],
   components: {
+    BtnElt,
     TableElt
   },
 
   methods: {
     itemsByCat(items) {
       const itemsByCat = {};
+
       items.forEach(item => {
         if (!itemsByCat[item.cat]) {
           itemsByCat[item.cat] = [];
@@ -117,11 +122,13 @@ export default {
         itemsByCat[item.cat].push(item);
         itemsByCat[item.cat].sort((a, b) => (a.name > b.name) ? 1 : -1);
       });
+
       return itemsByCat;
     },
 
     updateLink(id) {
       let link = {};
+
       for (let i = 0; i < this.links.length; i++ ) {
         if (this.links[i]._id === id) {
           link = {
@@ -132,13 +139,15 @@ export default {
           }
         }
       }
-      if (checkName(link.name) === true && checkUrl(link.url) === true) {
+
+      if (checkString(link.name, "name") === true 
+        && checkString(link.url, "url") === true) {
         if (link.cat === "") {
           alert("Choisissez la catégorie");
 
         } else {
-          link.name = rewriteString(link.name);
-          link.url  = rewriteString(link.url);
+          link.name = rewriteString(link.name, "name");
+          link.url  = rewriteString(link.url, "url");
 
           putData(`/api/links/${id}`, link)
             .then(() => {

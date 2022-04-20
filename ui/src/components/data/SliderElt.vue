@@ -21,13 +21,31 @@
       class="slider-relay">
       <figure class="slider-target1">
         <img 
-          src="https://animadio.org/img/animadio.png" 
-          alt="DevsAgency Logo">
+          src="https://animadio.org/img/numbers/1.svg" 
+          alt="Your awesome alternate text">
+        <figcaption>
+          <a 
+            href="https://animadio.org" 
+            title="Your awesome title">
+            <h2>Your 1st title</h2>
+            <p>Your 1st description</p>
+            <i class="fas fa-image"></i>
+          </a>
+        </figcaption>
       </figure>
       <figure class="slider-target2">
         <img 
-          src="https://animadio.org/img/logo.png" 
-          alt="Website Shop Picture">
+        src="https://animadio.org/img/numbers/2.svg" 
+        alt="Your awesome alternate text">
+      <figcaption>
+        <a 
+          href="https://animadio.org" 
+          title="Your awesome title">
+          <h2>Your 2nd title</h2>
+          <p>Your 2nd description</p>
+          <i class="fas fa-image"></i>
+        </a>
+      </figcaption>
       </figure>
     </figure>
 

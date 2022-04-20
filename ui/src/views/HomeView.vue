@@ -1,15 +1,6 @@
 <template>
   <main id="links">
 
-    <header>
-      <h1 class="color-violet shatex-blur-sm anima-grow-this">
-        Links2Code
-      </h1>
-      <strong class="color-gray">
-        Des Liens pour Coder !
-      </strong>
-    </header>
-
     <nav class="sidebar">
       <input 
         id="sidebar-class"
@@ -40,6 +31,16 @@
       </a>
     </nav>
 
+    <header>
+      <h1 class="color-violet shatex-blur-sm anima-grow-this">
+      <i class="fa-solid fa-link fa-2x"></i>
+        Links2Code
+      </h1>
+      <strong class="color-gray">
+        Des Liens pour Coder !
+      </strong>
+    </header>
+
     <ListElt :items="itemsByCat(links)">
       <template #items="slotProps">
         <i 
@@ -49,24 +50,26 @@
       </template>
 
       <template #nested="slotProps">
-        <a 
-          class="button-primary" 
-          :href="`https://${slotProps.value.url}`"
-          :title="slotProps.value.url">
-          {{ slotProps.value.name }}
-        </a>
+        <BtnElt
+          :content="slotProps.value.name"
+          :href="`https://${slotProps.value.url}`" 
+          :title="slotProps.value.url"
+          class="button-primary"/>
       </template>
     </ListElt>
+
   </main>
 </template>
 
 <script>
-import ListElt from "@/components/ListElt.vue";
-import { getData } from "@/services/ApiService";
+import BtnElt from '@/components/base/BtnElt';
+import ListElt from "@/components/data/ListElt.vue";
+import { getData } from "@/script/services";
 
 export default {
   name: "HomeView",
   components: {
+    BtnElt,
     ListElt
   },
 

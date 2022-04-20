@@ -1,11 +1,29 @@
-// Font
+// Font Style & Weight
 $font: (
   'bold':     'weight',
   'italic':   'style',
   'oblique':  'style'
 ) !default;
 
+@each $key, $value in $font {
+  @include helpers('font-#{$key}', 'font-#{$value}', $key);
+}
+
+// Font Family
 $font-family: 'sans-serif', 'serif', 'monospace', 'cursive', 'fantasy';
+
+:root {
+  @each $key in $font-family {
+    --#{$key}: #{$key};
+    }
+  --decoration-line: underline;
+}
+
+@each $key in $font-family {
+  .font-#{$key} {
+    font-family: var(--#{$key}-font-family);
+  }
+}
 
 // Text Align
 $text-align: (
@@ -15,6 +33,10 @@ $text-align: (
   'left':     left
 ) !default;
 
+@each $key, $value in $text-align {
+  @include helpers('align-#{$key}', 'text-align', $value);
+}
+
 // Text Transform
 $trans: (
   'cap':  'capitalize',
@@ -22,7 +44,11 @@ $trans: (
   'low':  'lowercase'
 ) !default;
 
-// Text Decoration Line
+@each $key, $value in $trans {
+  @include helpers('trans-#{$key}', 'text-transform', $value);
+}
+
+// Text Decoration
 $text-decoration-lines: (
   'none':     none,
   'under':    underline,
@@ -30,7 +56,6 @@ $text-decoration-lines: (
   'through':  line-through
 ) !default;
 
-// Text Decoration Style
 $text-decoration-styles: (
   'dash':   dashed,
   'dot':    dotted,
@@ -39,43 +64,12 @@ $text-decoration-styles: (
   'wavy':   wavy
 ) !default;
 
-// Text Decoration
+
 $text-decorations : (
   "line":   $text-decoration-lines,
   "style":  $text-decoration-styles
 ) !default;
 
-:root {
-  @each $key in $font-family {
-    --#{$key}: #{$key};
-    }
-
-  --decoration-line: underline;
-}
-
-// Font Style & Weight
-@each $key, $value in $font {
-  @include helpers('font-#{$key}', 'font-#{$value}', $key);
-}
-
-// Font Family
-@each $key in $font-family {
-  .font-#{$key} {
-    font-family: var(--#{$key}-font-family);
-  }
-}
-
-// Text Transform
-@each $key, $value in $trans {
-  @include helpers('trans-#{$key}', 'text-transform', $value);
-}
-
-// Text Align
-@each $key, $value in $text-align {
-  @include helpers('align-#{$key}', 'text-align', $value);
-}
-
-// Text Decoration
 @include helpers-concat('deco', 'text-decoration-line', 'var(--decoration-line)');
 
 @each $deco-key, $deco-value in $text-decorations {
@@ -86,4 +80,34 @@ $text-decorations : (
 
 @each $key, $value in $primary-colors {
   @include helpers('deco-#{$key}', 'text-decoration-color', 'var(--#{$key})');
+}
+
+// Text Shadow
+$shatex-sm: 1px 1px !default;
+$shatex-md: 2px 2px !default;
+$shatex-lg: 5px 5px !default;
+
+$shatex-blur:     0   0   2px !default;
+$shatex-blur-sm:  1px 1px 1px !default;
+$shatex-blur-md:  2px 2px 2px !default;
+$shatex-blur-lg:  5px 5px 5px !default;
+
+$text-shadows: (
+  'sm':       $shatex-sm,
+  'md':       $shatex-md,
+  'lg':       $shatex-lg,
+  'blur':     $shatex-blur,
+  'blur-sm':  $shatex-blur-sm,
+  'blur-md':  $shatex-blur-md,
+  'blur-lg':  $shatex-blur-lg,
+) !default;
+
+[class*="shatex-"] {
+  @each $key, $value in $text-shadows {
+    --text-shadow-#{$key}: #{$value};
+  }
+}
+
+@each $key, $value in $text-shadows {
+  @include helpers('shatex-#{$key}', 'text-shadow', 'var(--text-shadow-#{$key})');
 }

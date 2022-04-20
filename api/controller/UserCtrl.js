@@ -216,13 +216,13 @@ exports.send = (req, res) => {
         from: process.env.MAIL_USER, 
         to: req.body.email, 
         bcc: process.env.MAIL_USER,
-        subject: `Message (${host}) : ${req.body.subject}`, 
+        subject: `Message (${host}) : ${req.body.title}`, 
         text: req.body.message
       };
 
       await transporter.sendMail(message, function() {
         res.status(200).json(
-          { message: "Message envoyé !" }
+          { message: "Message sent !" }
         );
       });
 

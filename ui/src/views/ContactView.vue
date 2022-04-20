@@ -1,6 +1,7 @@
 <template>
   <main>
     <h1 class="color-violet anima-slideB-this">
+      <i class="fa-solid fa-at fa-2x"></i>
       Contact
     </h1>
     <form class="form anima-growX">
@@ -85,12 +86,11 @@
           </li>
 
           <li>
-            <button 
-              @click="send()" 
+            <BtnElt
               type="button"
-              class="btn-green">
-              Envoyer
-            </button>
+              content="Envoyer"
+              @click="send()" 
+              class="btn-green"/>
           </li>
         </ul>
       </fieldset>
@@ -99,13 +99,14 @@
 </template>
 
 <script>
-import { postData } from "@/services/ApiService";
-import { rewriteString } from "@/services/DisplayService";
-import { checkName, checkEmail, checkTitle } from "@/services/RegexService";
+import BtnElt from '@/components/base/BtnElt';
+import { checkString, rewriteString, postData } from "@/script/services";
 
 export default {
   name: "ContactView",
-
+  components: {
+    BtnElt
+  },
   data() {
     return {
       name: "",
@@ -124,12 +125,10 @@ export default {
         message: this.message
       };
 
-      if (
-        checkName(message.name) === true && 
-        checkEmail(message.email) === true &&
-        checkTitle(message.title) === true) {
-        message.name  = rewriteString(message.name);
-        message.email = rewriteString(message.email);
+      if (checkString(message.name, "name") === true 
+        && checkString(message.email, "email") === true) {
+        message.name  = rewriteString(message.name, "name");
+        message.email = rewriteString(message.email, "email");
 
         postData("/api/users/send", message)
           .then(() => {

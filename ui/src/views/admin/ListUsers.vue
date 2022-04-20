@@ -47,36 +47,40 @@
       </template>
 
       <template #body="slotProps">
-        <button 
-          type="button" 
+        <BtnElt
+          type="button"
           @click="updateUser(users[slotProps.index]._id)" 
           class="btn-blue"
           title="Modifier">
-          <i class="fa-solid fa-edit"></i>
-        </button>
-        <button 
-          type="button" 
+          <template #button>
+            <i class="fa-solid fa-edit"></i>
+          </template>
+        </BtnElt>
+
+        <BtnElt
+          type="button"
           @click="deleteUser(users[slotProps.index]._id)" 
           class="btn-red"
           title="Supprimer">
-          <i class="fa-solid fa-trash-alt"></i>
-        </button>
+          <template #button>
+            <i class="fa-solid fa-trash-alt"></i>
+          </template>
+        </BtnElt>
       </template>
     </TableElt>
   </form>
 </template>
 
 <script>
-import TableElt from "@/components/TableElt.vue";
-
-import { putData, deleteData } from "@/services/ApiService";
-import { rewriteString } from "@/services/DisplayService";
-import { checkName, checkEmail, checkPass } from "@/services/RegexService";
+import BtnElt from '@/components/base/BtnElt';
+import TableElt from "@/components/data/TableElt.vue";
+import { checkString, rewriteString, putData, deleteData } from "@/script/services";
 
 export default {
   name: "ListUsers",
   props: ["users"],
   components: {
+    BtnElt,
     TableElt
   },
 
@@ -103,13 +107,11 @@ export default {
           }
         }
       }
-      if (
-        checkName(user.name)    === true && 
-        checkEmail(user.email)  === true &&
-        checkPass(user.pass)    === true
-        ) {
-        user.name   = rewriteString(user.name);
-        user.email  = rewriteString(user.email);
+      if (checkString(user.name, "name") === true && 
+        checkString(user.email, "email") === true &&
+        checkString(user.pass, "pass") === true) {
+        user.name   = rewriteString(user.name, "name");
+        user.email  = rewriteString(user.email, "email");
 
           putData(`/api/users/${id}`, user)
             .then(() => {
