@@ -77,7 +77,7 @@ export default {
     }
   },
 
-    mounted() {
+    beforeMount() {
     if (localStorage.userId) {
       this.$router.push("/admin");
     }
