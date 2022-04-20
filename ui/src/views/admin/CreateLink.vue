@@ -66,20 +66,23 @@
       </li>
     </ul>
 
-    <button 
-      type="button" 
+    <BtnElt
+      type="button"
+      content="Créer"
       @click="createLink()" 
-      class="btn-green">
-      Créer
-    </button>
+      class="btn-green"/>
   </form>
 </template>
 
 <script>
+import BtnElt from '@/components/base/BtnElt';
 import { checkString, rewriteString, postData } from "@/script/services";
 
 export default {
   name: "CreateLink",
+  components: {
+    BtnElt
+  },
   data() {
     return {
       name: "",

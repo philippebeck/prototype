@@ -86,12 +86,11 @@
           </li>
 
           <li>
-            <button 
-              @click="send()" 
+            <BtnElt
               type="button"
-              class="btn-green">
-              Envoyer
-            </button>
+              content="Envoyer"
+              @click="send()" 
+              class="btn-green"/>
           </li>
         </ul>
       </fieldset>
@@ -100,11 +99,14 @@
 </template>
 
 <script>
+import BtnElt from '@/components/base/BtnElt';
 import { checkString, rewriteString, postData } from "@/script/services";
 
 export default {
   name: "ContactView",
-
+  components: {
+    BtnElt
+  },
   data() {
     return {
       name: "",

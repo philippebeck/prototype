@@ -50,14 +50,12 @@
               data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
             </div>
           </li>
-          
           <li>
-            <button 
-              @click="login()" 
+            <BtnElt
               type="button"
-              class="btn-green">
-              Connexion
-            </button>
+              content="Connexion"
+              @click="login()" 
+              class="btn-green"/>
           </li>
         </ul>
       </fieldset>
@@ -66,11 +64,14 @@
 </template>
 
 <script>
+import BtnElt from '@/components/base/BtnElt';
 import { postData } from "@/script/services";
 
 export default {
   name: "LoginView",
-
+  components: {
+    BtnElt
+  },
   data() {
     return {
       email: "",
