@@ -47,26 +47,32 @@
       </template>
 
       <template #body="slotProps">
-        <button 
-          type="button" 
+        <BtnElt
+          type="button"
           @click="updateUser(users[slotProps.index]._id)" 
           class="btn-blue"
           title="Modifier">
-          <i class="fa-solid fa-edit"></i>
-        </button>
-        <button 
-          type="button" 
+          <template #button>
+            <i class="fa-solid fa-edit"></i>
+          </template>
+        </BtnElt>
+
+        <BtnElt
+          type="button"
           @click="deleteUser(users[slotProps.index]._id)" 
           class="btn-red"
           title="Supprimer">
-          <i class="fa-solid fa-trash-alt"></i>
-        </button>
+          <template #button>
+            <i class="fa-solid fa-trash-alt"></i>
+          </template>
+        </BtnElt>
       </template>
     </TableElt>
   </form>
 </template>
 
 <script>
+import BtnElt from '@/components/base/BtnElt';
 import TableElt from "@/components/data/TableElt.vue";
 import { checkString, rewriteString, putData, deleteData } from "@/script/services";
 
@@ -74,6 +80,7 @@ export default {
   name: "ListUsers",
   props: ["users"],
   components: {
+    BtnElt,
     TableElt
   },
 
