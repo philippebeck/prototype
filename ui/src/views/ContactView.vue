@@ -4,73 +4,81 @@
       <i class="fa-solid fa-at fa-2x"></i>
       Contact
     </h1>
-    <form class="form anima-growX">
-      <fieldset>
-        <ul>
-          <li>
-            <FieldElt
-              id="name"
-              v-model:value="name"
-              info="Indiquer votre nom"
-              required>
-              <template #label>
-                Nom
-              </template>
-            </FieldElt>
-          </li>
-          <li>
-            <FieldElt
-              id="email"
-              v-model:value="email"
-              info="Indiquer votre email"
-              type="email"
-              required>
-              <template #label>
-                Email
-              </template>
-            </FieldElt>
-          </li>
-          <li>
-            <FieldElt
-              id="title"
-              v-model:value="title"
-              info="Indiquer le titre"
-              required>
-              <template #label>
-                Titre
-              </template>
-            </FieldElt>
-          </li>
-          <li>
-            <FieldElt
-              id="message"
-              v-model:value="message"
-              info="Indiquer votre message"
-              type="area"
-              required>
-              <template #label>
-                Message
-              </template>
-            </FieldElt>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <div 
-              id="recaptcha" 
-              class="g-recaptcha" 
-              data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
-            </div>
-          </li>
-          <li>
-            <BtnElt
-              type="button"
-              content="Envoyer"
-              @click="send()" 
-              class="btn-green"/>
-          </li>
-        </ul>
-      </fieldset>
+    <form class="anima-growX">
+      <ul>
+        <li>
+          <FieldElt
+            id="name"
+            v-model:value="name"
+            info="Indiquer votre nom"
+            required>
+            <template #legend>
+              Nom et prénom
+            </template>
+            <template #label>
+              Nom
+            </template>
+          </FieldElt>
+        </li>
+        <li>
+          <FieldElt
+            id="email"
+            v-model:value="email"
+            info="Indiquer votre email"
+            type="email"
+            required>
+            <template #legend>
+              Un email valide svp !
+            </template>
+            <template #label>
+              Email
+            </template>
+          </FieldElt>
+        </li>
+        <li>
+          <FieldElt
+            id="title"
+            v-model:value="title"
+            info="Indiquer le titre"
+            required>
+            <template #legend>
+              La raison de ce message ?
+            </template>
+            <template #label>
+              Titre
+            </template>
+          </FieldElt>
+        </li>
+        <li>
+          <FieldElt
+            id="message"
+            v-model:value="message"
+            info="Indiquer votre message"
+            type="area"
+            required>
+            <template #legend>
+              Soyez bref et précis !
+            </template>
+            <template #label>
+              Message
+            </template>
+          </FieldElt>
+        </li>
+        <li>
+          <div 
+            id="recaptcha" 
+            class="g-recaptcha" 
+            data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
+          </div>
+        </li>
+        <li>
+          <BtnElt
+            type="button"
+            content="Envoyer"
+            @click="send()" 
+            class="btn-green"/>
+        </li>
+      </ul>
     </form>
   </main>
 </template>
@@ -120,3 +128,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+ul {
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+</style>
