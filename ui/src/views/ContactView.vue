@@ -42,7 +42,7 @@
             info="Indiquer le titre"
             required>
             <template #legend>
-              Title
+              Titre
             </template>
             <template #label>
               La raison de ce message ?
