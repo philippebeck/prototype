@@ -4,12 +4,6 @@
       <slot name="legend"></slot>
     </legend>
 
-    <label 
-      v-if="hasSlot('label')"
-      :for="id">
-      <slot name="label"></slot>
-    </label>
-
     <input 
       v-if="getFieldType() === 'number'"
       :id="id"
@@ -63,6 +57,12 @@
       :type="type"
       :value="value"
       @input="onInput">
+
+    <label 
+      v-if="hasSlot('label')"
+      :for="id">
+      <slot name="label"></slot>
+    </label>
   </fieldset>
 </template>
 
