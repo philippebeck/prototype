@@ -168,136 +168,110 @@ export default {
 <style lang="scss" scoped>
 fieldset,
 fieldset > * {
-  --input-background-color: var(--white);
-  --input-border: medium outset var(--blue);
-  --input-border-radius: 10px;
-  --input-hover-background-color: var(--grey);
-  --input-hover-border: medium inset var(--green);  
-  --input-line-height: 1.8;
-  --input-margin: auto;
-  --input-outline: 0;
-  --input-padding: 5px;
-  --input-width: 100%;
-  --field-box-sizing: border-box;
-  --field-hover-label-visibility: visible;
-  --fieldset-place-items: center;
-  --fieldset-border: none;
-  --fieldset-display: flex;
-  --fieldset-margin: 5px auto 10px;
-  --fieldset-padding: 10px;
-  --fieldset-text-align: center;
-  --fieldset-width: 100%;
-  --label-color: var(--blue);
-  --label-display: block;
-  --label-font-size: 0.8rem;
-  --label-font-style: italic;
-  --label-margin: auto;
-  --label-padding: 5px;
-  --label-visibility: hidden;
-  --label-width: 100%;
-  --legend-color: var(--gray);
-  --legend-font-size: 1.2rem;
-  --legend-margin: auto;
-  --legend-padding: 5px;
-  --legend-width: 100%;
-
-  box-sizing: var(--field-box-sizing);
+  box-sizing: border-box;
 }
 
 fieldset {
-  display: var(--fieldset-display);
+  display: flex;
   flex-wrap: wrap;
-  place-items: var(--fieldset-place-items);
-  margin: var(--fieldset-margin);
-  border: var(--fieldset-border);
-  padding: var(--fieldset-padding);
-  width: var(--fieldset-width);
-  text-align: var(--fieldset-text-align);
+  place-items: center;
+  margin: auto;
+  border: none;
+  padding: 10px;
+  width: 95vw;
+  text-align: center;
+  
+  & > * {
+    margin: 0;
+  }
 }
 
 legend {
-  margin: var(--legend-margin);
-  padding: var(--legend-padding);
-  width: var(--legend-width);
-  font-size: var(--legend-font-size);
-  color: var(--legend-color);
+  padding: 5px;
+  width: 100%;
+  font-size: 1.2rem;
+  color: var(--gray);
 }
 
 label {
-  display: var(--label-display);
-  margin: var(--label-margin);
-  padding: var(--label-padding);
-  width: var(--label-width);
-  visibility: var(--label-visibility);
-  font-size: var(--label-font-size);
-  font-style: var(--label-font-style);
-  color: var(--label-color);
+  padding: 5px;
+  width: 100%;
+  visibility: hidden;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--cyan);
 }
 
 input,
 select,
 textarea {
-  margin: var(--input-margin);
-  border: var(--input-border);
-  border-radius: var(--input-border-radius);
-  outline: var(--input-outline);
-  padding: var(--input-padding);
-  width: var(--input-width);
-  line-height: var(--input-line-height);
-  background-color: var(--input-background-color);
+  border: medium outset var(--blue);
+  border-radius: 10px;
+  outline: none;
+  padding: 5px;
+  width: 100%;
+  line-height: 1.8;
+  background-color: var(--white);
 }
 
-input:hover,
+fieldset:hover legend,
+legend:hover {
+  color: var(--black);
+}
+
+fieldset:hover > input,
+fieldset:hover > select,
+fieldset:hover > textarea,
 input:focus,
-select:hover,
 select:focus,
-textarea:hover,
 textarea:focus {
-  border: var(--input-hover-border);
-  background-color: var(--input-hover-background-color);
+  border: medium inset var(--green);
+  border-radius: 0;
+  background-color: var(--grey);
+  transition: all 1s;
 }
 
-input:hover + label,
+fieldset:hover > label,
 input:focus + label,
-select:hover + label,
 select:focus + label,
-textarea:hover + label,
 textarea:focus + label {
-  visibility: var(--field-hover-label-visibility);
+  visibility: visible;
+  transform: scale(1.1);
+  transition: all 1s;
 }
 
 @media (min-width: 576px) {
   fieldset,
   fieldset > * {
-    --fieldset-width: 75%;
+    width: 70vw;
   }
 }
 
 @media (min-width: 768px) {
   fieldset,
   fieldset > * {
-    --fieldset-width: 55%;
+    width: 50vw;
   }
 }
 
 @media (min-width: 992px) {
   fieldset,
   fieldset > * {
-    --fieldset-width: 40%;
+    width: 35vw;
   }
 }
 
 @media (min-width: 1200px) {
   fieldset,
   fieldset > * {
-    --fieldset-width: 30%;
+    width: 25vw;
   }
 }
 
 @media (min-width: 1600px) {
   fieldset,
   fieldset > * {
-    --fieldset-width: 25%;
+    width: 20vw;
   }
 }
 </style>
