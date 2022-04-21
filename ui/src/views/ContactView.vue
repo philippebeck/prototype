@@ -13,10 +13,10 @@
             info="Indiquer votre nom"
             required>
             <template #legend>
-              Nom et prénom
+              Nom
             </template>
             <template #label>
-              Nom
+              Nom et prénom
             </template>
           </FieldElt>
         </li>
@@ -28,10 +28,10 @@
             type="email"
             required>
             <template #legend>
-              Un email valide svp !
+              Email
             </template>
             <template #label>
-              Email
+              Un email valide svp !
             </template>
           </FieldElt>
         </li>
@@ -42,10 +42,10 @@
             info="Indiquer le titre"
             required>
             <template #legend>
-              La raison de ce message ?
+              Title
             </template>
             <template #label>
-              Titre
+              La raison de ce message ?
             </template>
           </FieldElt>
         </li>
@@ -57,10 +57,10 @@
             type="area"
             required>
             <template #legend>
-              Soyez bref et précis !
+              Message
             </template>
             <template #label>
-              Message
+              Soyez bref et précis !
             </template>
           </FieldElt>
         </li>
