@@ -168,51 +168,59 @@ export default {
 <style lang="scss" scoped>
 fieldset,
 fieldset > * {
-  --input-background-color: var(--grey-light);
+  --input-background-color: var(--white);
   --input-border: medium outset var(--blue);
   --input-border-radius: 10px;
-  --input-box-shadow: unset;
+  --input-hover-background-color: var(--grey);
+  --input-hover-border: medium inset var(--green);  
   --input-line-height: 1.8;
-  --input-margin: 5px auto 10px;
+  --input-margin: auto;
   --input-outline: 0;
   --input-padding: 5px;
-  --input-width: 70%;
+  --input-width: 100%;
   --field-box-sizing: border-box;
-  --fieldset-place-content: end;
+  --field-hover-label-visibility: visible;
   --fieldset-place-items: center;
   --fieldset-border: none;
   --fieldset-display: flex;
-  --fieldset-margin: 10px auto 20px;
+  --fieldset-margin: 5px auto 10px;
+  --fieldset-padding: 10px;
   --fieldset-text-align: center;
   --fieldset-width: 100%;
-  --label-color: var(--gray);
+  --label-color: var(--blue);
   --label-display: block;
-  --label-font-size: 1.2rem;
-  --label-margin: 5px auto 10px;
+  --label-font-size: 0.8rem;
+  --label-font-style: italic;
+  --label-margin: auto;
   --label-padding: 5px;
-  --label-width: 30%;
-  --legend-font-size: 0.8rem;
-  --legend-font-style: italic;
-  --legend-margin: 10px 0 0 var(--label-width);
+  --label-visibility: hidden;
+  --label-width: 100%;
+  --legend-color: var(--gray);
+  --legend-font-size: 1.2rem;
+  --legend-margin: auto;
+  --legend-padding: 5px;
+  --legend-width: 100%;
 
   box-sizing: var(--field-box-sizing);
 }
 
 fieldset {
   display: var(--fieldset-display);
+  flex-wrap: wrap;
   place-items: var(--fieldset-place-items);
-  place-content: var(--fieldset-place-content);
   margin: var(--fieldset-margin);
   border: var(--fieldset-border);
+  padding: var(--fieldset-padding);
   width: var(--fieldset-width);
   text-align: var(--fieldset-text-align);
 }
 
 legend {
   margin: var(--legend-margin);
-  width: var(--input-width);
+  padding: var(--legend-padding);
+  width: var(--legend-width);
   font-size: var(--legend-font-size);
-  font-style: var(--legend-font-style);
+  color: var(--legend-color);
 }
 
 label {
@@ -220,7 +228,9 @@ label {
   margin: var(--label-margin);
   padding: var(--label-padding);
   width: var(--label-width);
+  visibility: var(--label-visibility);
   font-size: var(--label-font-size);
+  font-style: var(--label-font-style);
   color: var(--label-color);
 }
 
@@ -235,51 +245,59 @@ textarea {
   width: var(--input-width);
   line-height: var(--input-line-height);
   background-color: var(--input-background-color);
-  box-shadow: var(--input-box-shadow);
+}
+
+input:hover,
+input:focus,
+select:hover,
+select:focus,
+textarea:hover,
+textarea:focus {
+  border: var(--input-hover-border);
+  background-color: var(--input-hover-background-color);
+}
+
+input:hover + label,
+input:focus + label,
+select:hover + label,
+select:focus + label,
+textarea:hover + label,
+textarea:focus + label {
+  visibility: var(--field-hover-label-visibility);
 }
 
 @media (min-width: 576px) {
   fieldset,
   fieldset > * {
-    --fieldset-width: 90%;
-    --input-width: 70%;
-    --label-width: 30%;
+    --fieldset-width: 75%;
   }
 }
 
 @media (min-width: 768px) {
   fieldset,
   fieldset > * {
-    --fieldset-width: 80%;
-    --input-width: 65%;
-    --label-width: 35%;
+    --fieldset-width: 55%;
   }
 }
 
 @media (min-width: 992px) {
   fieldset,
   fieldset > * {
-    --fieldset-width: 70%;
-    --input-width: 60%;
-    --label-width: 40%;
+    --fieldset-width: 40%;
   }
 }
 
 @media (min-width: 1200px) {
   fieldset,
   fieldset > * {
-    --fieldset-width: 60%;
-    --input-width: 55%;
-    --label-width: 45%;
+    --fieldset-width: 30%;
   }
 }
 
 @media (min-width: 1600px) {
   fieldset,
   fieldset > * {
-    --fieldset-width: 50%;
-    --input-width: 50%;
-    --label-width: 50%;
+    --fieldset-width: 25%;
   }
 }
 </style>
