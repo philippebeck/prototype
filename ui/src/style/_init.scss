@@ -13,6 +13,12 @@ $breakpoints: (
   'wd': $breakpoint-wd
 ) !default;
 
+// Hide Radio & Check Classes
+[class*="check"],
+[class*="radio"] {
+  display: none !important;
+}
+
 // Container
 $containers: (
   '50': 50%,
@@ -22,61 +28,28 @@ $containers: (
   '90': 90%
 ) !default;
 
-:root {
+[class*="container"] {
   --container-max-width: 100%;
 
-  --opacity-dark: 0.8;
-  --opacity-light: 0.2;
+  margin: auto;
+  max-width: var(--container-max-width);
 }
 
-// Keyframes
-@mixin keyframes($key) {
-  @keyframes #{$key} {
-    from {
-      transform: var(--#{$key});
-    }
-  }
-}
-
-// Container
 @mixin container($key, $type, $value) {
   [class*="container-"][class*="-#{$key}#{$type}"] {
     max-width: #{$value};
   }
 }
 
-// Grid
-@mixin grid-template($column, $key) {
-  [class*="grid-"][class*="-#{$column}#{$key}"] {
-    grid-template: auto/repeat(#{$column}, auto);
-  }
+@each $key, $value in $containers {
+  @include container($key, 'tn', $value);
 }
 
-// Grid Gap
-@mixin grid-gap($key) {
-  [class*="gap-"][class*="-#{$key}"] {
-    grid-gap: var(--gap-#{$key});
-  }
-}
-
-// Place Content
-@mixin place-content($key, $type: '', $value: var(--place-content-#{$key})) {
-  .placo-#{$key}#{$type} {
-    place-content: #{$value};
-  }
-}
-
-// Place Items
-@mixin place-items($key, $type: '', $value: var(--place-items-#{$key})) {
-  .plait-#{$key}#{$type} {
-    place-items: #{$value};
-  }
-}
-
-// Place Self
-@mixin place-self($key, $type: '', $value: var(--place-self-#{$key})) {
-  .plase-#{$key}#{$type} {
-    place-self: #{$value};
+@each $type, $breakpoint in $breakpoints {
+  @media (min-width: $breakpoint) {
+    @each $key, $value in $containers {
+      @include container($key, $type, $value);
+    }
   }
 }
 
@@ -127,52 +100,6 @@ $containers: (
   [class*="onto-"][class*="#{$class}"]:focus,
   [class*="check-"][class*="#{$class}"]:checked ~ [class*="hub-"][class*="#{$class}"] [class*="goal-"][class*="#{$class}"] {
       #{$property}: #{$value};
-  }
-}
-
-// Anima
-@mixin anima($class, $property, $value) {
-  [class*="anima-"][class*="-#{$class}-"][class*="-this"],
-  [class*="anima-"][class*="-#{$class}-"][class*="-global"] > *,
-  [class*="anima-"][class*="-#{$class}-"][class*="-onto"]:hover,
-  [class*="anima-"][class*="-#{$class}-"][class*="-onto"]:focus,
-  *:hover > [class*="anima-"][class*="-#{$class}-"][class*="-into"],
-  *:focus > [class*="anima-"][class*="-#{$class}-"][class*="-into"],
-  [class*="anima-"][class*="-#{$class}-"][class*="-toall"]:hover > *,
-  [class*="anima-"][class*="-#{$class}-"][class*="-toall"]:focus > *,
-  [class*="anima-"][class*="-#{$class}-"][class*="-toone"] > *:hover,
-  [class*="anima-"][class*="-#{$class}-"][class*="-toone"] > *:focus,
-  [class*="anima-"][class*="-#{$class}-"][class*="-radio1"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target1"],
-  [class*="anima-"][class*="-#{$class}-"][class*="-radio2"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target2"],
-  [class*="anima-"][class*="-#{$class}-"][class*="-radio3"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target3"],
-  [class*="anima-"][class*="-#{$class}-"][class*="-radio4"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target4"],
-  [class*="anima-"][class*="-#{$class}-"][class*="-radio5"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target5"],
-  [class*="anima-"][class*="-#{$class}-"][class*="-check"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-hub"] [class*="anima-"][class*="-#{$class}-"][class*="-goal"] {
-    #{$property}: #{$value};
-  }
-}
-
-// Hide Radio & Check Classes
-[class*="check"],
-[class*="radio"] {
-  display: none !important;
-}
-
-// Container
-[class*="container"] {
-  margin: auto;
-  max-width: var(--container-max-width);
-}
-
-@each $key, $value in $containers {
-  @include container($key, 'tn', $value);
-}
-
-@each $type, $breakpoint in $breakpoints {
-  @media (min-width: $breakpoint) {
-    @each $key, $value in $containers {
-      @include container($key, $type, $value);
-    }
   }
 }
 
@@ -276,5 +203,229 @@ $all-colors:  $primary-colors, $grayscales, $brand-colors;
     @include helpers('bg-#{$key}', 'background-color', 'var(--#{$key})');
     @include helpers('bg-#{$key}-dark', 'background-color', 'var(--#{$key}-dark)');
     @include helpers('bg-#{$key}-light', 'background-color', 'var(--#{$key}-light)');
+  }
+}
+
+* {
+  --all-box-sizing: border-box;
+  --target-margins: 7rem;
+  box-sizing: var(--all-box-sizing);
+
+  &:target {
+    padding-top: var(--target-margins);
+    margin-top: -var(--target-margins);
+  }
+}
+
+html {
+  --html-font-size: 62.5%;
+  --html-scroll-behavior: smooth;
+
+  font-size: var(--html-font-size);
+  scroll-behavior: var(--html-scroll-behavior);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  --body-background-color: var(--grey-light);
+  --body-color: var(--black);
+  --body-font-size: 2rem;
+  --body-line-height: 1.6;
+
+  margin: 0;
+  padding: 0;
+  line-height: var(--body-line-height);
+  font-size: var(--body-font-size);
+  font-family: var(--sans-serif);
+  color: var(--body-color);
+  background-color: var(--body-background-color);
+}
+
+main {
+  --main-text-align: center;
+  text-align: var(--main-text-align);
+}
+
+article {
+  --article-margin-bottom: 20px;
+  margin-bottom: var(--article-margin-bottom);
+}
+
+h1,
+h2,
+h3 {
+  --title-color: var(--primary);
+}
+
+h4,
+h5,
+h6 {
+  --title-color: var(--blue);
+}
+
+h1 {
+  --title-font-size: calc(var(--body-font-size) * 2.5);
+}
+
+h2 {
+  --title-font-size: calc(var(--body-font-size) * 2);
+}
+
+h3 {
+  --title-font-size: calc(var(--body-font-size) * 1.6);
+}
+
+h4 {
+  --title-font-size: calc(var(--body-font-size) * 1.3);
+}
+
+h5 {
+  --title-font-size: calc(var(--body-font-size) * 1.1);
+}
+
+h6 {
+  --title-font-size: var(--body-font-size);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  --title-font-family: var(--serif);
+  --title-text-align: center;
+  --title-text-transform: capitalize;
+
+  font-family: var(--title-font-family);
+  text-align: var(--title-text-align);
+  text-transform: var(--title-text-transform);
+  font-size: var(--title-font-size);
+  color: var(--title-color);
+}
+
+a {
+  --link-color: var(--primary);
+  --link-outline: 0;
+  --link-text-decoration: none;
+
+  text-decoration: var(--link-text-decoration);
+  outline: var(--link-outline);
+  color: var(--link-color);
+}
+
+button {
+  --button-background-color: transparent;
+  --button-color: var(--white);
+  --button-border: none;
+  --button-cursor: pointer;
+
+  border: var(--button-border);
+  background-color: var(--button-background-color);
+  color: var(--button-color);
+  cursor: var(--button-cursor);
+}
+
+ul {
+  --list-margin: 0 0 10px;
+  --list-padding: 0;
+  --list-style: none;
+
+  margin: var(--list-margin);
+  padding: var(--list-padding);
+  list-style: var(--list-style);
+}
+
+figure {
+  --figure-margin: 0;
+  margin: var(--figure-margin);
+}
+
+img,
+video {
+  --img-max-width: 100%;
+  --img-height: auto;
+  --img-object-fit: contain;
+
+  max-width: var(--img-max-width);
+  height: var(--img-height);
+  object-fit: var(--img-object-fit);
+}
+
+table {
+  --table-border-collapse: collapse;
+  --table-margin: auto;
+  --table-text-align: center;
+  --table-vertical-align: middle;
+
+  margin: var(--table-margin);
+  border-collapse: var(--table-border-collapse);
+  text-align: var(--table-text-align);
+  vertical-align: var(--table-vertical-align);
+  font-family: var(--monospace);
+}
+
+code,
+pre {
+  --code-background-color: var(--black);
+  --code-color: var(--green);
+  --code-margin: auto;
+  --code-overflow: scroll;
+  --code-padding: 10px;
+  --code-text-align: initial;
+  --code-width: 100%;
+  
+  overflow: var(--code-overflow);
+  margin: var(--code-margin);
+  padding: var(--code-padding);
+  width: var(--code-width);
+  font-family: var(--monospace);
+  text-align: var(--code-text-align);
+  background-color: var(--code-background-color);
+  color: var(--code-color);
+
+  & > *::selection {
+    background-color: var(--code-color);
+    color: var(--code-background-color);
+  }
+}
+
+@media (min-width: 576px) {
+  code,
+  pre {
+    --code-width: 95%;
+  }
+}
+
+@media (min-width: 768px) {
+  code,
+  pre {
+    --code-width: 90%;
+  }
+}
+
+@media (min-width: 992px) {
+  code,
+  pre {
+    --code-width: 85%;
+  }
+}
+
+@media (min-width: 1200px) {
+  code,
+  pre {
+    --code-width: 80%;
+  }
+}
+
+@media (min-width: 1600px) {
+  code,
+  pre {
+    --code-width: 75%;
   }
 }
