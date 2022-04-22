@@ -122,6 +122,11 @@
 </script>
 
 <style lang="scss" scoped>
+[class*="check"],
+[class*="radio"] {
+  display: none;
+}
+
 .foot {
   --foot-text-align: center;
   --foot-title-margin: 10px;

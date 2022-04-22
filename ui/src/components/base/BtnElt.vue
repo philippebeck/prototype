@@ -283,6 +283,26 @@ button:focus,
   transform: var(--btn-checked-transform);
 }
 
+@mixin btn-color($key, $value) {
+  .btn-#{$key},
+  .button-#{$key}:hover,
+  .button-#{$key}:focus,
+  .button-#{$key}-check:checked + .button-#{$key} {
+    border-color: var(--white);
+    background-color: var(--#{$key});
+    color: var(--white);
+  }
+
+  .button-#{$key},
+  .btn-#{$key}:hover,
+  .btn-#{$key}:focus,
+  .btn-#{$key}-check:checked + .btn-#{$key} {
+    border-color: var(--#{$key});
+    background-color: var(--white);
+    color: var(--#{$key});
+  }
+}
+
 @each $colors in $main-colors {
   @each $key, $value in $colors {
     @include btn-color($key, $value);
