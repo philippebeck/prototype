@@ -1,7 +1,3 @@
-  //******\\
- // MIXINS \\
-// ******** \\
-
 @mixin display($class, $property, $value) {
   .#{$class},
   .global-#{$class} > * {
@@ -27,19 +23,19 @@
   }
 }
 
-@mixin place-content($key, $type: '', $value: var(--place-content-#{$key})) {
+@mixin place-content($key, $type: "", $value: var(--place-content-#{$key})) {
   .placo-#{$key}#{$type} {
     place-content: #{$value};
   }
 }
 
-@mixin place-items($key, $type: '', $value: var(--place-items-#{$key})) {
+@mixin place-items($key, $type: "", $value: var(--place-items-#{$key})) {
   .plait-#{$key}#{$type} {
     place-items: #{$value};
   }
 }
 
-@mixin place-self($key, $type: '', $value: var(--place-self-#{$key})) {
+@mixin place-self($key, $type: "", $value: var(--place-self-#{$key})) {
   .plase-#{$key}#{$type} {
     place-self: #{$value};
   }
@@ -88,8 +84,4 @@
       transform: var(--#{$key});
     }
   }
-}
-
-@each $key, $value in $transforms {
-  @include keyframes($key);
 }
