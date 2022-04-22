@@ -1,3 +1,4 @@
+// DISPLAY
 $displays: (
   'hide':     none,
   'flex':     flex,
@@ -7,6 +8,19 @@ $displays: (
   'inblock':  inline-block
 ) !default;
 
+@each $key, $value in $displays {
+  @include helpers($key, 'display', $value);
+}
+
+@each $type, $breakpoint in $breakpoints {
+  @media (min-width: $breakpoint) {
+    @each $key, $value in $displays {
+      @include helpers('#{$key}-#{$type}', 'display', $value);
+    }
+  }
+}
+
+// FLEX
 [class*="flex"],
 [class*="col"],
 [class*="row"] {
@@ -21,141 +35,6 @@ $displays: (
   --row-padding: 10px 0;
 }
 
-[class*="grid"] {
-  --grid-max-width: 90%;
-  --grid-margin: auto;
-}
-
-$gap-tn:  1px   !default;
-$gap-sm:  2px   !default;
-$gap-md:  5px   !default;
-$gap-lg:  10px  !default;
-$gap-wd:  20px  !default;
-
-$gaps: (
-  'tn': $gap-tn,
-  'sm': $gap-sm,
-  'md': $gap-md,
-  'lg': $gap-lg,
-  'wd': $gap-wd
-) !default;
-
-[class*="gap-"] {
-  @each $key, $value in $gaps {
-    --gap-#{$key}: #{$value};
-  }
-}
-
-// Place Content
-$place-content: (
-  'around':   space-around,
-  'between':  space-between,
-  'evenly':   space-evenly,
-  'center':   center,
-  'stretch':  stretch
-) !default;
-
-$place-content-start: flex-start  !default;
-$place-content-end:   flex-end    !default;
-
-$place-content-var: (
-  'start':  $place-content-start,
-  'end':    $place-content-end
-) !default;
-
-[class*="placo-"] {
-  @each $key, $value in $place-content-var {
-    --place-content-#{$key}: #{$value};
-  }
-}
-
-// Place Items
-$place-items: (
-  'normal':   normal,
-  'center':   center,
-  'stretch':  stretch
-) !default;
-
-$place-items-baseline:  baseline    !default;
-$place-items-start:     flex-start  !default;
-$place-items-end:       flex-end    !default;
-
-$place-items-var: (
-  'base':   $place-items-baseline,
-  'start':  $place-items-start,
-  'end':    $place-items-end
-) !default;
-
-[class*="plait-"] {
-  @each $key, $value in $place-items-var {
-    --place-items-#{$key}: #{$value};
-  }
-}
-
-// Place Self
-$place-self: (
-  'auto':     auto,
-  'normal':   normal,
-  'center':   center,
-  'stretch':  stretch
-) !default;
-
-$place-self-baseline: baseline    !default;
-$place-self-start:    flex-start  !default;
-$place-self-end:      flex-end    !default;
-
-$place-self-var: (
-  'base':   $place-self-baseline,
-  'start':  $place-self-start,
-  'end':    $place-self-end
-) !default;
-
-[class*="plase-"] {
-  @each $key, $value in $place-self-var {
-    --place-self-#{$key}: #{$value};
-  }
-}
-
-@each $key, $value in $displays {
-  @include helpers($key, 'display', $value);
-}
-
-@each $type, $breakpoint in $breakpoints {
-  @media (min-width: $breakpoint) {
-    @each $key, $value in $displays {
-      @include helpers('#{$key}-#{$type}', 'display', $value);
-    }
-  }
-}
-
-// Grid
-[class*="grid"] {
-  display: grid;
-  max-width: var(--grid-max-width);
-  margin: var(--grid-margin);
-}
-
-@for $i from 2 to 13 {
-  @include grid-template($i, 'tn');
-}
-
-@each $key, $value in $breakpoints {
-  @media (min-width: $value) {
-    @for $i from 2 to 13 {
-      @include grid-template($i, $key);
-    }
-  }
-}
-
-@include grid-gap('tn');
-
-@each $key, $value in $breakpoints {
-  @media (min-width: $value) {
-    @include grid-gap($key);
-  }
-}
-
-// Flex
 .flex,
 .col,
 .row,
@@ -195,10 +74,102 @@ $place-self-var: (
   flex-direction: row-reverse;
 }
 
-// Place-content
+// GRID
+[class*="grid"] {
+  --grid-max-width: 90%;
+  --grid-margin: auto;
+
+  display: grid;
+  max-width: var(--grid-max-width);
+  margin: var(--grid-margin);
+}
+
+@mixin grid-template($column, $key) {
+  [class*="grid-"][class*="-#{$column}#{$key}"] {
+    grid-template: auto/repeat(#{$column}, auto);
+  }
+}
+
+@for $i from 2 to 13 {
+  @include grid-template($i, 'tn');
+}
+
+@each $key, $value in $breakpoints {
+  @media (min-width: $value) {
+    @for $i from 2 to 13 {
+      @include grid-template($i, $key);
+    }
+  }
+}
+
+// GAP
+$gap-tn:  1px   !default;
+$gap-sm:  2px   !default;
+$gap-md:  5px   !default;
+$gap-lg:  10px  !default;
+$gap-wd:  20px  !default;
+
+$gaps: (
+  'tn': $gap-tn,
+  'sm': $gap-sm,
+  'md': $gap-md,
+  'lg': $gap-lg,
+  'wd': $gap-wd
+) !default;
+
+[class*="gap-"] {
+  @each $key, $value in $gaps {
+    --gap-#{$key}: #{$value};
+  }
+}
+
+@mixin gap($key) {
+  [class*="gap-"][class*="-#{$key}"] {
+    gap: var(--gap-#{$key});
+  }
+}
+
+@include gap('tn');
+
+@each $key, $value in $breakpoints {
+  @media (min-width: $value) {
+    @include gap($key);
+  }
+}
+
+// PLACE CONTENT
+$place-content: (
+  'around':   space-around,
+  'between':  space-between,
+  'evenly':   space-evenly,
+  'center':   center,
+  'stretch':  stretch
+) !default;
+
+$place-content-start: flex-start  !default;
+$place-content-end:   flex-end    !default;
+
+$place-content-var: (
+  'start':  $place-content-start,
+  'end':    $place-content-end
+) !default;
+
+[class*="placo-"] {
+  @each $key, $value in $place-content-var {
+    --place-content-#{$key}: #{$value};
+  }
+}
+
+@mixin place-content($key, $type: '', $value: var(--place-content-#{$key})) {
+  .placo-#{$key}#{$type} {
+    place-content: #{$value};
+  }
+}
+
 @each $key, $value in $place-content-var {
   @include place-content($key);
 }
+
 @each $key, $value in $place-content {
   @include place-content($key, '', $value);
 }
@@ -216,7 +187,35 @@ $place-self-var: (
   }
 }
 
-// Place-items
+// PLACE ITEMS
+$place-items: (
+  'normal':   normal,
+  'center':   center,
+  'stretch':  stretch
+) !default;
+
+$place-items-baseline:  baseline    !default;
+$place-items-start:     flex-start  !default;
+$place-items-end:       flex-end    !default;
+
+$place-items-var: (
+  'base':   $place-items-baseline,
+  'start':  $place-items-start,
+  'end':    $place-items-end
+) !default;
+
+[class*="plait-"] {
+  @each $key, $value in $place-items-var {
+    --place-items-#{$key}: #{$value};
+  }
+}
+
+@mixin place-items($key, $type: '', $value: var(--place-items-#{$key})) {
+  .plait-#{$key}#{$type} {
+    place-items: #{$value};
+  }
+}
+
 @each $key, $value in $place-items-var {
   @include place-items($key);
 }
@@ -238,7 +237,36 @@ $place-self-var: (
   }
 }
 
-// Place-self
+// PLACE SELF
+$place-self: (
+  'auto':     auto,
+  'normal':   normal,
+  'center':   center,
+  'stretch':  stretch
+) !default;
+
+$place-self-baseline: baseline    !default;
+$place-self-start:    flex-start  !default;
+$place-self-end:      flex-end    !default;
+
+$place-self-var: (
+  'base':   $place-self-baseline,
+  'start':  $place-self-start,
+  'end':    $place-self-end
+) !default;
+
+[class*="plase-"] {
+  @each $key, $value in $place-self-var {
+    --place-self-#{$key}: #{$value};
+  }
+}
+
+@mixin place-self($key, $type: '', $value: var(--place-self-#{$key})) {
+  .plase-#{$key}#{$type} {
+    place-self: #{$value};
+  }
+}
+
 @each $key, $value in $place-self-var {
   @include place-self($key);
 }
@@ -260,7 +288,7 @@ $place-self-var: (
   }
 }
 
-// Position
+// POSITION
 $positions: (
   'absolute': absolute,
   'fixed':    fixed,
