@@ -1,0 +1,95 @@
+  //******\\
+ // MIXINS \\
+// ******** \\
+
+@mixin display($class, $property, $value) {
+  .#{$class},
+  .global-#{$class} > * {
+      #{$property}: #{$value};
+  }
+}
+
+@mixin container($key, $type, $value) {
+  [class*="container-"][class*="-#{$key}#{$type}"] {
+    max-width: #{$value};
+  }
+}
+
+@mixin grid-template($column, $key) {
+  [class*="grid-"][class*="-#{$column}#{$key}"] {
+    grid-template: auto/repeat(#{$column}, auto);
+  }
+}
+
+@mixin gap($key) {
+  [class*="gap-"][class*="-#{$key}"] {
+    gap: var(--gap-#{$key});
+  }
+}
+
+@mixin place-content($key, $type: '', $value: var(--place-content-#{$key})) {
+  .placo-#{$key}#{$type} {
+    place-content: #{$value};
+  }
+}
+
+@mixin place-items($key, $type: '', $value: var(--place-items-#{$key})) {
+  .plait-#{$key}#{$type} {
+    place-items: #{$value};
+  }
+}
+
+@mixin place-self($key, $type: '', $value: var(--place-self-#{$key})) {
+  .plase-#{$key}#{$type} {
+    place-self: #{$value};
+  }
+}
+
+@mixin helpers($class, $property, $value) {
+  .#{$class},
+  .global-#{$class} > *,
+  .onto-#{$class}:hover,
+  .onto-#{$class}:focus,
+  .toone-#{$class} > *:hover,
+  .toone-#{$class} > *:focus {
+      #{$property}: #{$value};
+  }
+}
+
+@mixin helpers-concat($class, $property, $value) {
+  [class*="#{$class}"],
+  [class*="global-"][class*="#{$class}"] > *,
+  [class*="onto-"][class*="#{$class}"]:hover,
+  [class*="onto-"][class*="#{$class}"]:focus,
+  [class*="toone-"][class*="#{$class}"] > *:hover,
+  [class*="toone-"][class*="#{$class}"] > *:focus {
+      #{$property}: #{$value};
+  }
+}
+
+@mixin anima($class, $property, $value) {
+  [class*="anima-"][class*="-#{$class}-"][class*="-this"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-global"] > *,
+  [class*="anima-"][class*="-#{$class}-"][class*="-onto"]:hover,
+  [class*="anima-"][class*="-#{$class}-"][class*="-onto"]:focus,
+  [class*="anima-"][class*="-#{$class}-"][class*="-toone"] > *:hover,
+  [class*="anima-"][class*="-#{$class}-"][class*="-toone"] > *:focus
+  *:hover > [class*="anima-"][class*="-#{$class}-"][class*="-into"],
+  *:focus > [class*="anima-"][class*="-#{$class}-"][class*="-into"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-toall"]:hover > *,
+  [class*="anima-"][class*="-#{$class}-"][class*="-toall"]:focus > * {
+    #{$property}: #{$value};
+  }
+}
+
+@mixin keyframes($key) {
+  @keyframes #{$key} {
+    from {
+      transform: var(--#{$key});
+    }
+  }
+}
+
+@each $key, $value in $transforms {
+  @include keyframes($key);
+}
