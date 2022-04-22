@@ -1,4 +1,54 @@
-// ***** Translate *****
+// ANIMATION INIT
+[class*="anima-"][class*="-this"],
+[class*="anima-"][class*="-global"] > *,
+[class*="anima-"][class*="-onto"]:hover,
+[class*="anima-"][class*="-onto"]:focus,
+*:hover > [class*="anima-"][class*="-into"],
+*:focus > [class*="anima-"][class*="-into"],
+[class*="anima-"][class*="-toall"]:hover > *,
+[class*="anima-"][class*="-toall"]:focus > *,
+[class*="anima-"][class*="-toone"] > *:hover,
+[class*="anima-"][class*="-toone"] > *:focus,
+[class*="anima-"][class*="-radio1"]:checked ~ [class*="anima-"][class*="-relay"] [class*="anima-"][class*="-target1"],
+[class*="anima-"][class*="-radio2"]:checked ~ [class*="anima-"][class*="-relay"] [class*="anima-"][class*="-target2"],
+[class*="anima-"][class*="-radio3"]:checked ~ [class*="anima-"][class*="-relay"] [class*="anima-"][class*="-target3"],
+[class*="anima-"][class*="-radio4"]:checked ~ [class*="anima-"][class*="-relay"] [class*="anima-"][class*="-target4"],
+[class*="anima-"][class*="-radio5"]:checked ~ [class*="anima-"][class*="-relay"] [class*="anima-"][class*="-target5"],
+[class*="anima-"][class*="-check"]:checked ~ [class*="anima-"][class*="-hub"] [class*="anima-"][class*="-goal"] {
+  animation-duration: var(--animation-duration);
+}
+
+// ANIMATION MIXINS
+@mixin keyframes($key) {
+  @keyframes #{$key} {
+    from {
+      transform: var(--#{$key});
+    }
+  }
+}
+
+@mixin anima($class, $property, $value) {
+  [class*="anima-"][class*="-#{$class}-"][class*="-this"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-global"] > *,
+  [class*="anima-"][class*="-#{$class}-"][class*="-onto"]:hover,
+  [class*="anima-"][class*="-#{$class}-"][class*="-onto"]:focus,
+  *:hover > [class*="anima-"][class*="-#{$class}-"][class*="-into"],
+  *:focus > [class*="anima-"][class*="-#{$class}-"][class*="-into"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-toall"]:hover > *,
+  [class*="anima-"][class*="-#{$class}-"][class*="-toall"]:focus > *,
+  [class*="anima-"][class*="-#{$class}-"][class*="-toone"] > *:hover,
+  [class*="anima-"][class*="-#{$class}-"][class*="-toone"] > *:focus,
+  [class*="anima-"][class*="-#{$class}-"][class*="-radio1"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target1"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-radio2"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target2"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-radio3"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target3"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-radio4"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target4"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-radio5"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-relay"] [class*="anima-"][class*="-#{$class}-"][class*="-target5"],
+  [class*="anima-"][class*="-#{$class}-"][class*="-check"]:checked ~ [class*="anima-"][class*="-#{$class}-"][class*="-hub"] [class*="anima-"][class*="-#{$class}-"][class*="-goal"] {
+    #{$property}: #{$value};
+  }
+}
+
+// TRANSLATE
 $slideT:  translate(0, 10vh)      !default;
 $slideR:  translate(-10vw, 0)     !default;
 $slideB:  translate(0, -10vh)     !default;
@@ -8,7 +58,7 @@ $slideBR: translate(-10vw, -10vh) !default;
 $slideBL: translate(10vw, -10vh)  !default;
 $slideTL: translate(10vw, 10vh)   !default;
 
-// ***** Rotate *****
+// ROTATE
 $turn:    rotate3d(0, 0, 1, 360deg) !default;
 $turnX:   rotate3d(1, 0, 0, 360deg) !default;
 $turnY:   rotate3d(0, 1, 0, 360deg) !default;
@@ -17,7 +67,7 @@ $turnXZ:  rotate3d(1, 0, 1, 360deg) !default;
 $turnYZ:  rotate3d(0, 1, 1, 360deg) !default;
 $turn3D:  rotate3d(1, 1, 1, 360deg) !default;
 
-// ***** Scale *****
+// SCALE
 $bounce:    scale(-1, -1)   !default;
 $grow:      scale(0.5, 0.5) !default;
 $shrink:    scale(1.5, 1.5) !default;
@@ -28,7 +78,7 @@ $openY:     scale(0, 1)     !default;
 $flipperX:  scale(0, -1)    !default;
 $flipperY:  scale(-1, 0)    !default;
 
-// ***** Skew *****
+// SKEW
 $twistT:    skew(-90deg, -90deg)    !default;
 $twistR:    skew(90deg, -90deg)     !default;
 $twistB:    skew(90deg, 90deg)      !default;
@@ -38,8 +88,8 @@ $torsionR:  skew(180deg, -180deg)   !default;
 $torsionB:  skew(180deg, 180deg)    !default;
 $torsionL:  skew(-180deg, 180deg)   !default;
 
+// TRANSFORM
 $transforms: (
-  // Translate
   'slideT':   $slideT,
   'slideR':   $slideR,
   'slideB':   $slideB,
@@ -48,15 +98,13 @@ $transforms: (
   'slideBR':  $slideBR,
   'slideBL':  $slideBL,
   'slideTL':  $slideTL,
-  // Rotate
-  'turn':   $turn,
-  'turnX':  $turnX,
-  'turnY':  $turnY,
-  'turnXY': $turnXY,
-  'turnXZ': $turnXZ,
-  'turnYZ': $turnYZ,
-  'turn3D': $turn3D,
-  // Scale
+  'turn':     $turn,
+  'turnX':    $turnX,
+  'turnY':    $turnY,
+  'turnXY':   $turnXY,
+  'turnXZ':   $turnXZ,
+  'turnYZ':   $turnYZ,
+  'turn3D':   $turn3D,
   'bounce':   $bounce,
   'grow':     $grow,
   'shrink':   $shrink,
@@ -66,7 +114,6 @@ $transforms: (
   'openY':    $openY,
   'flipperX': $flipperX,
   'flipperY': $flipperY,
-  // Skew
   'twistT':   $twistT,
   'twistR':   $twistR,
   'twistB':   $twistB,
@@ -88,11 +135,17 @@ $transforms: (
   --originL: left;
 }
 
+// KEYFRAMES
 @each $key, $value in $transforms {
   @include keyframes($key);
 }
 
-// Animation Duration
+// ANIMATION
+@each $key, $value in $transforms {
+  @include anima($key, 'animation-name', $key);
+}
+
+// ANIMATION DURATION
 $animation-duration: 2s !default;
 
 $animation-duration-tn: 500ms !default;
@@ -111,7 +164,7 @@ $animation-durations: (
   'wd': $animation-duration-wd
 ) !default;
 
-// Animation Timing Function
+// ANIMATION TIMING FUNCTION
 $animation-timing-function-linear:        cubic-bezier(0, 0, 1, 1)        !default;
 $animation-timing-function-ease-in:       cubic-bezier(0.42, 0, 1, 1)     !default;
 $animation-timing-function-ease-out:      cubic-bezier(0, 0, 0.58, 1)     !default;
@@ -128,7 +181,7 @@ $animation-timing-functions: (
   'steps':  $animation-timing-function-steps,
 ) !default;
 
-// Animation Iteration Count
+// ANIMATION ITERATION COUNT
 $animation-iteration-count-few:   2 !default;
 $animation-iteration-count-many:  4 !default;
 
@@ -138,7 +191,7 @@ $animation-iteration-counts: (
   'loop': infinite
 ) !default;
 
-// Animation Delay
+// ANIMATION DELAY
 $animation-delay-sm:  1s  !default;
 $animation-delay-md:  2s  !default;
 $animation-delay-lg:  3s  !default;
@@ -149,14 +202,7 @@ $animation-delays: (
   'large':  $animation-delay-lg,
 ) !default;
 
-// Animation Direction
-$animation-directions: (
-  'alt':    alternate,
-  'rev':    reverse,
-  'altrev': alternate-reverse
-) !default;
-
-// Animation Options
+// ANIMATION OPTIONS
 $animation-options: (
   'duration':         $animation-durations,
   'timing-function':  $animation-timing-functions,
@@ -164,7 +210,6 @@ $animation-options: (
   'delay':            $animation-delays
 ) !default;
 
-// Animation CSS Variables
 [class*="anima-"] {
   --animation-duration: #{$animation-duration};
 
@@ -175,39 +220,19 @@ $animation-options: (
   }
 }
 
-// Animation default
-[class*="anima-"][class*="-this"],
-[class*="anima-"][class*="-global"] > *,
-[class*="anima-"][class*="-onto"]:hover,
-[class*="anima-"][class*="-onto"]:focus,
-*:hover > [class*="anima-"][class*="-into"],
-*:focus > [class*="anima-"][class*="-into"],
-[class*="anima-"][class*="-toall"]:hover > *,
-[class*="anima-"][class*="-toall"]:focus > *,
-[class*="anima-"][class*="-toone"] > *:hover,
-[class*="anima-"][class*="-toone"] > *:focus,
-[class*="anima-"][class*="-radio1"]:checked ~ [class*="anima-"][class*="-relay"] [class*="anima-"][class*="-target1"],
-[class*="anima-"][class*="-radio2"]:checked ~ [class*="anima-"][class*="-relay"] [class*="anima-"][class*="-target2"],
-[class*="anima-"][class*="-radio3"]:checked ~ [class*="anima-"][class*="-relay"] [class*="anima-"][class*="-target3"],
-[class*="anima-"][class*="-radio4"]:checked ~ [class*="anima-"][class*="-relay"] [class*="anima-"][class*="-target4"],
-[class*="anima-"][class*="-radio5"]:checked ~ [class*="anima-"][class*="-relay"] [class*="anima-"][class*="-target5"],
-[class*="anima-"][class*="-check"]:checked ~ [class*="anima-"][class*="-hub"] [class*="anima-"][class*="-goal"] {
-  animation-duration: var(--animation-duration);
-}
-
-// Animations
-@each $key, $value in $transforms {
-  @include anima($key, 'animation-name', $key);
-}
-
-// Animation Options
 @each $type, $option in $animation-options {
   @each $key, $value in $option {
     @include anima($key, 'animation-#{$type}', 'var(--animation-#{$type}-#{$key})');
   }
 }
 
-// Animation Directions
+// ANIMATION DIRECTION
+$animation-directions: (
+  'alt':    alternate,
+  'rev':    reverse,
+  'altrev': alternate-reverse
+) !default;
+
 @each $key, $value in $animation-directions {
   @include anima($key, 'animation-direction', $value);
 }
