@@ -136,8 +136,6 @@ button,
 /********** CONTAINER **********/
 [class*="container"] {
   --container-max-width: 100%;
-  margin: auto;
-  max-width: var(--container-max-width);
 }
 
 /********** FLEX **********/
@@ -159,10 +157,6 @@ button,
 [class*="grid"] {
   --grid-max-width: 90%;
   --grid-margin: auto;
-
-  display: grid;
-  max-width: var(--grid-max-width);
-  margin: var(--grid-margin);
 }
 
 /********** GAP **********/
@@ -240,6 +234,11 @@ button,
   @each $key, $value in $box-shadow {
     --box-shadow-#{$key}: #{$value};
   }
+}
+
+/********** TEXT DECORATION **********/
+[class*="deco"] {
+  --text-decoration-line: underline;
 }
 
 /********** TEXT SHADOW **********/

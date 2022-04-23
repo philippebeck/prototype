@@ -1,3 +1,9 @@
+/********** HIDDEN CONTROLS **********/
+[class*=check],
+[class*=radio] {
+  display: none !important;
+}
+
 /********** DISPLAY **********/
 @each $key, $value in $displays {
   @include display($key, "display", $value);
@@ -12,6 +18,11 @@
 }
 
 /********** CONTAINER **********/
+[class*="container"] {
+  margin: auto;
+  max-width: var(--container-max-width);
+}
+
 @each $key, $value in $containers {
   @include container($key, "tn", $value);
 }
@@ -64,7 +75,13 @@
   flex-direction: row-reverse;
 }
 
-/********** GRID TEMPLATE **********/
+/********** GRID **********/
+[class*="grid"] {
+  display: grid;
+  max-width: var(--grid-max-width);
+  margin: var(--grid-margin);
+}
+
 @for $i from 2 to 13 {
   @include grid-template($i, "tn");
 }
@@ -128,7 +145,7 @@
 /********** COLOR **********/
 @each $colors in $all-colors {
   @each $key, $value in $colors {
-    @include helpers("color-#{$key}", "color", "var(--#{$key})");
+    @include helpers(#{$key}, "color", "var(--#{$key})");
   }
 }
 
@@ -151,7 +168,9 @@
 }
 
 /********** BORDER **********/
-@include helpers-concat("bord", "border-style", "var(--border-style)");
+[class*="bord"] {
+  border-style: var(--border-style);
+}
 
 @each $key, $value in $border-style {
   @include helpers("bord-#{$key}", "border-style", $value);
@@ -217,7 +236,7 @@
 
 @each $key in $font-family {
   .font-#{$key} {
-    font-family: var(--#{$key}-font-family);
+    font-family: var(--font-family-#{$key});
   }
 }
 
@@ -231,7 +250,9 @@
 }
 
 /********** TEXT DECORATION **********/
-@include helpers-concat("deco", "text-decoration-line", "underline");
+[class*="deco"] {
+  text-decoration-line: var(--text-decoration-line);
+}
 
 @each $deco-key, $deco-value in $text-decorations {
   @each $key, $value in $deco-value {
@@ -249,16 +270,7 @@
 }
 
 /********** ANIMATION **********/
-[class*="anima-"][class*="-this"],
-[class*="anima-"][class*="-global"] > *,
-[class*="anima-"][class*="-onto"]:hover,
-[class*="anima-"][class*="-onto"]:focus,
-[class*="anima-"][class*="-toone"] > *:hover,
-[class*="anima-"][class*="-toone"] > *:focus,
-*:hover > [class*="anima-"][class*="-into"],
-*:focus > [class*="anima-"][class*="-into"],
-[class*="anima-"][class*="-toall"]:hover > *,
-[class*="anima-"][class*="-toall"]:focus > * {
+[class*="anima"] {
   animation-duration: var(--animation-duration);
 }
 
@@ -268,10 +280,10 @@
 
 @each $type, $option in $animation-options {
   @each $key, $value in $option {
-    @include anima($key, "animation-#{$type}", "var(--animation-#{$type}-#{$key})");
+    @include anima-options($key, "animation-#{$type}", "var(--animation-#{$type}-#{$key})");
   }
 }
 
 @each $key, $value in $animation-direction {
-  @include anima($key, "animation-direction", $value);
+  @include anima-options($key, "animation-direction", $value);
 }
