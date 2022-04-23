@@ -8,7 +8,7 @@
       :id="table[0].cat">
 
       <template #title>
-        <i :class="`fa-brands fa-${table[0].cat} fa-5x color-blue`"></i>
+        <i :class="`fa-brands fa-${table[0].cat} fa-5x primary anima-grow`"></i>
       </template>
 
       <template #head>

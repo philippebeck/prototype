@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1 class="color-violet anima-grow-this">
+    <h1 class="violet anima-grow">
       <i class="fa-solid fa-sign-in-alt fa-2x"></i>
       Login
     </h1>
