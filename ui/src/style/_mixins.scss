@@ -1,3 +1,11 @@
+@mixin keyframes($key) {
+  @keyframes #{$key} {
+    from {
+      transform: var(--#{$key});
+    }
+  }
+}
+
 @mixin display($class, $property, $value) {
   .#{$class},
   .global-#{$class} > * {
@@ -43,45 +51,36 @@
 
 @mixin helpers($class, $property, $value) {
   .#{$class},
-  .global-#{$class} > *,
-  .onto-#{$class}:hover,
-  .onto-#{$class}:focus,
-  .toone-#{$class} > *:hover,
-  .toone-#{$class} > *:focus {
-      #{$property}: #{$value};
-  }
-}
-
-@mixin helpers-concat($class, $property, $value) {
-  [class*="#{$class}"],
-  [class*="global-"][class*="#{$class}"] > *,
-  [class*="onto-"][class*="#{$class}"]:hover,
-  [class*="onto-"][class*="#{$class}"]:focus,
-  [class*="toone-"][class*="#{$class}"] > *:hover,
-  [class*="toone-"][class*="#{$class}"] > *:focus {
+  .#{$class}-global > *,
+  .#{$class}-onto:hover,
+  .#{$class}-onto:focus,
+  .#{$class}-toone > *:hover,
+  .#{$class}-toone > *:focus,
+  *:hover > .#{$class}-into,
+  *:focus > .#{$class}-into,
+  .#{$class}-toall:hover > *,
+  .#{$class}-toall:focus > * {
       #{$property}: #{$value};
   }
 }
 
 @mixin anima($class, $property, $value) {
-  [class*="anima-"][class*="-#{$class}-"][class*="-this"],
-  [class*="anima-"][class*="-#{$class}-"][class*="-global"] > *,
-  [class*="anima-"][class*="-#{$class}-"][class*="-onto"]:hover,
-  [class*="anima-"][class*="-#{$class}-"][class*="-onto"]:focus,
-  [class*="anima-"][class*="-#{$class}-"][class*="-toone"] > *:hover,
-  [class*="anima-"][class*="-#{$class}-"][class*="-toone"] > *:focus
-  *:hover > [class*="anima-"][class*="-#{$class}-"][class*="-into"],
-  *:focus > [class*="anima-"][class*="-#{$class}-"][class*="-into"],
-  [class*="anima-"][class*="-#{$class}-"][class*="-toall"]:hover > *,
-  [class*="anima-"][class*="-#{$class}-"][class*="-toall"]:focus > * {
+  .anima-#{$class},
+  .anima-#{$class}-global > *,
+  .anima-#{$class}-onto:hover,
+  .anima-#{$class}-onto:focus,
+  .anima-#{$class}-toone > *:hover,
+  .anima-#{$class}-toone > *:focus,
+  *:hover > .anima-#{$class}-into,
+  *:focus > .anima-#{$class}-into,
+  .anima-#{$class}-toall:hover > *,
+  .anima-#{$class}-toall:focus > * {
     #{$property}: #{$value};
   }
 }
 
-@mixin keyframes($key) {
-  @keyframes #{$key} {
-    from {
-      transform: var(--#{$key});
-    }
+@mixin anima-options($class, $property, $value) {
+  .anima-#{$class} {
+    #{$property}: #{$value};
   }
 }
