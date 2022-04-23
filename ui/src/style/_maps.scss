@@ -9,32 +9,32 @@ $breakpoints: (
 
 // ********** COLORS **********
 $primary-colors: (
-  "primary":    "65, 105, 225",   // RoyalBlue
-  "secondary":  "220, 220, 220",  // Gainsboro
-  "pink":       "255, 0, 255",    // Magenta
-  "red":        "250, 128, 114",  // Salmon
-  "orange":     "255, 140, 0",    // DarkOrange
-  "yellow":     "255, 215, 0",    // Gold
-  "brown":      "139, 69, 19",    // SaddleBrown
-  "green":      "50, 205, 50",    // LimeGreen
-  "cyan":       "0, 128, 128",    // Teal
-  "blue":       "30, 144, 255",   // DodgerBlue
-  "violet":     "106, 90, 205"    // SlateBlue
+  "primary":    (65, 105, 225),   // RoyalBlue
+  "secondary":  (220, 220, 220),  // Gainsboro
+  "pink":       (255, 0, 255),    // Magenta
+  "red":        (250, 128, 114),  // Salmon
+  "orange":     (255, 140, 0),    // DarkOrange
+  "yellow":     (255, 215, 0),    // Gold
+  "brown":      (139, 69, 19),    // SaddleBrown
+  "green":      (50, 205, 50),    // LimeGreen
+  "cyan":       (0, 128, 128),    // Teal
+  "blue":       (30, 144, 255),   // DodgerBlue
+  "violet":     (106, 90, 205)    // SlateBlue
 ) !default;
 
 $grayscale: (
-  "black":  "15, 15, 15",     // Black
-  "gray":   "105, 105, 105",  // DimGray
-  "grey":   "192, 192, 192",  // Silver
-  "white":  "255, 255, 240"   // Ivory
+  "black":  (15, 15, 15),     // Black
+  "gray":   (105, 105, 105),  // DimGray
+  "grey":   (192, 192, 192),  // Silver
+  "white":  (255, 255, 240)   // Ivory
 ) !default;
 
 $brand-colors: (
-  "fb": "66, 103, 178",
-  "gh": "36, 41, 46",
-  "in": "0, 119, 181",
-  "pp": "39, 52, 106",
-  "tw": "29, 161, 242"
+  "fb": (66, 103, 178),
+  "gh": (36, 41, 46),
+  "in": (0, 119, 181),
+  "pp": (39, 52, 106),
+  "tw": (29, 161, 242)
 ) !default;
 
 $base-colors: $primary-colors, $grayscale;
@@ -107,8 +107,8 @@ $place-content: (
   "evenly":   space-evenly,
   "center":   center,
   "stretch":  stretch,
-  "start":    start,
-  "end":      end
+  "start":    flex-start,
+  "end":      flex-end
 ) !default;
 
 // ********** PLACE ITEMS **********
@@ -196,9 +196,9 @@ $border-style: (
 ) !default;
 
 $border-width: (
-  "sm": "thin",
-  "md": "medium",
-  "lg": "thick"
+  "sm": thin,
+  "md": medium,
+  "lg": thick
 ) !default;
 
 $border-radius: (
@@ -288,11 +288,11 @@ $box-shadow: (
   "sm":         1px 1px,
   "md":         2px 2px,
   "lg":         5px 5px,
-  "blur":       0 0 2px,
+  "blur":       0   0   2px,
   "blur-sm":    1px 1px 1px,
   "blur-md":    2px 2px 2px,
   "blur-lg":    5px 5px 5px,
-  "spread":     0 0 2px 2px,
+  "spread":     0   0   2px 2px,
   "spread-sm":  1px 1px 1px 1px,
   "spread-md":  2px 2px 2px 2px,
   "spread-lg":  5px 5px 5px 5px
@@ -305,7 +305,7 @@ $font: (
   "oblique":  "style"
 ) !default;
 
-$font-family: "sans-serif", "serif", "monospace", "cursive", "fantasy";
+$font-family: sans-serif, serif, monospace, cursive, fantasy;
 
 // ********** TEXT **********
 $text-align: (
@@ -348,7 +348,7 @@ $text-shadow: (
   "sm":       1px 1px,
   "md":       2px 2px,
   "lg":       5px 5px,
-  "blur":     0 0 2px,
+  "blur":     0   0   2px,
   "blur-sm":  1px 1px 1px,
   "blur-md":  2px 2px 2px,
   "blur-lg":  5px 5px 5px
@@ -362,12 +362,12 @@ $animation-duration: (
 ) !default;
 
 $animation-timing-function: (
-  "linear": "linear",
-  "in":     "ease-in",
-  "out":    "ease-out",
-  "inout":  "ease-in-out",
-  "start":  "step-start",
-  "end":    "step-end"
+  "linear": linear,
+  "in":     ease-in,
+  "out":    ease-out,
+  "inout":  ease-in-out,
+  "start":  step-start,
+  "end":    step-end
 ) !default;
 
 $animation-iteration-count: (
