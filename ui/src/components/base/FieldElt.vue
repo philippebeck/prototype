@@ -180,6 +180,7 @@ fieldset {
   border: none;
   padding: 10px;
   width: 90vw;
+  transition: width 2s;
   text-align: center;
   
   & > * {
@@ -242,37 +243,32 @@ textarea:focus + label {
 }
 
 @media (min-width: 576px) {
-  fieldset,
-  fieldset > * {
-    width: 50vw;
+  fieldset {
+    width: 60vw;
   }
 }
 
 @media (min-width: 768px) {
-  fieldset,
-  fieldset > * {
-    width: 40vw;
+  fieldset {
+    width: 45vw;
   }
 }
 
 @media (min-width: 992px) {
-  fieldset,
-  fieldset > * {
-    width: 30vw;
+  fieldset {
+    width: 35vw;
   }
 }
 
 @media (min-width: 1200px) {
-  fieldset,
-  fieldset > * {
-    width: 20vw;
+  fieldset {
+    width: 30vw;
   }
 }
 
 @media (min-width: 1600px) {
-  fieldset,
-  fieldset > * {
-    width: 10vw;
+  fieldset {
+    width: 25vw;
   }
 }
 </style>
