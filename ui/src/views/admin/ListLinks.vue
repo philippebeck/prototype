@@ -20,56 +20,33 @@
       </template>
 
       <template #cell-name="slotProps">
-        <input 
-          id="name" 
-          name="name" 
-          v-model="table[slotProps.index].name"
-          type="text" 
-          maxlength="30" 
+        <FieldElt
+          id="name"
+          v-model:value="table[slotProps.index].name"
+          info="Indiquer le nom du lien"
           required>
+        </FieldElt>
       </template>
 
       <template #cell-url="slotProps">
-        <input 
-          id="url" 
-          name="url" 
-          v-model="table[slotProps.index].url"
-          type="text" 
-          maxlength="100" 
+        <FieldElt
+          id="url"
+          v-model:value="table[slotProps.index].url"
+          info="Indiquer l'URL du lien"
+          type="url"
           required>
+        </FieldElt>
       </template>
 
       <template #cell-cat="slotProps">
-        <select 
-          id="cat" 
-          name="cat" 
-          v-model="table[slotProps.index].cat"
+        <FieldElt
+          id="cat"
+          v-model:value="table[slotProps.index].cat"
+          info="Choisissez une Catégorie"
+          type="list"
+          :list="['', 'html5', 'css3', 'js', 'php', 'python', 'git', 'dev']"
           required>
-          <option :value="table[slotProps.index].cat">
-            {{ table[slotProps.index].cat }}
-          </option>
-          <option value="html5">
-            HTML
-          </option>
-          <option value="css3">
-            CSS
-          </option>
-          <option value="js">
-            JS
-          </option>
-          <option value="php">
-            PHP
-          </option>
-          <option value="python">
-            Python
-          </option>
-          <option value="git">
-            Git
-          </option>
-          <option value="dev">
-            Dev
-          </option>
-        </select>
+        </FieldElt>
       </template>
 
       <template #body="slotProps">
@@ -100,6 +77,7 @@
 
 <script>
 import BtnElt from '@/components/base/BtnElt';
+import FieldElt from '@/components/base/FieldElt';
 import TableElt from "@/components/data/TableElt.vue";
 import { checkString, rewriteString, putData, deleteData } from "@/script/services";
 
@@ -108,6 +86,7 @@ export default {
   props: ["links"],
   components: {
     BtnElt,
+    FieldElt,
     TableElt
   },
 
