@@ -27,7 +27,16 @@
       v-else-if="getFieldType() === 'list'"
       :id="id"
       :name="id"
+      :placeholder="info"
       @input="onInput">
+      <option 
+        v-if="value"
+        :value="value">
+        {{ value }}
+      </option>
+      <option v-else>
+        {{ info }}
+      </option>
       <option
         v-for="(value, index) in list"
         :key="index"
