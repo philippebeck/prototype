@@ -4,7 +4,7 @@
       <i class="fa-solid fa-at fa-2x"></i>
       Contact
     </h1>
-    <form class="anima-growX">
+    <form class="anima-grow">
       <ul>
         <li>
           <FieldElt
