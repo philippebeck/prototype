@@ -26,7 +26,8 @@
     <select
       v-else-if="getFieldType() === 'list'"
       :id="id"
-      :name="id">
+      :name="id"
+      @input="onInput">
       <option
         v-for="(value, index) in list"
         :key="index"
@@ -178,7 +179,7 @@ fieldset {
   margin: auto;
   border: none;
   padding: 10px;
-  width: 95vw;
+  width: 90vw;
   text-align: center;
   
   & > * {
@@ -243,35 +244,35 @@ textarea:focus + label {
 @media (min-width: 576px) {
   fieldset,
   fieldset > * {
-    width: 70vw;
+    width: 50vw;
   }
 }
 
 @media (min-width: 768px) {
   fieldset,
   fieldset > * {
-    width: 50vw;
+    width: 40vw;
   }
 }
 
 @media (min-width: 992px) {
   fieldset,
   fieldset > * {
-    width: 35vw;
+    width: 30vw;
   }
 }
 
 @media (min-width: 1200px) {
   fieldset,
   fieldset > * {
-    width: 25vw;
+    width: 20vw;
   }
 }
 
 @media (min-width: 1600px) {
   fieldset,
   fieldset > * {
-    width: 20vw;
+    width: 10vw;
   }
 }
 </style>

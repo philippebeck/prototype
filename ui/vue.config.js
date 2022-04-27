@@ -15,7 +15,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        additionalData: `@import "@/style/global.scss";`
+        additionalData: `@import "./node_modules/animadio/src/animadio.scss";`
       }
     }
   }

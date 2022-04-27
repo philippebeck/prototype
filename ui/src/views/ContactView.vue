@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1 class="color-violet anima-slideB-this">
+    <h1 class="violet anima-slideB">
       <i class="fa-solid fa-at fa-2x"></i>
       Contact
     </h1>

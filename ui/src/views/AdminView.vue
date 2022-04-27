@@ -48,7 +48,7 @@
       </a>
     </nav>
 
-    <h1 class="color-violet anima-openX-this">
+    <h1 class="violet anima-slideB">
       <i class="fa-solid fa-cogs fa-2x"></i>
       Admin
     </h1>

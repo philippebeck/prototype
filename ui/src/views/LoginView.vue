@@ -1,73 +1,72 @@
 <template>
   <main>
-    <h1 class="color-violet anima-grow-this">
+    <h1 class="violet anima-grow">
       <i class="fa-solid fa-sign-in-alt fa-2x"></i>
       Login
     </h1>
     <form class="form">
-      <fieldset>
-        <ul>
-          <li>
-            <label 
-              class="anima-slideR-this" 
-              for="email">
+      <ul>
+        <li>
+          <FieldElt
+            id="email"
+            v-model:value="email"
+            info="Indiquer votre identifiant"
+            type="email"
+            required>
+            <template #legend>
               Identifiant
-            </label>
-            <input 
-              id="email" 
-              class="anima-slideL-this" 
-              name="email" 
-              v-model="email" 
-              type="email" 
-              placeholder="Insérer votre Identifiant"
-              required>
-          </li>
-          <li>
-            <label 
-              class="anima-slideR-this" 
-              for="pass">
+            </template>
+            <template #label>
+              Vous n'avez rien à faire ici !
+            </template>
+          </FieldElt>
+        </li>
+        <li>
+          <FieldElt
+            id="pass"
+            v-model:value="pass"
+            info="Indiquer votre mot de passe"
+            type="password"
+            required>
+            <template #legend>
               Mot de Passe
-            </label>
-            <input 
-              id="pass" 
-              class="anima-slideL-this" 
-              name="pass" 
-              v-model="pass" 
-              type="password"
-              placeholder="Insérer votre mot de passe" 
-              autocomplete="off" 
-              required>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <div 
-              id="recaptcha" 
-              class="g-recaptcha" 
-              data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
-            </div>
-          </li>
-          <li>
-            <BtnElt
-              type="button"
-              content="Connexion"
-              @click="login()" 
-              class="btn-green"/>
-          </li>
-        </ul>
-      </fieldset>
+            </template>
+            <template #label>
+              Vous ne passerez pas !
+            </template>
+          </FieldElt>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <div 
+            id="recaptcha" 
+            class="g-recaptcha" 
+            data-sitekey="6LdTBtoZAAAAADITfTTXpjsctFXZqKXZc-seM9ZL">
+          </div>
+        </li>
+        <li>
+          <BtnElt
+            type="button"
+            content="Connexion"
+            @click="login()" 
+            class="btn-green"/>
+        </li>
+      </ul>
     </form>
   </main>
 </template>
 
 <script>
 import BtnElt from '@/components/base/BtnElt';
+import FieldElt from '@/components/base/FieldElt';
 import { postData } from "@/script/services";
 
 export default {
   name: "LoginView",
   components: {
-    BtnElt
+    BtnElt,
+    FieldElt
   },
   data() {
     return {

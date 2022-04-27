@@ -2,67 +2,52 @@
   <form class="form">
     <ul>
       <li>
-        <label for="name">
-          Nom
-        </label>
-        <input 
-          id="name" 
-          name="name" 
-          v-model="name" 
-          type="text" 
-          maxlength="30" 
-          placeholder="Indiquer le nom"
+        <FieldElt
+          id="name"
+          v-model:value="name"
+          info="Indiquer le nom du lien"
           required>
+          <template #legend>
+            Nom
+          </template>
+          <template #label>
+            Nom descriptif du lien
+          </template>
+        </FieldElt>
       </li>
 
       <li>
-        <label for="url">
-          URL
-        </label>
-        <input 
-          id="url" 
-          name="url" 
-          v-model="url"
-          type="text" 
-          maxlength="100" 
-          placeholder="Indiquer l'URL"
+        <FieldElt
+          id="url"
+          v-model:value="url"
+          info="Indiquer l'URL du lien"
+          type="url"
           required>
+          <template #legend>
+            URL
+          </template>
+          <template #label>
+            Une URL valide svp !
+          </template>
+        </FieldElt>
       </li>
       
       <li>
-        <label for="category">
-          Catégorie
-        </label>
-        <select 
-          id="cat" 
-          name="cat" 
-          v-model="cat" 
+        <FieldElt
+          id="cat"
+          v-model:value="cat"
+          info="Choisissez une Catégorie"
+          type="list"
+          :list="['html5', 'css3', 'js', 'php', 'python', 'git', 'dev']"
           required>
-          <option value="">
-            Choisissez la Catégorie
-          </option>
-          <option value="html5">
-            HTML
-          </option>
-          <option value="css3">
-            CSS
-          </option>
-          <option value="js">
-            JS
-          </option>
-          <option value="php">
-            PHP
-          </option>
-          <option value="python">
-            Python
-          </option>
-          <option value="git">
-            Git
-          </option>
-          <option value="dev">
-            Dev
-          </option>
-        </select>
+          <template #legend>
+            Catégorie
+          </template>
+          <template #label>
+            Une catégorie pertinente svp !
+          </template>
+        </FieldElt>
+
       </li>
     </ul>
 
@@ -76,12 +61,15 @@
 
 <script>
 import BtnElt from '@/components/base/BtnElt';
+import FieldElt from '@/components/base/FieldElt';
 import { checkString, rewriteString, postData } from "@/script/services";
 
 export default {
   name: "CreateLink",
+  props: ['list'],
   components: {
-    BtnElt
+    BtnElt,
+    FieldElt
   },
   data() {
     return {

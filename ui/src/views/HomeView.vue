@@ -15,28 +15,28 @@
       <label 
         for="sidebar-class"
         title="Cacher">
-        <i class="far fa-eye-slash fa-fw color-violet"></i>
+        <i class="far fa-eye-slash fa-fw violet"></i>
       </label>
       <a 
         v-for="(cat, index) in cats" 
         :key="index"
         :href="`#${cat}`" 
         :title="cat">
-        <i :class="`fa-brands fa-${cat} fa-fw color-violet`"></i>
+        <i :class="`fa-brands fa-${cat} fa-fw violet`"></i>
       </a>
       <a 
         href="#links" 
         title="Haut de page">
-        <i class="fas fa-chevron-circle-up fa-fw color-violet"></i>
+        <i class="fas fa-chevron-circle-up fa-fw violet"></i>
       </a>
     </nav>
 
     <header>
-      <h1 class="color-violet shatex-blur-sm anima-grow-this">
+      <h1 class="violet shatex-blur-sm anima-slideB">
       <i class="fa-solid fa-link fa-2x"></i>
         Links2Code
       </h1>
-      <strong class="color-gray">
+      <strong class="gray">
         Des Liens pour Coder !
       </strong>
     </header>
@@ -44,7 +44,7 @@
     <ListElt :items="itemsByCat(links)">
       <template #items="slotProps">
         <i 
-          :class="`fa-brands fa-${slotProps.index} fa-6x color-primary shatex-blur-md anima-grow-this`"
+          :class="`fa-brands fa-${slotProps.index} fa-6x primary shatex-blur-md anima-grow`"
           :id="slotProps.index">
           </i>
       </template>
