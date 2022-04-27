@@ -187,13 +187,13 @@ fieldset {
   place-items: center;
   margin: auto;
   border: none;
-  padding: 10px;
+  padding: 0;
   width: 90vw;
   transition: width 2s;
   text-align: center;
   
   & > * {
-    margin: 0;
+    margin: 0 10px;
   }
 }
 
@@ -265,19 +265,19 @@ textarea:focus + label {
 
 @media (min-width: 992px) {
   fieldset {
-    width: 35vw;
+    width: 30vw;
   }
 }
 
 @media (min-width: 1200px) {
   fieldset {
-    width: 30vw;
+    width: 25vw;
   }
 }
 
 @media (min-width: 1600px) {
   fieldset {
-    width: 25vw;
+    width: 20vw;
   }
 }
 </style>
