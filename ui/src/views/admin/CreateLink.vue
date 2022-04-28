@@ -66,7 +66,6 @@ import { checkString, rewriteString, postData } from "@/script/services";
 
 export default {
   name: "CreateLink",
-  props: ['list'],
   components: {
     BtnElt,
     FieldElt

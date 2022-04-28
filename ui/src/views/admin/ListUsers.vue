@@ -13,37 +13,33 @@
       </template>
 
       <template #cell-name="slotProps">
-        <input 
-          id="name" 
-          name="name" 
-          v-model="getUsers()[slotProps.index].name" 
-          type="text" 
-          minlength="2" 
-          maxlength="50" 
+        <FieldElt
+          id="name"
+          v-model:value="getUsers()[slotProps.index].name"
+          info="Indiquer le nom de l'utilisateur"
           required>
+        </FieldElt>
       </template>
 
       <template #cell-email="slotProps">
-        <input 
-          id="email" 
-          name="email" 
-          v-model="getUsers()[slotProps.index].email"
-          type="email" 
-          maxlength="50" 
-          minlength="5" 
+        <FieldElt
+          id="email"
+          v-model:value="getUsers()[slotProps.index].email"
+          info="Indiquer l'email de l'utilisateur"
+          type="email"
           required>
+        </FieldElt>
       </template>
 
       <template #cell-pass>
-        <input 
-          id="pass" 
-          name="pass" 
-          v-model="pass" 
-          type="password" 
-          placeholder="********" 
-          maxlength="50"
-          minlength="8" 
+        <FieldElt
+          id="pass"
+          v-model:value="pass"
+          info="********"
+          type="password"
+          min="8"
           required>
+        </FieldElt>
       </template>
 
       <template #body="slotProps">
@@ -73,6 +69,7 @@
 
 <script>
 import BtnElt from '@/components/base/BtnElt';
+import FieldElt from '@/components/base/FieldElt';
 import TableElt from "@/components/data/TableElt.vue";
 import { checkString, rewriteString, putData, deleteData } from "@/script/services";
 
@@ -81,6 +78,7 @@ export default {
   props: ["users"],
   components: {
     BtnElt,
+    FieldElt,
     TableElt
   },
 

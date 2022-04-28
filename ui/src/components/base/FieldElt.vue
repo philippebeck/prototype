@@ -27,7 +27,16 @@
       v-else-if="getFieldType() === 'list'"
       :id="id"
       :name="id"
+      :placeholder="info"
       @input="onInput">
+      <option 
+        v-if="value"
+        :value="value">
+        {{ value }}
+      </option>
+      <option v-else>
+        {{ info }}
+      </option>
       <option
         v-for="(value, index) in list"
         :key="index"
@@ -178,12 +187,13 @@ fieldset {
   place-items: center;
   margin: auto;
   border: none;
-  padding: 10px;
+  padding: 0;
   width: 90vw;
+  transition: width 2s;
   text-align: center;
   
   & > * {
-    margin: 0;
+    margin: 0 10px;
   }
 }
 
@@ -242,37 +252,32 @@ textarea:focus + label {
 }
 
 @media (min-width: 576px) {
-  fieldset,
-  fieldset > * {
-    width: 50vw;
+  fieldset {
+    width: 60vw;
   }
 }
 
 @media (min-width: 768px) {
-  fieldset,
-  fieldset > * {
-    width: 40vw;
+  fieldset {
+    width: 45vw;
   }
 }
 
 @media (min-width: 992px) {
-  fieldset,
-  fieldset > * {
+  fieldset {
     width: 30vw;
   }
 }
 
 @media (min-width: 1200px) {
-  fieldset,
-  fieldset > * {
-    width: 20vw;
+  fieldset {
+    width: 25vw;
   }
 }
 
 @media (min-width: 1600px) {
-  fieldset,
-  fieldset > * {
-    width: 10vw;
+  fieldset {
+    width: 20vw;
   }
 }
 </style>

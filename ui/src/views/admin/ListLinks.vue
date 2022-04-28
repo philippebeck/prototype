@@ -44,8 +44,9 @@
           v-model:value="table[slotProps.index].cat"
           info="Choisissez une Catégorie"
           type="list"
-          :list="['', 'html5', 'css3', 'js', 'php', 'python', 'git', 'dev']"
+          :list="['html5', 'css3', 'js', 'php', 'python', 'git', 'dev']"
           required>
+          {{ value }}
         </FieldElt>
       </template>
 

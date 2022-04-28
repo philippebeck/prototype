@@ -13,111 +13,43 @@
       <li class="foot-target1">
         <h3>
           <label for="foot-developers">
-            Developers
+            {{ first }}
             <i class="fa-solid fa-caret-up"></i>
             <i class="fa-solid fa-caret-down"></i>
           </label>
         </h3>
-        
-        <ul class="foot-goal1">
-          <li>
-            <a 
-              href="https://animadio.org"
-              title="Animadio CSS Framework">
-              Animadio
-            </a>
-          </li>
-          <li>
-            <a 
-              href="https://links2code.philippebeck.net"
-              title="Des Liens pour Coder">
-              Links2Code
-            </a>
-          </li>
-          <li>
-            <a 
-              href="https://pam.philippebeck.net"
-              title="PHP Adaptive Microframework">
-              Pam
-            </a>
-          </li>
-        </ul>
+        <slot name="first" class="foot-goal1"></slot>
       </li>
 
       <li class="foot-target2">
         <h3>
           <label for="foot-websites">
-            Websites
+            {{ second }}
             <i class="fa-solid fa-caret-up"></i>
             <i class="fa-solid fa-caret-down"></i>
           </label>
         </h3>
-        <ul class="foot-goal2">
-          <li>
-            <a 
-              href="https://asperger.philippebeck.net"
-              title="Tests pour le Syndrome d'Asperger">
-              Asperger
-            </a>
-          </li>
-          <li>
-            <a 
-              href="https://astronomy.philippebeck.net"
-              title="NASA & CDS APIs">
-              Astronomy
-            </a>
-          </li>
-          <li>
-            <a 
-              href="https://philippebeck.net"
-              title="Portail">
-              Philippe Beck
-            </a>
-          </li>
-        </ul>
+        <slot name="second" class="foot-goal2"></slot>
       </li>
     </ul>
-
-    <ul class="row">
-      <li>
-        <a 
-          class="btn-gh"
-          href="https://github.com/philippebeck"
-          title="Philippe Beck @GitHub">
-          <i class="fa-brands fa-github fa-fw"></i>
-        </a>
-      </li>
-      <li>
-        <a 
-          class="btn-tw"
-          href="https://twitter.com/ph_beck"
-          title="Philippe Beck @Twitter">
-          <i class="fa-brands fa-twitter fa-fw"></i>
-        </a>
-      </li>
-      <li>
-        <a 
-          class="btn-in"
-          href="https://www.linkedin.com/in/philippebeck"
-          title="Philippe Beck @LinkedIn">
-          <i class="fa-brands fa-linkedin-in fa-fw"></i>
-        </a>
-      </li>
-      <li>
-        <a 
-          class="btn"
-          href="https://codepen.io/philippebeck"
-          title="Philippe Beck @CodePen">
-          <i class="fa-brands fa-codepen fa-fw"></i>
-        </a>
-      </li>
-    </ul>
+    
+    <slot name="main" class="foot-visual"></slot>
   </footer>
 </template>
 
 <script>
   export default {
-    name: "FootElt"
+    name: "FootElt",
+    props: {
+      first: {
+        type: String,
+        default: "Developers"
+      },
+      second: {
+        type: String,
+        default: "Websites"
+      }
+    }
   }
 </script>
 
@@ -127,112 +59,78 @@
   display: none;
 }
 
-.foot {
-  --foot-text-align: center;
-  --foot-title-margin: 10px;
-  --foot-title-font-size: 2rem;
-  --foot-title-color: var(--secondary);
-  --foot-list-flex-direction: column;
-  --foot-list-place-content: space-evenly;
-  --foot-list-margin: 0;
-  --foot-list-background-color: var(--primary);
-  --foot-list-cursor: pointer;
-  --foot-list-color: var(--white);
-  --foot-list-hover-color: var(--secondary);
-  --foot-target-margin-left: 2px;
-  --foot-label-cursor: pointer;
-  --foot-label-hover-color: var(--white);
-  --foot-label-hover-transform: scale(1.2);
-  --foot-label-hover-transition: transform 1s;
-  --foot-visual-place-content: center;
-  --foot-visual-margin: 0;
-  --foot-visual-padding: 10px 0;
-  --foot-visual-background-color: var(--white);
-  --foot-visual-link-cursor: crosshair;
+footer {
+  text-align: center;
 
-  text-align: var(--foot-text-align);
-
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: var(--foot-title-margin);
-    font-size: var(--foot-title-font-size);
-    color: var(--foot-title-color);
+  h3 {
+    margin: 10px;
+    font-size: 2rem;
+    color: var(--secondary);
   }
 
   label {
-    cursor: var(--foot-label-cursor);
+    cursor: pointer;
   }
-}
 
-.foot-list {
-  display: flex;
-  flex-direction: var(--foot-list-flex-direction);
-  place-content: var(--foot-list-place-content);
-  margin: var(--foot-list-margin);
-  background-color: var(--foot-list-background-color);
+  & > ul {
+    display: flex;
+    flex-direction: column;
+    place-content: space-evenly;
+    margin: 0;
+    background-color: var(--primary);
 
-  a {
-    color: var(--foot-list-color);
-    cursor: var(--foot-list-cursor);
+    a {
+      color: var(--white);
+      cursor: pointer;
 
-    &:hover,
-    &:focus {
-      color: var(--foot-list-hover-color);
+      &:hover,
+      &:focus {
+        color: var(--secondary);
+      }
     }
   }
 }
 
 [class*="foot-target"] [class*="up"],
 [class*="foot-target"] [class*="down"] {
-  margin-left: var(--foot-target-margin-left);
+  margin-left: 2px;
 }
 
 [for*="foot"]:hover [class*="up"],
 [for*="foot"]:focus [class*="up"],
 [for*="foot"]:hover [class*="down"],
 [for*="foot"]:focus [class*="down"] {
-  transform: var(--foot-label-hover-transform);
-  transition: var(--foot-label-hover-transition);
-  color: var(--foot-label-hover-color);
+  transform: scale(1.2);
+  transition: transform 1s;
+  color: var(--white);
 }
 
 .foot-visual {
   display: flex;
-  place-content: var(--foot-visual-place-content);
-  margin: var(--foot-visual-margin);
-  padding: var(--foot-visual-padding);
-  background-color: var(--foot-visual-background-color);
+  place-content: center;
+  margin: 0;
+  padding: 10px 0;
+  background-color: var(--white);
 
   a {
-    cursor: var(--foot-visual-link-cursor);
+    cursor: crosshair;
   }
 }
 
 [class*="foot-goal"],
 .foot [class*="up"],
 .foot-check1:checked ~ .foot-list .foot-target1 [class*="down"],
-.foot-check2:checked ~ .foot-list .foot-target2 [class*="down"],
-.foot-check3:checked ~ .foot-list .foot-target3 [class*="down"],
-.foot-check4:checked ~ .foot-list .foot-target4 [class*="down"],
-.foot-check5:checked ~ .foot-list .foot-target5 [class*="down"] {
+.foot-check2:checked ~ .foot-list .foot-target2 [class*="down"] {
   display: none;
 }
 
 .foot-check1:checked ~ .foot-list .foot-target1 [class*="up"],
-.foot-check2:checked ~ .foot-list .foot-target2 [class*="up"],
-.foot-check3:checked ~ .foot-list .foot-target3 [class*="up"],
-.foot-check4:checked ~ .foot-list .foot-target4 [class*="up"],
-.foot-check5:checked ~ .foot-list .foot-target5 [class*="up"] {
+.foot-check2:checked ~ .foot-list .foot-target2 [class*="up"] {
   display: inline-block;
 }
 
 .foot-check1:checked ~ .foot-list .foot-goal1,
-.foot-check2:checked ~ .foot-list .foot-goal2,
-.foot-check3:checked ~ .foot-list .foot-goal3,
-.foot-check4:checked ~ .foot-list .foot-goal4,
-.foot-check5:checked ~ .foot-list .foot-goal5 {
+.foot-check2:checked ~ .foot-list .foot-goal2 {
   display: block;
 }
 

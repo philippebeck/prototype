@@ -2,48 +2,51 @@
   <form class="form">
     <ul>
       <li>
-        <label for="name">
-          Nom
-        </label>
-        <input 
-          id="name" 
-          name="name" 
-          v-model="name" 
-          type="text" 
-          minlength="2" 
-          maxlength="50" 
-          placeholder="Indiquer le nom" 
+        <FieldElt
+          id="name"
+          v-model:value="name"
+          info="Indiquer le nom de l'utilisateur"
           required>
+          <template #legend>
+            Nom
+          </template>
+          <template #label>
+            Prénom ou Pseudo
+          </template>
+        </FieldElt>
       </li>
 
       <li>
-        <label for="email">
-          Email
-        </label>
-        <input 
-          id="email" 
-          name="email" 
-          v-model="email" 
-          type="email" 
-          maxlength="50" 
-          minlength="5" 
-          placeholder="Indiquer l'email"
+        <FieldElt
+          id="email"
+          v-model:value="email"
+          info="Indiquer l'email de l'utilisateur"
+          type="email"
           required>
+          <template #legend>
+            Email
+          </template>
+          <template #label>
+            Un email valide svp !
+          </template>
+        </FieldElt>
       </li>
 
       <li>
-        <label for="pass">
-          Mot de Passe
-        </label>
-        <input 
-          id="pass" 
-          name="pass" 
-          v-model="pass" 
-          type="password" 
-          placeholder="Indiquer le mot de passe" 
-          maxlength="50"
-          minlength="8" 
+        <FieldElt
+          id="pass"
+          v-model:value="pass"
+          info="Indiquer le mot de passe de l'utilisateur"
+          type="password"
+          min="8"
           required>
+          <template #legend>
+            Mot de Passe
+          </template>
+          <template #label>
+            8 caractères mini avec des chiffres et des lettres
+          </template>
+        </FieldElt>
       </li>
     </ul>
 
@@ -57,12 +60,14 @@
 
 <script>
 import BtnElt from '@/components/base/BtnElt';
+import FieldElt from '@/components/base/FieldElt';
 import { checkString, rewriteString, postData } from "@/script/services";
 
 export default {
   name: "CreateUser",
   components: {
-    BtnElt
+    BtnElt,
+    FieldElt
   },
   data() {
     return {
