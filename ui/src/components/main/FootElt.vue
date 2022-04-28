@@ -117,7 +117,17 @@
 
 <script>
   export default {
-    name: "FootElt"
+    name: "FootElt",
+    props: {
+      first: {
+        type: String,
+        default: "Developers"
+      },
+      second: {
+        type: String,
+        default: "Websites"
+      }
+    }
   }
 </script>
 
