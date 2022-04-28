@@ -13,105 +13,27 @@
       <li class="foot-target1">
         <h3>
           <label for="foot-developers">
-            Developers
+            {{ first }}
             <i class="fa-solid fa-caret-up"></i>
             <i class="fa-solid fa-caret-down"></i>
           </label>
         </h3>
-        
-        <ul class="foot-goal1">
-          <li>
-            <a 
-              href="https://animadio.org"
-              title="Animadio CSS Framework">
-              Animadio
-            </a>
-          </li>
-          <li>
-            <a 
-              href="https://links2code.philippebeck.net"
-              title="Des Liens pour Coder">
-              Links2Code
-            </a>
-          </li>
-          <li>
-            <a 
-              href="https://pam.philippebeck.net"
-              title="PHP Adaptive Microframework">
-              Pam
-            </a>
-          </li>
-        </ul>
+        <slot name="first" class="foot-goal1"></slot>
       </li>
 
       <li class="foot-target2">
         <h3>
           <label for="foot-websites">
-            Websites
+            {{ second }}
             <i class="fa-solid fa-caret-up"></i>
             <i class="fa-solid fa-caret-down"></i>
           </label>
         </h3>
-        <ul class="foot-goal2">
-          <li>
-            <a 
-              href="https://asperger.philippebeck.net"
-              title="Tests pour le Syndrome d'Asperger">
-              Asperger
-            </a>
-          </li>
-          <li>
-            <a 
-              href="https://astronomy.philippebeck.net"
-              title="NASA & CDS APIs">
-              Astronomy
-            </a>
-          </li>
-          <li>
-            <a 
-              href="https://philippebeck.net"
-              title="Portail">
-              Philippe Beck
-            </a>
-          </li>
-        </ul>
+        <slot name="second" class="foot-goal2"></slot>
       </li>
     </ul>
-
-    <ul class="row">
-      <li>
-        <a 
-          class="btn-gh"
-          href="https://github.com/philippebeck"
-          title="Philippe Beck @GitHub">
-          <i class="fa-brands fa-github fa-fw"></i>
-        </a>
-      </li>
-      <li>
-        <a 
-          class="btn-tw"
-          href="https://twitter.com/ph_beck"
-          title="Philippe Beck @Twitter">
-          <i class="fa-brands fa-twitter fa-fw"></i>
-        </a>
-      </li>
-      <li>
-        <a 
-          class="btn-in"
-          href="https://www.linkedin.com/in/philippebeck"
-          title="Philippe Beck @LinkedIn">
-          <i class="fa-brands fa-linkedin-in fa-fw"></i>
-        </a>
-      </li>
-      <li>
-        <a 
-          class="btn"
-          href="https://codepen.io/philippebeck"
-          title="Philippe Beck @CodePen">
-          <i class="fa-brands fa-codepen fa-fw"></i>
-        </a>
-      </li>
-    </ul>
+    
+    <slot name="main" class="foot-visual"></slot>
   </footer>
 </template>
 
