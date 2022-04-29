@@ -86,7 +86,7 @@
     <router-view/>
 
     <FootElt>
-      <template #first>
+      <template #one>
         <ul>
           <li>
             <a 
@@ -112,7 +112,7 @@
         </ul>
       </template>
 
-      <template #second>
+      <template #two>
         <ul>
           <li>
             <a 
@@ -142,34 +142,34 @@
         <ul>
           <li>
             <a 
-              class="btn-gh"
+              class="gh gray-onto"
               href="https://github.com/philippebeck"
               title="Philippe Beck @GitHub">
-              <i class="fa-brands fa-github fa-fw"></i>
+              <i class="fa-brands fa-github fa-2x fa-fw"></i>
             </a>
           </li>
           <li>
             <a 
-              class="btn-tw"
+              class="tw blue-onto"
               href="https://twitter.com/ph_beck"
               title="Philippe Beck @Twitter">
-              <i class="fa-brands fa-twitter fa-fw"></i>
+              <i class="fa-brands fa-twitter fa-2x fa-fw"></i>
             </a>
           </li>
           <li>
             <a 
-              class="btn-in"
+              class="in blue-onto"
               href="https://www.linkedin.com/in/philippebeck"
               title="Philippe Beck @LinkedIn">
-              <i class="fa-brands fa-linkedin-in fa-fw"></i>
+              <i class="fa-brands fa-linkedin-in fa-2x fa-fw"></i>
             </a>
           </li>
           <li>
             <a 
-              class="btn"
+              class="black gray-onto"
               href="https://codepen.io/philippebeck"
               title="Philippe Beck @CodePen">
-              <i class="fa-brands fa-codepen fa-fw"></i>
+              <i class="fa-brands fa-codepen fa-2x fa-fw"></i>
             </a>
           </li>
         </ul>

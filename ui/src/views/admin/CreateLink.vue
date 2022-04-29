@@ -22,6 +22,7 @@
           v-model:value="url"
           info="Indiquer l'URL du lien"
           type="url"
+          max="100"
           required>
           <template #legend>
             URL

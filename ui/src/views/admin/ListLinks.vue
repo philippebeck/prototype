@@ -34,6 +34,7 @@
           v-model:value="table[slotProps.index].url"
           info="Indiquer l'URL du lien"
           type="url"
+          max="100"
           required>
         </FieldElt>
       </template>
