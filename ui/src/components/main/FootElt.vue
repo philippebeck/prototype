@@ -1,39 +1,23 @@
 <template>
-  <footer class="foot">
-    <input 
-      id="foot-developers" 
-      class="foot-check1" 
-      type="checkbox">
-    <input 
-      id="foot-websites" 
-      class="foot-check2" 
-      type="checkbox">
-
-    <ul class="foot-list">
-      <li class="foot-target1">
-        <h3>
-          <label for="foot-developers">
-            {{ first }}
-            <i class="fa-solid fa-caret-up"></i>
-            <i class="fa-solid fa-caret-down"></i>
-          </label>
-        </h3>
-        <slot name="first" class="foot-goal1"></slot>
+  <footer>
+    <ol>
+      <li v-if="hasSlot('one')">
+        <h3>{{ title1 }}</h3>
+        <slot name="one"></slot>
       </li>
 
-      <li class="foot-target2">
-        <h3>
-          <label for="foot-websites">
-            {{ second }}
-            <i class="fa-solid fa-caret-up"></i>
-            <i class="fa-solid fa-caret-down"></i>
-          </label>
-        </h3>
-        <slot name="second" class="foot-goal2"></slot>
+      <li v-if="hasSlot('two')">
+        <h3>{{ title2 }}</h3>
+        <slot name="two"></slot>
       </li>
-    </ul>
-    
-    <slot name="main" class="foot-visual"></slot>
+
+      <li v-if="hasSlot('three')">
+        <h3>{{ title3 }}</h3>
+        <slot name="three"></slot>
+      </li>
+    </ol>
+
+    <slot name="main"></slot>
   </footer>
 </template>
 
