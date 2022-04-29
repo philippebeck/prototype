@@ -38,19 +38,21 @@
 </template>
 
 <script>
-  export default {
-    name: "FootElt",
-    props: {
-      first: {
-        type: String,
-        default: "Developers"
-      },
-      second: {
-        type: String,
-        default: "Websites"
-      }
+export default {
+  name: "FootElt",
+  data() {
+    return {
+      title1: "Tools",
+      title2: "Sites",
+      title3: "Apps"
+    }
+  },
+  methods: {
+    hasSlot(name) {
+      return this.$slots[name] !== undefined;
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
