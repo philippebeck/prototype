@@ -54,98 +54,47 @@
 </script>
 
 <style lang="scss" scoped>
-[class*="check"],
-[class*="radio"] {
-  display: none;
-}
-
 footer {
   text-align: center;
+}
 
-  h3 {
-    margin: 10px;
-    font-size: 2rem;
-    color: var(--secondary);
+ol {
+  display: flex;
+  flex-direction: column;
+  place-content: space-evenly;
+  padding: 10px 0;
+  background-color: var(--primary);
+
+  li {
+    list-style-type: none;
   }
 
-  label {
-    cursor: pointer;
-  }
+  :slotted(a) {
+    font-size: 1.5rem;
+    color: var(--white);
 
-  & > ul {
-    display: flex;
-    flex-direction: column;
-    place-content: space-evenly;
-    margin: 0;
-    background-color: var(--primary);
-
-    a {
-      color: var(--white);
-      cursor: pointer;
-
-      &:hover,
-      &:focus {
-        color: var(--secondary);
-      }
+    &:hover,
+    &:focus {
+      color: var(--secondary);
     }
   }
 }
 
-[class*="foot-target"] [class*="up"],
-[class*="foot-target"] [class*="down"] {
-  margin-left: 2px;
-}
-
-[for*="foot"]:hover [class*="up"],
-[for*="foot"]:focus [class*="up"],
-[for*="foot"]:hover [class*="down"],
-[for*="foot"]:focus [class*="down"] {
-  transform: scale(1.2);
-  transition: transform 1s;
-  color: var(--white);
-}
-
-.foot-visual {
-  display: flex;
-  place-content: center;
+h3 {
   margin: 0;
-  padding: 10px 0;
-  background-color: var(--white);
-
-  a {
-    cursor: crosshair;
-  }
+  font-size: 2rem;
+  color: var(--grey);
 }
 
-[class*="foot-goal"],
-.foot [class*="up"],
-.foot-check1:checked ~ .foot-list .foot-target1 [class*="down"],
-.foot-check2:checked ~ .foot-list .foot-target2 [class*="down"] {
-  display: none;
+footer > :deep(ul) {
+  display: flex;
+  flex-direction: row;
+  place-content: center;
 }
 
-.foot-check1:checked ~ .foot-list .foot-target1 [class*="up"],
-.foot-check2:checked ~ .foot-list .foot-target2 [class*="up"] {
-  display: inline-block;
-}
-
-.foot-check1:checked ~ .foot-list .foot-goal1,
-.foot-check2:checked ~ .foot-list .foot-goal2 {
-  display: block;
-}
-
-@media (min-width: 768px) {
-  .foot {
-    --foot-list-flex-direction: row;
-  }
-
-  [class*="foot-goal"] {
-    display: block;
-  }
-
-  [class*="foot-target"] [class*="up"],
-  [class*="foot-target"] [class*="down"] {
-    display: none;
+@media screen and (min-width: 768px) {
+  ol {
+    flex-direction: row;
   }
 }
 </style>
