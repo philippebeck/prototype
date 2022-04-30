@@ -63,7 +63,7 @@
 
 <script>
 import BtnElt from '@/components/base/BtnElt';
-import ListElt from "@/components/data/ListElt.vue";
+import ListElt from "@/components/data/ListElt";
 import { getData } from "@/script/services";
 
 export default {
