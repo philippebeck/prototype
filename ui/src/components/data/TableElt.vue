@@ -72,157 +72,85 @@ export default {
 
 <style lang="scss" scoped>
 table {
-  --table-border-spacing: 10px;
-  --table-margin: 50px auto;
-  --table-width: auto;
-  --table-max-width: 100%;
-  --table-font-size: calc(var(--body-font-size) * 110 / 100);
-  --table-box-shadow: 5px 5px 10px 5px var(--grey);
-  --table-caption-side: top;
-  --table-caption-margin: 10px;
-  --table-caption-font-size: 3rem;
-  --table-caption-font-weight: bold;
-  --table-caption-color: var(--black);
-  --table-caption-text-shadow: 1px 1px 2px;
-  --table-title-font-size: calc(var(--body-font-size) * 120 / 100);
-  --table-title-font-style: italic;
-  --table-title-background-color: var(--primary);
-  --table-title-color: var(--white);
-  --table-cell-border-style: solid;
-  --table-cell-border-width: thin;
-  --table-cell-border-radius: 0;
-  --table-cell-border-color: var(--black);
-  --table-cell-padding: 2px;
-  --table-cell-text-align: center;
-  --table-cell-vertical-align: middle;
-  --table-cell-word-break: normal;
-  --table-cell-cursor: cell;
-  --table-odd-background-color: var(--white);
-  --table-odd-color: var(--gray);
-  --table-even-background-color: var(--grey);
-  --table-even-color: var(--black);
-  --table-row-hover-background-color: var(--primary);
-  --table-row-hover-color: var(--secondary);
-
   display: table;
-  border-collapse: var(--table-border-collapse);
-  border-spacing: var(--table-border-spacing);
-  margin: var(--table-margin);
-  width: var(--table-width);
-  max-width: var(--table-max-width);
-  font-size: var(--table-font-size);
-  box-shadow: var(--table-box-shadow);
-
-  &-inline {
-    display: inline-table;
-  }
-
-  &-caption {
-    display: table-caption;
-  }
-
-  &-row {
-    display: table-row;
-  }
-
-  &-col {
-    display: table-column;
-  }
-
-  &-cell {
-    display: table-cell;
-  }
-
-  &-collapse {
-    border-collapse: collapse;
-  }
-
-  &-separate {
-    border-collapse: separate;
-  }
-
-  & > caption {
-    caption-side: var(--table-caption-side);
-    margin: var(--table-caption-margin);
-    font-size: var(--table-caption-font-size);
-    font-weight: var(--table-caption-font-weight);
-    color: var(--table-caption-color);
-    text-shadow: var(--table-caption-text-shadow);
-  }
-
-  th {
-    font-size: var(--table-title-font-size);
-    font-style: var(--table-title-font-style);
-    background-color: var(--table-title-background-color);
-    color: var(--table-title-color);
-  }
-
-  th,
-  td {
-    border-style: var(--table-cell-border-style);
-    border-width: var(--table-cell-border-width);
-    border-radius: var(--table-cell-border-radius);
-    border-color: var(--table-cell-border-color);
-    padding: var(--table-cell-padding);
-    text-align: var(--table-cell-text-align);
-    vertical-align: var(--table-cell-vertical-align);
-  }
-
-  td {
-    word-break: var(--table-cell-word-break);
-    cursor: var(--table-cell-cursor);
-  }
-
-  tbody tr {
-    &:nth-child(even) {
-      background-color: var(--table-even-background-color);
-      color: var(--table-even-color);
-    }
-
-    &:nth-child(odd) {
-      background-color: var(--table-odd-background-color);
-      color: var(--table-odd-color);
-    }
-
-    &:hover,
-    &:focus {
-      background-color: var(--table-row-hover-background-color);
-      color: var(--table-row-hover-color);
-    }
-  }
+  border-collapse: collapse;
+  border-spacing: 10px;
+  margin: 50px auto;
+  width: auto;
+  max-width: 100%;
+  font-size: calc(var(--body-font-size) * 110 / 100);
+  box-shadow: 5px 5px 10px 5px var(--grey);
 }
 
-@media (min-width: 576px) {
-  .table {
-    --table-cell-padding: 6px;
+caption {
+  caption-side: top;
+  margin: 10px;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--black);
+  text-shadow: 1px 1px 2px;
+}
+
+th {
+  font-size: calc(var(--body-font-size) * 120 / 100);
+  font-style: italic;
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+th,
+td {
+  border: solid thin var(--black);
+  border-radius: 0;
+  padding: 2px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+td {
+  word-break: normal;
+  cursor: cell;
+}
+
+tbody tr {
+  &:nth-child(even) {
+    background-color: var(--grey);
+    color: var(--black);
+  }
+
+  &:nth-child(odd) {
+    background-color: var(--white);
+    color: var(--gray);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--primary);
+    color: var(--secondary);
   }
 }
 
 @media (min-width: 768px) {
-  .table {
-    --table-max-width: 95%;
-    --table-cell-padding: 7px;
+  table {
+    max-width: 95%;
   }
 }
 
 @media (min-width: 992px) {
-  .table {
-    --table-max-width: 90%;
-    --table-cell-padding: 8px;
+  table {
+    max-width: 90%;
   }
 }
 
 @media (min-width: 1200px) {
-  .table {
-    --table-max-width: 85%;
-    --table-cell-padding: 9px;
+  table {
+    max-width: 85%;
   }
 }
 
 @media (min-width: 1600px) {
-  .table {
-    --table-max-width: 70%;
-    --table-cell-padding: 10px;
+  table {
+    max-width: 70%;
   }
 }
 </style>
