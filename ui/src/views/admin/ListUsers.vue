@@ -5,7 +5,7 @@
       id="users">
 
       <template #head>
-        actions
+        crud
       </template>
 
       <template #cell-_id="slotProps">

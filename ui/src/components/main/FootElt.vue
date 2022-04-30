@@ -24,11 +24,18 @@
 <script>
 export default {
   name: "FootElt",
-  data() {
-    return {
-      title1: "Tools",
-      title2: "Sites",
-      title3: "Apps"
+  props: {
+    title1: {
+      type: String,
+      default: "Tools"
+    },
+    title2: {
+      type: String,
+      default: "Sites"
+    },
+    title3: {
+      type: String,
+      default: "Apps"
     }
   },
   methods: {

@@ -1,6 +1,6 @@
 {
   "name": "prototype-ui",
-  "version": "0.27.0",
+  "version": "0.28.0",
   "description": "Vue - Sass",
   "keywords": [
     "vue",
@@ -19,7 +19,9 @@
     "animadio": "^5.0.0",
     "axios": "^0.23.0",
     "core-js": "^3.8.3",
+    "servidio": "^0.1.1",
     "vue": "^3.2.13",
+    "vue-loader": "^17.0.0",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },

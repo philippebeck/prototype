@@ -1,5 +1,5 @@
 <template>
-  <form class="form">
+  <form class="form width-lg container-60lg-50wd">
     <ul>
       <li>
         <FieldElt
