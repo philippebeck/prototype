@@ -188,7 +188,7 @@ fieldset {
   margin: auto;
   border: none;
   padding: 0;
-  width: 90vw;
+  width: 100%;
   transition: width 2s;
   text-align: center;
   
@@ -249,35 +249,5 @@ textarea:focus + label {
   visibility: visible;
   transform: scale(1.1);
   transition: all 1s;
-}
-
-@media (min-width: 576px) {
-  fieldset {
-    width: 60vw;
-  }
-}
-
-@media (min-width: 768px) {
-  fieldset {
-    width: 45vw;
-  }
-}
-
-@media (min-width: 992px) {
-  fieldset {
-    width: 30vw;
-  }
-}
-
-@media (min-width: 1200px) {
-  fieldset {
-    width: 25vw;
-  }
-}
-
-@media (min-width: 1600px) {
-  fieldset {
-    width: 20vw;
-  }
 }
 </style>
