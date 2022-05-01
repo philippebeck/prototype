@@ -1,19 +1,34 @@
 <template>
-  <section class="card-violet">
-    <figure>
-      <img src="https://animadio.org/img/logo.png" 
-            alt="Animadio Logo">
-    </figure>
-    <h2>card-violet</h2>
-    <p>
-      This is an example of the class 
-      <b>"card-violet"</b>
-    </p>
-    <a class="btn" 
-        href="#">
-      <i class="fas fa-globe"></i>
-      btn
-    </a>
+  <article v-if="article === true">
+    <header v-if="hasSlot('head')">
+      <slot name="head"></slot>
+    </header>
+
+    <slot name="body"></slot>
+
+    <aside v-if="hasSlot('aside')">
+      <slot name="aside"></slot>
+    </aside>
+
+    <footer v-if="hasSlot('foot')">
+      <slot name="foot"></slot>
+    </footer>
+  </article>
+
+  <section v-else>
+    <header v-if="hasSlot('head')">
+      <slot name="head"></slot>
+    </header>
+
+    <slot name="body"></slot>
+
+    <aside v-if="hasSlot('aside')">
+      <slot name="aside"></slot>
+    </aside>
+
+    <footer v-if="hasSlot('foot')">
+      <slot name="foot"></slot>
+    </footer>
   </section>
 </template>
 
