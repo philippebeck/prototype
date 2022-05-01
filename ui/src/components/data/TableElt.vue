@@ -92,6 +92,7 @@ caption {
 }
 
 th {
+  display: table-column;
   font-size: calc(var(--body-font-size) * 120 / 100);
   font-style: italic;
   background-color: var(--primary);
@@ -100,14 +101,13 @@ th {
 
 th,
 td {
-  border: solid thin var(--black);
-  border-radius: 0;
   padding: 2px;
   text-align: center;
   vertical-align: middle;
 }
 
 td {
+  display: table-row;
   word-break: normal;
   cursor: cell;
 }
@@ -130,27 +130,37 @@ tbody tr {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 576px) {
   table {
     max-width: 95%;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   table {
     max-width: 90%;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   table {
     max-width: 85%;
+  }
+  th,
+  td {
+    display: table-cell;
+  }
+}
+
+@media (min-width: 1200px) {
+  table {
+    max-width: 80%;
   }
 }
 
 @media (min-width: 1600px) {
   table {
-    max-width: 70%;
+    max-width: 75%;
   }
 }
 </style>
