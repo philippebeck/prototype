@@ -34,7 +34,19 @@
 
 <script>
 export default {
-  name: "CardElt"
+  name: "CardElt",
+  props: {
+    article: {
+      type: Boolean,
+      default: false
+    }
+  },
+  
+  methods: {
+    hasSlot(name) {
+      return this.$slots[name] !== undefined;
+    }
+  }
 }
 </script>
 
