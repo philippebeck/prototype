@@ -176,11 +176,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-fieldset,
-fieldset > * {
-  box-sizing: border-box;
-}
-
 fieldset {
   display: flex;
   flex-wrap: wrap;
@@ -193,20 +188,20 @@ fieldset {
   text-align: center;
   
   & > * {
+    box-sizing: border-box;
     margin: 0 10px;
+    padding: 5px;
   }
 }
 
 legend {
-  padding: 5px;
-  width: 100%;
+  width: 93%;
   font-size: 1.2rem;
   color: var(--gray);
 }
 
 label {
-  padding: 5px;
-  width: 100%;
+  width: 90%;
   visibility: hidden;
   font-size: 0.8rem;
   font-style: italic;
@@ -219,14 +214,12 @@ textarea {
   border: medium outset var(--blue);
   border-radius: 10px;
   outline: none;
-  padding: 5px;
   width: 100%;
   line-height: 1.8;
   background-color: var(--white);
 }
 
-fieldset:hover legend,
-legend:hover {
+fieldset:hover legend {
   color: var(--black);
 }
 
